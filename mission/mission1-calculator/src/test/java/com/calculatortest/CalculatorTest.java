@@ -40,4 +40,21 @@ public class CalculatorTest {
         //then
         assertEquals(expected, result);
     }
+
+    @Test
+    @DisplayName("multiply 테스트")
+    public void testMultiply() {
+        Calculator calculator = new Calculator();
+
+        //given
+        int firstNumber = 5;
+        int secondNumber = 15;
+        int expected = 75;
+
+        //when
+        int result = calculator.multiply(firstNumber, secondNumber);
+
+        //then
+        assertEquals(expected, result);
+    }
 }

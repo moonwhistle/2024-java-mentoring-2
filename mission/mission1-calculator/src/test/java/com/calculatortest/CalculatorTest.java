@@ -57,4 +57,21 @@ public class CalculatorTest {
         //then
         assertEquals(expected, result);
     }
+
+    @Test
+    @DisplayName("divide 테스트")
+    public void testDivide() {
+        Calculator calculator = new Calculator();
+
+        //given
+        int firstNumber = 15;
+        int secondNumber = 5;
+        int expected = 3;
+
+        //when
+        int result = calculator.divide(firstNumber, secondNumber);
+
+        //then
+        assertEquals(expected, result);
+    }
 }

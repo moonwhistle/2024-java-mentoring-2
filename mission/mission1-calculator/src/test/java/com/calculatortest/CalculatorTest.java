@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
     @Test
@@ -73,5 +74,23 @@ public class CalculatorTest {
 
         //then
         assertEquals(expected, result);
+    }
+
+    @Test
+    @DisplayName("divide exception 발생 테스트")
+    public void testDivideException() {
+        Calculator calculator = new Calculator();
+
+        //given
+        int firstNumber = 15;
+        int secondNumber = 0;
+        String expected = "0으로 나눠지지 않음";
+
+        //when
+        ArithmeticException arithmeticException =
+                assertThrows(ArithmeticException.class,() -> calculator.divide(firstNumber,secondNumber));
+
+        //then
+        assertEquals(expected, arithmeticException.getMessage());
     }
 }

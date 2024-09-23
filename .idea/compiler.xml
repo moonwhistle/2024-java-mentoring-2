@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="mission" target="17" />
+      <module name="mission.main" target="17" />
+      <module name="mission.mission1-calculator" target="17" />
+      <module name="mission.mission1-calculator.main" target="17" />
+      <module name="mission.mission1-calculator.test" target="17" />
+      <module name="mission.mission2-racing" target="17" />
+      <module name="mission.mission2-racing.main" target="17" />
+      <module name="mission.mission2-racing.test" target="17" />
+      <module name="mission.mission3-lotto" target="17" />
+      <module name="mission.mission3-lotto.main" target="17" />
+      <module name="mission.mission3-lotto.test" target="17" />
+      <module name="mission.test" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

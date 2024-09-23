@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/2024-java-mentoring-2.iml" filepath="$PROJECT_DIR$/.idea/2024-java-mentoring-2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mission.iml" filepath="$PROJECT_DIR$/mission.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mission.main.iml" filepath="$PROJECT_DIR$/.idea/modules/mission.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mission1-calculator/mission.mission1-calculator.iml" filepath="$PROJECT_DIR$/.idea/modules/mission1-calculator/mission.mission1-calculator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mission1-calculator/mission.mission1-calculator.main.iml" filepath="$PROJECT_DIR$/.idea/modules/mission1-calculator/mission.mission1-calculator.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mission1-calculator/mission.mission1-calculator.test.iml" filepath="$PROJECT_DIR$/.idea/modules/mission1-calculator/mission.mission1-calculator.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mission2-racing/mission.mission2-racing.iml" filepath="$PROJECT_DIR$/.idea/modules/mission2-racing/mission.mission2-racing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mission2-racing/mission.mission2-racing.main.iml" filepath="$PROJECT_DIR$/.idea/modules/mission2-racing/mission.mission2-racing.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mission2-racing/mission.mission2-racing.test.iml" filepath="$PROJECT_DIR$/.idea/modules/mission2-racing/mission.mission2-racing.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mission3-lotto/mission.mission3-lotto.iml" filepath="$PROJECT_DIR$/.idea/modules/mission3-lotto/mission.mission3-lotto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mission3-lotto/mission.mission3-lotto.main.iml" filepath="$PROJECT_DIR$/.idea/modules/mission3-lotto/mission.mission3-lotto.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mission3-lotto/mission.mission3-lotto.test.iml" filepath="$PROJECT_DIR$/.idea/modules/mission3-lotto/mission.mission3-lotto.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mission.test.iml" filepath="$PROJECT_DIR$/.idea/modules/mission.test.iml" />
+    </modules>
+  </component>
+</project>

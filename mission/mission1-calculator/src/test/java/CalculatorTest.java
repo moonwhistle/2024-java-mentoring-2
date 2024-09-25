@@ -32,5 +32,18 @@ public class CalculatorTest {
 
         assertEquals(result, expected);
     }
+
+    @Test
+    @DisplayName("계산기 곱하기 메서드 테스트")
+    public void testMulti(){
+        Calculator calculator = new Calculator();
+        final int num1 = 3;
+        final int num2 = 4;
+
+        final int expected = 12;
+        final int result = calculator.multiple(num1, num2);
+
+        assertEquals(result, expected);
+    }
 }
 

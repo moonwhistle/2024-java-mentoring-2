@@ -19,6 +19,18 @@ public class CalculatorTest {
 
         assertEquals(result, expected);
     }
-    
+
+    @Test
+    @DisplayName("계산기 빼기 메서드 테스트")
+    public void testSubtract(){
+        Calculator calculator = new Calculator();
+        final int num1 = 7;
+        final int num2 = 9;
+
+        final int expected = -2;
+        final int result = calculator.subtract(num1, num2);
+
+        assertEquals(result, expected);
+    }
 }
 

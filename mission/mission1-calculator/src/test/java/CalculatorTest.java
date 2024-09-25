@@ -57,5 +57,18 @@ public class CalculatorTest {
         final ArithmeticException arithmeticException = assertThrows(ArithmeticException.class, ()-> calculator.divide(num1,num2));
         assertEquals(arithmeticException.getMessage(), expected);
     }
+
+    @Test
+    @DisplayName("계산기 나누기 메서드 테스트")
+    public void testDivide(){
+        Calculator calculator = new Calculator();
+        final int num1 = 10;
+        final int num2 = 3;
+
+        final int expected = 3;
+        final int result = calculator.divide(num1, num2);
+
+        assertEquals(result, expected);
+    }
 }
 

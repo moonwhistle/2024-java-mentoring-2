@@ -38,4 +38,18 @@ public class StringCalculator {
         }
         return numList;
     }
+
+    public void checkMinusOrNotInteger(String str){
+        int num = ZERO_NUM;
+        try{
+            num = Integer.parseInt(str);
+        }
+        catch(NumberFormatException e){
+            throw new NumberFormatException();
+        }
+        if(num < ZERO_NUM){
+            throw new RuntimeException();
+        }
+
+    }
 }

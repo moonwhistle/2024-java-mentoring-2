@@ -17,4 +17,14 @@ public class StringCalculatorTest {
 
         assertEquals(StringList, expectedList);
     }
+
+    @Test
+    @DisplayName("사용자 정의 문자열 계산기 테스트")
+    public void asserUserDefinedCalculator(){
+        final StringCalculator StringCal = new StringCalculator("//;\n1;2;3");
+        List<String> StringList = StringCal.stringList();
+        List<String> expectedList = Arrays.asList("1","2","3");
+
+        assertEquals(StringList, expectedList);
+    }
 }

@@ -27,4 +27,16 @@ public class StringCalculatorTest {
 
         assertEquals(StringList, expectedList);
     }
+
+    @Test
+    @DisplayName("문자열 to 숫자 테스트")
+    void assertStringToNum(){
+        final StringCalculator StringCal = new StringCalculator("//;\n1;2;3");
+        List<String> str = StringCal.stringList();
+        List<Integer> NumCalculator = StringCal.StringToNum(str);
+
+        List<Integer> expectedList = Arrays.asList(1,2,3);
+
+        assertEquals(NumCalculator, expectedList);
+    }
 }

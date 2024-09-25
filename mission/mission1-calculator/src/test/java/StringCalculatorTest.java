@@ -39,4 +39,17 @@ public class StringCalculatorTest {
 
         assertEquals(NumCalculator, expectedList);
     }
+
+    @Test
+    @DisplayName("숫자형 리스트 더하기 테스트")
+    void asserAdd(){
+        final StringCalculator StringCal = new StringCalculator("//;\n1;2;3");
+        List<String> str = StringCal.stringList();
+        List<Integer> NumCalculator = StringCal.StringToNum(str);
+        final int result;
+        result = StringCal.addNum(NumCalculator);
+        final int expected = 6;
+
+        assertEquals(result, expected);
+    }
 }

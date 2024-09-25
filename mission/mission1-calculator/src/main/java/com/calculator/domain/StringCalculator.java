@@ -34,6 +34,7 @@ public class StringCalculator {
     public List<Integer> StringToNum(List<String> stringNum){
         List<Integer> numList = new ArrayList<>();
         for(String str : stringNum){
+            checkMinusOrNotInteger(str);
             numList.add(Integer.parseInt(str));
         }
         return numList;

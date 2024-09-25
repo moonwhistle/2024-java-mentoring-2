@@ -51,6 +51,13 @@ public class StringCalculator {
         if(num < ZERO_NUM){
             throw new RuntimeException();
         }
+    }
 
+    public int addNum(List<Integer> numList){
+        int sum = ZERO_NUM;
+        for(int num : numList){
+            sum += num;
+        }
+        return sum;
     }
 }

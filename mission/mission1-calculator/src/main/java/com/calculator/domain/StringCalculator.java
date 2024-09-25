@@ -1,5 +1,6 @@
 package com.calculator.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StringCalculator {
@@ -28,5 +29,13 @@ public class StringCalculator {
         String[] strArr = inputString.substring(new_start_index).split(new_sep);
 
         return List.of(strArr);
+    }
+
+    public List<Integer> StringToNum(List<String> stringNum){
+        List<Integer> numList = new ArrayList<>();
+        for(String str : stringNum){
+            numList.add(Integer.parseInt(str));
+        }
+        return numList;
     }
 }

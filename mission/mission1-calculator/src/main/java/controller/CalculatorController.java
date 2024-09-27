@@ -5,6 +5,7 @@ import domain.Calculator;
 import view.OutputView;
 
 public class CalculatorController {
+
     private final InputView inputView;
     private final OutputView outputView;
     private final Calculator calculator;
@@ -16,12 +17,13 @@ public class CalculatorController {
     }
 
     public void startController() {
-        int user_Number1 = inputView.firstNumber();
-        int user_Number2 = inputView.secondNumber();
+        int firstNumber= inputView.firstNumber();
+        int secondNumber = inputView.secondNumber();
 
-        outputView.outPut(calculator.add(user_Number1, user_Number2));
-        outputView.outPut(calculator.subtract(user_Number1, user_Number2));
-        outputView.outPut(calculator.multiplication(user_Number1, user_Number2));
-        outputView.outPut(calculator.divide(user_Number1, user_Number2));
+        outputView.outPut(calculator.add(firstNumber, secondNumber));
+        outputView.outPut(calculator.subtract(firstNumber, secondNumber));
+        outputView.outPut(calculator.multiply(firstNumber, secondNumber));
+        outputView.outPut(calculator.divide(firstNumber, secondNumber));
     }
+
 }

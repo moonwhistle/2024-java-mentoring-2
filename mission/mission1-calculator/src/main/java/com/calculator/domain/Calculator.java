@@ -5,6 +5,8 @@ public class Calculator {
     private final int firstOperand;
     private final int secondOperand;
 
+    private static final String DIVIDED_BY_ZERO = "0으로 나눌 수 없습니다.";
+
     public Calculator(int firstOperand, int secondOperand) {
         this.firstOperand = firstOperand;
         this.secondOperand = secondOperand;
@@ -23,7 +25,7 @@ public class Calculator {
     }
 
     public int divide() {
-        if (secondOperand == 0) throw new ArithmeticException("0으로 나눌 수 없습니다.");
+        if (secondOperand == 0) throw new ArithmeticException(DIVIDED_BY_ZERO);
         return firstOperand / secondOperand;
     }
 }

@@ -8,6 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StringCalculatorTest {
+
     @Test
     @DisplayName("문자열 테스트")
     public void asserStringCalculator(){

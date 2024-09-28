@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class CalculatorTest {
+
     @Test
     @DisplayName("계산기 더하기 메서드 테스트")
     public void testAdd(){
@@ -54,8 +55,7 @@ public class CalculatorTest {
         final int num2 = 0;
 
         final var expected = "0으로 나눌 수 없음";
-        final ArithmeticException arithmeticException = assertThrows(ArithmeticException.class, ()-> calculator.divide(num1,num2));
-        assertEquals(arithmeticException.getMessage(), expected);
+        assertEquals(assertThrows(ArithmeticException.class, ()-> calculator.divide(num1,num2)).getMessage(), expected);
     }
 
     @Test
@@ -68,7 +68,7 @@ public class CalculatorTest {
         final int expected = 3;
         final int result = calculator.divide(num1, num2);
 
-        assertEquals(result, expected);
+        assertEquals(result,expected);
     }
 }
 

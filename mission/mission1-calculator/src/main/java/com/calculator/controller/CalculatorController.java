@@ -7,6 +7,7 @@ import com.calculator.view.OutputView;
 import java.util.List;
 
 public class CalculatorController {
+
     private final InputView inputView;
     private final OutputView outputView;
 

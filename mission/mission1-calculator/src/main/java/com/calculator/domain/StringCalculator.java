@@ -6,13 +6,12 @@ import java.util.List;
 public class StringCalculator {
     private final String inputString;
     private final String CHECK_FIRST_STRING = "/";
-
     private final int ZERO_NUM = 0;
     private final int FIRST_INDEX = 1;
     private final int SECOND_INDEX = 2;
+    private final String CHECK_USER_DEFINED = "\n";
+    private final String SPLIT_SEPERATOR = "[:|;]";
 
-    private final String NEW_STRING_FIND = "\n";
-    private final String SPLIT_STRING = "[:|;]";
     public StringCalculator(final String inputString){
         this.inputString = inputString;
     }
@@ -20,10 +19,10 @@ public class StringCalculator {
     public List<String> stringList(){
         String firstString = inputString.substring(ZERO_NUM, FIRST_INDEX);
         if(!firstString.equals(CHECK_FIRST_STRING)){
-            String[] strArr = inputString.split(SPLIT_STRING);
+            String[] strArr = inputString.split(SPLIT_SEPERATOR);
             return List.of(strArr);
         }
-        int search_index = inputString.indexOf(NEW_STRING_FIND);
+        int search_index = inputString.indexOf(CHECK_USER_DEFINED);
         String new_sep = inputString.substring(SECOND_INDEX, search_index);
         int new_start_index = search_index + 1;
         String[] strArr = inputString.substring(new_start_index).split(new_sep);
@@ -40,7 +39,7 @@ public class StringCalculator {
         return numList;
     }
 
-    public void checkMinusOrNotInteger(String str){
+    private void checkMinusOrNotInteger(String str){
         int num = ZERO_NUM;
         try{
             num = Integer.parseInt(str);

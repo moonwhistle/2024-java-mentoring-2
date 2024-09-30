@@ -18,15 +18,15 @@ public class CalculatorController {
         int firstNumber = inputView.firstNumber();
         int secondNumber = inputView.secondNumber();
 
-        int sum = calculator.addNumber(firstNumber, secondNumber);
-        int divide = calculator.divideNumber(firstNumber,secondNumber);
-        int multiple = calculator.multiplyNumber(firstNumber,secondNumber);
-        int subtract = calculator.subtractNumber(firstNumber,secondNumber);
+        String sum = calculator.addNumber(firstNumber, secondNumber);
+        String subtract = calculator.subtractNumber(firstNumber,secondNumber);
+        String multiple = calculator.multiplyNumber(firstNumber,secondNumber);
+        String divide = calculator.divideNumber(firstNumber,secondNumber);
 
         outputView.result(sum);
-        outputView.result(divide);
-        outputView.result(multiple);
         outputView.result(subtract);
+        outputView.result(multiple);
+        outputView.result(divide);
     }
 
 }

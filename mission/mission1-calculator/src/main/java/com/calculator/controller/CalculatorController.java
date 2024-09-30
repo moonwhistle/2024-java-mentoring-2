@@ -16,12 +16,9 @@ public class CalculatorController {
     }
 
     public void controllerStart() {
-
         int firstOperand = inputView.firstOperand();
         int secondOperand = inputView.secondOperand();
-
         Calculator calculator = new Calculator(firstOperand, secondOperand);
-
         outputView.printResult(calculator.add());
         outputView.printResult(calculator.subtract());
         outputView.printResult(calculator.multiply());

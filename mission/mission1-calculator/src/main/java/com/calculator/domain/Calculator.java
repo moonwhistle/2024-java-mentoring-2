@@ -1,16 +1,21 @@
 package com.calculator.domain;
 
 public class Calculator {
-    public int sum(int a, int b) {
-        return a + b;
+
+    public int sum(int firstNumber, int secondNumber) {
+        return firstNumber + secondNumber;
     }
-    public int subtract(int a, int b) {
-        return a - b;
+
+    public int subtract(int firstNumber, int secondNumber) {
+        return firstNumber - secondNumber;
     }
-    public int multiply(int a, int b) {
-        return a * b;
+
+    public int multiply(int fistNumber, int secondNumber) {
+        return fistNumber * secondNumber;
     }
-    public int divide(int a, int b) {
-        return a / b;
+
+    public int divide(int firstNumber, int secondNumber) {
+        return firstNumber / secondNumber;
     }
+
 }

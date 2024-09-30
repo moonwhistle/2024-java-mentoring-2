@@ -17,17 +17,39 @@ public class StringCalculator {
     }
 
     public List<String> stringList(){
-        String firstString = inputString.substring(ZERO_NUM, FIRST_INDEX);
+        String firstString = getSubString(inputString, ZERO_NUM, FIRST_INDEX);
         if(!firstString.equals(CHECK_FIRST_STRING)){
-            String[] strArr = inputString.split(SPLIT_SEPERATOR);
-            return List.of(strArr);
+            String[] splitArray = splitList(inputString,SPLIT_SEPERATOR);
+            return makeStringList(splitArray);
         }
-        int search_index = inputString.indexOf(CHECK_USER_DEFINED);
-        String new_sep = inputString.substring(SECOND_INDEX, search_index);
-        int new_start_index = search_index + 1;
-        String[] strArr = inputString.substring(new_start_index).split(new_sep);
 
-        return List.of(strArr);
+        return userDefinedList();
+    }
+
+    private List<String> userDefinedList(){
+        int search_index = inputString.indexOf(CHECK_USER_DEFINED);
+        String new_sep = getSubString(inputString, SECOND_INDEX, search_index);
+        int new_start_index = search_index + 1;
+        String newStr = inputString.substring(new_start_index);
+        String[] strArr = splitList(newStr, new_sep);
+
+        return makeStringList(strArr);
+    }
+
+    private String getSubString(String input, int start, int end){
+        String subString = input.substring(start, end);
+
+        return subString;
+    }
+
+    private String[] splitList(String input, String seperator){
+        String[] strList = input.split(seperator);
+
+        return strList;
+    }
+
+    private List<String> makeStringList(String[] stringArray){
+        return List.of(stringArray);
     }
 
     public List<Integer> StringToNum(List<String> stringNum){

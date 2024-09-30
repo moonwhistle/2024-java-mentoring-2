@@ -8,4 +8,5 @@ public class CalculatorApplication {
         CalculatorController calculatorController = new CalculatorController();
         calculatorController.calculateNumbers();
     }
+
 }

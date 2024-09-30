@@ -17,13 +17,13 @@ public class CalculatorController {
     }
 
     public void startController() {
-        int firstNumber= inputView.firstNumber();
-        int secondNumber = inputView.secondNumber();
+        int userFirstNumber= inputView.firstNumber();
+        int userSecondNumber = inputView.secondNumber();
 
-        outputView.outPut(calculator.add(firstNumber, secondNumber));
-        outputView.outPut(calculator.subtract(firstNumber, secondNumber));
-        outputView.outPut(calculator.multiply(firstNumber, secondNumber));
-        outputView.outPut(calculator.divide(firstNumber, secondNumber));
+        outputView.outPut(calculator.add(userFirstNumber, userSecondNumber));
+        outputView.outPut(calculator.subtract(userFirstNumber, userSecondNumber));
+        outputView.outPut(calculator.multiply(userFirstNumber, userSecondNumber));
+        outputView.outPut(calculator.divide(userFirstNumber, userSecondNumber));
     }
 
 }

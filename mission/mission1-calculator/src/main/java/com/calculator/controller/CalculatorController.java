@@ -4,27 +4,30 @@ import com.calculator.domain.Calculator;
 import com.calculator.view.*;
 
 public class CalculatorController {
-    InputView inputview;
-    OutputView outputview;
-    Calculator calculator;
+
+    private final InputView inputview;
+    private final OutputView outputview;
+    private final Calculator calculator;
 
     public CalculatorController() {
         this.inputview = new InputView();
         this.outputview = new OutputView();
         this.calculator = new Calculator();
     }
+
     public void calculateNumbers(){
-        int firstNumber = inputview.inputFirst_number();
-        int secondNumber = inputview.inputSecond_number();
+        int firstNumber = inputview.firstNumber();
+        int secondNumber = inputview.secondNumber();
 
-        int sumNumber = calculator.sum(firstNumber, secondNumber);
-        int subtractNumber = calculator.subtract(firstNumber, secondNumber);
-        int multiplicationNumber = calculator.multiply(firstNumber, secondNumber);
-        int divisionNumber = calculator.divide(firstNumber, secondNumber);
+        int sumResult = calculator.sum(firstNumber, secondNumber);
+        int subtractResult = calculator.subtract(firstNumber, secondNumber);
+        int multiplyResult = calculator.multiply(firstNumber, secondNumber);
+        int divideResult = calculator.divide(firstNumber, secondNumber);
 
-        outputview.outputResult(sumNumber);
-        outputview.outputResult(subtractNumber);
-        outputview.outputResult(multiplicationNumber);
-        outputview.outputResult(divisionNumber);
+        outputview.result(sumResult);
+        outputview.result(subtractResult);
+        outputview.result(multiplyResult);
+        outputview.result(divideResult);
     }
+
 }

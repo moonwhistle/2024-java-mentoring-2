@@ -52,5 +52,16 @@ class CalculatorTest {
 
     @Test
     void divideTest() {
+        //given
+        int firstOperand = 5;
+        int secondOperand = 1;
+        Calculator calculator = new Calculator(firstOperand, secondOperand);
+        int expected = 5;
+
+        //when
+        int result = calculator.divide();
+
+        //then
+        Assertions.assertEquals(expected, result);
     }
 }

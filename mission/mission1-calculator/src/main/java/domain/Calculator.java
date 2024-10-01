@@ -3,6 +3,7 @@ package domain;
 public class Calculator {
 
     public static final int EXCEPTION_ZERO = 0;
+    public static final String ERROR_OUTPUT = "0으로 나눌 수 없습니다";
 
     public int add(int firstNumber, int secondNumber) {
         return plus(firstNumber, secondNumber);
@@ -34,7 +35,7 @@ public class Calculator {
 
     private int quotient(int firstNumber, int secondNumber) {
         if (secondNumber == EXCEPTION_ZERO) {
-            throw new ArithmeticException("0으로 나눌 수 없습니다.");
+            throw new ArithmeticException(ERROR_OUTPUT);
         }
         return firstNumber / secondNumber;
     }

@@ -37,6 +37,17 @@ class CalculatorTest {
 
     @Test
     void multiplyTest() {
+        //given
+        int firstOperand = 5;
+        int secondOperand = 0;
+        Calculator calculator = new Calculator(firstOperand, secondOperand);
+        int expected = 0;
+
+        //when
+        int result = calculator.multiply();
+
+        //then
+        Assertions.assertEquals(expected, result);
     }
 
     @Test

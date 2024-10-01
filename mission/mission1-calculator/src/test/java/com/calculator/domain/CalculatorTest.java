@@ -64,4 +64,20 @@ class CalculatorTest {
         //then
         Assertions.assertEquals(expected, result);
     }
+
+    @Test
+    void divideExceptionTest() {
+        //given
+        int firstOperand = 5;
+        int secondOperand = 0;
+        Calculator calculator = new Calculator(firstOperand, secondOperand);
+        String expected = "0으로 나눌 수 없습니다.";
+
+        //when
+        ArithmeticException arithmeticException =
+                Assertions.assertThrows(ArithmeticException.class,() -> calculator.divide());
+
+        //then
+        Assertions.assertEquals(expected, arithmeticException.getMessage());
+    }
 }

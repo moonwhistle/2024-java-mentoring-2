@@ -22,6 +22,17 @@ class CalculatorTest {
 
     @Test
     void subtractTest() {
+        //given
+        int firstOperand = 5;
+        int secondOperand = 0;
+        Calculator calculator = new Calculator(firstOperand, secondOperand);
+        int expected = 5;
+
+        //when
+        int result = calculator.subtract();
+
+        //then
+        Assertions.assertEquals(expected, result);
     }
 
     @Test

@@ -1,11 +1,13 @@
 package com.calculator.domain;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Assertions;
 
 class CalculatorTest {
 
     @Test
+    @DisplayName("덧셈 테스트")
     void addTest() {
         //given
         int firstOperand = 5;
@@ -21,6 +23,7 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("뺄셈 테스트")
     void subtractTest() {
         //given
         int firstOperand = 5;
@@ -36,6 +39,7 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("곱셈 테스트")
     void multiplyTest() {
         //given
         int firstOperand = 5;
@@ -51,6 +55,7 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("나눗셈 테스트")
     void divideTest() {
         //given
         int firstOperand = 5;
@@ -66,6 +71,7 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("나눗셈 예외 발생 테스트")
     void divideExceptionTest() {
         //given
         int firstOperand = 5;

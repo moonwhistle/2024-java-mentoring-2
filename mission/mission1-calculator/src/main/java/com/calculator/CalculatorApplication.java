@@ -1,7 +1,12 @@
 package com.calculator;
 
+import com.calculator.controller.CalculatorController;
+
 public class CalculatorApplication {
+
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        CalculatorController calculatorController = new CalculatorController();
+        calculatorController.run();
     }
+
 }

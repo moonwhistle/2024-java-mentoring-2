@@ -1,12 +1,15 @@
 package com.calculator.controller;
 
-import com.calculator.domain.*;
-import com.calculator.view.*;
+import com.calculator.domain.Calculator;
+
+import com.calculator.view.InputView;
+import com.calculator.view.OutputView;
 
 public class CalculatorController {
-    InputView inputView;
-    OutputView outputView;
-    Calculator calculator;
+
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final Calculator calculator;
 
     public CalculatorController() {
         this.inputView = new InputView();
@@ -14,19 +17,14 @@ public class CalculatorController {
         this.calculator = new Calculator();
     }
 
-    public void result (){
+    public void run() {
         int firstNumber = inputView.firstNumber();
         int secondNumber = inputView.secondNumber();
 
-        String sum = calculator.addNumber(firstNumber, secondNumber);
-        String subtract = calculator.subtractNumber(firstNumber,secondNumber);
-        String multiple = calculator.multiplyNumber(firstNumber,secondNumber);
-        String divide = calculator.divideNumber(firstNumber,secondNumber);
-
-        outputView.result(sum);
-        outputView.result(subtract);
-        outputView.result(multiple);
-        outputView.result(divide);
+        outputView.result(calculator.addNumber(firstNumber, secondNumber));
+        outputView.result(calculator.divideNumber(firstNumber, secondNumber));
+        outputView.result(calculator.subtractNumber(firstNumber, secondNumber));
+        outputView.result(calculator.multiplyNumber(firstNumber, secondNumber));
     }
 
 }

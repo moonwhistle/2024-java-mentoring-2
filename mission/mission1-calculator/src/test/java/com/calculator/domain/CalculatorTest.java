@@ -1,28 +1,21 @@
 package com.calculator.domain;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 
 public class CalculatorTest {
 
-    private final Calculator calculator;
     private static int firstNumber = 7;
     private static int secondNumber = 4;
 
-    public CalculatorTest() {
-        calculator = new Calculator();
-    }
-
-    @BeforeEach
-    void setUp() {
-        Calculator calculator = new Calculator();
-    }
-
     @Test
     public void plusMethod() {
+        Calculator calculator = new Calculator();
 
         int expectedResult = 11;
         int differenceResult = 4;
@@ -38,6 +31,8 @@ public class CalculatorTest {
     @Test
     public void subtractMethod() {
 
+        Calculator calculator = new Calculator();
+
         int expectedResult = 3;
         int differenceResult = 1;
 
@@ -51,6 +46,8 @@ public class CalculatorTest {
 
     @Test
     public void multiplyMethod() {
+
+        Calculator calculator = new Calculator();
 
         int expectedResult = 28;
         int differenceResult = 17;
@@ -66,6 +63,8 @@ public class CalculatorTest {
     @Test
     public void divideMethod() {
 
+        Calculator calculator = new Calculator();
+
         int expectedResult = 1;
         int differenceResult = 4;
 
@@ -79,16 +78,12 @@ public class CalculatorTest {
     @Test
     public void divideExceptionMethod() {
 
+        Calculator calculator = new Calculator();
+
         int firstNumber = 7;
         int secondNumber = 0;
-        String expectedResult = "0으로 나누지 못 함";
-        int differenceResult = 0;
-
-        int result = calculator.divideNumber(firstNumber, secondNumber);
-
-        Assertions.assertAll(
-                () -> assertEquals(expectedResult,result),
-                () -> assertNotEquals(differenceResult, result)
-        );
+        Assertions.assertThrows(RuntimeException.class, ()->{
+            calculator.divideNumber(firstNumber,secondNumber);
+        });
     }
 }

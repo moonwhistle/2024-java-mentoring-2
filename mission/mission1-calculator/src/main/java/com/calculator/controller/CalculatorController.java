@@ -22,9 +22,9 @@ public class CalculatorController {
         int secondNumber = inputView.secondNumber();
 
         outputView.result(calculator.addNumber(firstNumber, secondNumber));
-        outputView.result(calculator.divideNumber(firstNumber, secondNumber));
         outputView.result(calculator.subtractNumber(firstNumber, secondNumber));
         outputView.result(calculator.multiplyNumber(firstNumber, secondNumber));
+        outputView.result(calculator.divideNumber(firstNumber, secondNumber));
     }
 
 }

@@ -2,7 +2,7 @@ package com.calculator.domain;
 
 public class Calculator {
 
-    private static final String EXCEPTION_STRING = "NOT ZERO";
+    private static final String EXCEPTION_STRING = "0 값은 들어오지 못합니다.";
 
     private static final int ZERO = 0;
 

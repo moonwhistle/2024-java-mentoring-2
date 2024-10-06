@@ -24,4 +24,21 @@ class CalculatorTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    @DisplayName("뺄셈 테스트")
+    void 뺄셈_테스트() {
+
+        //given
+        Calculator calculator = new Calculator();
+        int firstNumber = 3;
+        int secondNumber = 2;
+        int expected = 1;
+
+        //when
+        int result = calculator.subtract(firstNumber, secondNumber);
+
+        //then
+        assertEquals(expected, result);
+    }
+
 }

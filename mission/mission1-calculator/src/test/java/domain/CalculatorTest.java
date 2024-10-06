@@ -75,4 +75,22 @@ class CalculatorTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    @DisplayName("나눗셈 분모 0 테스트")
+    void 나눗셈_분모_0_테스트() {
+
+        //given
+        Calculator calculator = new Calculator();
+        int firstNumber = 6;
+        int secondNumber = 0;
+        String expected = "0으로 나눌 수 없습니다";
+
+        //when
+        ArithmeticException arithmeticException = assertThrows(ArithmeticException.class, () ->
+                calculator.divide(firstNumber, secondNumber));
+
+        //then
+        assertEquals(expected, arithmeticException.getMessage());
+    }
+
 }

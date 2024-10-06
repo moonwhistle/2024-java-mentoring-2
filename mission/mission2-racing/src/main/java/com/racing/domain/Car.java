@@ -1,28 +1,31 @@
 package com.racing.domain;
+
 import java.util.Random;
 public class Car {
 
-    private final String Car_name;
+    private final String carName;
+    private final Random random;
     private int position;
-    public Car(String Car_name, int position){
-        this.Car_name = Car_name;
+
+    public Car(String carName, int position, Random random){
+        this.carName = carName;
         this.position = position;
+        this.random = random;
     }
 
-    private static int generate_random(){
-        Random random = new Random();
+    private int generate_random(){
         return random.nextInt(9);
     }
 
-    private int range_random(){
+    private int checkMove(){
         int random = generate_random();
         if(random >= 4)
             return 1;
-        return -1;
+        return 0;
     }
 
-    public void Car_move(){
-        int move = range_random();
+    public void car_move(){
+        int move = checkMove();
         this.position += move;
     }
 }

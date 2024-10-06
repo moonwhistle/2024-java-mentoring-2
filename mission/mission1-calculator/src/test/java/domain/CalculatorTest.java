@@ -58,4 +58,21 @@ class CalculatorTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    @DisplayName("나눗셈 테스트")
+    void 나눗셈_테스트() {
+
+        //given
+        Calculator calculator = new Calculator();
+        int firstNumber = 6;
+        int secondNumber = 2;
+        int expected = 3;
+
+        //when
+        int result = calculator.divide(firstNumber, secondNumber);
+
+        //then
+        assertEquals(expected, result);
+    }
+
 }

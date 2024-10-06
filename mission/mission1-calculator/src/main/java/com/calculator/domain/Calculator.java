@@ -2,9 +2,9 @@ package com.calculator.domain;
 
 public class Calculator {
 
-    private static final int INT = 0;
+    private static final int EXCEPTION_ZERO = 0;
 
-    private static final String EXCEPTION_STRING = "0은예외처리";
+    private static final String EXCEPTION_STRING = "0으로 나눌 수 없습니다.";
 
     public int sum(int firstNumber, int secondNumber) {
         return firstNumber + secondNumber;
@@ -23,7 +23,7 @@ public class Calculator {
     }
 
     private int divideExceptionZeroNumber(int firstNumber, int secondNumber) {
-        if (secondNumber == INT) {
+        if (secondNumber == EXCEPTION_ZERO) {
             throw new RuntimeException(EXCEPTION_STRING);
         }
         return firstNumber / secondNumber;

@@ -5,6 +5,7 @@ public class StringCalculator {
     private static final int NUM_ZERO = 0;
     private static final int FIRST_INDEX = 1;
     private static final int THIRD_INDEX = 3;
+
     private static final String BASIC_SEPARATOR = "[,:]";
     private static final String DOUBLE_SLASH = "//";
     private static final String ENTER = "\n";

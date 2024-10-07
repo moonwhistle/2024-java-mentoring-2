@@ -8,13 +8,18 @@ import java.util.Random;
 public class CarController {
 
     private final InputView inputView;
+    private final Car car;
 
-    public CarController(InputView inputView){
+    public CarController(final InputView inputView, final Car car){
         this.inputView = inputView;
+        this.car = car;
     }
 
     public void startCarMove(){
-        final Car car = new Car(inputView.input(),0, new Random());
-        car.car_move();
+        int randomNumber = car.generateRandom();
+        int checkNumber = car.checkMove(randomNumber);
+        car.car_move(checkNumber);
+        String carName = inputView.input();
+        car.setCarName(carName);
     }
 }

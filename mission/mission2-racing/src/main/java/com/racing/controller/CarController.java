@@ -1,6 +1,7 @@
 package com.racing.controller;
 
 import com.racing.domain.Car;
+import com.racing.domain.RandomNumber;
 import com.racing.view.InputView;
 
 import java.util.Random;
@@ -8,18 +9,16 @@ import java.util.Random;
 public class CarController {
 
     private final InputView inputView;
-    private final Car car;
 
-    public CarController(final InputView inputView, final Car car){
+    public CarController(final InputView inputView){
         this.inputView = inputView;
-        this.car = car;
     }
 
     public void startCarMove(){
-        int randomNumber = car.generateRandom();
-        int checkNumber = car.checkMove(randomNumber);
-        car.car_move(checkNumber);
-        String carName = inputView.input();
-        car.setCarName(carName);
+        final Car car = new Car(inputView.input());
+        int random = car.generateRandomNumber();
+        int move = car.checkMove(random);
+        car.carMove(move);
+        car.getPosition();
     }
 }

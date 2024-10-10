@@ -1,6 +1,5 @@
 package com.racing.domain;
 
-import java.util.Random;
 public class Car{
 
     private final int StartPosition = 0;
@@ -9,11 +8,17 @@ public class Car{
     private final int bound = 4;
     private int position;
     private String carName;
+    private final GenerateRandom generateRandom;
 
-    public Car(final String carName)
+    public Car(final String carName, GenerateRandom generateRandom)
     {
         this.carName = carName;
         this.position = StartPosition;
+        this.generateRandom = generateRandom;
+    }
+
+    public int getRandomNumber(){
+        return generateRandom.generateRandomNumber();
     }
 
     public void getPosition(){

@@ -19,6 +19,8 @@ public class CarController {
         public void startCarMove(){
             Car car = new Car(inputView.input());
             int randomNumber = implementRandomNumber.generateRandomNumber();
-
+            int move = car.checkMove(randomNumber);
+            car.carMove(move);
+            car.getPosition();
         }
     }

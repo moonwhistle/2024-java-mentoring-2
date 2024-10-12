@@ -14,4 +14,5 @@ public class CarApplication {
         CarController carController = new CarController(inputView, outputView, new RandomNumbers());
         carController.startCarMove();
     }
+
 }

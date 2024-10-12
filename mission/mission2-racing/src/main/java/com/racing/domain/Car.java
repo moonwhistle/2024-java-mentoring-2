@@ -38,4 +38,5 @@ public class Car{
             return moveFront;
         return notMove;
     }
+
 }

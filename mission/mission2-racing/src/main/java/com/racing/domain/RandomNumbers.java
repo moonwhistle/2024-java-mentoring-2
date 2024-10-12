@@ -6,4 +6,5 @@ public class RandomNumbers implements GenerateRandom {
     public int generateRandomNumber(){
         return random.nextInt(limitNumber);
     }
+
 }

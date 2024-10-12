@@ -57,15 +57,23 @@ public class StringCalculator {
     private List<Integer> convertToNumber(List<String> letters) {
         List<Integer> numbers = new ArrayList<>();
         for (String letter : letters) {
-            try {
-                int number = Integer.parseInt(letter);
-                if (number < 0) throw new RuntimeException("음수는 입력할 수 없습니다.");
-                numbers.add(Integer.parseInt(letter));
-            } catch (NumberFormatException exception) {
-                throw new RuntimeException("0이 아닌 수는 입력할 수 없습니다.");
-            }
+            detectNonNumber(numbers, letter);
         }
         return numbers;
+    }
+
+    private void detectNonNumber(List<Integer> numbers, String letter) {
+        try {
+            int number = Integer.parseInt(letter);
+            detectNegativeNumbers(number);
+            numbers.add(Integer.parseInt(letter));
+        } catch (NumberFormatException exception) {
+            throw new RuntimeException("숫자가 아닌 값은 입력할 수 없습니다.");
+        }
+    }
+
+    private void detectNegativeNumbers(int number) {
+        if (number < 0) throw new RuntimeException("음수는 입력할 수 없습니다.");
     }
 
     private int addNumbers(List<Integer> numbers) {

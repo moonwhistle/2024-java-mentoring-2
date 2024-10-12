@@ -10,10 +10,9 @@ public class Car{
     private String carName;
     private final GenerateRandom generateRandom;
 
-    public Car(final String carName, GenerateRandom generateRandom)
+    public Car(String carName, GenerateRandom generateRandom)
     {
         this.carName = carName;
-        this.position = StartPosition;
         this.generateRandom = generateRandom;
     }
 
@@ -21,19 +20,20 @@ public class Car{
         return generateRandom.generateRandomNumber();
     }
 
-    public void getPosition(){
-        System.out.println(this.position);;
+    public int getPosition(){
+        return this.position;
     }
 
-    public void carMove(int move){
-        this.position += move;
+    public void carMove(int randomNumber){
+        if(validateRandomNumbers(randomNumber) == moveFront)
+            moveFront();
     }
 
-    public int checkMove(int random){
-        return validateRandomNumbers(random);
+    private void moveFront(){
+        this.position++;
     }
 
-    public int validateRandomNumbers(final int random){
+    private int validateRandomNumbers(final int random){
         if(random >= bound)
             return moveFront;
         return notMove;

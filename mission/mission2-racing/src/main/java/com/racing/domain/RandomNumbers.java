@@ -1,6 +1,6 @@
 package com.racing.domain;
 
-public class ImplementRandomNumber implements GenerateRandom {
+public class RandomNumbers implements GenerateRandom {
 
     @Override
     public int generateRandomNumber(){

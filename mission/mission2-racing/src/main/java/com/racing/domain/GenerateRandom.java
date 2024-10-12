@@ -9,4 +9,5 @@ public interface GenerateRandom {
     public static Random random = new Random();
 
     abstract int generateRandomNumber();
+
 }

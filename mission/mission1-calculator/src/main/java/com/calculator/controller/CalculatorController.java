@@ -7,19 +7,18 @@ import com.calculator.view.OutputView;
 
 public class CalculatorController {
 
-    InputView inputView;
-    OutputView outputView;
+    private final InputView inputView;
+    private final OutputView outputView;
 
     public CalculatorController(){
-
         this.inputView = new InputView();
         this.outputView = new OutputView();
     }
 
-    public void ProcessBasicCalculate(){
+    public void processBasicCalculate(){
 
-        int value1 = Integer.parseInt(inputView.input());
-        int value2 = Integer.parseInt(inputView.input());
+        final int value1 = Integer.parseInt(inputView.input());
+        final int value2 = Integer.parseInt(inputView.input());
 
         BasicCalculator basicCalculator = new BasicCalculator();
         outputView.printValue(basicCalculator.getAdd(value1, value2));

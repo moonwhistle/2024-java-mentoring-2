@@ -1,13 +1,22 @@
 package com.calculator.domain;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class SeparatorCalculator {
 
-    public int separatorSum(String text , String separator) {
+
+    private String extractSeparator(String text) {
+        int index = text.indexOf("\n");
+        return text.substring(2,index);
+    }
+
+    private String extractNumber(String text) {
+        int index = text.indexOf("\n");
+        return text.substring(index+1);
+    }
+
+    private int calculatorSum(String text , String separator) {
         String[] textArray = text.split(separator);
         return Arrays
                 .stream(textArray)
@@ -15,4 +24,3 @@ public class SeparatorCalculator {
                 .sum();
     }
 }
-

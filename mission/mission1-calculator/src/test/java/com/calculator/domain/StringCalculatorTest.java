@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 class StringCalculatorTest {
 
     StringCalculator stringCalculator = new StringCalculator();
@@ -97,5 +101,19 @@ class StringCalculatorTest {
 
         //then
         Assertions.assertArrayEquals(expected, result);
+    }
+
+    @Test
+    void 숫자더하기테스트() {
+
+        //given
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+        int expected = 10;
+
+        //when
+        int result = stringCalculator.addNumbers(numbers);
+
+        //then
+        Assertions.assertEquals(expected, result);
     }
 }

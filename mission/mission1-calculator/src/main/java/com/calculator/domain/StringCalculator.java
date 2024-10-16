@@ -63,7 +63,7 @@ public class StringCalculator {
         if (number < 0) throw new RuntimeException("음수는 입력할 수 없습니다.");
     }
 
-    private int addNumbers(List<Integer> numbers) {
+    public int addNumbers(List<Integer> numbers) {
         int result = 0;
         for (int number : numbers) {
             result += number;

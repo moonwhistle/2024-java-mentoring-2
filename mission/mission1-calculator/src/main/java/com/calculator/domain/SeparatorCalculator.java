@@ -22,21 +22,19 @@ public class SeparatorCalculator {
     }
 
     public int calculatorSum(String text , String separator) {
-        return  negativeNumberException(text,separator);
-    }
-
-    private int negativeNumberException(String text, String separator){
         String[] textArray = text.split(separator);
-        for(String str : textArray){
-            int number = Integer.parseInt(str);
-            if(number < 0){
-            throw new RuntimeException(NEGATIVE_NUMBER);
-            }
-        }
-        return Arrays
-                .stream(textArray)
+        int[] numberArray = Arrays.stream(textArray)
                 .mapToInt(Integer::parseInt)
-                .sum();
-    }
+                .toArray();
+            return negativeNumberException(numberArray);
+        }
+
+        private int negativeNumberException(int[] numberArray) {
+            if (Arrays.stream(numberArray).allMatch(Array-> Array<0)) {
+                throw new RuntimeException(NEGATIVE_NUMBER);
+            }
+            return Arrays.stream(numberArray)
+                    .sum();
+        }
 
 }

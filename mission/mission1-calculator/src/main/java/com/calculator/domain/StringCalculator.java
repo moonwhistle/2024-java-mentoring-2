@@ -7,10 +7,8 @@ public class StringCalculator {
 
     private static final int NUM_ZERO = 0;
     private static final int SECOND_INDEX = 2;
-    private static final int THIRD_INDEX = 3;
     private static final int FOURTH_INDEX = 4;
 
-    private static final String ENTER = "\n";
     private static final String SLASH = "//";
     private static final String BASIC_SYMBOL = "[,:]";
 
@@ -18,55 +16,44 @@ public class StringCalculator {
         if (message == null || message.isEmpty()) {
             return NUM_ZERO;
         }
-        if (detectCustomMessage(message)) {
-            String customSeparator = getCustomSeparator(message);
-            String operand = getOperand(message);
-            return addNumbers(convertToNumber(save(separate(operand, customSeparator))));
+        String symbol = getSeparator(message);
+        String formula = getMessage(message);
+        String[] element = separate(formula, symbol);
+        List<Integer> numbers = saveNumbers(element);
+        return addNumbers(numbers);
+    }
+
+    String getSeparator(String message) {
+        if (message.startsWith(SLASH)) {
+            return message.split("")[SECOND_INDEX];
         }
-        return addNumbers(convertToNumber(save(separate(message, BASIC_SYMBOL))));
+        return BASIC_SYMBOL;
     }
 
-    private boolean detectCustomMessage(String message) {
-        boolean detection = false;
-        if (message.startsWith(SLASH) && message.startsWith(ENTER, THIRD_INDEX)) {
-            detection = true;
+    private String getMessage(String message) {
+        if (message.startsWith(SLASH)) {
+            return message.substring(FOURTH_INDEX);
         }
-        return detection;
-    }
-
-    private String getCustomSeparator(String message) {
-        return message.split("")[SECOND_INDEX];
-    }
-
-    private String getOperand(String message) {
-        return message.substring(FOURTH_INDEX);
+        return message;
     }
 
     private String[] separate(String message, String symbol) {
         return message.split(symbol);
     }
 
-    private List<String> save(String[] letters) {
-        List<String> splitLetters = new ArrayList<>();
+    private List<Integer> saveNumbers(String[] letters) {
+        List<Integer> onlyNumbers = new ArrayList<>();
         for (String letter : letters) {
-            splitLetters.add(letter);
+            detectError(onlyNumbers, letter);
         }
-        return splitLetters;
+        return onlyNumbers;
     }
 
-    private List<Integer> convertToNumber(List<String> letters) {
-        List<Integer> numbers = new ArrayList<>();
-        for (String letter : letters) {
-            detectNonNumber(numbers, letter);
-        }
-        return numbers;
-    }
-
-    private void detectNonNumber(List<Integer> numbers, String letter) {
+    private void detectError(List<Integer> numbers, String letter) {
         try {
             int number = Integer.parseInt(letter);
             detectNegativeNumbers(number);
-            numbers.add(Integer.parseInt(letter));
+            numbers.add(number);
         } catch (NumberFormatException exception) {
             throw new RuntimeException("숫자가 아닌 값은 입력할 수 없습니다.");
         }

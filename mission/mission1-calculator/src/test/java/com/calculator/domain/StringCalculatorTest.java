@@ -54,4 +54,18 @@ class StringCalculatorTest {
         //then
         Assertions.assertEquals(expected, result);
     }
+
+    @Test
+    void 커스텀문자열반환테스트() {
+
+        //given
+        String message = "//;\n1;2;3;4";
+        String expected = "1;2;3;4";
+
+        //when
+        String result = stringCalculator.getMessage(message);
+
+        //then
+        Assertions.assertEquals(expected, result);
+    }
 }

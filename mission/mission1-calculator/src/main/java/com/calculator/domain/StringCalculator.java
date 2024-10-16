@@ -6,7 +6,7 @@ import java.util.List;
 public class StringCalculator {
 
     private static final int SECOND_INDEX = 2;
-    private static final int FOURTH_INDEX = 4;
+    public static final int BEGIN_INDEX = 5;
 
     private static final String SLASH = "//";
     private static final String BASIC_SYMBOL = "[,:]";
@@ -21,7 +21,7 @@ public class StringCalculator {
 
     public String getMessage(String message) {
         if (message.startsWith(SLASH)) {
-            return message.substring(FOURTH_INDEX);
+            return message.substring(BEGIN_INDEX);
         }
         return message;
     }

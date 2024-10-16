@@ -23,14 +23,14 @@ public class StringCalculator {
         return addNumbers(numbers);
     }
 
-    String getSeparator(String message) {
+    public String getSeparator(String message) {
         if (message.startsWith(SLASH)) {
             return message.split("")[SECOND_INDEX];
         }
         return BASIC_SYMBOL;
     }
 
-    private String getMessage(String message) {
+    public String getMessage(String message) {
         if (message.startsWith(SLASH)) {
             return message.substring(FOURTH_INDEX);
         }

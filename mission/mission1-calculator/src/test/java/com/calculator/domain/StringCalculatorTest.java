@@ -28,7 +28,7 @@ class StringCalculatorTest {
     }
 
     @Test
-    void 커스텀구분자반한테스트() {
+    void 커스텀구분자반환테스트() {
 
         //given
         String message = "//;\n1;2;3;4";
@@ -36,6 +36,20 @@ class StringCalculatorTest {
 
         //when
         String result = stringCalculator.getSeparator(message);
+
+        //then
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    void 구분문자열반환테스트() {
+
+        //given
+        String message = "1:2:3:4";
+        String expected = "1:2:3:4";
+
+        //when
+        String result = stringCalculator.getMessage(message);
 
         //then
         Assertions.assertEquals(expected, result);

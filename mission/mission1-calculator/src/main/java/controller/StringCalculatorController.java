@@ -1,10 +1,11 @@
 package controller;
 
+import java.util.List;
+
 import view.InputView;
 import view.OutputView;
-import domain.StringCalculator;
 
-import java.util.List;
+import domain.StringCalculator;
 
 public class StringCalculatorController {
 
@@ -21,8 +22,12 @@ public class StringCalculatorController {
     public void startController() {
 
         String userData = inputView.insertData();
+        String classificationData = stringCalculator.stringClassification(userData);
+        String reLocationData = stringCalculator.reLocationNumber(userData);
+        String[] seperaterData =  stringCalculator.splitString(reLocationData,classificationData);
+        List<Integer> changeTypeData = stringCalculator.changeType(seperaterData);
 
-        outputView.outPut(stringCalculator.classificationSymbol(userData));
+        outputView.outPut(stringCalculator.sum(changeTypeData));
 
     }
 

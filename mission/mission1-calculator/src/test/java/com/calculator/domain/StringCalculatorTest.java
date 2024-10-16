@@ -26,4 +26,18 @@ class StringCalculatorTest {
         //then
         Assertions.assertEquals(expected, result);
     }
+
+    @Test
+    void 커스텀구분자반한테스트() {
+
+        //given
+        String message = "//;\n1;2;3;4";
+        String expected = ";";
+
+        //when
+        String result = stringCalculator.getSeparator(message);
+
+        //then
+        Assertions.assertEquals(expected, result);
+    }
 }

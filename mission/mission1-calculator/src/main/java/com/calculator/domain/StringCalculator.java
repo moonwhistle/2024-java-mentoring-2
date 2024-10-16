@@ -37,7 +37,7 @@ public class StringCalculator {
         return message;
     }
 
-    private String[] separate(String message, String symbol) {
+    public String[] separate(String message, String symbol) {
         return message.split(symbol);
     }
 

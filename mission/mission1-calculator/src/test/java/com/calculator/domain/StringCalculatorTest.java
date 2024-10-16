@@ -68,4 +68,19 @@ class StringCalculatorTest {
         //then
         Assertions.assertEquals(expected, result);
     }
+
+    @Test
+    void 문자열분리테스트() {
+
+        //given
+        String message = "1:2:3:4";
+        String separator = ":";
+        String[] expected = {"1", "2", "3", "4"};
+
+        //when
+        String[] result = stringCalculator.separate(message, separator);
+
+        //then
+        Assertions.assertArrayEquals(expected, result);
+    }
 }

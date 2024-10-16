@@ -1,39 +1,38 @@
 package domain;
+
 import java.util.List;
 import java.util.ArrayList;
 
 public class StringCalculator {
 
-    public Integer classificationSymbol(String insertData){
-        if(insertData.contains("//")) {
-            return customSymbolSum(insertData);
+    public Integer classification(String insertData) {
+        return classificationSymbol(insertData);
+    }
+
+    private Integer classificationSymbol(String insertData) {
+        if (insertData.contains("//")) {
+            return sum(changeType(changeData(reLocation(insertData), findCustom(insertData))));
         }
-        else if(insertData.substring(1,2).equals(",||;")) {}
+
+        if (insertData.substring(1, 2).equals(",||;")) {
+        }
         return sum(changeType(basicChangeData(insertData)));
+
     }
 
-    private String classificationCustomSymbol(String insertData){
-        if(insertData.contains("//")){}
-        return findCustom(insertData);
+    private String findCustom(String userData) {
+        return userData.substring(2, 3);
     }
 
-    private Integer customSymbolSum(String insertData){
-        return sum(changeType(changeData(reLocation(insertData),findCustom(insertData))));
-    }
-
-    private String findCustom(String userData){
-        return userData.substring(2,3);
-    }
-
-    private String reLocation(String userData){
+    private String reLocation(String userData) {
         return userData.substring(5);
     }
 
-    private String[] changeData(String result, String findCustom){
+    private String[] changeData(String result, String findCustom) {
         return result.split(findCustom);
     }
 
-    private List<Integer> changeType(String[] userData ) {
+    private List<Integer> changeType(String[] userData) {
 
         List<Integer> list = new ArrayList<>();
 
@@ -43,7 +42,7 @@ public class StringCalculator {
         return list;
     }
 
-    private Integer sum(List<Integer> list){
+    private Integer sum(List<Integer> list) {
 
         int sum = 0;
 
@@ -52,14 +51,8 @@ public class StringCalculator {
         return sum;
     }
 
-
-    private String[] basicChangeData(String result){
+    private String[] basicChangeData(String result) {
         return result.split(",|;");
-    }
-
-    private Integer classificationBasicSymbol(String insertData){
-        if(insertData.substring(1,2).equals(",||;")){}
-        return sum(changeType(basicChangeData(insertData)));
     }
 
 }

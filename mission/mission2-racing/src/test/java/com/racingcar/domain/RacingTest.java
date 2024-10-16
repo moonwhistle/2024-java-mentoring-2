@@ -7,9 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class RacingTest {
@@ -18,12 +16,10 @@ class RacingTest {
     void 랜덤변수확인_테스트() {
 
         //given
-
-        //when
         Racing racing = new Racing();
-        int result = racing.randomValue();
 
-        //then
+        //when&then
+        int result = racing.randomValue();
         assertNotNull(result);
     }
 

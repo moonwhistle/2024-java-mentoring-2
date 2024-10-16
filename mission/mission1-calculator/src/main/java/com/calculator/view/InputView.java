@@ -15,4 +15,9 @@ public class InputView {
         System.out.println("두번째 연산자를 입력하세요.");
         return scanner.nextInt();
     }
+
+    public String messageOperand() {
+        System.out.println("연산자를 입력하세요.");
+        return scanner.next();
+    }
 }

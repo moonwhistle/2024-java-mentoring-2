@@ -5,12 +5,14 @@ import java.util.ArrayList;
 
 public class StringCalculator {
 
+    public static final String SLASH = "//";
+
     public Integer classification(String insertData) {
         return classificationSymbol(insertData);
     }
 
     private Integer classificationSymbol(String insertData) {
-        if (insertData.contains("//")) {
+        if (insertData.contains(SLASH)) {
             return sum(changeType(changeData(reLocation(insertData), findCustom(insertData))));
         }
 

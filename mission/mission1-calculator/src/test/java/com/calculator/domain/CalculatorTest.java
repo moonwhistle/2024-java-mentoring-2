@@ -13,11 +13,11 @@ class CalculatorTest {
         //given
         int firstOperand = 5;
         int secondOperand = 0;
-        Calculator calculator = new Calculator(firstOperand, secondOperand);
+        Calculator calculator = new Calculator();
         int expected = 5;
 
         //when
-        int result = calculator.add();
+        int result = calculator.add(firstOperand, secondOperand);
 
         //then
         Assertions.assertEquals(expected, result);
@@ -30,11 +30,11 @@ class CalculatorTest {
         //given
         int firstOperand = 5;
         int secondOperand = 0;
-        Calculator calculator = new Calculator(firstOperand, secondOperand);
+        Calculator calculator = new Calculator();
         int expected = 5;
 
         //when
-        int result = calculator.subtract();
+        int result = calculator.subtract(firstOperand, secondOperand);
 
         //then
         Assertions.assertEquals(expected, result);
@@ -47,11 +47,11 @@ class CalculatorTest {
         //given
         int firstOperand = 5;
         int secondOperand = 0;
-        Calculator calculator = new Calculator(firstOperand, secondOperand);
+        Calculator calculator = new Calculator();
         int expected = 0;
 
         //when
-        int result = calculator.multiply();
+        int result = calculator.multiply(firstOperand, secondOperand);
 
         //then
         Assertions.assertEquals(expected, result);
@@ -64,11 +64,11 @@ class CalculatorTest {
         //given
         int firstOperand = 5;
         int secondOperand = 1;
-        Calculator calculator = new Calculator(firstOperand, secondOperand);
+        Calculator calculator = new Calculator();
         int expected = 5;
 
         //when
-        int result = calculator.divide();
+        int result = calculator.divide(firstOperand, secondOperand);
 
         //then
         Assertions.assertEquals(expected, result);
@@ -81,12 +81,12 @@ class CalculatorTest {
         //given
         int firstOperand = 5;
         int secondOperand = 0;
-        Calculator calculator = new Calculator(firstOperand, secondOperand);
+        Calculator calculator = new Calculator();
         String expected = "0으로 나눌 수 없습니다.";
 
         //when & then
         ArithmeticException arithmeticException =
-                Assertions.assertThrows(ArithmeticException.class,() -> calculator.divide());
+                Assertions.assertThrows(ArithmeticException.class,() -> calculator.divide(firstOperand, secondOperand));
         Assertions.assertEquals(expected, arithmeticException.getMessage());
     }
 }

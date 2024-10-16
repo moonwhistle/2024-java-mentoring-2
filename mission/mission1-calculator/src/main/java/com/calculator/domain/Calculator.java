@@ -5,27 +5,19 @@ public class Calculator {
     private static final int NUM_ZERO = 0;
     private static final String DIVIDED_BY_ZERO = "0으로 나눌 수 없습니다.";
 
-    private final int firstOperand;
-    private final int secondOperand;
-
-    public Calculator(int firstOperand, int secondOperand) {
-        this.firstOperand = firstOperand;
-        this.secondOperand = secondOperand;
-    }
-
-    public int add() {
+    public int add(int firstOperand, int secondOperand) {
         return firstOperand + secondOperand;
     }
 
-    public int subtract() {
+    public int subtract(int firstOperand, int secondOperand) {
         return firstOperand - secondOperand;
     }
 
-    public int multiply() {
+    public int multiply(int firstOperand, int secondOperand) {
         return firstOperand * secondOperand;
     }
 
-    public int divide() {
+    public int divide(int firstOperand, int secondOperand) {
         if (secondOperand == NUM_ZERO) throw new ArithmeticException(DIVIDED_BY_ZERO);
         return firstOperand / secondOperand;
     }

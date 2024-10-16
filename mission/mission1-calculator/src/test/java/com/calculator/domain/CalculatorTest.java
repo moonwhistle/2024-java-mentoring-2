@@ -17,11 +17,11 @@ public class CalculatorTest {
     public void plusMethod() {
 
         //given
-        Calculator calculator = new Calculator();
         int expectedResult = 11;
         int differenceResult = 4;
 
         //when
+        Calculator calculator = new Calculator();
         int result = calculator.addNumber(firstNumber, secondNumber);
 
         //then

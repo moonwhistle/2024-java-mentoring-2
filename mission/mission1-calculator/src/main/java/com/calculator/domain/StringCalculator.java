@@ -30,22 +30,12 @@ public class StringCalculator {
         return message.split(symbol);
     }
 
-    private List<Integer> saveNumbers(String[] letters) {
+    public List<Integer> saveNumbers(String[] letters) {
         List<Integer> onlyNumbers = new ArrayList<>();
         for (String letter : letters) {
             detectError(onlyNumbers, letter);
         }
         return onlyNumbers;
-    }
-
-    public void detectError(List<Integer> numbers, String letter) {
-        try {
-            int number = Integer.parseInt(letter);
-            detectNegativeNumbers(number);
-            numbers.add(number);
-        } catch (NumberFormatException exception) {
-            throw new RuntimeException("숫자가 아닌 값은 입력할 수 없습니다.");
-        }
     }
 
     public int addNumbers(List<Integer> numbers) {
@@ -56,9 +46,20 @@ public class StringCalculator {
         return result;
     }
 
+    private void detectError(List<Integer> numbers, String letter) {
+        try {
+            int number = Integer.parseInt(letter);
+            detectNegativeNumbers(number);
+            numbers.add(number);
+        } catch (NumberFormatException exception) {
+            throw new RuntimeException("숫자가 아닌 값은 입력할 수 없습니다.");
+        }
+    }
+
     private void detectNegativeNumbers(int number) {
         if (number < 0) throw new RuntimeException("음수는 입력할 수 없습니다.");
     }
+
     private void validateNumber(String message) {
         if (message == null || message.isEmpty()) {
             throw new RuntimeException("0");

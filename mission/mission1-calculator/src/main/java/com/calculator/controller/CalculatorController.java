@@ -2,6 +2,7 @@ package com.calculator.controller;
 
 import com.calculator.domain.Calculator;
 
+import com.calculator.domain.SeparatorCalculator;
 import com.calculator.view.InputView;
 import com.calculator.view.OutputView;
 
@@ -9,22 +10,22 @@ public class CalculatorController {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private final Calculator calculator;
+    private final SeparatorCalculator separatorCalculator;
 
     public CalculatorController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
-        this.calculator = new Calculator();
+        this.separatorCalculator = new SeparatorCalculator();
     }
 
     public void run() {
-        int firstNumber = inputView.firstNumber();
-        int secondNumber = inputView.secondNumber();
+        String text = inputView.inputSeparator();
 
-        outputView.result(calculator.addNumber(firstNumber, secondNumber));
-        outputView.result(calculator.subtractNumber(firstNumber, secondNumber));
-        outputView.result(calculator.multiplyNumber(firstNumber, secondNumber));
-        outputView.result(calculator.divideNumber(firstNumber, secondNumber));
+        String separator = separatorCalculator.selectSeparator(text);
+        String numberText = separatorCalculator.numberText(text);
+
+        outputView.result(separatorCalculator.calculatorSum(numberText,separator));
+
     }
 
 }

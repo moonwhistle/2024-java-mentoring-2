@@ -38,4 +38,5 @@ public class SeparatorCalculator {
                 .mapToInt(Integer::parseInt)
                 .sum();
     }
+
 }

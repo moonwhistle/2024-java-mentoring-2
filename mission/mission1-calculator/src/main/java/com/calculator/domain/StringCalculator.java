@@ -5,25 +5,14 @@ import java.util.List;
 
 public class StringCalculator {
 
-    private static final int NUM_ZERO = 0;
     private static final int SECOND_INDEX = 2;
     private static final int FOURTH_INDEX = 4;
 
     private static final String SLASH = "//";
     private static final String BASIC_SYMBOL = "[,:]";
 
-    public int calculateNumber(String message) {
-        if (message == null || message.isEmpty()) {
-            return NUM_ZERO;
-        }
-        String symbol = getSeparator(message);
-        String formula = getMessage(message);
-        String[] element = separate(formula, symbol);
-        List<Integer> numbers = saveNumbers(element);
-        return addNumbers(numbers);
-    }
-
     public String getSeparator(String message) {
+        validateNumber(message);
         if (message.startsWith(SLASH)) {
             return message.split("")[SECOND_INDEX];
         }
@@ -49,7 +38,7 @@ public class StringCalculator {
         return onlyNumbers;
     }
 
-    private void detectError(List<Integer> numbers, String letter) {
+    public void detectError(List<Integer> numbers, String letter) {
         try {
             int number = Integer.parseInt(letter);
             detectNegativeNumbers(number);
@@ -59,15 +48,20 @@ public class StringCalculator {
         }
     }
 
-    private void detectNegativeNumbers(int number) {
-        if (number < 0) throw new RuntimeException("음수는 입력할 수 없습니다.");
-    }
-
     public int addNumbers(List<Integer> numbers) {
         int result = 0;
         for (int number : numbers) {
             result += number;
         }
         return result;
+    }
+
+    private void detectNegativeNumbers(int number) {
+        if (number < 0) throw new RuntimeException("음수는 입력할 수 없습니다.");
+    }
+    private void validateNumber(String message) {
+        if (message == null || message.isEmpty()) {
+            throw new RuntimeException("0");
+        }
     }
 }

@@ -1,60 +1,55 @@
 package domain;
 
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
 
-    public static final String SLASH = "//";
+    private static final String SLASH = "//";
+    private static final String BASIC_SEPARATOR = "[,;]";
+    private static final String NEGATIVE_NUMBER_ERROR = "음수를 입력 할 수 없습니다.";
 
-    public Integer classification(String insertData) {
-        return classificationSymbol(insertData);
+    public String checkError(String userData){
+        if (userData.substring(5,6).equals("-"))
+            throw new RuntimeException(NEGATIVE_NUMBER_ERROR);
+
+        return userData;
     }
 
-    private Integer classificationSymbol(String insertData) {
-        if (insertData.contains(SLASH)) {
-            return sum(changeType(changeData(reLocation(insertData), findCustom(insertData))));
+    public String stringClassification(String userData) {
+        if (userData.contains(SLASH)) {
+            return userData.substring(2, 3);
+        }
+        return BASIC_SEPARATOR;
+    }
+
+    public String reLocationNumber(String userData) {
+        if (userData.contains(SLASH)) {
+            return userData.substring(5);
+        }
+        return userData;
+    }
+
+    public String[] splitString(String userData, String customSeparator) {
+        if(customSeparator.equals( BASIC_SEPARATOR)) {
+            return userData.split(BASIC_SEPARATOR);
+        }
+        return userData.split(customSeparator);
+    }
+
+    public List<Integer> changeType(String[] userData) {
+        return Arrays.stream(userData)
+                .map(Integer::valueOf)
+                .collect(Collectors.toList());
+    }
+
+    public int sum(List<Integer> processingData) {
+        if (processingData.stream().anyMatch(value -> value < 0)) {
+            throw new RuntimeException(NEGATIVE_NUMBER_ERROR);
         }
 
-        if (insertData.substring(1, 2).equals(",||;")) {
-        }
-        return sum(changeType(basicChangeData(insertData)));
-
-    }
-
-    private String findCustom(String userData) {
-        return userData.substring(2, 3);
-    }
-
-    private String reLocation(String userData) {
-        return userData.substring(5);
-    }
-
-    private String[] changeData(String result, String findCustom) {
-        return result.split(findCustom);
-    }
-
-    private List<Integer> changeType(String[] userData) {
-
-        List<Integer> list = new ArrayList<>();
-
-        for (String i : userData) {
-            list.add(Integer.parseInt(i));
-        }
-        return list;
-    }
-
-    private Integer sum(List<Integer> list) {
-
-        int sum = 0;
-
-        for (int i = 0; i < list.size(); i++)
-            sum += list.get(i);
-        return sum;
-    }
-
-    private String[] basicChangeData(String result) {
-        return result.split(",|;");
+        return processingData.stream().reduce(0, Integer::sum);
     }
 
 }

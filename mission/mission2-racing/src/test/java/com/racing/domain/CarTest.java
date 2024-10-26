@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 
 class CarTest {
 
-    Car car;
+    private Car car;
 
     @BeforeEach
     void setUp() {

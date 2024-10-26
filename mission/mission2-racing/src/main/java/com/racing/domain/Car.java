@@ -15,8 +15,7 @@ public class Car {
 
     public List<String> forwardOrStop(String carName) {
         List<String> states = new ArrayList<>();
-        int randomNumber = getRandomNumber();
-        return moveCar(states, carName, randomNumber);
+        return moveCar(states, carName, getRandomNumber());
     }
 
     public List<String> moveCar(List<String> states, String carName, int randomNumber) {

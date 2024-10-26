@@ -13,22 +13,23 @@ public class Car {
         return carName;
     }
 
-    public List<String> showCarState(String carName, String state) {
-        return carState(carName, state);
-    }
-
-    public List<String> forwardOrStop(List<String> carState) {
-        if (getRandomNumber() >= 4) {
-            carState.add(MOVING_POINT);
-            return carState;
-        }
-        return carState;
-    }
-
-    private List<String> carState(String carName, String movingPoint) {
+    public List<String> forwardOrStop(String carName) {
         List<String> states = new ArrayList<>();
+        carState(states, carName);
+        return moveCar(states, carName);
+    }
+
+    private List<String> carState(List<String> states, String carName) {
         states.add(carName);
         states.add(MOVING_POINT);
+        return states;
+    }
+
+    private List<String> moveCar(List<String> states, String carName) {
+        if (getRandomNumber() >= 4) {
+            states.add(MOVING_POINT);
+            return states;
+        }
         return states;
     }
 

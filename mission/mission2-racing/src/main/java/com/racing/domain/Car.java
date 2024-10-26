@@ -1,5 +1,8 @@
 package com.racing.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import java.util.Random;
 
 public class Car {
@@ -14,14 +17,10 @@ public class Car {
         return INITIAL_STATE;
     }
 
-    public String[] showCarState(String carName, String state) {
-        return carState(carName, state);
-    }
-
-    private String[] carState(String carName, String state) {
-        String[] states = new String[2];
-        states[0] = carName;
-        states[1] = INITIAL_STATE;
+    private List<String> carState(String carName, String state) {
+        List<String> states = new ArrayList<>();
+        states.add(carName);
+        states.add(state);
         return states;
     }
 

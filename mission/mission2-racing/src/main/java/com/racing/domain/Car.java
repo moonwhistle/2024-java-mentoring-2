@@ -18,7 +18,7 @@ public class Car {
         return carState(carName, state);
     }
 
-    private static String[] carState(String carName, String state) {
+    private String[] carState(String carName, String state) {
         String[] states = new String[2];
         states[0] = carName;
         states[1] = INITIAL_STATE;

@@ -15,12 +15,13 @@ public class Car {
 
     public List<String> forwardOrStop(String carName) {
         List<String> states = new ArrayList<>();
-        return moveCar(states, carName);
+        int randomNumber = getRandomNumber();
+        return moveCar(states, carName, randomNumber);
     }
 
-    private List<String> moveCar(List<String> states, String carName) {
+    public List<String> moveCar(List<String> states, String carName, int randomNumber) {
         states.add(carName);
-        if (getRandomNumber() >= 4) {
+        if (randomNumber >= 4) {
             states.add(MOVING_POINT);
             return states;
         }

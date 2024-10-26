@@ -4,8 +4,14 @@ import java.util.Random;
 
 public class Car {
 
+    private static final String INITIAL_STATE = "-";
+
     public String showCarName(String carName) {
         return carName;
+    }
+
+    public String showInitialMoving() {
+        return INITIAL_STATE;
     }
 
     private int getRandomNumber() {

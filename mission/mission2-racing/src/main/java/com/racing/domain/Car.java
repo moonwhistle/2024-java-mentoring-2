@@ -7,32 +7,28 @@ import java.util.Random;
 
 public class Car {
 
-    private static final String INITIAL_STATE = "-";
+    private static final String MOVING_POINT = "-";
 
     public String showCarName(String carName) {
         return carName;
-    }
-
-    public String showInitialMoving() {
-        return INITIAL_STATE;
     }
 
     public List<String> showCarState(String carName, String state) {
         return carState(carName, state);
     }
 
-    public List<String> forwardOrStop(List<String> carState, int randomNumber) {
-        if (randomNumber >= 4) {
-            carState.add(INITIAL_STATE);
+    public List<String> forwardOrStop(List<String> carState) {
+        if (getRandomNumber() >= 4) {
+            carState.add(MOVING_POINT);
             return carState;
         }
         return carState;
     }
 
-    private List<String> carState(String carName, String state) {
+    private List<String> carState(String carName, String movingPoint) {
         List<String> states = new ArrayList<>();
         states.add(carName);
-        states.add(state);
+        states.add(MOVING_POINT);
         return states;
     }
 

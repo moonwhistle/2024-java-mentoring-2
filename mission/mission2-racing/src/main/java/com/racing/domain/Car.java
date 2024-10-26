@@ -17,6 +17,10 @@ public class Car {
         return INITIAL_STATE;
     }
 
+    public List<String> showCarState(String carName, String state) {
+        return carState(carName, state);
+    }
+
     private List<String> carState(String carName, String state) {
         List<String> states = new ArrayList<>();
         states.add(carName);

@@ -21,6 +21,14 @@ public class Car {
         return carState(carName, state);
     }
 
+    public List<String> forwardOrStop(List<String> carState, int randomNumber) {
+        if (randomNumber >= 4) {
+            carState.add(INITIAL_STATE);
+            return carState;
+        }
+        return carState;
+    }
+
     private List<String> carState(String carName, String state) {
         List<String> states = new ArrayList<>();
         states.add(carName);

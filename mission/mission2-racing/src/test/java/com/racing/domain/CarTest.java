@@ -72,5 +72,3 @@ class CarTest {
         Assertions.assertArrayEquals(expected, result);
     }
 }
-
-

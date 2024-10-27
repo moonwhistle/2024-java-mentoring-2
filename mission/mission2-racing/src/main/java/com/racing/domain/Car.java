@@ -9,26 +9,22 @@ public class Car {
 
     private static final String MOVING_POINT = "-";
 
-    public String showCarName(String carName) {
-        return carName;
-    }
-
-    public List<String> showCar(String carName) {
+    public List<String> saveCar(String carName) {
         List<String> car = new ArrayList<>();
         car.add(carName);
         return car;
     }
 
-    public List<String> forwardOrStop(List<String> car) {
-        return moveCar(car, getRandomNumber());
+    public int receiveNumber() {
+        return getRandomNumber();
     }
 
-    private List<String> moveCar(List<String> states, int randomNumber) {
+    public List<String> forwardOrStop(List<String> carInformation, int randomNumber) {
         if (randomNumber >= 4) {
-            states.add(MOVING_POINT);
-            return states;
+            carInformation.add(MOVING_POINT);
+            return carInformation;
         }
-        return states;
+        return carInformation;
     }
 
     private int getRandomNumber() {

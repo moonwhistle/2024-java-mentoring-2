@@ -31,6 +31,20 @@ public class InputView {
         return List.of(inputs);
     }
 
+    public int integerInput(){
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = scanner.next();
+        int intInput;
+        try {
+            intInput = Integer.parseInt(input);
+        }
+        catch(IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
+
+        return intInput;
+    }
+
     private void wrongInput(String input){
         if(input.length() >= limitNumber)
             throw new IllegalArgumentException();

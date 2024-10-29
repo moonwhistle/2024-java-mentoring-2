@@ -23,14 +23,13 @@ class CarTest {
         String carName = "Daytona";
         List<String> carInformation = new ArrayList<>();
         carInformation.add(carName);
-        String[] expected = carInformation.toArray(new String[carInformation.size()]);
+        List<String> expected = carInformation;
 
         //when
-        List<String> saving = car.saveCar(carName);
-        String[] result = saving.toArray(new String[saving.size()]);
+        List<String> result = car.saveCar(carName);
 
         //then
-        Assertions.assertArrayEquals(expected, result);
+        Assertions.assertEquals(expected, result);
     }
 
     @Test
@@ -43,14 +42,13 @@ class CarTest {
         List<String> carExpected = new ArrayList<>();
         carExpected.add("Daytona");
         carExpected.add("-");
-        String[] expected = carExpected.toArray(new String[carInformation.size()]);
+        List<String> expected = carExpected;
 
         //when
-        List<String> moving = car.forwardOrStop(carInformation, randomNumber);
-        String[] result = moving.toArray(new String[moving.size()]);
+        List<String> result = car.forwardOrStop(carInformation, randomNumber);
 
         //then
-        Assertions.assertArrayEquals(expected, result);
+        Assertions.assertEquals(expected, result);
     }
 
     @Test
@@ -62,13 +60,12 @@ class CarTest {
         int randomNumber = 2;
         List<String> carExpected = new ArrayList<>();
         carExpected.add("Daytona");
-        String[] expected = carExpected.toArray(new String[carInformation.size()]);
+        List<String> expected = carExpected;
 
         //when
-        List<String> moving = car.forwardOrStop(carInformation, randomNumber);
-        String[] result = moving.toArray(new String[moving.size()]);
+        List<String> result = car.forwardOrStop(carInformation, randomNumber);
 
         //then
-        Assertions.assertArrayEquals(expected, result);
+        Assertions.assertEquals(expected, result);
     }
 }

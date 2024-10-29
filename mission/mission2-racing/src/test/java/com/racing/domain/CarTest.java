@@ -13,7 +13,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car(new SetRandomNumber(5));
     }
 
     @Test
@@ -38,14 +38,12 @@ class CarTest {
         //given
         List<String> carInformation = new ArrayList<>();
         carInformation.add("Daytona");
-        int randomNumber = 5;
-        List<String> carExpected = new ArrayList<>();
-        carExpected.add("Daytona");
+        List<String> carExpected = carInformation;
         carExpected.add("-");
         List<String> expected = carExpected;
 
         //when
-        List<String> result = car.forwardOrStop(carInformation, randomNumber);
+        List<String> result = car.forwardOrStop(carInformation);
 
         //then
         Assertions.assertEquals(expected, result);
@@ -55,15 +53,13 @@ class CarTest {
     void 차멈춤테스트() {
 
         //given
+        car = new Car(new SetRandomNumber(2));
         List<String> carInformation = new ArrayList<>();
         carInformation.add("Daytona");
-        int randomNumber = 2;
-        List<String> carExpected = new ArrayList<>();
-        carExpected.add("Daytona");
-        List<String> expected = carExpected;
+        List<String> expected = carInformation;
 
         //when
-        List<String> result = car.forwardOrStop(carInformation, randomNumber);
+        List<String> result = car.forwardOrStop(carInformation);
 
         //then
         Assertions.assertEquals(expected, result);

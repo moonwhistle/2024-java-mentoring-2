@@ -8,6 +8,7 @@ import java.util.Random;
 public class Car {
 
     private static final String MOVING_POINT = "-";
+    private static final int DECISION_POINT = 4;
 
     public List<String> saveCar(String carName) {
         List<String> car = new ArrayList<>();
@@ -16,18 +17,17 @@ public class Car {
     }
 
     public int receiveNumber() {
-        return getRandomNumber();
+        return generateRandomNumber();
     }
 
     public List<String> forwardOrStop(List<String> carInformation, int randomNumber) {
-        if (randomNumber >= 4) {
+        if (randomNumber >= DECISION_POINT) {
             carInformation.add(MOVING_POINT);
-            return carInformation;
         }
         return carInformation;
     }
 
-    private int getRandomNumber() {
+    private int generateRandomNumber() {
         Random randomNumber = new Random();
         return randomNumber.nextInt(9);
     }

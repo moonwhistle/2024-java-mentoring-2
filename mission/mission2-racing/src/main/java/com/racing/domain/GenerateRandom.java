@@ -1,5 +1,6 @@
 package com.racing.domain;
 
+import java.util.List;
 import java.util.Random;
 
 public interface GenerateRandom {
@@ -9,5 +10,7 @@ public interface GenerateRandom {
     public static Random random = new Random();
 
     abstract int generateRandomNumber();
+
+    abstract List<Integer> randomNumberList(int number);
 
 }

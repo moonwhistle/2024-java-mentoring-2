@@ -6,6 +6,7 @@ public class Car{
     private final int moveFront = 1;
     private final int notMove = 0;
     private final int bound = 4;
+
     private int position;
     private String carName;
     private final GenerateRandom generateRandom;
@@ -24,9 +25,17 @@ public class Car{
         return this.position;
     }
 
-    public void carMove(int randomNumber){
-        if(validateRandomNumbers(randomNumber) == moveFront)
+    public String getCarName(){
+        return this.carName;
+    }
+
+    public void carMove(int number){
+        if(number == moveFront)
             moveFront();
+    }
+
+    public int moveOrStop(int randomNumber){
+        return validateRandomNumbers(randomNumber);
     }
 
     private void moveFront(){

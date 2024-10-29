@@ -1,5 +1,6 @@
 package com.racing.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -28,6 +29,28 @@ public class Cars {
             int move = car.moveOrStop(random);
             car.carMove(move);
         }
+    }
+
+    public int getCarsSize(){
+        return carList.size();
+    }
+
+    public List<String> getCarsName(){
+        List<String> carsName = new ArrayList<>();
+        for(int i = startIndex; i < carList.size(); i++){
+            carsName.add(carList.get(i).getCarName());
+        }
+
+        return carsName;
+    }
+
+    public List<Integer> getCarsPosition(){
+        List<Integer> carsPosition = new ArrayList<>();
+        for(int i = startIndex; i < carList.size(); i++){
+            carsPosition.add(carList.get(i).getPosition());
+        }
+
+        return carsPosition;
     }
 
 }

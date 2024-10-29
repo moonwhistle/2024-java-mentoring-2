@@ -1,13 +1,39 @@
 package com.racing.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
 
     private final Scanner scanner = new Scanner(System.in);
+    private final int limitNumber = 6;
+    private final String splitString = ",";
+    private final int startNum = 0;
 
     public String input(){
         return scanner.next();
+    }
+
+    public int IntegerInput(){
+        return scanner.nextInt();
+    }
+
+    public List<String> inputName(){
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String input = scanner.next();
+        String[] inputs = input.split(splitString);
+
+        for(int i = startNum; i < inputs.length; i++){
+            wrongInput(inputs[i]);
+        }
+
+        return List.of(inputs);
+    }
+
+    private void wrongInput(String input){
+        if(input.length() >= limitNumber)
+            throw new IllegalArgumentException();
     }
 
 }

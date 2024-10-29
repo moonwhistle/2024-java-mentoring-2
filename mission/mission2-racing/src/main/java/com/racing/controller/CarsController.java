@@ -40,5 +40,4 @@ public class CarsController {
         outputView.printWinner(winner);
     }
 
-
 }

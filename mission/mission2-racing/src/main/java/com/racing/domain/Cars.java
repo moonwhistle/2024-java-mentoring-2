@@ -21,4 +21,13 @@ public class Cars {
         carList = List.of(carArray);
     }
 
+    public void carsMove(){
+        for(int i = startIndex; i < carList.size(); i++){
+            Car car = carList.get(i);
+            int random = car.getRandomNumber();
+            int move = car.moveOrStop(random);
+            car.carMove(move);
+        }
+    }
+
 }

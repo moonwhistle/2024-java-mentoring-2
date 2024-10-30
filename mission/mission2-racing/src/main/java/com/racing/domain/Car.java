@@ -9,10 +9,10 @@ public class Car {
     private static final int DECISION_POINT = 4;
     private static final int MAX_BOUND = 9;
 
-    private final SetRandomNumber SetRandomNumber;
+    private final SetRandomNumber setRandomNumber;
 
-    public Car(SetRandomNumber SetRandomNumber) {
-        this.SetRandomNumber = SetRandomNumber;
+    public Car(SetRandomNumber setRandomNumber) {
+        this.setRandomNumber = setRandomNumber;
     }
 
     public List<String> saveCar(String carName) {
@@ -22,7 +22,7 @@ public class Car {
     }
 
     public List<String> forwardOrStop(List<String> carInformation) {
-        if (SetRandomNumber.generateRandomNumber(MAX_BOUND) >= DECISION_POINT) {
+        if (setRandomNumber.generateRandomNumber(MAX_BOUND) >= DECISION_POINT) {
             carInformation.add(MOVING_POINT);
         }
         return carInformation;

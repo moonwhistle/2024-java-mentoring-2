@@ -2,6 +2,7 @@ package com.racing.controller;
 
 import com.racing.domain.Cars;
 import com.racing.domain.GenerateRandom;
+import com.racing.domain.Name;
 import com.racing.service.CarsService;
 import com.racing.view.InputView;
 import com.racing.view.OutputView;

@@ -15,7 +15,8 @@ public class Cars {
         Car[] carArray = new Car[inputNames.size()];
 
         for(int i = startIndex; i < inputNames.size(); i++){
-            Car car = new Car(inputNames.get(i), generateRandom);
+            Name carName = new Name(inputNames.get(i));
+            Car car = new Car(carName, generateRandom);
             carArray[i] = car;
         }
 
@@ -35,8 +36,8 @@ public class Cars {
         return carList.size();
     }
 
-    public List<String> getCarsName(){
-        List<String> carsName = new ArrayList<>();
+    public List<Name> getCarsName(){
+        List<Name> carsName = new ArrayList<>();
         for(int i = startIndex; i < carList.size(); i++){
             carsName.add(carList.get(i).getCarName());
         }
@@ -44,8 +45,8 @@ public class Cars {
         return carsName;
     }
 
-    public List<Integer> getCarsPosition(){
-        List<Integer> carsPosition = new ArrayList<>();
+    public List<Position> getCarsPosition(){
+        List<Position> carsPosition = new ArrayList<>();
         for(int i = startIndex; i < carList.size(); i++){
             carsPosition.add(carList.get(i).getPosition());
         }

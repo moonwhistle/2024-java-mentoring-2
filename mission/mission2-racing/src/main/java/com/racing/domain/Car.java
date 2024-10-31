@@ -1,5 +1,7 @@
 package com.racing.domain;
 
+import com.racing.dto.CarsDto;
+
 public class Car{
 
     private final int moveFront = 1;
@@ -8,6 +10,11 @@ public class Car{
     private Position position = new Position();
     private Name carName;
     private final GenerateRandom generateRandom;
+
+    public Car(CarsDto carsDto) {
+        this.carName = carsDto.getCarName();
+        this.generateRandom = carsDto.getGenerateRandom();
+    }
 
     public Car(Name carName, GenerateRandom generateRandom)
     {

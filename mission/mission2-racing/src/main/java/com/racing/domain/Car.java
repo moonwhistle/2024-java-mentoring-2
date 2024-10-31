@@ -7,7 +7,7 @@ public class Car{
     private final int notMove = 0;
     private final int bound = 4;
 
-    private Position position;
+    private Position position = new Position();
     private Name carName;
     private final GenerateRandom generateRandom;
 
@@ -39,7 +39,7 @@ public class Car{
     }
 
     private void moveFront(){
-        position.movePosition();
+        this.position.movePosition();
     }
 
     private int validateRandomNumbers(final int random){

@@ -1,17 +1,8 @@
 package com.racingcar.domain;
 
-import com.racingcar.util.random.RandomNumberGenerator;
-import com.racingcar.util.random.ZeroToNineGenerator;
-
 public class RacingCarLogic {
 
-    public int getZeroToNineRandomNumber(){
-        RandomNumberGenerator zeroToNineGenerator = new ZeroToNineGenerator();
-
-        return zeroToNineGenerator.getRandomNumber();
-    }
-
-    public int isCarMoved(int randomNumber){
+    public int getCarMoveState(int randomNumber){
         if(randomNumber >= 4){
             return 1;
         }
@@ -19,9 +10,11 @@ public class RacingCarLogic {
         return 0;
     }
 
-    public int processCarMove(){
-        int randomNumber = getZeroToNineRandomNumber();
+    public String isCarMoved(int moveState){
+        if(moveState == 1){
+            return "move";
+        }
 
-        return isCarMoved(randomNumber);
+        return "stop";
     }
 }

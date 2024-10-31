@@ -6,7 +6,7 @@ public class Outputview {
         System.out.println("경주할 자동차 이름을 입력하세요.");
     }
 
-    public void showCarMove(String carName, int moveState){
-        System.out.println(carName + " : " + moveState);
+    public void showCarMove(String carName, String carMove){
+        System.out.println(carName + " : " + carMove);
     }
 }

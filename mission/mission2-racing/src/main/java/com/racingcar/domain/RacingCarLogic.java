@@ -12,16 +12,23 @@ public class RacingCarLogic {
     private final String STRING_OFFSET1 = " : ";
     private final String STRING_OFFSET2 = "\n";
 
+    public interface RandomNumberGenerator {
+        int getRandomNumber();
+    }
+
+    public static class ZeroToNineGenerator implements RandomNumberGenerator{
+        @Override
+        public int getRandomNumber(){
+            return (int) (Math.random() * 10);
+        }
+    }
+
     public int parseStringTryCount(String tryCount){
         try{
             return Integer.parseInt(tryCount);
         } catch (NumberFormatException e) {
             throw new RuntimeException(PARSE_ERROR_MESSAGE);
         }
-    }
-
-    public int getRandomNumber(){
-        return (int) (Math.random() * 10);
     }
 
     public String processCarMove(int randomValue){
@@ -37,8 +44,8 @@ public class RacingCarLogic {
 
         List<String> movedList = getMovedList(tryCount);
 
-        for(String length : movedList){
-            appendStringOffset(stringValue, carName, length);
+        for(String movedLength : movedList){
+            appendStringOffset(stringValue, carName, movedLength);
         }
 
         return stringValue.toString();
@@ -48,8 +55,17 @@ public class RacingCarLogic {
         String movedLength = "";
         List<String> movedList = new ArrayList<>();
 
+        movedList = appendMovedLength(tryCount, movedLength, movedList);
+
+        return movedList;
+    }
+
+    public List<String> appendMovedLength(int tryCount, String movedLength, List<String> movedList){
+
+        RandomNumberGenerator randomNumberGenerator = new ZeroToNineGenerator();
+
         for(int i = 0; i < tryCount; i++){
-            int randomValue = getRandomNumber();
+            int randomValue = randomNumberGenerator.getRandomNumber();
             movedLength += processCarMove(randomValue);
             movedList.add(movedLength);
         }
@@ -57,10 +73,10 @@ public class RacingCarLogic {
         return movedList;
     }
 
-    public void appendStringOffset(StringBuilder stringValue, String carName, String length){
+    public void appendStringOffset(StringBuilder stringValue, String carName, String movedLength){
         stringValue.append(carName);
         stringValue.append(STRING_OFFSET1);
-        stringValue.append(length);
+        stringValue.append(movedLength);
         stringValue.append(STRING_OFFSET2);
     }
 }

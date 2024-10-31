@@ -2,11 +2,10 @@ package com.racingcar.view;
 
 import java.util.Scanner;
 
-public class TryCountInputView {
+public class InputView {
     private final Scanner scanner = new Scanner(System.in);
 
-    public String getTryCountInput(){
-        System.out.println("시도할 회수는 몇회인가요?");
+    public String getInputValue(){
         return scanner.next();
     }
 }

@@ -1,6 +1,8 @@
 package com.racing.service;
 
 import com.racing.domain.Cars;
+import com.racing.domain.Name;
+import com.racing.domain.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +19,11 @@ public class CarsService {
     public String carsDetail(){
         StringBuilder carDetail = new StringBuilder();
         for(int i = startIndex; i < cars.getCarsSize(); i++){
-            String carName = cars.getCarsName().get(i);
-            int carPosition = cars.getCarsPosition().get(i);
+            Name carName = cars.getCarsName().get(i);
+            Position carPosition = cars.getCarsPosition().get(i);
             carDetail.append(carName + " : ");
 
-            for(int j = startIndex; j < carPosition; j++){
+            for(int j = startIndex; j < carPosition.getPosition(); j++){
                 carDetail.append("-");
             }
 

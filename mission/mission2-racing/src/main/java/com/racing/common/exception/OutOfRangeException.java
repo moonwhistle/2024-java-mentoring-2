@@ -1,4 +1,4 @@
-package com.racing.domain.exception;
+package com.racing.common.exception;
 
 public class OutOfRangeException extends RuntimeException{
     public OutOfRangeException() {

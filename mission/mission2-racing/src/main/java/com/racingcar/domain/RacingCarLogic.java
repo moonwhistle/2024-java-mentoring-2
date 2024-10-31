@@ -11,9 +11,7 @@ public class RacingCarLogic {
         return zeroToNineGenerator.getRandomNumber();
     }
 
-    public String isCarMoved(){
-        int randomNumber = getZeroToNineRandomNumber();
-
+    public String isCarMoved(int randomNumber){
         if(randomNumber >=  4){
             return "move";
         }

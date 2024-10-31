@@ -33,10 +33,11 @@ public class CarsService {
         return carDetail.toString();
     }
 
-    public List<String> winnerList(){
-        List<String> winner = new ArrayList<>();
+    public List<Name> winnerList(){
+        List<Name> winner = new ArrayList<>();
         for(int i = startIndex; i < cars.getCarsSize(); i++) {
-            if(cars.getCarsPosition().get(i) == getMaxPosition())
+            Position carPosition = cars.getCarsPosition().get(i);
+            if(carPosition.getPosition() == getMaxPosition())
                 winner.add(cars.getCarsName().get(i));
         }
 
@@ -46,8 +47,9 @@ public class CarsService {
     private int getMaxPosition(){
         int max = 0;
         for(int i = startIndex; i < cars.getCarsSize(); i++) {
-            if(max < cars.getCarsPosition().get(i))
-                max = cars.getCarsPosition().get(i);
+            Position carPosition = cars.getCarsPosition().get(i);
+            if(max < carPosition.getPosition())
+                max = carPosition.getPosition();
         }
 
         return max;

@@ -1,5 +1,7 @@
 package com.racing.domain;
 
+import com.racing.dto.CarsDto;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +18,8 @@ public class Cars {
 
         for(int i = startIndex; i < inputNames.size(); i++){
             Name carName = new Name(inputNames.get(i));
-            Car car = new Car(carName, generateRandom);
-            carArray[i] = car;
+            CarsDto carsDto = new CarsDto(carName, generateRandom);
+            carArray[i] = new Car(carsDto);
         }
 
         carList = List.of(carArray);

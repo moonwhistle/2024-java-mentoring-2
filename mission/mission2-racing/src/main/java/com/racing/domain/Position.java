@@ -12,4 +12,8 @@ public class Position {
         this.position++;
     }
 
+    public int getPosition(){
+        return position;
+    }
+
 }

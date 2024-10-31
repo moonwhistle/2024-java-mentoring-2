@@ -1,6 +1,6 @@
 package com.racing.domain.number;
 
-interface RandomNumber {
+public interface RandomNumber {
 
     int generateRandomNumber(int bound);
 

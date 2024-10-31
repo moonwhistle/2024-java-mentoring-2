@@ -18,4 +18,10 @@ public class RacingCarLogic {
 
         return "stop";
     }
+
+    public String processCarMove(){
+        int randomNumber = getZeroToNineRandomNumber();
+
+        return isCarMoved(randomNumber);
+    }
 }

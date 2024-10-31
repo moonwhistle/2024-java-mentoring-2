@@ -21,7 +21,7 @@ public class CarsService {
         for(int i = startIndex; i < cars.getCarsSize(); i++){
             Name carName = cars.getCarsName().get(i);
             Position carPosition = cars.getCarsPosition().get(i);
-            carDetail.append(carName + " : ");
+            carDetail.append(carName.getName() + " : ");
 
             for(int j = startIndex; j < carPosition.getPosition(); j++){
                 carDetail.append("-");

@@ -1,28 +1,37 @@
 package com.racingcar.controller;
 
 import com.racingcar.domain.RacingCarLogic;
+
 import com.racingcar.view.InputView;
 import com.racingcar.view.Outputview;
+
+import com.racingcar.util.random.RandomNumberGenerator;
+import com.racingcar.util.random.ZeroToNineGenerator;
 
 public class RacingcarContoller {
 
     private final InputView inputView;
     private final Outputview outputview;
+    private final RacingCarLogic racingCarLogic;
+    private final RandomNumberGenerator zeroToNineGenerator;
 
     public RacingcarContoller(){
         this.inputView = new InputView();
         this.outputview = new Outputview();
+        this.racingCarLogic = new RacingCarLogic();
+        this.zeroToNineGenerator = new ZeroToNineGenerator();
     }
 
     public void runCar(){
 
-        outputview.printValue("경주할 자동차 이름을 입력하세요.");
+        outputview.showCarNameInputPrompt();
         String carName = inputView.getInput();
 
-        RacingCarLogic racingCarLogic = new RacingCarLogic();
+        int randomNumber = zeroToNineGenerator.getRandomNumber();
 
-        int isCarMoved = racingCarLogic.processCarMove();
+        int moveState = racingCarLogic.getCarMoveState(randomNumber);
+        String isCarMoved = racingCarLogic.isCarMoved(moveState);
 
-        outputview.printValue(carName + " : " + isCarMoved);
+        outputview.showCarMove(carName, isCarMoved);
     }
 }

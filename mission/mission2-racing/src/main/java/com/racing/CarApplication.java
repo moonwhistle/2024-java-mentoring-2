@@ -1,6 +1,6 @@
 package com.racing;
 
-import com.racing.controller.CarsController;
+import com.racing.controller.RacingController;
 import com.racing.domain.RandomNumbers;
 import com.racing.service.CarsService;
 import com.racing.view.InputView;
@@ -15,9 +15,9 @@ public class CarApplication {
 
         CarsService carsService = new CarsService(null);
 
-        CarsController carsController = new CarsController(inputView, outputView, randomNumbers, carsService);
+        RacingController racingController = new RacingController(inputView, outputView, randomNumbers, carsService);
 
-        carsController.startCarsMove();
+        racingController.startCarsMove();
     }
 
 }

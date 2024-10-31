@@ -24,10 +24,6 @@ public class InputView {
         String input = scanner.next();
         String[] inputs = input.split(splitString);
 
-        for(int i = startNum; i < inputs.length; i++){
-            wrongInput(inputs[i]);
-        }
-
         return List.of(inputs);
     }
 
@@ -43,11 +39,6 @@ public class InputView {
         }
 
         return intInput;
-    }
-
-    private void wrongInput(String input){
-        if(input.length() >= limitNumber)
-            throw new IllegalArgumentException();
     }
 
 }

@@ -7,11 +7,11 @@ public class Car{
     private final int notMove = 0;
     private final int bound = 4;
 
-    private int position;
-    private String carName;
+    private Position position;
+    private Name carName;
     private final GenerateRandom generateRandom;
 
-    public Car(String carName, GenerateRandom generateRandom)
+    public Car(Name carName, GenerateRandom generateRandom)
     {
         this.carName = carName;
         this.generateRandom = generateRandom;
@@ -21,11 +21,11 @@ public class Car{
         return generateRandom.generateRandomNumber();
     }
 
-    public int getPosition(){
+    public Position getPosition(){
         return this.position;
     }
 
-    public String getCarName(){
+    public Name getCarName(){
         return this.carName;
     }
 
@@ -39,7 +39,7 @@ public class Car{
     }
 
     private void moveFront(){
-        this.position++;
+        position.movePosition();
     }
 
     private int validateRandomNumbers(final int random){

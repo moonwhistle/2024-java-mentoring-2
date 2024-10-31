@@ -1,6 +1,5 @@
 package com.racing.controller;
 
-import com.racing.domain.Car;
 import com.racing.domain.Cars;
 import com.racing.domain.GenerateRandom;
 import com.racing.service.CarsService;
@@ -9,7 +8,7 @@ import com.racing.view.OutputView;
 
 import java.util.List;
 
-public class CarsController {
+public class RacingController {
 
     private InputView inputView;
     private OutputView outputView;
@@ -17,7 +16,7 @@ public class CarsController {
     private final int startIndex = 0;
     private CarsService carsService;
 
-    public CarsController(InputView inputView, OutputView outputView, GenerateRandom generateRandom, CarsService carsService){
+    public RacingController(InputView inputView, OutputView outputView, GenerateRandom generateRandom, CarsService carsService){
         this.inputView = inputView;
         this.outputView = outputView;
         this.generateRandom = generateRandom;

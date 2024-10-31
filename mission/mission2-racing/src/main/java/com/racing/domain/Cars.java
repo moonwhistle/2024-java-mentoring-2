@@ -6,8 +6,8 @@ import java.util.List;
 public class Cars {
 
     private final int startIndex = 0;
-    private List<Car> carList;
-    private GenerateRandom generateRandom;
+    private final List<Car> carList;
+    private final GenerateRandom generateRandom;
     private final int maxCarNumber = 5;
 
     public Cars(List<String> inputNames, GenerateRandom generateRandom){

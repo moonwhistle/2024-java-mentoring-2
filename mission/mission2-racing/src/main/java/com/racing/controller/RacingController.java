@@ -28,7 +28,15 @@ public class RacingController {
         List<String> carNames = inputView.inputName();
         Cars cars = new Cars(carNames, generateRandom);
         this.carsService = new CarsService(cars);
-        int numberOfMove = inputView.integerInput();
+
+        int numberOfMove;
+        try {
+            numberOfMove = inputView.integerInput();
+        }
+        catch(IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
+
         outputView.printDefault();
 
         for(int i = startIndex; i < numberOfMove; i++){

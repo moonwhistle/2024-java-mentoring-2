@@ -51,3 +51,52 @@ public class GetZeroToNineRandomNumber implements RandomNumberGenerator{
 - static으로 선언된 클래스 멤버(필드, 메서드, 중첩 클래스 등..)은 인스턴스가 아닌 클래스 자체에 속하게 된다.
 - 즉, 인스턴스를 정의하지 않고 직접 접근이 가능해진다.
 - 독립적인 기능을 수행하는 클래스를 외부 클래스 안에 논리적으로 묶어 둘 때 유용
+
+### util 패키지로 interface 관리
+- domain에서 외부 클래스를 호출하게 되면 domain 패키지에 종속성이 생긴다.
+- 외부 클래스를 domain의 형제로 관리하기 위해 controller에서 사용하자.
+
+### domain 메서드의 종속성과 처리 방법
+- domain의 메서드 중 강한 결속을 가진 메서드가 존재한다고 가정하자.
+```java
+// domain
+public int getCarMoveState(int randomNumber){
+    if(randomNumber >= 4){
+        return 1;
+    }
+
+    return 0;
+}
+
+public String isCarMoved(int moveState){
+    if(moveState == 1){
+        return "move";
+    }
+
+    return "stop";
+}
+```
+- 이 예시에서는 getCarMoveState의 반환값이 isCarMoved 메소드의 인자다. 즉 두 메서드는 강한 결속과 종속성을 가진다.
+- 이 경우에 메서드를 process 하는 방법은 두 가지가 존재한다.
+```java
+// domain
+public String processCarMove(int randomNumber){
+    int moveState = getCarMove(randomNumber);
+    return isCarMoved(moveState);
+}
+```
+- 하나는 domain에서 강한 결속을 가진 두 메서드를 처리하는 메서드를 추가하면서 domain의 캡슐화를 강하게 유지하는 방법이다.
+- 이 경우엔 domain의 메서드가 서로의 존재와 역할을 알게 된다.
+```java
+// controller
+public void runCar(){
+// ,,,
+  int randomNumber = zeroToNineGenerator.getRandomNumber();
+
+  int moveState = racingCarLogic.getCarMoveState(randomNumber);
+  String isCarMoved = racingCarLogic.isCarMoved(moveState);
+  
+// ,,,
+}
+```
+- 다른 하나는 controller에서 직렬적으로 두 메서드를 처리하는 것이다. 이 경우에느 domain이 메서드가 서로의 존재를 모르게 할 수 있다.

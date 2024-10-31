@@ -15,4 +15,11 @@ public class GenerateMovingRandomNumber implements RandomNumber {
         return random.nextInt(bound+1);
     }
 
+    public int decideMove(int number, int state) {
+        if (number >= 4) {
+            return state++;
+        }
+        return state;
+    }
+
 }

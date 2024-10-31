@@ -1,5 +1,7 @@
 package com.racing.domain.number;
 
+import com.racing.domain.exception.NegativeRandomNumberException;
+
 import java.util.Random;
 
 public class GenerateMovingRandomNumber implements RandomNumber {
@@ -20,6 +22,12 @@ public class GenerateMovingRandomNumber implements RandomNumber {
             return state++;
         }
         return state;
+    }
+
+    public void validateNegative(int number) {
+        if (number < 0) {
+            throw new NegativeRandomNumberException();
+        }
     }
 
 }

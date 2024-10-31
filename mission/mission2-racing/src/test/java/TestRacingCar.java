@@ -8,13 +8,13 @@ public class TestRacingCar {
 
         //given
         int test = 4;
-        String expected = "move";
-        String notExpected = "stop";
+        int expected = 1;
+        int notExpected = 0;
 
         //when
         RacingCarLogic racingCarLogic = new RacingCarLogic();
 
-        String result = racingCarLogic.isCarMoved(test);
+        int result = racingCarLogic.isCarMoved(test);
 
         //then
         Assertions.assertEquals(result, expected);
@@ -26,13 +26,13 @@ public class TestRacingCar {
 
         //given
         int test = 0;
-        String expected = "stop";
-        String notExpected = "move";
+        int expected = 0;
+        int notExpected = 1;
 
         //when
         RacingCarLogic racingCarLogic = new RacingCarLogic();
 
-        String result = racingCarLogic.isCarMoved(test);
+        int result = racingCarLogic.isCarMoved(test);
 
         //then
         Assertions.assertEquals(result, expected);

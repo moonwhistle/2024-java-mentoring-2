@@ -11,15 +11,15 @@ public class RacingCarLogic {
         return zeroToNineGenerator.getRandomNumber();
     }
 
-    public String isCarMoved(int randomNumber){
-        if(randomNumber >=  4){
-            return "move";
+    public int isCarMoved(int randomNumber){
+        if(randomNumber >= 4){
+            return 1;
         }
 
-        return "stop";
+        return 0;
     }
 
-    public String processCarMove(){
+    public int processCarMove(){
         int randomNumber = getZeroToNineRandomNumber();
 
         return isCarMoved(randomNumber);

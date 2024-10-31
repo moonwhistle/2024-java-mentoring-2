@@ -21,7 +21,7 @@ public class RacingcarContoller {
 
         RacingCarLogic racingCarLogic = new RacingCarLogic();
 
-        String isCarMoved = racingCarLogic.processCarMove();
+        int isCarMoved = racingCarLogic.processCarMove();
 
         outputview.printValue(carName + " : " + isCarMoved);
     }

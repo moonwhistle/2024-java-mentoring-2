@@ -7,8 +7,10 @@ public class RandomNumbers implements GenerateRandom {
     private final int zeroIndex = 0;
 
     @Override
-    public int generateRandomNumber(){
-        return random.nextInt(limitNumber);
+    public Number generateRandomNumber(){
+        Number number = new Number(random.nextInt(limitNumber));
+
+        return number;
     }
 
     @Override

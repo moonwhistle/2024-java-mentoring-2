@@ -2,11 +2,9 @@ package com.racing.domain;
 
 public class Car{
 
-    private final int StartPosition = 0;
     private final int moveFront = 1;
     private final int notMove = 0;
     private final int bound = 4;
-
     private Position position = new Position();
     private Name carName;
     private final GenerateRandom generateRandom;
@@ -17,7 +15,7 @@ public class Car{
         this.generateRandom = generateRandom;
     }
 
-    public int getRandomNumber(){
+    public Number getRandomNumber(){
         return generateRandom.generateRandomNumber();
     }
 
@@ -29,23 +27,23 @@ public class Car{
         return this.carName;
     }
 
-    public void carMove(int number){
-        if(number == moveFront)
+    public void carMove(Number number){
+        if(number.isMove(moveFront))
             moveFront();
     }
 
-    public int moveOrStop(int randomNumber){
+    public Number moveOrStop(Number randomNumber){
         return validateRandomNumbers(randomNumber);
+    }
+
+    private Number validateRandomNumbers(final Number random){
+        if(random.getNumber() >= bound)
+            return new Number(moveFront);
+        return new Number(notMove);
     }
 
     private void moveFront(){
         this.position.movePosition();
-    }
-
-    private int validateRandomNumbers(final int random){
-        if(random >= bound)
-            return moveFront;
-        return notMove;
     }
 
 }

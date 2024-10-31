@@ -9,7 +9,7 @@ public interface GenerateRandom {
 
     public static Random random = new Random();
 
-    abstract int generateRandomNumber();
+    abstract Number generateRandomNumber();
 
     abstract List<Integer> randomNumberList(int number);
 

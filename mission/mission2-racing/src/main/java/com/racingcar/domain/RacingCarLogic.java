@@ -10,4 +10,14 @@ public class RacingCarLogic {
 
         return zeroToNineGenerator.getRandomNumber();
     }
+
+    public String isCarMoved(){
+        int randomNumber = getZeroToNineRandomNumber();
+
+        if(randomNumber >=  4){
+            return "move";
+        }
+
+        return "stop";
+    }
 }

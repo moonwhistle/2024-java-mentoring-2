@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 public class TestRacingCar {
     @Test
-    public void testCarMove1() {
+    public void testMoveState() {
 
         //given
         int test = 4;
@@ -14,7 +14,7 @@ public class TestRacingCar {
         //when
         RacingCarLogic racingCarLogic = new RacingCarLogic();
 
-        int result = racingCarLogic.isCarMoved(test);
+        int result = racingCarLogic.getCarMoveState(test);
 
         //then
         Assertions.assertEquals(result, expected);
@@ -22,17 +22,17 @@ public class TestRacingCar {
     }
 
     @Test
-    public void testCarMove2() {
+    public void testCarMove() {
 
         //given
-        int test = 0;
-        int expected = 0;
-        int notExpected = 1;
+        int test = 1;
+        String expected = "move";
+        String notExpected = "stop";
 
         //when
         RacingCarLogic racingCarLogic = new RacingCarLogic();
 
-        int result = racingCarLogic.isCarMoved(test);
+        String result = racingCarLogic.isCarMoved(test);
 
         //then
         Assertions.assertEquals(result, expected);

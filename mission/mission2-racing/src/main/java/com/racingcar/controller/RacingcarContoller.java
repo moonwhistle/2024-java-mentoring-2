@@ -27,6 +27,10 @@ public class RacingcarContoller {
         outputview.showCarNameInputPrompt();
         String carName = inputView.getInput();
 
+        outputview.showTryCountInputPrompt();
+        String strTryCount = inputView.getInput();
+        int tryCount = racingCarLogic.parseTryCount(strTryCount);
+
         int randomNumber = zeroToNineGenerator.getRandomNumber();
 
         int moveState = racingCarLogic.getCarMoveState(randomNumber);

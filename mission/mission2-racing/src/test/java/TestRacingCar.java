@@ -95,4 +95,23 @@ public class TestRacingCar {
         //then
         assertEquals(expected,result);
     }
+
+    @Test
+    public void parseStringNaNTest() {
+
+        //given
+        String strNumber = "방가방가";
+
+        String expectedErrorMessage = "입력된 값이 숫자가 아닙니다.";
+
+        //when
+        RacingCarLogic racingCarLogic = new RacingCarLogic();
+
+        RuntimeException thrown = Assertions.assertThrows(RuntimeException.class,
+                () -> racingCarLogic.parseTryCount(strNumber)
+        );
+
+        //then
+        assertEquals(expectedErrorMessage, thrown.getMessage());
+    }
 }

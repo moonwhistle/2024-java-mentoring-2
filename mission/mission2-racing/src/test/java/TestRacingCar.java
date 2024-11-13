@@ -1,4 +1,5 @@
-import com.racingcar.domain.RacingCarLogic;
+import com.racingcar.domain.IntegerParser;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -15,10 +16,10 @@ public class TestRacingCar {
         String expectedErrorMessage = "입력된 값이 정수가 아닙니다.";
 
         //when
-        RacingCarLogic racingCarLogic = new RacingCarLogic();
+        IntegerParser integerParser = new IntegerParser();
 
         RuntimeException thrown = Assertions.assertThrows(RuntimeException.class,
-                () -> racingCarLogic.parseTryCount(strNumber)
+                () -> integerParser.parseTryCount(strNumber)
         );
 
         //then
@@ -34,10 +35,10 @@ public class TestRacingCar {
         String expectedErrorMessage = "입력된 값이 음수입니다.";
 
         //when
-        RacingCarLogic racingCarLogic = new RacingCarLogic();
+        IntegerParser integerParser = new IntegerParser();
 
         RuntimeException thrown = Assertions.assertThrows(RuntimeException.class,
-                () -> racingCarLogic.parseTryCount(strNumber)
+                () -> integerParser.parseTryCount(strNumber)
         );
 
         //then
@@ -53,9 +54,9 @@ public class TestRacingCar {
         int expected = 1;
 
         //when
-        RacingCarLogic racingCarLogic = new RacingCarLogic();
+        IntegerParser integerParser = new IntegerParser();
 
-        int result = racingCarLogic.parseTryCount(strNumber);
+        int result = integerParser.parseTryCount(strNumber);
 
         //then
         assertEquals(expected,result);
@@ -70,10 +71,10 @@ public class TestRacingCar {
         String expectedErrorMessage = "입력된 값이 숫자가 아닙니다.";
 
         //when
-        RacingCarLogic racingCarLogic = new RacingCarLogic();
+        IntegerParser integerParser = new IntegerParser();
 
         RuntimeException thrown = Assertions.assertThrows(RuntimeException.class,
-                () -> racingCarLogic.parseTryCount(strNumber)
+                () -> integerParser.parseTryCount(strNumber)
         );
 
         //then

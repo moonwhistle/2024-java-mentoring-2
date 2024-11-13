@@ -1,25 +1,19 @@
 package com.racingcar.controller;
 
-import com.racingcar.domain.RacingCarLogic;
+import com.racingcar.domain.*;
 
-import com.racingcar.view.InputView;
-import com.racingcar.view.Outputview;
-
-import com.racingcar.domain.RandomNumberGenerator;
-import com.racingcar.domain.ZeroToNineGenerator;
+import com.racingcar.view.*;
 
 public class RacingcarContoller {
 
     private final InputView inputView;
     private final Outputview outputview;
     private final RacingCarLogic racingCarLogic;
-    private final RandomNumberGenerator zeroToNineGenerator;
 
     public RacingcarContoller(){
         this.inputView = new InputView();
         this.outputview = new Outputview();
         this.racingCarLogic = new RacingCarLogic();
-        this.zeroToNineGenerator = new ZeroToNineGenerator();
     }
 
     public void runCar(){
@@ -31,5 +25,11 @@ public class RacingcarContoller {
         String strTryCount = inputView.getInput();
         int tryCount = racingCarLogic.parseTryCount(strTryCount);
 
+        Cars cars = new Cars(carName);
+        cars = racingCarLogic.loopTryCount(tryCount, cars);
+
+        for(Car car : cars.getCars()){
+            outputview.showCarMove(car.getName(), car.getPosition());
+        }
     }
 }

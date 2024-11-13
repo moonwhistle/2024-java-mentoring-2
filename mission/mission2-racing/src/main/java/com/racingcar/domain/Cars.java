@@ -40,4 +40,24 @@ public class Cars {
             car.move(moveState);
         }
     }
+
+    public List<String> getWinner() {
+        int winnerPosition = getWinnerPosition();
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == winnerPosition)
+                .map(Car::getName)
+                .toList();
+    }
+
+    private int getWinnerPosition(){
+        List<Integer> positions = cars.stream()
+                .map(Car::getPosition)
+                .toList();
+
+        return positions.stream()
+                .mapToInt(x -> x)
+                .max()
+                .orElseThrow(NoSuchElementException::new);
+    }
 }

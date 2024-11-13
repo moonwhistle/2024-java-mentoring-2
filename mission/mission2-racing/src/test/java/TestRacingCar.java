@@ -1,5 +1,7 @@
+import com.racingcar.domain.Car;
 import com.racingcar.domain.IntegerParser;
 
+import com.racingcar.domain.RacingCarLogic;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -79,5 +81,33 @@ public class TestRacingCar {
 
         //then
         assertEquals(expectedErrorMessage, thrown.getMessage());
+    }
+
+    @Test
+    public void CarClassNameTest(){
+
+        //given
+        String carName = "test";
+
+        //when
+        Car car = new Car(carName);
+
+        //then
+        assertEquals(carName, car.getName());
+    }
+
+    @Test
+    public void CarClassPositionTest(){
+
+        //given
+        String carName = "move";
+        int expected = 1;
+
+        //when
+        Car car = new Car(carName);
+        car.move(1);
+
+        //then
+        assertEquals(expected, car.getPosition());
     }
 }

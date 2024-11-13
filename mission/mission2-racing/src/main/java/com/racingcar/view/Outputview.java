@@ -10,7 +10,7 @@ public class Outputview {
         System.out.println("시도할 횟수는 몇회인가요?");
     }
 
-    public void showCarMove(String carName, String carMove){
+    public void showCarMove(String carName, int carMove){
         System.out.println(carName + " : " + carMove);
     }
 }

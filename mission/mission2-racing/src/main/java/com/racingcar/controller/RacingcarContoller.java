@@ -28,8 +28,5 @@ public class RacingcarContoller {
         Cars cars = new Cars(carName);
         cars = racingCarLogic.loopTryCount(tryCount, cars);
 
-        for(Car car : cars.getCars()){
-            outputview.showCarMove(car.getName(), car.getPosition());
-        }
     }
 }

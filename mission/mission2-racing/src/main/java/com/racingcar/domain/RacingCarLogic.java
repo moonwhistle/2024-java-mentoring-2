@@ -1,10 +1,14 @@
 package com.racingcar.domain;
 
+import java.util.List;
+
 public class RacingCarLogic {
 
     private final String NAN_ERROR_MESSAGE = "입력된 값이 숫자가 아닙니다.";
     private final String NOT_INTEGER_ERROR_MESSAGE = "입력된 값이 정수가 아닙니다.";
     private final String MINUS_ERROR_MESSAGE = "입력된 값이 음수입니다.";
+
+    private final String JOIN_STRING = ", ";
 
     public int parseTryCount(String str) {
         try {
@@ -40,5 +44,10 @@ public class RacingCarLogic {
         }
 
         return cars;
+    }
+
+    public String buildWinnerString(List<String> winnerList){
+
+        return String.join(JOIN_STRING, winnerList);
     }
 }

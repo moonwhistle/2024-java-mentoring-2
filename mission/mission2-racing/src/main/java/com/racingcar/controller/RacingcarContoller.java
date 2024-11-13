@@ -5,8 +5,8 @@ import com.racingcar.domain.RacingCarLogic;
 import com.racingcar.view.InputView;
 import com.racingcar.view.Outputview;
 
-import com.racingcar.util.random.RandomNumberGenerator;
-import com.racingcar.util.random.ZeroToNineGenerator;
+import com.racingcar.domain.RandomNumberGenerator;
+import com.racingcar.domain.ZeroToNineGenerator;
 
 public class RacingcarContoller {
 

@@ -5,42 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestRacingCar {
-    @Test
-    public void testMoveState() {
-
-        //given
-        int test = 4;
-        int expected = 1;
-        int notExpected = 0;
-
-        //when
-        RacingCarLogic racingCarLogic = new RacingCarLogic();
-
-        int result = racingCarLogic.getCarMoveState(test);
-
-        //then
-        Assertions.assertEquals(result, expected);
-        Assertions.assertNotEquals(result, notExpected);
-    }
-
-    @Test
-    public void testCarMove() {
-
-        //given
-        int test = 1;
-        String expected = "move";
-        String notExpected = "stop";
-
-        //when
-        RacingCarLogic racingCarLogic = new RacingCarLogic();
-
-        String result = racingCarLogic.isCarMoved(test);
-
-        //then
-        Assertions.assertEquals(result, expected);
-        Assertions.assertNotEquals(result, notExpected);
-    }
-
+    
     @Test
     public void notIntegerErrorTest() {
 
@@ -100,7 +65,7 @@ public class TestRacingCar {
     public void parseStringNaNTest() {
 
         //given
-        String strNumber = "방가방가";
+        String strNumber = "ㅋㅋ루삥뽕빵빵뽕";
 
         String expectedErrorMessage = "입력된 값이 숫자가 아닙니다.";
 

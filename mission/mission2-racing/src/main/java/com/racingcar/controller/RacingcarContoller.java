@@ -31,11 +31,5 @@ public class RacingcarContoller {
         String strTryCount = inputView.getInput();
         int tryCount = racingCarLogic.parseTryCount(strTryCount);
 
-        int randomNumber = zeroToNineGenerator.getRandomNumber();
-
-        int moveState = racingCarLogic.getCarMoveState(randomNumber);
-        String isCarMoved = racingCarLogic.isCarMoved(moveState);
-
-        outputview.showCarMove(carName, isCarMoved);
     }
 }

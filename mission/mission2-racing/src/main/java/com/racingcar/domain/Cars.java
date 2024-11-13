@@ -1,5 +1,6 @@
 package com.racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -7,9 +8,21 @@ public class Cars {
     private final List<Car> cars;
     private final RandomNumberGenerator zeroToNineGenerator;
 
-    public Cars(final List<Car> cars){
-        this.cars = cars;
+    public Cars(final String carNames){
+        this.cars = makeCars(carNames);
         this.zeroToNineGenerator = new ZeroToNineGenerator();
+    }
+
+    public List<Car> makeCars(String carNames){
+        String[] carsArray = carNames.split(",");
+        List<Car> cars = new ArrayList<>();
+
+        for(String name : carsArray){
+            Car car = new Car(name);
+            cars.add(car);
+        }
+
+        return cars;
     }
 
     public int getCarMoveState(int randomNumber){

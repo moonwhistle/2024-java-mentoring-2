@@ -1,8 +1,5 @@
 package com.racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RacingCarLogic {
 
     private final String NAN_ERROR_MESSAGE = "입력된 값이 숫자가 아닙니다.";

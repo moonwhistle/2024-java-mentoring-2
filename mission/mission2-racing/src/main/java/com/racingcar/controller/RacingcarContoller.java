@@ -27,7 +27,8 @@ public class RacingcarContoller {
         String strTryCount = inputView.getInput();
         int tryCount = racingCarLogic.parseTryCount(strTryCount);
 
-        Cars cars = new Cars(carName);
+        String[] carArray = racingCarLogic.splitCarName(carName);
+        Cars cars = new Cars(carArray);
         cars = racingCarLogic.loopTryCount(tryCount, cars);
         List<String> winnerList = cars.getWinner();
 

@@ -38,6 +38,10 @@ public class RacingCarLogic {
         return (int) doubleStr;
     }
 
+    public String[] splitCarName(String carName){
+        return carName.split(",");
+    }
+
     public Cars loopTryCount(int tryCount, Cars cars){
         for(int i = 0; i < tryCount; i++){
             cars.moveCars();

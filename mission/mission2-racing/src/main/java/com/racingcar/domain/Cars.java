@@ -7,15 +7,13 @@ public class Cars {
     private final List<Car> cars;
     private final RandomNumberGenerator zeroToNineGenerator;
 
-    public Cars(final String carNames){
-        this.cars = makeCars(carNames);
+    public Cars(final String[] carsArray){
+        this.cars = makeCars(carsArray);
         this.zeroToNineGenerator = new ZeroToNineGenerator();
     }
 
-    public List<Car> makeCars(String carNames){
+    private List<Car> makeCars(String[] carsArray){
         List<Car> cars = new ArrayList<>();
-
-        String[] carsArray = carNames.split(",");
 
         for(String name : carsArray){
             Car car = new Car(name);
@@ -25,7 +23,7 @@ public class Cars {
         return cars;
     }
 
-    public int getCarMoveState(int randomNumber){
+    private int getCarMoveState(int randomNumber){
         if(randomNumber >= 4){
             return 1;
         }

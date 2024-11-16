@@ -6,6 +6,7 @@ import java.util.List;
 
 public class OutputView {
     private final int startIndex = 0;
+    private final String joinChar = ",";
 
     public void printDefault(){
         System.out.println();
@@ -17,7 +18,11 @@ public class OutputView {
     }
 
     public void printWinner(List<String> winner){
-        System.out.println("최종 우승자 : " + String.join(",", winner) + "가 최종 우승했습니다.");
+        System.out.println("최종 우승자 : " + getWinner(winner) + "가 최종 우승했습니다.");
+    }
+
+    public String getWinner(List<String> winner){
+        return String.join(joinChar, winner);
     }
 
 }

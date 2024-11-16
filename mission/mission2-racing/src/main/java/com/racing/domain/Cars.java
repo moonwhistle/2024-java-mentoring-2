@@ -11,9 +11,11 @@ public class Cars {
     private final List<Car> carList;
     private final GenerateRandom generateRandom;
     private final int maxCarNumber = 5;
+    private final String splitString = ",";
 
-    public Cars(List<String> inputNames, GenerateRandom generateRandom){
+    public Cars(String inputName, GenerateRandom generateRandom){
         this.generateRandom = generateRandom;
+        List<String> inputNames = List.of(inputName.split(splitString));
         Car[] carArray = new Car[inputNames.size()];
 
         for(int i = startIndex; i < inputNames.size(); i++){
@@ -25,7 +27,33 @@ public class Cars {
         carList = List.of(carArray);
     }
 
-    public void carsMove(){
+    public String carsMoveAll(int startIndex, int endIndex){
+        StringBuilder sb = new StringBuilder();
+        for(int i = startIndex; i < endIndex; i++){
+            carsMoveOne();
+            sb.append(carsDetail());
+        }
+        return sb.toString();
+    }
+
+    public String carsDetail(){
+        StringBuilder carDetail = new StringBuilder();
+        for(int i = startIndex; i < carList.size(); i++){
+            Name carName = carList.get(i).getCarName();
+            Position carPosition = carList.get(i).getPosition();
+            carDetail.append(carName.getName() + " : ");
+
+            String position = signOfCarPosition(carPosition);
+            carDetail.append(position);
+
+            carDetail.append("\n");
+        }
+        carDetail.append("\n");
+
+        return carDetail.toString();
+    }
+
+    public void carsMoveOne(){
         for(int i = startIndex; i < carList.size(); i++){
             Car car = carList.get(i);
             Number random = car.getRandomNumber();
@@ -54,6 +82,14 @@ public class Cars {
         }
 
         return carsPosition;
+    }
+
+    private String signOfCarPosition(Position carPosition){
+        StringBuilder sb = new StringBuilder();
+        for(int i = startIndex ; i < carPosition.getPosition(); i++){
+            sb.append("-");
+        }
+        return sb.toString();
     }
 
 }

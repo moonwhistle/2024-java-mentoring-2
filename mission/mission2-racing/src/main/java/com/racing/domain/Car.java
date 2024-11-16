@@ -7,21 +7,17 @@ public class Car{
     private final int moveFront = 1;
     private final int notMove = 0;
     private final int bound = 4;
-    private final int limitNumber = 6;
     private Position position = new Position();
     private Name carName;
     private final GenerateRandom generateRandom;
 
     public Car(CarsDto carsDto) {
-        this.carName = carsDto.getCarName();
-        this.generateRandom = carsDto.getGenerateRandom();
+        this.carName = carsDto.carName();
+        this.generateRandom = carsDto.generateRandom();
     }
 
     public Car(Name carName, GenerateRandom generateRandom)
     {
-        if(carName.getName().length() >= limitNumber)
-            throw new IllegalArgumentException();
-
         this.carName = carName;
         this.generateRandom = generateRandom;
     }

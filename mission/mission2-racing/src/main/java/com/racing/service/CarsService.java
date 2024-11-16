@@ -16,34 +16,30 @@ public class CarsService {
         this.cars = cars;
     }
 
-    public String carsDetail(){
-        StringBuilder carDetail = new StringBuilder();
-        for(int i = startIndex; i < cars.getCarsSize(); i++){
-            Name carName = cars.getCarsName().get(i);
-            Position carPosition = cars.getCarsPosition().get(i);
-            carDetail.append(carName.getName() + " : ");
-
-            for(int j = startIndex; j < carPosition.getPosition(); j++){
-                carDetail.append("-");
-            }
-
-            carDetail.append("\n");
-        }
-
-        return carDetail.toString();
+    public List<String> winner(List<Name> winnerName){
+        return winnerName.stream()
+                .map(Name::getName)
+                .toList();
     }
 
-    public List<String> winnerList(){
-        List<String> winner = new ArrayList<>();
-        for(int i = startIndex; i < cars.getCarsSize(); i++) {
-            Position carPosition = cars.getCarsPosition().get(i);
-            if(carPosition.getPosition() == getMaxPosition()) {
-                Name carName = cars.getCarsName().get(i);
-                winner.add(carName.getName());
-            }
-        }
+    public List<Name> winnerName(List<Position> position){
+        List<Name> winner = new ArrayList<>();
+        List<Integer> winnerIndex = addWinner(position);
 
+        for(int i = startIndex; i < winnerIndex.size(); i++){
+            int index = winnerIndex.get(i);
+            winner.add(cars.getCarsName().get(index));
+        }
         return winner;
+    }
+
+    private List<Integer> addWinner(List<Position> position){
+        List<Integer> winnerIndex = new ArrayList<>();
+        for(int i = startIndex; i < position.size(); i++) {
+            if(position.get(i).getPosition() == getMaxPosition())
+                winnerIndex.add(i);
+        }
+        return winnerIndex;
     }
 
     private int getMaxPosition(){
@@ -53,7 +49,6 @@ public class CarsService {
             if(max < carPosition.getPosition())
                 max = carPosition.getPosition();
         }
-
         return max;
     }
 

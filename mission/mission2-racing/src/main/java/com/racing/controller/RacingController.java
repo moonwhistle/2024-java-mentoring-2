@@ -17,34 +17,29 @@ public class RacingController {
     private final int startIndex = 0;
     private CarsService carsService;
 
-    public RacingController(InputView inputView, OutputView outputView, GenerateRandom generateRandom, CarsService carsService){
+    public RacingController(InputView inputView, OutputView outputView, GenerateRandom generateRandom){
         this.inputView = inputView;
         this.outputView = outputView;
         this.generateRandom = generateRandom;
-        this.carsService = carsService;
     }
 
-    public void startCarsMove(){
-        List<String> carNames = inputView.inputName();
+    public Cars getCars(){
+        String carNames = inputView.inputName();
         Cars cars = new Cars(carNames, generateRandom);
-        this.carsService = new CarsService(cars);
+        return cars;
+    }
 
-        int numberOfMove;
-        try {
-            numberOfMove = inputView.integerInput();
-        }
-        catch(IllegalArgumentException e) {
-            throw new IllegalArgumentException();
-        }
+    public void startCarsMove(Cars cars){
+        this.carsService = new CarsService(cars);
+        int numberOfMove = inputView.integerInput();
 
         outputView.printDefault();
 
-        for(int i = startIndex; i < numberOfMove; i++){
-            cars.carsMove();
-            outputView.printCarsMove(carsService.carsDetail());
-        }
+        String carDetailList = cars.carsMoveAll(startIndex, numberOfMove);
+        outputView.printCarsMove(carDetailList);
 
-        List<String> winner = carsService.winnerList();
+        List<Name> winnerName = carsService.winnerName(cars.getCarsPosition());
+        List<String> winner = carsService.winner(winnerName);
         outputView.printWinner(winner);
     }
 

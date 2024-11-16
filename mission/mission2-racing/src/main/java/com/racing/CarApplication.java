@@ -1,6 +1,7 @@
 package com.racing;
 
 import com.racing.controller.RacingController;
+import com.racing.domain.Cars;
 import com.racing.domain.RandomNumbers;
 import com.racing.service.CarsService;
 import com.racing.view.InputView;
@@ -13,11 +14,9 @@ public class CarApplication {
         OutputView outputView = new OutputView();
         RandomNumbers randomNumbers = new RandomNumbers();
 
-        CarsService carsService = new CarsService(null);
-
-        RacingController racingController = new RacingController(inputView, outputView, randomNumbers, carsService);
-
-        racingController.startCarsMove();
+        RacingController racingController = new RacingController(inputView, outputView, randomNumbers);
+        Cars cars = racingController.getCars();
+        racingController.startCarsMove(cars);
     }
 
 }

@@ -3,7 +3,6 @@ package com.racing;
 import com.racing.controller.RacingController;
 import com.racing.domain.Cars;
 import com.racing.domain.RandomNumbers;
-import com.racing.service.CarsService;
 import com.racing.view.InputView;
 import com.racing.view.OutputView;
 
@@ -15,8 +14,7 @@ public class CarApplication {
         RandomNumbers randomNumbers = new RandomNumbers();
 
         RacingController racingController = new RacingController(inputView, outputView, randomNumbers);
-        Cars cars = racingController.getCars();
-        racingController.startCarsMove(cars);
+        racingController.startCarsMove();
     }
 
 }

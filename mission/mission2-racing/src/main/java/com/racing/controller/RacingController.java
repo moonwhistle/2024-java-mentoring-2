@@ -3,7 +3,6 @@ package com.racing.controller;
 import com.racing.domain.Cars;
 import com.racing.domain.GenerateRandom;
 import com.racing.domain.Name;
-import com.racing.service.CarsService;
 import com.racing.view.InputView;
 import com.racing.view.OutputView;
 
@@ -14,29 +13,35 @@ public class RacingController {
     private InputView inputView;
     private OutputView outputView;
     private final GenerateRandom generateRandom;
+    private Cars cars;
     private final int startIndex = 0;
-    private final CarsService carsService;
 
-    public RacingController(InputView inputView, OutputView outputView, GenerateRandom generateRandom, CarsService carsService){
+    public RacingController(InputView inputView, OutputView outputView, GenerateRandom generateRandom){
         this.inputView = inputView;
         this.outputView = outputView;
         this.generateRandom = generateRandom;
-        this.carsService = carsService;
     }
 
     public void startCarsMove(){
-        Cars cars = carsService.getCars(inputView.inputName(), generateRandom);
+        cars = new Cars(inputView.inputName(), generateRandom);
 
         int numberOfMove = inputView.integerInput();
-
         outputView.printDefault();
+        printCarsMove(startIndex, numberOfMove);
 
-        String carDetailList = cars.carsMoveAll(startIndex, numberOfMove);
-        outputView.printCarsMove(carDetailList);
-
-        List<Name> winnerName = carsService.winnerName(cars.getCarsPosition());
-        List<String> winner = carsService.winner(winnerName);
+        List<String> winner = cars.winner();
         outputView.printWinner(winner);
+    }
+
+    public void printCarsMove(int startIndex, int endIndex){
+        for(int i = startIndex; i < endIndex; i++){
+            createCarDetail();
+        }
+    }
+
+    private void createCarDetail(){
+        cars.carsMoveOne();
+        outputView.carsDetail(cars);
     }
 
 }

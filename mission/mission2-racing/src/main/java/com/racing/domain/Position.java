@@ -13,7 +13,19 @@ public class Position {
     }
 
     public int getPosition(){
+        positionException();
         return position;
+    }
+
+    public boolean isMax(int max){
+        if(this.position == max)
+            return true;
+        return false;
+    }
+
+    private void positionException(){
+        if(this.position < start)
+            throw new IllegalArgumentException();
     }
 
 }

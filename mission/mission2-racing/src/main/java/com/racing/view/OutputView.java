@@ -23,19 +23,20 @@ public class OutputView {
         return String.join(joinChar, winner);
     }
 
-    public void carsDetail(Cars cars){
+    public void printCarsDetail(Cars cars){
+        System.out.println(carsDetail(cars));
+    }
+
+    public String carsDetail(Cars cars){
         StringBuilder carDetail = new StringBuilder();
         for(int i = startIndex; i < cars.getCarsSize(); i++){
             Name carName = cars.getCarsName().get(i);
             Position carPosition = cars.getCarsPosition().get(i);
-            carDetail.append(carName.getName() + " : ");
-            String position = signOfCarPosition(carPosition.getPosition());
-            carDetail.append(position);
-            carDetail.append("\n");
+            carDetail.append(carName.getName() + " : ")
+                    .append(signOfCarPosition(carPosition.getPosition()))
+                    .append("\n");
         }
-        carDetail.append("\n");
-
-        System.out.println(carDetail.toString());
+        return carDetail.append("\n").toString();
     }
 
     private String signOfCarPosition(int position){

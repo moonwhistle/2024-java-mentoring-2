@@ -27,32 +27,6 @@ public class Cars {
         carList = List.of(carArray);
     }
 
-    public String carsMoveAll(int startIndex, int endIndex){
-        StringBuilder sb = new StringBuilder();
-        for(int i = startIndex; i < endIndex; i++){
-            carsMoveOne();
-            sb.append(carsDetail());
-        }
-        return sb.toString();
-    }
-
-    public String carsDetail(){
-        StringBuilder carDetail = new StringBuilder();
-        for(int i = startIndex; i < carList.size(); i++){
-            Name carName = carList.get(i).getCarName();
-            Position carPosition = carList.get(i).getPosition();
-            carDetail.append(carName.getName() + " : ");
-
-            String position = signOfCarPosition(carPosition);
-            carDetail.append(position);
-
-            carDetail.append("\n");
-        }
-        carDetail.append("\n");
-
-        return carDetail.toString();
-    }
-
     public void carsMoveOne(){
         for(int i = startIndex; i < carList.size(); i++){
             Car car = carList.get(i);
@@ -84,12 +58,32 @@ public class Cars {
         return carsPosition;
     }
 
-    private String signOfCarPosition(Position carPosition){
-        StringBuilder sb = new StringBuilder();
-        for(int i = startIndex ; i < carPosition.getPosition(); i++){
-            sb.append("-");
+    public List<String> winner(){
+        List<CarsDto> winner= winnerDto(getMaxPosition());
+        return winner.stream()
+                .map(CarsDto -> CarsDto.carName().getName())
+                .toList();
+    }
+
+    private List<CarsDto> winnerDto(int maxPosition){
+        List<CarsDto> carWinner = new ArrayList<>();
+        for(int i = startIndex; i < carList.size(); i++){
+            Position position = carList.get(i).getPosition();
+            if(position.isMax(getMaxPosition())){
+                carWinner.add(new CarsDto(carList.get(i).getCarName(), generateRandom));
+            }
         }
-        return sb.toString();
+        return carWinner;
+    }
+
+    private int getMaxPosition(){
+        int max = 0;
+        for(int i = startIndex; i < getCarsSize(); i++) {
+            Position carPosition = getCarsPosition().get(i);
+            if(max < carPosition.getPosition())
+                max = carPosition.getPosition();
+        }
+        return max;
     }
 
 }

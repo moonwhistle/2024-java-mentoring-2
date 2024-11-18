@@ -19,7 +19,7 @@ public class CarController {
         this.movingCar = movingCar;
     }
 
-    public void run() {
+    public void moveCar() {
         int state = 0;
         int randomNumber = randomNumberGenerator.generateRandomNumber();
         outputView.output(inputview.receiveCarName(), movingCar.decideMove(randomNumber, state));

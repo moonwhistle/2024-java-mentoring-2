@@ -15,7 +15,7 @@ public class RandomNumberGenerator implements RandomNumber {
 
     @Override
     public int generateRandomNumber() {
-        int number = random.nextInt(9);
+        int number = random.nextInt(10);
         validateNegative(number);
         validateOverBound(number);
         return number;

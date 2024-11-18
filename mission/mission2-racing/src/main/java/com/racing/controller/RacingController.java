@@ -13,24 +13,20 @@ public class RacingController {
 
     private InputView inputView;
     private OutputView outputView;
-    private GenerateRandom generateRandom;
+    private final GenerateRandom generateRandom;
     private final int startIndex = 0;
-    private CarsService carsService;
+    private final CarsService carsService;
 
-    public RacingController(InputView inputView, OutputView outputView, GenerateRandom generateRandom){
+    public RacingController(InputView inputView, OutputView outputView, GenerateRandom generateRandom, CarsService carsService){
         this.inputView = inputView;
         this.outputView = outputView;
         this.generateRandom = generateRandom;
+        this.carsService = carsService;
     }
 
-    public Cars getCars(){
-        String carNames = inputView.inputName();
-        Cars cars = new Cars(carNames, generateRandom);
-        return cars;
-    }
+    public void startCarsMove(){
+        Cars cars = carsService.getCars(inputView.inputName(), generateRandom);
 
-    public void startCarsMove(Cars cars){
-        this.carsService = new CarsService(cars);
         int numberOfMove = inputView.integerInput();
 
         outputView.printDefault();

@@ -41,7 +41,7 @@ public class RacingController {
 
     private void createCarDetail(){
         cars.carsMoveOne();
-        outputView.carsDetail(cars);
+        outputView.printCarsDetail(cars);
     }
 
 }

@@ -23,7 +23,8 @@ public class Car{
     }
 
     public Number getRandomNumber(){
-        return generateRandom.generateRandomNumber();
+        int randomNumber = generateRandom.generateRandomNumber();
+        return new Number(randomNumber);
     }
 
     public Position getPosition(){

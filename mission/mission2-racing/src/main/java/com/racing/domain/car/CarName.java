@@ -4,7 +4,7 @@ public class CarName {
 
     private final String carName;
 
-    public CarName(String carName) {
+    public CarName(final String carName) {
         validateNameValue();
         this.carName = carName;
     }

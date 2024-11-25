@@ -2,8 +2,8 @@ package com.racing.domain.car;
 
 public class Car {
 
-    private final CarName carName;
     private int state;
+    private final CarName carName;
 
     public Car(String carName) {
         state = 0;

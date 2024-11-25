@@ -2,12 +2,12 @@ package com.racing.domain.car;
 
 public class Car {
 
-    private final String carName;
+    private final CarName carName;
     private int state;
 
     public Car(String carName) {
         state = 0;
-        this.carName = carName;
+        this.carName = new CarName(carName);
     }
 
     public int moveOrStop(int randomNumber) {

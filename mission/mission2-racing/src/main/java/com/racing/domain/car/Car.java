@@ -16,4 +16,8 @@ public class Car {
         }
         return state;
     }
+
+    public int showCarState() {
+        return state;
+    }
 }

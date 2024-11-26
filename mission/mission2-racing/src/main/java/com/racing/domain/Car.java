@@ -1,42 +1,57 @@
 package com.racing.domain;
 
+import com.racing.dto.CarsDto;
+
 public class Car{
 
-    private final int StartPosition = 0;
     private final int moveFront = 1;
     private final int notMove = 0;
     private final int bound = 4;
-    private int position;
-    private String carName;
+    private Position position = new Position();
+    private Name carName;
     private final GenerateRandom generateRandom;
 
-    public Car(String carName, GenerateRandom generateRandom)
+    public Car(CarsDto carsDto) {
+        this.carName = carsDto.carName();
+        this.generateRandom = carsDto.generateRandom();
+    }
+
+    public Car(Name carName, GenerateRandom generateRandom)
     {
         this.carName = carName;
         this.generateRandom = generateRandom;
     }
 
-    public int getRandomNumber(){
-        return generateRandom.generateRandomNumber();
+    public Number getRandomNumber(){
+        int randomNumber = generateRandom.generateRandomNumber();
+        return new Number(randomNumber);
     }
 
-    public int getPosition(){
+    public Position getPosition(){
         return this.position;
     }
 
-    public void carMove(int randomNumber){
-        if(validateRandomNumbers(randomNumber) == moveFront)
+    public Name getCarName(){
+        return this.carName;
+    }
+
+    public void carMove(Number number){
+        if(number.isMove(moveFront))
             moveFront();
     }
 
-    private void moveFront(){
-        this.position++;
+    public Number moveOrStop(Number randomNumber){
+        return validateRandomNumbers(randomNumber);
     }
 
-    private int validateRandomNumbers(final int random){
-        if(random >= bound)
-            return moveFront;
-        return notMove;
+    private Number validateRandomNumbers(final Number random){
+        if(random.getNumber() >= bound)
+            return new Number(moveFront);
+        return new Number(notMove);
+    }
+
+    private void moveFront(){
+        this.position.movePosition();
     }
 
 }

@@ -9,7 +9,7 @@ public class Car {
         this.carName = new CarName(carName);
     }
 
-    public int moveOrStop(boolean decision) {
+    public int moveForwardOrStop(boolean decision) {
         if (decision) {
             state++;
         }

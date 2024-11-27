@@ -9,8 +9,8 @@ public class Car {
         this.carName = new CarName(carName);
     }
 
-    public int moveOrStop(boolean isSatisfied) {
-        if (isSatisfied) {
+    public int moveOrStop(boolean decision) {
+        if (decision) {
             state++;
         }
         return state;
@@ -18,5 +18,9 @@ public class Car {
 
     public int showCarState() {
         return state;
+    }
+
+    private boolean isSatisfied(int randomNumber) {
+        return randomNumber >= 4;
     }
 }

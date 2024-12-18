@@ -4,28 +4,42 @@ import com.calculator.view.InputView;
 import com.calculator.view.OutputView;
 
 public class CalculatorController {
-    public int num1 = new InputView().firstNumber();
-    public int num2 = new InputView().secondNumber();
-    OutputView outputView = new OutputView();
+    private final Calculator calculator;
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final int firstNumber;
+    private final int secondNumber;
 
-    public void addResult(){
-       int result =  new Calculator().add(num1, num2);
-       outputView.printAddResult(result);
+    public CalculatorController(Calculator calculator, InputView inputView, OutputView outputView) {
+        this.calculator = calculator;
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.firstNumber = inputView.firstNumber();
+        this.secondNumber = inputView.secondNumber();
     }
 
-    public void subtractResult(){
-        int result =  new Calculator().subtract(num1, num2);
-        outputView.printSubtractResult(result);
+    private void addResult(){
+       int add = calculator.add(firstNumber, secondNumber);
+       int result = outputView.calculationResult(add);
+       System.out.println("더하기 계산 결과 = " + result);
     }
 
-    public void multiplyResult(){
-        int result =  new Calculator().multiply(num1, num2);
-        outputView.printMultiplyResult(result);
+    private void subtractResult(){
+        int subtract = calculator.subtract(firstNumber, secondNumber);
+        int result = outputView.calculationResult(subtract);
+        System.out.println("빼기 계산 결과 = " + result);
     }
 
-    public void divideResult(){
-        int result =  new Calculator().divide(num1, num2);
-        outputView.printDivideResult(result);
+    private void multiplyResult(){
+        int multiply = calculator.multiply(firstNumber, secondNumber);
+        int result = outputView.calculationResult(multiply);
+        System.out.println("곱하기 계산 결과 = " + result);
+    }
+
+    private void divideResult(){
+        int divide = calculator.divide(firstNumber, secondNumber);
+        int result = outputView.calculationResult(divide);
+        System.out.println("나누기 계산 결과 = " + result);
     }
 
     public void run(){

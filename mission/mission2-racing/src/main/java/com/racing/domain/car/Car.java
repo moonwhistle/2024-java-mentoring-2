@@ -10,4 +10,10 @@ public class Car {
         this.carName = new CarName(carName);
     }
 
+    public int moveOrStopCar(int randomNumber) {
+        if (randomNumber >= 4) {
+            return state++;
+        }
+        return state;
+    }
 }

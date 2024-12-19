@@ -16,4 +16,13 @@ public class Car {
         }
         return state;
     }
+
+    public int getState() {
+        return state;
+    }
+
+    public String getCarName() {
+        return carName.getCarName();
+    }
+
 }

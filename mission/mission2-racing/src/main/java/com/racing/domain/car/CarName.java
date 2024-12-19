@@ -9,6 +9,10 @@ public class CarName {
         this.carName = carName;
     }
 
+    public String getCarName() {
+        return carName;
+    }
+
     private void validateCarName(String carName) {
         if (carName == null) {
             throw new IllegalArgumentException("차 이름을 다시 입력하세요.");

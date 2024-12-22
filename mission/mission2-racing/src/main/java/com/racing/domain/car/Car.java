@@ -2,23 +2,22 @@ package com.racing.domain.car;
 
 public class Car {
 
-    private int state;
+    private int position;
     private final CarName carName;
 
     public Car(final String carName) {
-        state = 0;
+        position = 0;
         this.carName = new CarName(carName);
     }
 
-    public int moveOrStopCar(int randomNumber) {
+    public void driveCar(int randomNumber) {
         if (randomNumber >= 4) {
-            return state++;
+            position++;
         }
-        return state;
     }
 
     public int getState() {
-        return state;
+        return position;
     }
 
     public String getCarName() {

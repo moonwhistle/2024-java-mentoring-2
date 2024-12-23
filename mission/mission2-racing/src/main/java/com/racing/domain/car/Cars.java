@@ -13,6 +13,10 @@ public class Cars {
         this.cars = cars;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public void racing(RandomNumberGenerator randomNumberGenerator) {
         int numberOfLaps = 4;
         for (int i = 0; i < numberOfLaps; i++) {

@@ -17,7 +17,7 @@ public class Cars {
         return cars;
     }
 
-    public void racing(RandomNumberGenerator randomNumberGenerator) {
+    public void raceCars(RandomNumberGenerator randomNumberGenerator) {
         int numberOfLaps = 4;
         for (int i = 0; i < numberOfLaps; i++) {
             driveCars(randomNumberGenerator);

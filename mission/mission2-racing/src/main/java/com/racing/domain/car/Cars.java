@@ -23,11 +23,15 @@ public class Cars {
     public List<Car> findWinner(int maxPosition) {
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (maxPosition == car.getPosition()) {
-                winners.add(car);
-            }
+            findRightCar(maxPosition, car, winners);
         }
         return winners;
+    }
+
+    private void findRightCar(int maxPosition, Car car, List<Car> winners) {
+        if (maxPosition == car.getPosition()) {
+            winners.add(car);
+        }
     }
 
     private void driveCars(RandomNumberGenerator randomNumberGenerator) {

@@ -1,8 +1,11 @@
 package com.racing.view;
 
+import java.util.List;
+
 public class OutputView {
 
-    public void output(String carName, int moveNumber) {
-        System.out.println(carName + ":" + moveNumber);
+    public void racingResult(List<String> winner) {
+        System.out.println(winner + "우승");
     }
+
 }

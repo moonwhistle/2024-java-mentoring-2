@@ -24,8 +24,8 @@ public class Cars {
         }
     }
 
-    public List<Car> findWinner(int maxPosition) {
-        List<Car> winners = new ArrayList<>();
+    public List<String> findWinner(int maxPosition) {
+        List<String> winners = new ArrayList<>();
         for (Car car : cars) {
             findRightCar(maxPosition, car, winners);
         }
@@ -46,9 +46,9 @@ public class Cars {
         }
     }
 
-    private void findRightCar(int maxPosition, Car car, List<Car> winners) {
+    private void findRightCar(int maxPosition, Car car, List<String> winners) {
         if (maxPosition == car.getPosition()) {
-            winners.add(car);
+            winners.add(car.getCarName());
         }
     }
 

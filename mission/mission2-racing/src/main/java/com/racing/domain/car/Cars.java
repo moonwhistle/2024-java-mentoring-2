@@ -2,6 +2,7 @@ package com.racing.domain.car;
 
 import com.racing.domain.number.RandomNumberGenerator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -17,6 +18,16 @@ public class Cars {
         for (int i = 0; i < numberOfLaps; i++) {
             driveCars(randomNumberGenerator);
         }
+    }
+
+    public List<Car> findWinner(int maxPosition) {
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (maxPosition == car.getPosition()) {
+                winners.add(car);
+            }
+        }
+        return winners;
     }
 
     private void driveCars(RandomNumberGenerator randomNumberGenerator) {

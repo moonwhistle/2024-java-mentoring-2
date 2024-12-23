@@ -28,6 +28,20 @@ public class Cars {
         return winners;
     }
 
+    public int findMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            renewMaxPosition(maxPosition, car);
+        }
+        return maxPosition;
+    }
+
+    private void renewMaxPosition(int maxPosition, Car car) {
+        if (car.getPosition() > maxPosition) {
+            maxPosition = car.getPosition();
+        }
+    }
+
     private void findRightCar(int maxPosition, Car car, List<Car> winners) {
         if (maxPosition == car.getPosition()) {
             winners.add(car);

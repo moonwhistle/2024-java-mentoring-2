@@ -16,7 +16,7 @@ public class Car {
         }
     }
 
-    public int getState() {
+    public int getPosition() {
         return position;
     }
 

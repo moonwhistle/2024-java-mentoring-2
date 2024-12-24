@@ -1,6 +1,7 @@
 package com.racing.controller;
 
 import com.racing.domain.car.Car;
+import com.racing.domain.car.Cars;
 import com.racing.domain.number.RandomNumberGenerator;
 
 import com.racing.view.InputView;
@@ -27,4 +28,15 @@ public class CarController {
         Car brown = new Car("brown");
         return Arrays.asList(neo,brie,brown);
     }
+
+    public void run() {
+        Cars registeredCars = new Cars(registerCars());
+        registeredCars.raceCars(randomNumberGenerator);
+        List<Car> racedCars = registeredCars.getCars();
+        outputView.showRacingCarsName(racedCars);
+        List<String> winner = registeredCars.findWinner();
+        outputView.showCarsPosition(racedCars);
+        outputView.showWinner(winner);
+    }
+
 }

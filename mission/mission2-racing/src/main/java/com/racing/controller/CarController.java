@@ -1,9 +1,13 @@
 package com.racing.controller;
 
+import com.racing.domain.car.Car;
 import com.racing.domain.number.RandomNumberGenerator;
 
 import com.racing.view.InputView;
 import com.racing.view.OutputView;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class CarController {
 
@@ -15,5 +19,12 @@ public class CarController {
         this.randomNumberGenerator = generateRacingRandomNumber;
         this.outputView = outputView;
         this.inputview = inputview;
+    }
+
+    public List<Car> registerCars() {
+        Car neo = new Car("neo");
+        Car brie = new Car("brie");
+        Car brown = new Car("brown");
+        return Arrays.asList(neo,brie,brown);
     }
 }

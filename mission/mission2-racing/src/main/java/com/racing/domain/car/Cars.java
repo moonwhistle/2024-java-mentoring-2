@@ -24,26 +24,18 @@ public class Cars {
         }
     }
 
-    public List<String> findWinner(int maxPosition) {
-        List<String> winners = new ArrayList<>();
+    public List<String> findWinner() {
+        List<String> winner = new ArrayList<>();
+        int maxPosition = findMaxPosition();
         for (Car car : cars) {
-            findRightCar(maxPosition, car, winners);
+            findRightCar(maxPosition, car, winner);
         }
-        return winners;
+        return winner;
     }
 
-    public int findMaxPosition() {
-        int maxPosition = 0;
-        for (Car car : cars) {
-            renewMaxPosition(maxPosition, car);
-        }
+    private int findMaxPosition() {
+        int maxPosition = cars.stream().mapToInt(v -> v.getPosition()).max().orElse(0);
         return maxPosition;
-    }
-
-    private void renewMaxPosition(int maxPosition, Car car) {
-        if (car.getPosition() > maxPosition) {
-            maxPosition = car.getPosition();
-        }
     }
 
     private void findRightCar(int maxPosition, Car car, List<String> winners) {

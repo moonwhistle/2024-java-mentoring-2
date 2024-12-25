@@ -1,4 +1,5 @@
 package com.calculator.controller;
+
 import com.calculator.domain.Calculator;
 import com.calculator.view.InputView;
 import com.calculator.view.OutputView;
@@ -18,31 +19,27 @@ public class CalculatorController {
         this.secondNumber = inputView.secondNumber();
     }
 
-    private void addResult(){
-       int add = calculator.add(firstNumber, secondNumber);
-       int result = outputView.calculationResult(add);
-       System.out.println("더하기 계산 결과 = " + result);
+    private void addResult() {
+        int add = calculator.add(firstNumber, secondNumber);
+        outputView.printAddResult(add);
     }
 
-    private void subtractResult(){
+    private void subtractResult() {
         int subtract = calculator.subtract(firstNumber, secondNumber);
-        int result = outputView.calculationResult(subtract);
-        System.out.println("빼기 계산 결과 = " + result);
+        outputView.printSubtractResult(subtract);
     }
 
-    private void multiplyResult(){
+    private void multiplyResult() {
         int multiply = calculator.multiply(firstNumber, secondNumber);
-        int result = outputView.calculationResult(multiply);
-        System.out.println("곱하기 계산 결과 = " + result);
+        outputView.printMultiplyResult(multiply);
     }
 
-    private void divideResult(){
+    private void divideResult() {
         int divide = calculator.divide(firstNumber, secondNumber);
-        int result = outputView.calculationResult(divide);
-        System.out.println("나누기 계산 결과 = " + result);
+        outputView.printDivideResult(divide);
     }
 
-    public void run(){
+    public void run() {
         addResult();
         subtractResult();
         multiplyResult();

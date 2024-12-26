@@ -32,9 +32,10 @@ public class CarController {
     public void run() {
         Cars registeredCars = new Cars(registerCars());
         registeredCars.raceCars(randomNumberGenerator);
+        int maxPosition = registeredCars.findMaxPosition();
         List<Car> racedCars = registeredCars.getCars();
         outputView.showRacingCarsName(racedCars);
-        List<String> winner = registeredCars.findWinner();
+        List<String> winner = registeredCars.findWinner(maxPosition);
         outputView.showCarsPosition(racedCars);
         outputView.showWinner(winner);
     }

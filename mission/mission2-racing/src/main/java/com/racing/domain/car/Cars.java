@@ -26,16 +26,15 @@ public class Cars {
         }
     }
 
-    public List<String> findWinner() {
+    public List<String> findWinner(int maxPosition) {
         List<String> winner = new ArrayList<>();
-        int maxPosition = findMaxPosition();
         for (Car car : cars) {
             findRightCar(maxPosition, car, winner);
         }
         return winner;
     }
 
-    private int findMaxPosition() {
+    public int findMaxPosition() {
         return cars.stream()
                 .mapToInt(v -> v.getPosition())
                 .max()

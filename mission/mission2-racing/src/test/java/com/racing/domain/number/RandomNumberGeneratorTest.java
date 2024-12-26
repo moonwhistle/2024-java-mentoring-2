@@ -35,13 +35,4 @@ class RandomNumberGeneratorTest {
                 () -> Assertions.assertNotEquals(notResult, expect)
         );
     }
-
-
-    @Test
-    void 음수예외발생테스트() {
-    }
-
-    @Test
-    void 범위초과생성예외발생테스트() {
-    }
 }

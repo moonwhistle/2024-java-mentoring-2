@@ -35,8 +35,10 @@ public class Cars {
     }
 
     private int findMaxPosition() {
-        int maxPosition = cars.stream().mapToInt(v -> v.getPosition()).max().orElse(0);
-        return maxPosition;
+        return cars.stream()
+                .mapToInt(v -> v.getPosition())
+                .max()
+                .orElse(0);
     }
 
     private void findRightCar(int maxPosition, Car car, List<String> winners) {

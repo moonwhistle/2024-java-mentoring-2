@@ -9,6 +9,7 @@ public class Cars {
 
     private static final int NUMBER_OF_RACE_LAPS = 4;
     private static final int NUMBER_ZERO = 0;
+
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {

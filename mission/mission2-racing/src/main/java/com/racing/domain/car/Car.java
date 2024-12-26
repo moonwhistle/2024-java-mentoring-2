@@ -15,7 +15,7 @@ public class Car {
 
     public void driveCar(int randomNumber) {
         if (randomNumber >= MOVEMENT_THRESHOLD) {
-            position++;
+            forwardCar();
         }
     }
 
@@ -27,4 +27,7 @@ public class Car {
         return carName.getCarName();
     }
 
+    private void forwardCar() {
+        position++;
+    }
 }

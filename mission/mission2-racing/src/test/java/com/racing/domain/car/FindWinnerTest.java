@@ -16,9 +16,9 @@ public class FindWinnerTest {
         int notMaxPosition = 0;
         Car neo = new Car("neo");
         Car brie = new Car("brie");
+        List<Car> registeredCars = Arrays.asList(neo, brie);
         neo.driveCar(5);
         brie.driveCar(2);
-        List<Car> registeredCars = Arrays.asList(neo, brie);
         Cars recingCars = new Cars(registeredCars);
         List<String> expected = Arrays.asList(("neo"));
         List<String> notExpected = Arrays.asList(("brie"));

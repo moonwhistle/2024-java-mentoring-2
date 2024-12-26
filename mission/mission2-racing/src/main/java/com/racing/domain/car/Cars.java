@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Cars {
 
+    private static final int NUMBER_OF_RACE_LAPS = 4;
+    private static final int NUMBER_ZERO = 0;
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -18,8 +20,7 @@ public class Cars {
     }
 
     public void raceCars(RandomNumberGenerator randomNumberGenerator) {
-        int numberOfLaps = 4;
-        for (int i = 0; i < numberOfLaps; i++) {
+        for (int i = NUMBER_ZERO; i < NUMBER_OF_RACE_LAPS; i++) {
             driveCars(randomNumberGenerator);
         }
     }

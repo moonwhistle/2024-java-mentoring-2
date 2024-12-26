@@ -2,16 +2,19 @@ package com.racing.domain.car;
 
 public class Car {
 
+    private static final int INITIAL_POSITION = 0;
+    private static final int MOVEMENT_THRESHOLD = 4;
+
     private int position;
     private final CarName carName;
 
     public Car(final String carName) {
-        position = 0;
+        position = INITIAL_POSITION;
         this.carName = new CarName(carName);
     }
 
     public void driveCar(int randomNumber) {
-        if (randomNumber >= 4) {
+        if (randomNumber >= MOVEMENT_THRESHOLD) {
             position++;
         }
     }

@@ -19,7 +19,7 @@ public class OutputView {
     }
 
     public void showWinner(List<String> winner) {
-        System.out.println(winner);
+        System.out.println(winner + "우승");
     }
 
 }

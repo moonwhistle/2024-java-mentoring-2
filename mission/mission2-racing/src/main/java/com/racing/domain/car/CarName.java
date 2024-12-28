@@ -2,7 +2,7 @@ package com.racing.domain.car;
 
 public class CarName {
 
-    private static final String NAME_ERROR_MESSAGE = "차 이름을 다시 입력하세요.";
+    private static final String NAME_ERROR_MESSAGE = "차 이름은 빈 값이 될 수 없습니다.";
 
     private final String carName;
 
@@ -16,7 +16,7 @@ public class CarName {
     }
 
     private void validateCarName(String carName) {
-        if (carName == null) {
+        if (carName == null || carName.isEmpty()) {
             throw new IllegalArgumentException(NAME_ERROR_MESSAGE);
         }
     }

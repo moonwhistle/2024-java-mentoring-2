@@ -3,11 +3,10 @@ package com.racing.controller;
 import com.racing.domain.car.Car;
 import com.racing.domain.car.Cars;
 import com.racing.domain.number.RandomNumberGenerator;
-
 import com.racing.view.InputView;
 import com.racing.view.OutputView;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarController {
@@ -22,21 +21,17 @@ public class CarController {
         this.inputview = inputview;
     }
 
-    public List<Car> registerCars() {
-        Car neo = new Car("neo");
-        Car brie = new Car("brie");
-        Car brown = new Car("brown");
-        return Arrays.asList(neo,brie,brown);
-    }
-
     public void run() {
-        Cars registeredCars = new Cars(registerCars());
+        Cars cars = new Cars(new ArrayList<>());
+        List<Car> carEntry = cars.makeCars();
+        Cars registeredCars = new Cars(carEntry);
+        List<String> namesOfRacingCars = registeredCars.getNamesOfCars();
         registeredCars.raceCars(randomNumberGenerator);
         int maxPosition = registeredCars.findMaxPosition();
-        List<Car> racedCars = registeredCars.getCars();
-        outputView.showRacingCarsName(racedCars);
+        List<Integer> positionsOfCars = registeredCars.getPositionsOfCars();
         List<String> winner = registeredCars.findWinner(maxPosition);
-        outputView.showCarsPosition(racedCars);
+        outputView.showRacingCarsName(namesOfRacingCars);
+        outputView.showCarsPosition(positionsOfCars);
         outputView.showWinner(winner);
     }
 

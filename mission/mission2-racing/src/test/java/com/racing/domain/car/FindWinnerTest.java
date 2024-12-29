@@ -19,13 +19,13 @@ public class FindWinnerTest {
         List<Car> registeredCars = Arrays.asList(neo, brie);
         neo.driveCar(5);
         brie.driveCar(2);
-        Cars recingCars = new Cars(registeredCars);
+        Cars racingCars = new Cars(registeredCars);
         List<String> expected = Arrays.asList(("neo"));
         List<String> notExpected = Arrays.asList(("brie"));
 
         //when & then
-        List<String> result = recingCars.findWinner(maxPosition);
-        List<String> notResult = recingCars.findWinner(notMaxPosition);
+        List<String> result = racingCars.findWinner(maxPosition);
+        List<String> notResult = racingCars.findWinner(notMaxPosition);
         Assertions.assertAll(
                 () -> Assertions.assertEquals(expected, result),
                 () -> Assertions.assertEquals(notExpected, notResult),

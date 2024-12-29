@@ -23,7 +23,7 @@ public class CarController {
 
     public void run() {
         Cars cars = new Cars(new ArrayList<>());
-        List<Car> carEntry = cars.makeCars();
+        List<Car> carEntry = cars.makeCarEntry();
         Cars registeredCars = new Cars(carEntry);
         List<String> namesOfRacingCars = registeredCars.getNamesOfCars();
         registeredCars.raceCars(randomNumberGenerator);

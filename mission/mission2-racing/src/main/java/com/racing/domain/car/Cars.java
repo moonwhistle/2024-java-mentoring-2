@@ -3,7 +3,6 @@ package com.racing.domain.car;
 import com.racing.domain.number.RandomNumberGenerator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Cars {
@@ -18,11 +17,10 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Car> makeCars() {
+    public List<Car> makeCarEntry() {
         List<Car> carEntry = new ArrayList<>();
-        List<String> NamesOfCars = Arrays.asList("a", "b", "c", "d");
-        for (String nameOfCar : NamesOfCars) {
-            carEntry.add(new Car(nameOfCar));
+        for (int i = 0; i < NUMBER_OF_Cars; i++) {
+            carEntry.add(new Car(makeCars().get(i)));
         }
         return carEntry;
     }
@@ -66,6 +64,14 @@ public class Cars {
             positionsOfCars.add(car.getPosition());
         }
         return positionsOfCars;
+    }
+
+    private List<String> makeCars() {
+        List<String> NamesOfCars = new ArrayList<>();
+        for (char i = 'a'; i < 'a' + NUMBER_OF_Cars; i++) {
+            NamesOfCars.add(i+"");
+        }
+        return NamesOfCars;
     }
 
     private void findRightCar(int maxPosition, Car car, List<String> winners) {

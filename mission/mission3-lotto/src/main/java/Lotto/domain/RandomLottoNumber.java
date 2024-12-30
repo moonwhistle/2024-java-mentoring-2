@@ -10,7 +10,6 @@ public class RandomLottoNumber implements RandomNumberGenerator {
     private static final int limit = 100;
     private static final int lottoElementNumber = 6;
     private ArrayList<Integer> numberList = new ArrayList<>();
-    private ArrayList<ArrayList<Integer>> lottoList = new ArrayList<>();
 
     @Override
     public ArrayList<Integer> generateNumberList(){
@@ -20,18 +19,6 @@ public class RandomLottoNumber implements RandomNumberGenerator {
         }
 
         return numberList;
-    }
-
-    public ArrayList<ArrayList<Integer>> generateLottoList(int amount){
-        for(int i = 0; i < amount; i++){
-            lottoList.add(generateNumberList());
-        }
-
-        return lottoList;
-    }
-
-    public ArrayList<ArrayList<Integer>> getLottoList(){
-        return lottoList;
     }
 
 }

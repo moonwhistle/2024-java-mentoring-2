@@ -30,4 +30,8 @@ public class RandomLottoNumber implements RandomNumberGenerator {
         return lottoList;
     }
 
+    public ArrayList<ArrayList<Integer>> getLottoList(){
+        return lottoList;
+    }
+
 }

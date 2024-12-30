@@ -18,9 +18,14 @@ public class LottoController {
         printLottoNumber();
     }
 
-    private void printLottoNumber(){
+    private int enterLottoNumber(){
         int number = inputView.purchaseLotto();
-        System.out.println(number);
+        return number;
+    }
+
+    private void printLottoNumber(){
+        int lottoNumber = enterLottoNumber();
+        outputView.printLottoNumber(lottoNumber);
     }
 
 }

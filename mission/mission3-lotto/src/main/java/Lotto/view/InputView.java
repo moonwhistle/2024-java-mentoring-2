@@ -1,4 +1,4 @@
-package view;
+package Lotto.view;
 
 import java.util.Scanner;
 

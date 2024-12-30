@@ -11,7 +11,6 @@ public class RandomLottoNumber implements RandomNumberGenerator {
 
     private static final int limit = 100;
     private static final int lottoElementNumber = 6;
-    private ArrayList<Integer> numberList = new ArrayList<>();
 
     @Override
     public ArrayList<Integer> generateNumberList(){
@@ -21,7 +20,7 @@ public class RandomLottoNumber implements RandomNumberGenerator {
             numberSet.add(number);
         }
 
-        return new ArrayList<>(numberSet); // Set을 List로 변환하여 반환
+        return new ArrayList<>(numberSet);
     }
 
 

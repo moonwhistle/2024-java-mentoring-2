@@ -8,7 +8,7 @@ public class Lotto {
 
     private final ArrayList<Integer> lottoNumber;
     private final RandomNumberGenerator randomNumberGenerator;
-    private ArrayList<ArrayList<Integer>> lottoList = new ArrayList<>();
+    private final ArrayList<ArrayList<Integer>> lottoList = new ArrayList<>();
 
     public Lotto(int numberOfLotto, RandomNumberGenerator randomNumberGenerator){
         this.randomNumberGenerator = randomNumberGenerator;

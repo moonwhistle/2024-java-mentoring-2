@@ -1,27 +1,42 @@
 package com.racing.controller;
 
-import com.racing.domain.car.MovingCar;
+import com.racing.domain.car.Car;
+import com.racing.domain.car.Cars;
+import com.racing.domain.car.Racing;
+import com.racing.domain.car.Registration;
 import com.racing.domain.number.RandomNumberGenerator;
+
 import com.racing.view.InputView;
 import com.racing.view.OutputView;
 
+import java.util.List;
+
 public class CarController {
 
+    private final Racing racing;
+    private final Registration registration;
     private final RandomNumberGenerator randomNumberGenerator;
     private final OutputView outputView;
     private final InputView inputview;
-    private final MovingCar movingCar;
 
-    public CarController(RandomNumberGenerator generateRacingRandomNumber, OutputView outputView, InputView inputview, MovingCar movingCar) {
+    public CarController(Racing racing, Registration registration, RandomNumberGenerator generateRacingRandomNumber, OutputView outputView, InputView inputview) {
+        this.racing = racing;
+        this.registration = registration;
         this.randomNumberGenerator = generateRacingRandomNumber;
         this.outputView = outputView;
         this.inputview = inputview;
-        this.movingCar = movingCar;
     }
 
     public void run() {
-        int state = 0;
-        int randomNumber = randomNumberGenerator.generateRandomNumber();
-        outputView.output(inputview.receiveCarName(), movingCar.decideMove(randomNumber, state));
+        String namesOfCars = inputview.receiveCarName();
+        int numberOfLaps = inputview.receiveNumberOfLaps();
+        List<Car> registeredCars = registration.registerCars(namesOfCars);
+        racing.raceTheCars(randomNumberGenerator, numberOfLaps);
+        int maxPositionOfCars = racing.findMaxPosition();
+        List<String> winner = racing.findWinner(maxPositionOfCars);
+        Cars racingCars = new Cars(registeredCars);
+        outputView.showRacingCarsName(racingCars.getNamesOfCars());
+        outputView.showCarsPosition(racingCars.getPositionsOfCars());
+        outputView.showWinner(winner);
     }
 }

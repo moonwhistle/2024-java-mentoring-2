@@ -30,7 +30,6 @@ public class Racing {
                 .orElse(0);
     }
 
-
     private void findRightCar(int maxPosition, Car car, List<String> winners) {
         if (maxPosition == car.getPosition()) {
             winners.add(car.getCarName());

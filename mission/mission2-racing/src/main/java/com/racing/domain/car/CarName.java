@@ -1,8 +1,8 @@
 package com.racing.domain.car;
 
-public class CarName {
+import com.racing.common.exception.EmptyNameValueException;
 
-    private static final String NAME_ERROR_MESSAGE = "차 이름은 빈 값이 될 수 없습니다.";
+public class CarName {
 
     private final String carName;
 
@@ -17,7 +17,7 @@ public class CarName {
 
     private void validateCarName(String carName) {
         if (carName == null || carName.isEmpty()) {
-            throw new IllegalArgumentException(NAME_ERROR_MESSAGE);
+            throw new EmptyNameValueException();
         }
     }
 }

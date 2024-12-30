@@ -1,8 +1,7 @@
-package controller;
+package Lotto.controller;
 
-import domain.Lotto;
-import view.InputView;
-import view.OutputView;
+import Lotto.view.InputView;
+import Lotto.view.OutputView;
 
 public class LottoController {
 
@@ -15,6 +14,11 @@ public class LottoController {
     }
 
     public void startLotto(){
+        purchaseLotto();
+    }
+
+    private void purchaseLotto(){
+        enterLottoNumber();
         printLottoNumber();
     }
 

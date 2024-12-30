@@ -9,13 +9,9 @@ public class InputView {
     private final String enterAmount = "구입금액을 입력해 주세요.";
 
     public int purchaseLotto(){
-        printEnterAmount();
+        System.out.println(enterAmount);
         int amount = scanner.nextInt();
         return amount / lottoPrice;
-    }
-
-    private void printEnterAmount(){
-        System.out.println(enterAmount);
     }
 
 }

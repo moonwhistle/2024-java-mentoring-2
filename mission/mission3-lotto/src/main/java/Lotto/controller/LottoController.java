@@ -18,19 +18,22 @@ public class LottoController {
     }
 
     public void startLotto(){
-        Lotto lotto = new Lotto(enterLottoNumber(), randomNumberGenerator);
         int numberOfLotto = enterLottoNumber();
-        printLottoNumber();
+        Lotto lotto = new Lotto(numberOfLotto, randomNumberGenerator);
+        printLottoList(lotto, numberOfLotto);
     }
 
     private int enterLottoNumber(){
-        int number = inputView.purchaseLotto();
-        return number;
+        return inputView.purchaseLotto();
     }
 
-    private void printLottoNumber(){
-        int lottoNumber = enterLottoNumber();
+    private void printLottoNumber(int lottoNumber){
         outputView.printLottoNumber(lottoNumber);
+    }
+
+    private void printLottoList(Lotto lotto, int lottoNumber){
+        printLottoNumber(lottoNumber);
+        outputView.printLottoList(lotto);
     }
 
 }

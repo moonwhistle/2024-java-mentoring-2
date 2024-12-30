@@ -31,9 +31,9 @@ public class CarController {
         String namesOfCars = inputview.receiveCarName();
         int numberOfLaps = inputview.receiveNumberOfLaps();
         List<Car> registeredCars = registration.registerCars(namesOfCars);
-        racing.raceTheCars(randomNumberGenerator, numberOfLaps, registeredCars);
-        int maxPositionOfCars = racing.findMaxPosition(registeredCars);
-        List<String> winner = racing.findWinner(maxPositionOfCars, registeredCars);
+        racing.raceTheCars(randomNumberGenerator, numberOfLaps);
+        int maxPositionOfCars = racing.findMaxPosition();
+        List<String> winner = racing.findWinner(maxPositionOfCars);
         Cars racingCars = new Cars(registeredCars);
         outputView.showRacingCarsName(racingCars.getNamesOfCars());
         outputView.showCarsPosition(racingCars.getPositionsOfCars());

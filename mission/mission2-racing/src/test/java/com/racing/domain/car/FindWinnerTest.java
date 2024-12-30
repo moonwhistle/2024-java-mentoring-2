@@ -19,7 +19,7 @@ public class FindWinnerTest {
         List<Car> registeredCars = Arrays.asList(neo, brie);
         neo.driveCar(5);
         brie.driveCar(2);
-        Cars racingCars = new Cars(registeredCars);
+        Racing racingCars = new Racing(registeredCars);
         List<String> expected = Arrays.asList(("neo"));
         List<String> notExpected = Arrays.asList(("brie"));
 

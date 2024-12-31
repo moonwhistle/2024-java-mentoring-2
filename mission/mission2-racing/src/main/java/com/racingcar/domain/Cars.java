@@ -4,6 +4,10 @@ import java.util.*;
 
 public class Cars {
 
+    private final Integer MOVE_BOUND_NUMBER = 4;
+    private final Integer MOVE_STATE = 1;
+    private final Integer STOP_STATE = 0;
+
     private final List<Car> cars;
     private final RandomNumberGenerator zeroToNineGenerator;
 
@@ -24,11 +28,11 @@ public class Cars {
     }
 
     private int getCarMoveState(int randomNumber){
-        if(randomNumber >= 4){
-            return 1;
+        if(randomNumber >= MOVE_BOUND_NUMBER){
+            return MOVE_STATE;
         }
 
-        return 0;
+        return STOP_STATE;
     }
 
     public void moveCars(){

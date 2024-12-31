@@ -29,12 +29,16 @@ public class RaceService {
         return integerParser.parseInteger(strTryCount);
     }
 
+    public Cars getMovedCars(ArrayList<String> carNames, int tryCount){
+        Cars cars = new Cars(carNames);
+        return racingCarLogic.loopTryCount(tryCount, cars);
+    }
+
     public ResponseDTO raceCar(RequestDTO inputViewRequestDTO) {
         ArrayList<String> carNames = getCarNames(inputViewRequestDTO.getCarNames());
         int tryCount = getTryCount(inputViewRequestDTO.getTryCount());
 
-        Cars cars = new Cars(carNames);
-        Cars movedCars = racingCarLogic.loopTryCount(tryCount, cars);
+        Cars movedCars = getMovedCars(carNames, tryCount);
 
         List<String> winnerList = movedCars.getWinner();
         return new ResponseDTO(winnerList);

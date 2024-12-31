@@ -1,25 +1,23 @@
 package com.racingcar.controller;
 
-import com.racingcar.domain.RacingCarLogic;
+import com.racingcar.domain.*;
 
-import com.racingcar.view.InputView;
-import com.racingcar.view.Outputview;
+import com.racingcar.view.*;
 
-import com.racingcar.util.random.RandomNumberGenerator;
-import com.racingcar.util.random.ZeroToNineGenerator;
+import java.util.List;
 
 public class RacingcarContoller {
 
     private final InputView inputView;
     private final Outputview outputview;
     private final RacingCarLogic racingCarLogic;
-    private final RandomNumberGenerator zeroToNineGenerator;
+    private final IntegerParser integerParser;
 
     public RacingcarContoller(){
         this.inputView = new InputView();
         this.outputview = new Outputview();
         this.racingCarLogic = new RacingCarLogic();
-        this.zeroToNineGenerator = new ZeroToNineGenerator();
+        this.integerParser = new IntegerParser();
     }
 
     public void runCar(){
@@ -27,11 +25,17 @@ public class RacingcarContoller {
         outputview.showCarNameInputPrompt();
         String carName = inputView.getInput();
 
-        int randomNumber = zeroToNineGenerator.getRandomNumber();
+        outputview.showTryCountInputPrompt();
+        String strTryCount = inputView.getInput();
+        int tryCount = integerParser.parseTryCount(strTryCount);
 
-        int moveState = racingCarLogic.getCarMoveState(randomNumber);
-        String isCarMoved = racingCarLogic.isCarMoved(moveState);
+        String[] carArray = racingCarLogic.splitCarName(carName);
+        Cars cars = new Cars(carArray);
+        
+        cars = racingCarLogic.loopTryCount(tryCount, cars);
+        List<String> winnerList = cars.getWinner();
 
-        outputview.showCarMove(carName, isCarMoved);
+        String winner = racingCarLogic.buildWinnerString(winnerList);
+        outputview.showWinner(winner);
     }
 }

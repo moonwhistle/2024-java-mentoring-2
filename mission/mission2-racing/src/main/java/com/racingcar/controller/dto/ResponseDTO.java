@@ -3,14 +3,16 @@ package com.racingcar.controller.dto;
 import java.util.List;
 
 public class ResponseDTO {
+    private final String JOIN_STRING = ", ";
+
     private final List<String> winnerList;
 
-    private ResponseDTO(List<String> winnerList) {
+    public ResponseDTO(List<String> winnerList) {
         this.winnerList = winnerList;
     }
 
     private String getFormattedWinners() {
-        return String.join(", ", this.winnerList); // 쉼표로 구분된 문자열 반환
+        return String.join(JOIN_STRING, this.winnerList);
     }
 
     public String getWinners() {

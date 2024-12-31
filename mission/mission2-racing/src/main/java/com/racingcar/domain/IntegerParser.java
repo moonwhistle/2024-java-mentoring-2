@@ -1,5 +1,9 @@
 package com.racingcar.domain;
 
+import com.racingcar.domain.exception.MinusErrorException;
+import com.racingcar.domain.exception.NaNErrorException;
+import com.racingcar.domain.exception.NotIntegerException;
+
 public class IntegerParser {
 
     private final String NAN_ERROR_MESSAGE = "입력된 값이 숫자가 아닙니다.";
@@ -11,13 +15,13 @@ public class IntegerParser {
             int integerStr = isInteger(str);
             return isMinus(integerStr);
         } catch (NumberFormatException e) {
-            throw new RuntimeException(NAN_ERROR_MESSAGE);
+            throw new NaNErrorException(NAN_ERROR_MESSAGE);
         }
     }
 
     private int isMinus(int num) {
         if (num < 0) {
-            throw new RuntimeException(MINUS_ERROR_MESSAGE);
+            throw new MinusErrorException(MINUS_ERROR_MESSAGE);
         }
 
         return num;
@@ -28,7 +32,7 @@ public class IntegerParser {
         double doubleStr = Double.parseDouble(str);
 
         if(doubleStr != (int) doubleStr){
-            throw new RuntimeException(NOT_INTEGER_ERROR_MESSAGE);
+            throw new NotIntegerException(NOT_INTEGER_ERROR_MESSAGE);
         }
 
         return (int) doubleStr;

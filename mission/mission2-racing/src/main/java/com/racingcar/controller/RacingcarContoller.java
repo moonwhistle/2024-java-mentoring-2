@@ -1,5 +1,9 @@
 package com.racingcar.controller;
 
+import com.racingcar.controller.dto.RequestDTO;
+import com.racingcar.controller.dto.CarDataDTO;
+import com.racingcar.controller.dto.ResponseDTO;
+
 import com.racingcar.domain.Cars;
 import com.racingcar.domain.IntegerParser;
 import com.racingcar.domain.RacingCarLogic;
@@ -24,23 +28,35 @@ public class RacingcarContoller {
         this.integerParser = new IntegerParser();
     }
 
-    public void runCar(){
-
+    public RequestDTO wrapInputViewRequest() {
         outputview.showCarNameInputPrompt();
-        String carName = inputView.getInput();
+        String strCarNames = inputView.getInput();
 
         outputview.showTryCountInputPrompt();
         String strTryCount = inputView.getInput();
-        int tryCount = integerParser.parseInteger(strTryCount);
 
-        String[] carArray = racingCarLogic.splitCarName(carName);
-        ArrayList<String> carnames = racingCarLogic.arrayToArrayList(carArray);
-        Cars cars = new Cars(carnames);
-        
-        cars = racingCarLogic.loopTryCount(tryCount, cars);
-        List<String> winnerList = cars.getWinner();
+        return new RequestDTO(strCarNames, strTryCount);
+    }
 
-        String winner = racingCarLogic.buildWinnerString(winnerList);
-        outputview.showWinner(winner);
+    public void runCar(){
+
+        RequestDTO inputViewRequestDTO = wrapInputViewRequest();
+
+//        RequestDTO inputViewDTO = new RequestDTO(strCarNames, strTryCount);
+//
+//        String[] carArray = racingCarLogic.splitCarName(strCarNames);
+//        ArrayList<String> carNames = racingCarLogic.arrayToArrayList(carArray);
+//
+//        int tryCount = integerParser.parseInteger(strTryCount);
+//
+//        RequestDTO requestDTO = new RequestDTO(carNames, tryCount);
+//
+//        Cars cars = new Cars(carNames);
+//
+//        cars = racingCarLogic.loopTryCount(tryCount, cars);
+//        List<String> winnerList = cars.getWinner();
+//
+//        String winner = racingCarLogic.buildWinnerString(winnerList);
+//        outputview.showWinner(winner);
     }
 }

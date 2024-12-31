@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Cars {
-
     private final Integer MOVE_BOUND_NUMBER = 4;
     private final Integer MOVE_STATE = 1;
     private final Integer STOP_STATE = 0;

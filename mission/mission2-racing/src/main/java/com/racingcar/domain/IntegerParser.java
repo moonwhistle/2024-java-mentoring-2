@@ -10,7 +10,7 @@ public class IntegerParser {
     private final String NOT_INTEGER_ERROR_MESSAGE = "입력된 값이 정수가 아닙니다.";
     private final String MINUS_ERROR_MESSAGE = "입력된 값이 음수입니다.";
 
-    public int parseTryCount(String str) {
+    public int parseInteger(String str) {
         try {
             int integerStr = isInteger(str);
             return isMinus(integerStr);

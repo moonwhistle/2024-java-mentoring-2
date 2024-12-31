@@ -4,11 +4,11 @@ import com.racingcar.controller.dto.RequestDTO;
 import com.racingcar.controller.dto.ResponseDTO;
 
 import com.racingcar.sevice.RaceService;
+
 import com.racingcar.view.InputView;
 import com.racingcar.view.Outputview;
 
 public class RacingcarContoller {
-
     private final InputView inputView;
     private final Outputview outputview;
     private final RaceService raceService;

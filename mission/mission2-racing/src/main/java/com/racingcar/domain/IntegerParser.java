@@ -5,7 +5,6 @@ import com.racingcar.domain.exception.NaNErrorException;
 import com.racingcar.domain.exception.NotIntegerException;
 
 public class IntegerParser {
-
     private final String NAN_ERROR_MESSAGE = "입력된 값이 숫자가 아닙니다.";
     private final String NOT_INTEGER_ERROR_MESSAGE = "입력된 값이 정수가 아닙니다.";
     private final String MINUS_ERROR_MESSAGE = "입력된 값이 음수입니다.";
@@ -28,7 +27,6 @@ public class IntegerParser {
     }
 
     private int isInteger(String str) {
-
         double doubleStr = Double.parseDouble(str);
 
         if(doubleStr != (int) doubleStr){

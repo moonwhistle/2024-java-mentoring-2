@@ -1,21 +1,19 @@
 package com.racingcar.controller.dto;
 
-import java.util.ArrayList;
-
 public class RequestDTO {
-    private final ArrayList<String> carNames;
-    private final int tryCount;
+    private final String carNames;
+    private final String tryCount;
 
-    public RequestDTO(ArrayList<String> carNames, int tryCount) {
+    public RequestDTO(String carNames, String tryCount) {
         this.carNames = carNames;
         this.tryCount = tryCount;
     }
 
-    public ArrayList<String> getCarName() {
+    public String getCarNames() {
         return carNames;
     }
 
-    public int getTryCount() {
+    public String getTryCount() {
         return tryCount;
     }
 }

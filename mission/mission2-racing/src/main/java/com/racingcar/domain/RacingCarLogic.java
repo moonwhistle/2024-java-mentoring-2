@@ -1,5 +1,7 @@
 package com.racingcar.domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarLogic {
@@ -20,5 +22,9 @@ public class RacingCarLogic {
 
     public String buildWinnerString(List<String> winnerList){
         return String.join(JOIN_STRING, winnerList);
+    }
+
+    public ArrayList<String> arrayToArrayList(String [] array){
+        return new ArrayList<>(Arrays.asList(array));
     }
 }

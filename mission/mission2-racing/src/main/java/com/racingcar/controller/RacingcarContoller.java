@@ -7,6 +7,7 @@ import com.racingcar.domain.RacingCarLogic;
 import com.racingcar.view.InputView;
 import com.racingcar.view.Outputview;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingcarContoller {
@@ -33,7 +34,8 @@ public class RacingcarContoller {
         int tryCount = integerParser.parseInteger(strTryCount);
 
         String[] carArray = racingCarLogic.splitCarName(carName);
-        Cars cars = new Cars(carArray);
+        ArrayList<String> carnames = racingCarLogic.arrayToArrayList(carArray);
+        Cars cars = new Cars(carnames);
         
         cars = racingCarLogic.loopTryCount(tryCount, cars);
         List<String> winnerList = cars.getWinner();

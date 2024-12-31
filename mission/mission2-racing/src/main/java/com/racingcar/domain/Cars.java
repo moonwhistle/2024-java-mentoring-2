@@ -13,12 +13,12 @@ public class Cars {
     private final List<Car> cars;
     private final RandomNumberGenerator zeroToNineGenerator;
 
-    public Cars(final String[] carsArray){
+    public Cars(final ArrayList<String> carsArray){
         this.cars = makeCars(carsArray);
         this.zeroToNineGenerator = new ZeroToNineGenerator();
     }
 
-    private List<Car> makeCars(String[] carsArray){
+    private List<Car> makeCars(ArrayList<String> carsArray){
         List<Car> cars = new ArrayList<>();
 
         for(String name : carsArray){

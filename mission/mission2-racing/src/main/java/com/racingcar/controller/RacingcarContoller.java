@@ -1,8 +1,11 @@
 package com.racingcar.controller;
 
-import com.racingcar.domain.*;
+import com.racingcar.domain.Cars;
+import com.racingcar.domain.IntegerParser;
+import com.racingcar.domain.RacingCarLogic;
 
-import com.racingcar.view.*;
+import com.racingcar.view.InputView;
+import com.racingcar.view.Outputview;
 
 import java.util.List;
 
@@ -27,7 +30,7 @@ public class RacingcarContoller {
 
         outputview.showTryCountInputPrompt();
         String strTryCount = inputView.getInput();
-        int tryCount = integerParser.parseTryCount(strTryCount);
+        int tryCount = integerParser.parseInteger(strTryCount);
 
         String[] carArray = racingCarLogic.splitCarName(carName);
         Cars cars = new Cars(carArray);

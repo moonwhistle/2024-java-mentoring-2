@@ -31,7 +31,14 @@ public class RaceService {
 
     public Cars getMovedCars(ArrayList<String> carNames, int tryCount){
         Cars cars = new Cars(carNames);
+
         return racingCarLogic.loopTryCount(tryCount, cars);
+    }
+
+    public String getWinners(Cars cars){
+        List<String> winnerList = cars.getWinner();
+
+        return racingCarLogic.buildListToString(winnerList);
     }
 
     public ResponseDTO raceCar(RequestDTO inputViewRequestDTO) {
@@ -39,9 +46,8 @@ public class RaceService {
         int tryCount = getTryCount(inputViewRequestDTO.tryCount());
 
         Cars movedCars = getMovedCars(carNames, tryCount);
+        String winners = getWinners(movedCars);
 
-        List<String> winnerList = movedCars.getWinner();
-        String winners = racingCarLogic.buildListToString(winnerList);
         return new ResponseDTO(winners);
     }
 }

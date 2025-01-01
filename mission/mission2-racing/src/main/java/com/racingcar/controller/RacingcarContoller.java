@@ -30,7 +30,7 @@ public class RacingcarContoller {
         return inputView.getInput();
     }
 
-    public RequestDTO wrapInputViewRequest() {
+    public RequestDTO createRequestView() {
         String carNames = getCarNamesFromView();
         String tryCount = getTryCountFromView();
 
@@ -38,7 +38,7 @@ public class RacingcarContoller {
     }
 
     public void manageRaceFlow() {
-        RequestDTO inputViewRequestDTO = wrapInputViewRequest();
+        RequestDTO inputViewRequestDTO = createRequestView();
         ResponseDTO raceResponseDTO = raceService.raceCar(inputViewRequestDTO);
 
         String winners = raceResponseDTO.winners();

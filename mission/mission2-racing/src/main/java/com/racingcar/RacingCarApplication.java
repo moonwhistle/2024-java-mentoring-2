@@ -6,6 +6,6 @@ public class RacingCarApplication {
 
     public static void main(String[] args) {
         RacingcarContoller racingcarContoller = new RacingcarContoller();
-        racingcarContoller.runCar();
+        racingcarContoller.manageRaceFlow();
     }
 }

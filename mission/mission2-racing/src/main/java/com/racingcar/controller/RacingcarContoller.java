@@ -1,37 +1,48 @@
 package com.racingcar.controller;
 
-import com.racingcar.domain.RacingCarLogic;
+import com.racingcar.controller.dto.RequestDTO;
+import com.racingcar.controller.dto.ResponseDTO;
+
+import com.racingcar.sevice.RaceService;
 
 import com.racingcar.view.InputView;
 import com.racingcar.view.Outputview;
 
-import com.racingcar.util.random.RandomNumberGenerator;
-import com.racingcar.util.random.ZeroToNineGenerator;
-
 public class RacingcarContoller {
-
     private final InputView inputView;
     private final Outputview outputview;
-    private final RacingCarLogic racingCarLogic;
-    private final RandomNumberGenerator zeroToNineGenerator;
+    private final RaceService raceService;
 
-    public RacingcarContoller(){
+    public RacingcarContoller() {
         this.inputView = new InputView();
         this.outputview = new Outputview();
-        this.racingCarLogic = new RacingCarLogic();
-        this.zeroToNineGenerator = new ZeroToNineGenerator();
+        this.raceService = new RaceService();
     }
 
-    public void runCar(){
+    public void manageRaceFlow() {
+        RequestDTO inputViewRequestDTO = createRequestView();
 
+        ResponseDTO raceResponseDTO = raceService.raceCar(inputViewRequestDTO);
+
+        outputview.showWinner(raceResponseDTO.winners());
+    }
+
+    public String getCarNamesFromView() {
         outputview.showCarNameInputPrompt();
-        String carName = inputView.getInput();
 
-        int randomNumber = zeroToNineGenerator.getRandomNumber();
+        return inputView.getInput();
+    }
 
-        int moveState = racingCarLogic.getCarMoveState(randomNumber);
-        String isCarMoved = racingCarLogic.isCarMoved(moveState);
+    public String getTryCountFromView() {
+        outputview.showTryCountInputPrompt();
 
-        outputview.showCarMove(carName, isCarMoved);
+        return inputView.getInput();
+    }
+
+    public RequestDTO createRequestView() {
+        String carNames = getCarNamesFromView();
+        String tryCount = getTryCountFromView();
+
+        return new RequestDTO(carNames, tryCount);
     }
 }

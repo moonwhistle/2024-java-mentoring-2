@@ -106,6 +106,7 @@ public void runCar(){
 - **controller**
   - 사용자 요청 처리해서 service 계층으로 보내기
   - view로 결과 보내기
+  - application의 전체적인 동작 제어
 - **service**
   - controller에서 받은 데이터 작업 수행
   - domain / database와 상호작용
@@ -118,8 +119,8 @@ public void runCar(){
 ### DTO, DAO, VO
 - **DTO**
   - `client(view) -> controller`
-  - `controller -> service`
-  - `service -> controller -> client`
+    `controller -> service`
+    `service -> controller -> client` `...others`
   - 설계에 따라 다양하게 사용 가능함.
   - 요점은 DTO가 무결한 데이터 전송을 위해 사용한다는 것
   - 고로, 도메인 로직을 DTO 내부에서 사용하는 것은 불가
@@ -132,3 +133,22 @@ public void runCar(){
   - 값 변경이 필요한 경우 새로운 VO 생성 필요
   - 도메인 규칙이 VO에 캡슐화되어 사용됨
   - service나 domain에서 사용
+
+### MVC 5 Layer Pattern
+![5계층아키텍쳐](5-layer.png)
+
+- **Presentation Layer**
+  - fronted
+- **Control Layer**
+  - 요청 흐름 제어
+- **Business Logic Layer**
+  - `Service Layer`, `Domain Layer` 가 여기 포함됨
+- **Persistence Layer**
+  - db와 상호작용 
+  - CRUD
+  - DAO
+  - infrastructure layer는 persistence를 포함하는 더 넓은 범위
+    - persistence가 db와의 상호작용에 집중한다면 infrasturucture는 앱 외부 모든 연결에 관여
+- **Domain Model Layer**
+  - 데이터와 비즈니스 규칙 정의
+  - domain layer와 협업

@@ -35,12 +35,13 @@ public class RaceService {
     }
 
     public ResponseDTO raceCar(RequestDTO inputViewRequestDTO) {
-        ArrayList<String> carNames = getCarNames(inputViewRequestDTO.getCarNames());
-        int tryCount = getTryCount(inputViewRequestDTO.getTryCount());
+        ArrayList<String> carNames = getCarNames(inputViewRequestDTO.carNames());
+        int tryCount = getTryCount(inputViewRequestDTO.tryCount());
 
         Cars movedCars = getMovedCars(carNames, tryCount);
 
         List<String> winnerList = movedCars.getWinner();
-        return new ResponseDTO(winnerList);
+        String winners = racingCarLogic.buildListToString(winnerList);
+        return new ResponseDTO(winners);
     }
 }

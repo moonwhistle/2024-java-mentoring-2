@@ -33,7 +33,7 @@ public class RacingcarContoller {
         RequestDTO inputViewRequestDTO = wrapInputViewRequest();
         ResponseDTO raceResponseDTO = raceService.raceCar(inputViewRequestDTO);
 
-        String winners = raceResponseDTO.getWinners();
+        String winners = raceResponseDTO.winners();
         outputview.showWinner(winners);
     }
 }

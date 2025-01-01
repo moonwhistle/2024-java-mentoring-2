@@ -18,6 +18,15 @@ public class RacingcarContoller {
         this.outputview = new Outputview();
         this.raceService = new RaceService();
     }
+
+    public void manageRaceFlow() {
+        RequestDTO inputViewRequestDTO = createRequestView();
+
+        ResponseDTO raceResponseDTO = raceService.raceCar(inputViewRequestDTO);
+
+        outputview.showWinner(raceResponseDTO.winners());
+    }
+
     public String getCarNamesFromView() {
         outputview.showCarNameInputPrompt();
 
@@ -35,13 +44,5 @@ public class RacingcarContoller {
         String tryCount = getTryCountFromView();
 
         return new RequestDTO(carNames, tryCount);
-    }
-
-    public void manageRaceFlow() {
-        RequestDTO inputViewRequestDTO = createRequestView();
-        ResponseDTO raceResponseDTO = raceService.raceCar(inputViewRequestDTO);
-
-        String winners = raceResponseDTO.winners();
-        outputview.showWinner(winners);
     }
 }

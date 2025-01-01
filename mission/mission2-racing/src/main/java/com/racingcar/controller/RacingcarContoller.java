@@ -18,15 +18,23 @@ public class RacingcarContoller {
         this.outputview = new Outputview();
         this.raceService = new RaceService();
     }
+    public String getCarNamesFromView() {
+        outputview.showCarNameInputPrompt();
+
+        return inputView.getInput();
+    }
+
+    public String getTryCountFromView() {
+        outputview.showTryCountInputPrompt();
+
+        return inputView.getInput();
+    }
 
     public RequestDTO wrapInputViewRequest() {
-        outputview.showCarNameInputPrompt();
-        String strCarNames = inputView.getInput();
+        String carNames = getCarNamesFromView();
+        String tryCount = getTryCountFromView();
 
-        outputview.showTryCountInputPrompt();
-        String strTryCount = inputView.getInput();
-
-        return new RequestDTO(strCarNames, strTryCount);
+        return new RequestDTO(carNames, tryCount);
     }
 
     public void manageRaceFlow() {

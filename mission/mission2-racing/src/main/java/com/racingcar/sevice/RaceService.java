@@ -19,6 +19,16 @@ public class RaceService {
         this.integerParser = new IntegerParser();
     }
 
+    public ResponseDTO raceCar(RequestDTO inputViewRequestDTO) {
+        ArrayList<String> carNames = getCarNames(inputViewRequestDTO.carNames());
+        int tryCount = getTryCount(inputViewRequestDTO.tryCount());
+
+        Cars movedCars = getMovedCars(carNames, tryCount);
+        String winners = getWinners(movedCars);
+
+        return new ResponseDTO(winners);
+    }
+
     public ArrayList<String> getCarNames(String strCarNames) {
         String[] carArray = racingCarLogic.splitCarName(strCarNames);
 
@@ -39,15 +49,5 @@ public class RaceService {
         List<String> winnerList = cars.getWinner();
 
         return racingCarLogic.buildListToString(winnerList);
-    }
-
-    public ResponseDTO raceCar(RequestDTO inputViewRequestDTO) {
-        ArrayList<String> carNames = getCarNames(inputViewRequestDTO.carNames());
-        int tryCount = getTryCount(inputViewRequestDTO.tryCount());
-
-        Cars movedCars = getMovedCars(carNames, tryCount);
-        String winners = getWinners(movedCars);
-
-        return new ResponseDTO(winners);
     }
 }

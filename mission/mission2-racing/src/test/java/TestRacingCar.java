@@ -21,7 +21,7 @@ public class TestRacingCar {
         IntegerParser integerParser = new IntegerParser();
 
         RuntimeException thrown = Assertions.assertThrows(RuntimeException.class,
-                () -> integerParser.parseTryCount(strNumber)
+                () -> integerParser.parseInteger(strNumber)
         );
 
         //then
@@ -40,7 +40,7 @@ public class TestRacingCar {
         IntegerParser integerParser = new IntegerParser();
 
         RuntimeException thrown = Assertions.assertThrows(RuntimeException.class,
-                () -> integerParser.parseTryCount(strNumber)
+                () -> integerParser.parseInteger(strNumber)
         );
 
         //then
@@ -58,7 +58,7 @@ public class TestRacingCar {
         //when
         IntegerParser integerParser = new IntegerParser();
 
-        int result = integerParser.parseTryCount(strNumber);
+        int result = integerParser.parseInteger(strNumber);
 
         //then
         assertEquals(expected,result);
@@ -76,7 +76,7 @@ public class TestRacingCar {
         IntegerParser integerParser = new IntegerParser();
 
         RuntimeException thrown = Assertions.assertThrows(RuntimeException.class,
-                () -> integerParser.parseTryCount(strNumber)
+                () -> integerParser.parseInteger(strNumber)
         );
 
         //then
@@ -109,5 +109,20 @@ public class TestRacingCar {
 
         //then
         assertEquals(expected, car.getPosition());
+    }
+
+    @Test
+    public void carMovementStringbuildTest(){
+
+        //given
+        int movement = 5;
+        String expected = "-----";
+
+        //when
+        RacingCarLogic racingCarLogic = new RacingCarLogic();
+        String result = racingCarLogic.buildCarMovement(movement);
+
+        //then
+        assertEquals(expected, result);
     }
 }

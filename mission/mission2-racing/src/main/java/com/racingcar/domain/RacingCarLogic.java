@@ -30,7 +30,6 @@ public class RacingCarLogic {
     }
 
     public String buildCarMovement(int position){
-
         return MOVEMENT_CHAR.repeat(Math.max(0, position));
     }
 }

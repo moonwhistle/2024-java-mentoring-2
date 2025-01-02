@@ -1,6 +1,7 @@
 package com.racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -11,16 +12,18 @@ public class Cars {
 
     private final List<Car> cars;
     private final RandomNumberGenerator zeroToNineGenerator;
+    private final ArrayList<HashMap<String, Integer>> carsMovementRecord;
 
-    public Cars(final ArrayList<String> carsArray){
+    public Cars(final ArrayList<String> carsArray) {
         this.cars = makeCars(carsArray);
         this.zeroToNineGenerator = new ZeroToNineGenerator();
+        this.carsMovementRecord = new ArrayList<>();
     }
 
-    private List<Car> makeCars(ArrayList<String> carsArray){
+    private List<Car> makeCars(ArrayList<String> carsArray) {
         List<Car> cars = new ArrayList<>();
 
-        for(String name : carsArray){
+        for (String name : carsArray) {
             Car car = new Car(name);
             cars.add(car);
         }
@@ -28,16 +31,32 @@ public class Cars {
         return cars;
     }
 
-    public void moveCars(){
-        for(final Car car : cars){
+    public void moveCars() {
+        for (final Car car : cars) {
             int randomNumber = zeroToNineGenerator.getRandomNumber();
             int moveState = getCarMoveState(randomNumber);
             car.move(moveState);
         }
+
+        recordCarMovement();
     }
 
-    private int getCarMoveState(int randomNumber){
-        if(randomNumber >= MOVE_BOUND_NUMBER){
+    public void recordCarMovement() {
+        HashMap<String, Integer> map = new HashMap<>();
+
+        for (final Car car : cars) {
+            map.put(car.getName(), car.getPosition());
+        }
+
+        this.carsMovementRecord.add(map);
+    }
+
+    public ArrayList<HashMap<String, Integer>> getCarsMovementRecord() {
+        return this.carsMovementRecord;
+    }
+
+    private int getCarMoveState(int randomNumber) {
+        if (randomNumber >= MOVE_BOUND_NUMBER) {
             return MOVE_STATE;
         }
 
@@ -53,7 +72,7 @@ public class Cars {
                 .toList();
     }
 
-    private int getMaxPosition(){
+    private int getMaxPosition() {
         List<Integer> positions = cars.stream()
                 .map(Car::getPosition)
                 .toList();

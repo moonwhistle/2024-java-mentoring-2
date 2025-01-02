@@ -33,4 +33,17 @@ public class RacingCarLogic {
     public String buildVisualizedCarMovement(int position) {
         return MOVEMENT_CHAR.repeat(Math.max(0, position));
     }
+
+    public HashMap<String, String> getVisualizeMap(HashMap<String, Integer> carMovement){
+        HashMap<String, String> visualizedMovementMap = new HashMap<>();
+
+        for (String key : carMovement.keySet()) {
+            int position = carMovement.get(key);
+            String visualizedMovement = buildVisualizedCarMovement(position);
+
+            visualizedMovementMap.put(key, visualizedMovement);
+        }
+
+        return visualizedMovementMap;
+    }
 }

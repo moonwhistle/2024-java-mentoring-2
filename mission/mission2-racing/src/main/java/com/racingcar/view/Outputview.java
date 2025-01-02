@@ -14,7 +14,11 @@ public class Outputview {
         System.out.println(winner + "가 최종 우승했습니다.");
     }
 
-    public void showCarMove(String carName, int carMove){
+    public void showCarMove(String carName, String carMove){
         System.out.println(carName + " : " + carMove);
+    }
+
+    public void showSpace(){
+        System.out.println(" ");
     }
 }

@@ -29,7 +29,7 @@ public class RaceService {
                 = racingCarLogic.getVisualizedCarsMovementList(movedCars);
         String winners = getWinners(movedCars);
 
-        return new ResponseDTO(winners);
+        return new ResponseDTO(winners, visualizedCarsMovement);
     }
 
     public ArrayList<String> getCarNames(String strCarNames) {

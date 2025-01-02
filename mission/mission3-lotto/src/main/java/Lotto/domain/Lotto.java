@@ -3,22 +3,21 @@ package Lotto.domain;
 import randomNumber.RandomNumberGenerator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Lotto {
 
     private final RandomNumberGenerator randomNumberGenerator;
-    private final ArrayList<ArrayList<Integer>> lottoList = new ArrayList<>();
+    private final List<Integer> lotto;
 
-    public Lotto(int numberOfLotto, RandomNumberGenerator randomNumberGenerator){
+    public Lotto(RandomNumberGenerator randomNumberGenerator){
         this.randomNumberGenerator = randomNumberGenerator;
 
-        for(int i = 0; i < numberOfLotto; i++){
-            lottoList.add(randomNumberGenerator.generateNumberList());
-        }
+        lotto = randomNumberGenerator.generateNumberList();
     }
 
-    public ArrayList<ArrayList<Integer>> getLottoList(){
-        return lottoList;
+    public List<Integer> getLotto(){
+        return new ArrayList<>(lotto);
     }
 
 }

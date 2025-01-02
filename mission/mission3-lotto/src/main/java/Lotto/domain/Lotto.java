@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Lotto {
 
+    public static final int lottoPrice = 1000;
     private final RandomNumberGenerator randomNumberGenerator;
     private final List<Integer> lotto;
 

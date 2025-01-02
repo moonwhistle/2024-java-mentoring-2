@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarLogic {
     private final String CAR_NAME_SPLIT_PATTERN = ",";
@@ -34,7 +35,15 @@ public class RacingCarLogic {
         return MOVEMENT_CHAR.repeat(Math.max(0, position));
     }
 
-    public HashMap<String, String> getVisualizeMap(HashMap<String, Integer> carMovement){
+    public ArrayList<HashMap<String, String>> getVisualizedCarsMovementList(Cars cars) {
+        ArrayList<HashMap<String, Integer>> carsMovementRecord = cars.getCarsMovementRecord();
+
+        return carsMovementRecord.stream()
+                .map(this::getVisualizeMap)
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public HashMap<String, String> getVisualizeMap(HashMap<String, Integer> carMovement) {
         HashMap<String, String> visualizedMovementMap = new HashMap<>();
 
         for (String key : carMovement.keySet()) {

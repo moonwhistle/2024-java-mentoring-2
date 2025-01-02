@@ -8,6 +8,9 @@ import com.racingcar.sevice.RaceService;
 import com.racingcar.view.InputView;
 import com.racingcar.view.Outputview;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class RacingcarContoller {
     private final InputView inputView;
     private final Outputview outputview;
@@ -24,7 +27,12 @@ public class RacingcarContoller {
 
         ResponseDTO raceResponseDTO = raceService.raceCar(inputViewRequestDTO);
 
-        outputview.showWinner(raceResponseDTO.winners());
+        showResult(raceResponseDTO);
+    }
+
+    public void showResult(ResponseDTO raceResponseDTO) {
+        showCarsMovement(raceResponseDTO.carsMovement());
+        showWinners(raceResponseDTO.winners());
     }
 
     public String getCarNamesFromView() {
@@ -44,5 +52,23 @@ public class RacingcarContoller {
         String tryCount = getTryCountFromView();
 
         return new RequestDTO(carNames, tryCount);
+    }
+
+    public void showCarsMovement(ArrayList<HashMap<String, String>> carsMovement) {
+        for (HashMap<String, String> movement : carsMovement) {
+            loopMovementMap(movement);
+        }
+    }
+
+    public void loopMovementMap(HashMap<String, String> movement) {
+        for (String carName : movement.keySet()) {
+            outputview.showCarMove(carName, movement.get(carName));
+        }
+
+        outputview.showSpace();
+    }
+
+    public void showWinners(String winners) {
+        outputview.showWinner(winners);
     }
 }

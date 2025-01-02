@@ -1,6 +1,7 @@
 package Lotto.view;
 
 import Lotto.domain.Lotto;
+import Lotto.domain.Lottos;
 
 import java.util.ArrayList;
 
@@ -13,12 +14,10 @@ public class OutputView {
         System.out.println(lottoNumber + lottoPurchase);
     }
 
-    public void printLottoList(Lotto lotto){
-        ArrayList<ArrayList<Integer>> lottoList = lotto.getLottoList();
-
-        for(int i = 0; i < lottoList.size(); i++){
-            System.out.println(lottoList.get(i).toString());
-        }
+    public void printLottoList(Lottos lottos){
+        lottos.getLottos().forEach(lotto -> {
+            System.out.println(lotto.getLotto());
+        });
     }
 
 }

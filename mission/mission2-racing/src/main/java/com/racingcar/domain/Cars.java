@@ -28,20 +28,20 @@ public class Cars {
         return cars;
     }
 
-    private int getCarMoveState(int randomNumber){
-        if(randomNumber >= MOVE_BOUND_NUMBER){
-            return MOVE_STATE;
-        }
-
-        return STOP_STATE;
-    }
-
     public void moveCars(){
         for(final Car car : cars){
             int randomNumber = zeroToNineGenerator.getRandomNumber();
             int moveState = getCarMoveState(randomNumber);
             car.move(moveState);
         }
+    }
+
+    private int getCarMoveState(int randomNumber){
+        if(randomNumber >= MOVE_BOUND_NUMBER){
+            return MOVE_STATE;
+        }
+
+        return STOP_STATE;
     }
 
     public List<String> getWinner() {

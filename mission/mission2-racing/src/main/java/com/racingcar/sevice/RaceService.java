@@ -8,6 +8,7 @@ import com.racingcar.domain.IntegerParser;
 import com.racingcar.domain.RacingCarLogic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class RaceService {
@@ -24,6 +25,8 @@ public class RaceService {
         int tryCount = getTryCount(inputViewRequestDTO.tryCount());
 
         Cars movedCars = getMovedCars(carNames, tryCount);
+        ArrayList<HashMap<String, String>> visualizedCarsMovement
+                = racingCarLogic.getVisualizedCarsMovementList(movedCars);
         String winners = getWinners(movedCars);
 
         return new ResponseDTO(winners);

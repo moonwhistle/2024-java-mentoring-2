@@ -120,7 +120,7 @@ public class TestRacingCar {
 
         //when
         RacingCarLogic racingCarLogic = new RacingCarLogic();
-        String result = racingCarLogic.buildCarMovement(movement);
+        String result = racingCarLogic.buildVisualizedCarMovement(movement);
 
         //then
         assertEquals(expected, result);

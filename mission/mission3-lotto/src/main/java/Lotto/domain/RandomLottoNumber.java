@@ -9,8 +9,8 @@ import java.util.Set;
 
 public class RandomLottoNumber implements RandomNumberGenerator {
 
-    private static final int limit = 100;
-    private static final int lottoElementNumber = 6;
+    public static final int limit = 100;
+    public static final int lottoElementNumber = 6;
 
     @Override
     public ArrayList<Integer> generateNumberList(){

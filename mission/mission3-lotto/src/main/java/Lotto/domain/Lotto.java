@@ -14,6 +14,13 @@ public class Lotto {
         this.randomNumberGenerator = randomNumberGenerator;
 
         lotto = randomNumberGenerator.generateNumberList();
+        duplicateNumber();
+    }
+
+    private void duplicateNumber(){
+        long lottoNumber = lotto.stream().distinct().count();
+        if(lottoNumber != RandomLottoNumber.lottoElementNumber)
+            throw new IllegalArgumentException("로또 번호에 중복이 있습니다.");
     }
 
     public List<Integer> getLotto(){

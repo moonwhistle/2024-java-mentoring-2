@@ -26,5 +26,12 @@ class CalculatorTest {
         assertEquals(result, testResult);
     }
 
+    @Test
+    void multiplyTest(){
+        int result = calculator.mulCalculator(testNumber1,testNumber2);
+        int testResult = testNumber1 * testNumber2;
+
+        assertEquals(result, testResult);
+    }
 
 }

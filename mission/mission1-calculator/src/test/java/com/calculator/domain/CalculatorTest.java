@@ -34,4 +34,11 @@ class CalculatorTest {
         assertEquals(result, testResult);
     }
 
+    @Test
+    void divideTest(){
+        int result = calculator.divCalculator(testNumber1,testNumber2);
+        int testResult = testNumber1 / testNumber2;
+
+        assertEquals(result, testResult);
+    }
 }

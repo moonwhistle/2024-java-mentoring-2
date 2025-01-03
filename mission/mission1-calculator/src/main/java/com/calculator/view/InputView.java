@@ -12,7 +12,6 @@ public class InputView {
 
     public int secondNumber() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println();
         return scanner.nextInt();
     }
 }

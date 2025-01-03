@@ -1,23 +1,16 @@
 package Lotto.view;
 
-import Lotto.domain.Lotto;
-import Lotto.domain.Lottos;
-
-import java.util.ArrayList;
+import Lotto.displayText.DisplayText;
 
 public class OutputView {
 
-    private final static String lottoPurchase = "개를 구매했습니다.";
-
     public void printLottoNumber(int lottoNumber){
         System.out.println();
-        System.out.println(lottoNumber + lottoPurchase);
+        System.out.println(lottoNumber + DisplayText.PURCHASE_NUMBER.getInputMessage());
     }
 
-    public void printLottoList(Lottos lottos){
-        lottos.getLottos().forEach(lotto -> {
-            System.out.println(lotto.getLotto());
-        });
+    public void printLottoList(String lottoList){
+        System.out.println(lottoList);
     }
 
 }

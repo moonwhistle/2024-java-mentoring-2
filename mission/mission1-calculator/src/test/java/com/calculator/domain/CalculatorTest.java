@@ -2,17 +2,17 @@ package com.calculator.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CalculatorTest {
 
     Calculator calculator = new Calculator();
-    int testNumber1 = 3;
-    int testNumber2 = 5;
+    int testFirstNumber = 3;
+    int testSecondNumber = 5;
     @Test
     void plusTest(){
-        int result = calculator.addCalculator(testNumber1,testNumber2);
-        int testResult = testNumber1 + testNumber2;
+        int result = calculator.addCalculator(testFirstNumber,testSecondNumber);
+        int testResult = testFirstNumber + testSecondNumber;
 
         assertEquals(result, testResult);
 
@@ -20,25 +20,26 @@ class CalculatorTest {
 
     @Test
     void subtractionTest(){
-        int result = calculator.subCalculator(testNumber1,testNumber2);
-        int testResult = testNumber1 - testNumber2;
+        int result = calculator.subCalculator(testFirstNumber,testSecondNumber);
+        int testResult = testFirstNumber - testSecondNumber;
 
         assertEquals(result, testResult);
     }
 
     @Test
     void multiplyTest(){
-        int result = calculator.mulCalculator(testNumber1,testNumber2);
-        int testResult = testNumber1 * testNumber2;
+        int result = calculator.mulCalculator(testFirstNumber,testSecondNumber);
+        int testResult = testFirstNumber * testSecondNumber;
 
         assertEquals(result, testResult);
     }
 
     @Test
     void divideTest(){
-        int result = calculator.divCalculator(testNumber1,testNumber2);
-        int testResult = testNumber1 / testNumber2;
+        int result = calculator.divCalculator(testFirstNumber,testSecondNumber);
+        int testResult = testFirstNumber / testSecondNumber;
 
         assertEquals(result, testResult);
     }
+
 }

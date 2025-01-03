@@ -1,12 +1,13 @@
 package randomNumber;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public interface RandomNumberGenerator {
 
-    public static Random random = new Random();
+    public Random random = new Random();
 
-    ArrayList<Integer> generateNumberList();
+    List<Integer> generateNumberList();
 
 }

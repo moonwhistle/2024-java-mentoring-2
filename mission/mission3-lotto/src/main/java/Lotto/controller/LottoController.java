@@ -2,6 +2,8 @@ package Lotto.controller;
 
 import Lotto.domain.Lotto;
 import Lotto.domain.Lottos;
+
+import Lotto.service.LottoService;
 import Lotto.view.InputView;
 import Lotto.view.OutputView;
 import randomNumber.RandomNumberGenerator;
@@ -16,11 +18,13 @@ public class LottoController {
     private final InputView inputView;
     private final OutputView outputView;
     private final RandomNumberGenerator randomNumberGenerator;
+    private final LottoService lottoService;
 
-    public LottoController(InputView inputView, OutputView outputView, RandomNumberGenerator randomNumberGenerator){
+    public LottoController(InputView inputView, OutputView outputView, RandomNumberGenerator randomNumberGenerator, LottoService lottoService){
         this.inputView = inputView;
         this.outputView = outputView;
         this.randomNumberGenerator = randomNumberGenerator;
+        this.lottoService = lottoService;
     }
 
     public void startLotto(){
@@ -31,6 +35,7 @@ public class LottoController {
 
     private int enterLottoNumber(){
         int inputPrice = inputView.purchaseLotto();
+        lottoService.validInputPrice(inputPrice);
         return inputPrice / Lotto.lottoPrice;
     }
 
@@ -46,7 +51,8 @@ public class LottoController {
 
     private void printLottoList(Lottos lottos, int lottoNumber){
         printLottoNumber(lottoNumber);
-        outputView.printLottoList(lottos);
+        String lottoList = lottos.printLottoList();
+        outputView.printLottoList(lottoList);
     }
 
 }

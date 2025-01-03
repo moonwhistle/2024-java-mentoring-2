@@ -5,12 +5,13 @@ import randomNumber.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
 
     public static final int lottoPrice = 1000;
     private final RandomNumberGenerator randomNumberGenerator;
-    private final List<Integer> lotto;
+    private final List<LottoNumber> lotto;
 
     public Lotto(RandomNumberGenerator randomNumberGenerator) {
         this.randomNumberGenerator = randomNumberGenerator;
@@ -20,7 +21,9 @@ public class Lotto {
     }
 
     public List<Integer> getLotto(){
-        return new ArrayList<>(lotto);
+        return new ArrayList<>(lotto.stream()
+                .map(lottoNumber -> lottoNumber.getLottoNumber())
+                .collect(Collectors.toList()));
     }
 
     private void duplicateNumber(){

@@ -1,10 +1,7 @@
 package Lotto.controller;
 
-import Lotto.domain.Lotto;
-import Lotto.domain.LottoNumber;
-import Lotto.domain.Lottos;
+import Lotto.domain.*;
 
-import Lotto.domain.WinningNumber;
 import Lotto.service.LottoService;
 import Lotto.view.InputView;
 import Lotto.view.OutputView;
@@ -32,8 +29,8 @@ public class LottoController {
         int numberOfLotto = enterLottoNumber();
         Lottos lottos = new Lottos(createLottos(numberOfLotto), numberOfLotto);
         printLottoList(lottos, numberOfLotto);
+        matchWinningResult(lottos);
         printWinningResult();
-        System.out.println(calculateMatchCount(lottos));
     }
 
     private List<Lotto> createLottos(int numberOfLotto){
@@ -69,10 +66,20 @@ public class LottoController {
 
     private void printWinningResult(){
         outputView.printWinningBar();
+        String winningResult = lottoService.getWinningResult();
+        outputView.printWinningResult(winningResult);
     }
 
     private void matchWinningResult(Lottos lottos){
         long matchCount = calculateMatchCount(lottos);
+        if(matchCount == WinningResult.FIRST_PRICE.getMatchCount())
+            WinningResult.FIRST_PRICE.incrementPrizeCount();
+        if(matchCount == WinningResult.SECOND_PRICE.getMatchCount())
+            WinningResult.SECOND_PRICE.incrementPrizeCount();
+        if(matchCount == WinningResult.THIRD_PRICE.getMatchCount())
+            WinningResult.THIRD_PRICE.incrementPrizeCount();
+        if(matchCount == WinningResult.FOURTH_PRICE.getMatchCount())
+            WinningResult.FOURTH_PRICE.incrementPrizeCount();
     }
 
 }

@@ -3,7 +3,9 @@ package Lotto.service;
 import Lotto.domain.Lotto;
 import Lotto.domain.LottoNumber;
 import Lotto.domain.Lottos;
+import Lotto.domain.WinningResult;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +26,14 @@ public class LottoService {
                 .mapToLong(lotto -> compareLottoAndWinningNumber(lotto, winningNumber))
                 .max()
                 .orElse(0);
+    }
+
+    public String getWinningResult(){
+        String resultString = Arrays.stream(WinningResult.values())
+                .map(result -> result.getPrizeMessage() + "- " + result.getPrizeCount())
+                .collect(Collectors.joining("\n"));
+
+        return resultString;
     }
 
     private long compareLottoAndWinningNumber(Lotto lotto, List<LottoNumber> winningNumber) {

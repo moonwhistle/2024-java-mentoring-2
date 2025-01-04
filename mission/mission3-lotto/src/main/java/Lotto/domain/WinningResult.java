@@ -35,4 +35,8 @@ public enum WinningResult {
         return prizeCount;
     }
 
+    public void incrementPrizeCount() {
+        this.prizeCount++;
+    }
+
 }

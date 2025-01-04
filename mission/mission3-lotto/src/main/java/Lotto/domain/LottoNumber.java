@@ -21,4 +21,11 @@ public class LottoNumber {
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_OUT_OF_RANGE.getMessage());
     }
 
+    public boolean checkSame(LottoNumber winningNumber){
+        if(this.lottoNumber == winningNumber.getLottoNumber())
+            return true;
+
+        return false;
+    }
+
 }

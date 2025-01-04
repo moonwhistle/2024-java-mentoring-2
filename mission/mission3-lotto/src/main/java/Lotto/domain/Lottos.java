@@ -1,25 +1,36 @@
 package Lotto.domain;
 
+import Lotto.common.exception.ExceptionMessage;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Lottos {
 
-    private List<Lotto> lottos;
+    private static final int invalidLottoNumber = 0;
 
-    public Lottos(List<Lotto> lottos){
+    private List<Lotto> lottos;
+    private int numberOfLottos;
+
+    public Lottos(List<Lotto> lottos, int numberOfLottos){
         this.lottos = lottos;
+        validLottoNumber(numberOfLottos);
+        this.numberOfLottos = numberOfLottos;
     }
 
     public List<Lotto> getLottos(){
         return new ArrayList<>(lottos);
     }
 
-    public String printLottoList(){
-        return getLottos().stream()
-                .map(lotto -> lotto.getLotto().toString())
-                .collect(Collectors.joining("\n"));
+    public int getNumberOfLottos(){
+        return numberOfLottos;
+    }
+
+    public void validLottoNumber(int numberOfLottos){
+        if(numberOfLottos <= invalidLottoNumber)
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_LOTTO_NUMBER.getMessage());
     }
 
 }

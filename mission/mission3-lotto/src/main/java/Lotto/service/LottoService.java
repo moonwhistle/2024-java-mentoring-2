@@ -1,13 +1,21 @@
 package Lotto.service;
 
 import Lotto.domain.Lotto;
-import Lotto.exception.ExceptionMessage;
+import Lotto.common.exception.ExceptionMessage;
+import Lotto.domain.Lottos;
+
+import java.util.stream.Collectors;
 
 public class LottoService {
 
-    public void validInputPrice(int inputPrice){
-        if(inputPrice < Lotto.lottoPrice)
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_PRICE.getMessage());
+    public String printLottoList(Lottos lottos){
+        return lottos.getLottos().stream()
+                .map(lotto -> lotto.toLottoDto().toString())
+                .collect(Collectors.joining("\n"));
+    }
+
+    public int calculateLottoNumber(int inputPrice){
+        return inputPrice / Lotto.lottoPrice;
     }
 
 }

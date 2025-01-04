@@ -29,14 +29,8 @@ public class LottoController {
 
     public void startLotto(){
         int numberOfLotto = enterLottoNumber();
-        Lottos lottos = new Lottos(createLottos(numberOfLotto));
+        Lottos lottos = new Lottos(createLottos(numberOfLotto), numberOfLotto);
         printLottoList(lottos, numberOfLotto);
-    }
-
-    private int enterLottoNumber(){
-        int inputPrice = inputView.purchaseLotto();
-        lottoService.validInputPrice(inputPrice);
-        return inputPrice / Lotto.lottoPrice;
     }
 
     private List<Lotto> createLottos(int numberOfLotto){
@@ -45,13 +39,18 @@ public class LottoController {
                 .collect(Collectors.toList());
     }
 
+    private int enterLottoNumber(){
+        int inputPrice = inputView.purchaseLotto();
+        return lottoService.calculateLottoNumber(inputPrice);
+    }
+
     private void printLottoNumber(int lottoNumber){
         outputView.printLottoNumber(lottoNumber);
     }
 
     private void printLottoList(Lottos lottos, int lottoNumber){
         printLottoNumber(lottoNumber);
-        String lottoList = lottos.printLottoList();
+        String lottoList = lottoService.printLottoList(lottos);
         outputView.printLottoList(lottoList);
     }
 

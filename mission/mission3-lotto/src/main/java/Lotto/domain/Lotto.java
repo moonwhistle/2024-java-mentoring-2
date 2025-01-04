@@ -22,6 +22,10 @@ public class Lotto {
         duplicateNumber();
     }
 
+    public List<LottoNumber> getLotto(){
+        return lotto;
+    }
+
     public List<Integer> toLottoDto(){
         return new LottoDto(lotto).getLotto();
     }

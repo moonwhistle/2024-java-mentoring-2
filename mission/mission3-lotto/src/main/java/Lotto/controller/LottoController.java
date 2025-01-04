@@ -1,8 +1,10 @@
 package Lotto.controller;
 
 import Lotto.domain.Lotto;
+import Lotto.domain.LottoNumber;
 import Lotto.domain.Lottos;
 
+import Lotto.domain.WinningNumber;
 import Lotto.service.LottoService;
 import Lotto.view.InputView;
 import Lotto.view.OutputView;
@@ -31,6 +33,7 @@ public class LottoController {
         int numberOfLotto = enterLottoNumber();
         Lottos lottos = new Lottos(createLottos(numberOfLotto), numberOfLotto);
         printLottoList(lottos, numberOfLotto);
+        WinningNumber winningNumber = getWinningNumber();
     }
 
     private List<Lotto> createLottos(int numberOfLotto){
@@ -52,6 +55,14 @@ public class LottoController {
         printLottoNumber(lottoNumber);
         String lottoList = lottoService.printLottoList(lottos);
         outputView.printLottoList(lottoList);
+    }
+
+    private WinningNumber getWinningNumber(){
+        return new WinningNumber(inputView.enterWinningNumber());
+    }
+
+    private long calculateMatchCount(Lottos lottos, List<LottoNumber> winningNumber){
+        return lottoService.calculateWinningResult(lottos, winningNumber);
     }
 
 }

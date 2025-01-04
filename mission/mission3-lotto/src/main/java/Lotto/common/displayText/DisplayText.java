@@ -1,4 +1,4 @@
-package Lotto.displayText;
+package Lotto.common.displayText;
 
 public enum DisplayText {
 

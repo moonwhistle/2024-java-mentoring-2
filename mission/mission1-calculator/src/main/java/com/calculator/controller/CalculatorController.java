@@ -8,13 +8,17 @@ public class CalculatorController {
     private final Calculator calculator;
     private final InputView inputView;
     private final OutputView outputView;
-    private final int firstNumber;
-    private final int secondNumber;
+
+    private int firstNumber;
+    private int secondNumber;
 
     public CalculatorController(Calculator calculator, InputView inputView, OutputView outputView) {
         this.calculator = calculator;
         this.inputView = inputView;
         this.outputView = outputView;
+    }
+
+    private void getNumber(){
         this.firstNumber = inputView.firstNumber();
         this.secondNumber = inputView.secondNumber();
     }
@@ -40,6 +44,7 @@ public class CalculatorController {
     }
 
     public void run() {
+        getNumber();
         addResult();
         subtractResult();
         multiplyResult();

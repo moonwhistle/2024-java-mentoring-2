@@ -12,34 +12,36 @@ class CalculatorTest {
     @Test
     void plusTest(){
         int result = calculator.addCalculator(testFirstNumber,testSecondNumber);
-        int testResult = testFirstNumber + testSecondNumber;
+        int expect = 8;
 
-        assertEquals(result, testResult);
+        assertEquals(result, expect);
 
     }
 
     @Test
     void subtractionTest(){
         int result = calculator.subCalculator(testFirstNumber,testSecondNumber);
-        int testResult = testFirstNumber - testSecondNumber;
+        int expect = -2;
 
-        assertEquals(result, testResult);
+        assertEquals(result, expect);
+
     }
 
     @Test
     void multiplyTest(){
         int result = calculator.mulCalculator(testFirstNumber,testSecondNumber);
-        int testResult = testFirstNumber * testSecondNumber;
+        int expect = 15;
 
-        assertEquals(result, testResult);
+        assertEquals(result, expect);
+
     }
 
     @Test
     void divideTest(){
         int result = calculator.divCalculator(testFirstNumber,testSecondNumber);
-        int testResult = testFirstNumber / testSecondNumber;
+        int expect = 0;
 
-        assertEquals(result, testResult);
+        assertEquals(result, expect);
+
     }
-
 }

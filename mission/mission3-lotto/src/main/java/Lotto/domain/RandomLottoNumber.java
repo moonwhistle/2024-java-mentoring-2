@@ -8,12 +8,11 @@ import java.util.stream.IntStream;
 
 public class RandomLottoNumber implements RandomNumberGenerator {
 
-    public static final int limit = 45;
-    public static final int lottoElementNumber = 6;
+    private static final int limit = 45;
 
     @Override
     public List<LottoNumber> generateNumberList(){
-        return IntStream.range(0, lottoElementNumber)
+        return IntStream.range(0, Lotto.lottoElementNumber)
                 .mapToObj(i -> new LottoNumber(random.nextInt(limit) + 1))
                 .collect(Collectors.toList());
     }

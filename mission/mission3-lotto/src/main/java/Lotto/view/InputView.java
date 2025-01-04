@@ -1,6 +1,6 @@
 package Lotto.view;
 
-import Lotto.displayText.DisplayText;
+import Lotto.common.displayText.DisplayText;
 
 import java.util.Scanner;
 

@@ -22,7 +22,8 @@ public class LottoService {
     public long calculateWinningResult(Lottos lottos, List<LottoNumber> winningNumber){
         return lottos.getLottos().stream()
                 .mapToLong(lotto -> compareLottoAndWinningNumber(lotto, winningNumber))
-                .sum();
+                .max()
+                .orElse(0);
     }
 
     private long compareLottoAndWinningNumber(Lotto lotto, List<LottoNumber> winningNumber) {

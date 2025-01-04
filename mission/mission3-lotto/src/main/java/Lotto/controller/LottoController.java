@@ -32,8 +32,8 @@ public class LottoController {
         int numberOfLotto = enterLottoNumber();
         Lottos lottos = new Lottos(createLottos(numberOfLotto), numberOfLotto);
         printLottoList(lottos, numberOfLotto);
-        List<LottoNumber> winningNumber = getWinningNumber();
-        System.out.println(calculateMatchCount(lottos, winningNumber));
+        printWinningResult();
+        System.out.println(calculateMatchCount(lottos));
     }
 
     private List<Lotto> createLottos(int numberOfLotto){
@@ -62,8 +62,17 @@ public class LottoController {
         return winningNumber.getWinningNumber();
     }
 
-    private long calculateMatchCount(Lottos lottos, List<LottoNumber> winningNumber){
+    private long calculateMatchCount(Lottos lottos){
+        List<LottoNumber> winningNumber = getWinningNumber();
         return lottoService.calculateWinningResult(lottos, winningNumber);
+    }
+
+    private void printWinningResult(){
+        outputView.printWinningBar();
+    }
+
+    private void matchWinningResult(Lottos lottos){
+        long matchCount = calculateMatchCount(lottos);
     }
 
 }

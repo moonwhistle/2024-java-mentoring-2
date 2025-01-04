@@ -19,6 +19,7 @@ public class InputView {
 
     public List<Integer> enterWinningNumber(){
         System.out.println(DisplayText.ENTER_WINNING_NUMBER.getInputMessage());
+        scanner.nextLine();
         String winningNumber = scanner.nextLine();
         return Arrays.stream(winningNumber.split(splitBy))
                 .map(String::trim)

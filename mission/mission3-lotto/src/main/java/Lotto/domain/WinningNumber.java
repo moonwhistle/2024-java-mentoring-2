@@ -13,6 +13,10 @@ public class WinningNumber {
                 .collect(Collectors.toList());
     }
 
+    public List<LottoNumber> getWinningNumber(){
+        return winningNumber;
+    }
+
     private LottoNumber toLottoNumber(int number){
         return new LottoNumber(number);
     }

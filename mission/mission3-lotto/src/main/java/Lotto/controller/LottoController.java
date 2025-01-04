@@ -33,7 +33,8 @@ public class LottoController {
         int numberOfLotto = enterLottoNumber();
         Lottos lottos = new Lottos(createLottos(numberOfLotto), numberOfLotto);
         printLottoList(lottos, numberOfLotto);
-        WinningNumber winningNumber = getWinningNumber();
+        List<LottoNumber> winningNumber = getWinningNumber();
+        System.out.println(calculateMatchCount(lottos, winningNumber));
     }
 
     private List<Lotto> createLottos(int numberOfLotto){
@@ -57,8 +58,9 @@ public class LottoController {
         outputView.printLottoList(lottoList);
     }
 
-    private WinningNumber getWinningNumber(){
-        return new WinningNumber(inputView.enterWinningNumber());
+    private List<LottoNumber> getWinningNumber(){
+        WinningNumber winningNumber = new WinningNumber(inputView.enterWinningNumber());
+        return winningNumber.getWinningNumber();
     }
 
     private long calculateMatchCount(Lottos lottos, List<LottoNumber> winningNumber){

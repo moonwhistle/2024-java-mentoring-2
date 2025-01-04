@@ -10,7 +10,6 @@ import Lotto.view.InputView;
 import Lotto.view.OutputView;
 import randomNumber.RandomNumberGenerator;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

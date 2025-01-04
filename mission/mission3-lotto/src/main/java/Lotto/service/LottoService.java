@@ -1,7 +1,6 @@
 package Lotto.service;
 
 import Lotto.domain.Lotto;
-import Lotto.common.exception.ExceptionMessage;
 import Lotto.domain.LottoNumber;
 import Lotto.domain.Lottos;
 
@@ -31,6 +30,5 @@ public class LottoService {
                 .filter(lottoNumber -> winningNumber.stream().anyMatch(winning -> lottoNumber.checkSame(winning)))
                 .count();
     }
-
 
 }

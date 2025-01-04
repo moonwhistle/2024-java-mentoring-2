@@ -32,6 +32,7 @@ public class Lotto {
 
     private void duplicateNumber(){
         long lottoNumber = lotto.stream()
+                .mapToLong(LottoNumber::getLottoNumber)
                 .distinct()
                 .count();
         if(lottoNumber != lottoElementNumber)

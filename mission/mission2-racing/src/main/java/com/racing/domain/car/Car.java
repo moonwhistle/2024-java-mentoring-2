@@ -2,14 +2,14 @@ package com.racing.domain.car;
 
 public class Car {
 
-    private static final int INITIAL_POSITION_OF_CAR = 0;
+    private static final String MOVING_POINT = "-";
     private static final int THRESHOLD_OF_CAR_MOVEMENT = 4;
 
-    private int position;
+    private String position;
     private final CarName carName;
 
     public Car(final String carName) {
-        position = INITIAL_POSITION_OF_CAR;
+        position = MOVING_POINT;
         this.carName = new CarName(carName);
     }
 
@@ -19,7 +19,7 @@ public class Car {
         }
     }
 
-    public int getPosition() {
+    public String getPosition() {
         return position;
     }
 
@@ -28,6 +28,6 @@ public class Car {
     }
 
     private void forwardCar() {
-        position++;
+        position = position + MOVING_POINT;
     }
 }

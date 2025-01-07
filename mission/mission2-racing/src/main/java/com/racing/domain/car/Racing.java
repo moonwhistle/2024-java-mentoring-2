@@ -7,44 +7,33 @@ import java.util.List;
 
 public class Racing {
 
-    private List<Car> cars;
+    private static final String JOINING_SYMBOL = ",";
 
-    public Racing(List<Car> cars) {
-        this.cars = cars;
-    }
-
-    private static final int NUMBER_ZERO = 0;
-
-    public void raceTheCars(RandomNumberGenerator randomNumberGenerator, int numberOfLaps) {
-        for (int i = NUMBER_ZERO; i < numberOfLaps; i++) {
-            driveCars(randomNumberGenerator);
+    public void raceTheCars(List<Car> cars,RandomNumberGenerator randomNumberGenerator) {
+        for (Car car : cars) {
+            car.driveCar(randomNumberGenerator.generateRandomNumber());
         }
     }
 
-    public List<String> findWinner(int maxPosition) {
+    public String findWinner(List<Car> cars, int maxPosition) {
         List<String> winner = new ArrayList<>();
         for (Car car : cars) {
             findRightCar(maxPosition, car, winner);
         }
-        return winner;
+        return String.join(JOINING_SYMBOL, winner);
     }
 
-    public int findMaxPosition() {
+    public int findMaxPosition(List<Car> cars) {
         return cars.stream()
-                .mapToInt(v -> v.getPosition())
+                .mapToInt(v -> v.getPosition().length())
                 .max()
                 .orElse(0);
     }
 
     private void findRightCar(int maxPosition, Car car, List<String> winners) {
-        if (maxPosition == car.getPosition()) {
+        if (maxPosition == car.getPosition().length()) {
             winners.add(car.getCarName());
         }
     }
 
-    private void driveCars(RandomNumberGenerator randomNumberGenerator) {
-        for (Car car : cars) {
-            car.driveCar(randomNumberGenerator.generateRandomNumber());
-        }
-    }
 }

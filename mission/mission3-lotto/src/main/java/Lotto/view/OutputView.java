@@ -1,6 +1,7 @@
 package Lotto.view;
 
 import Lotto.common.displayText.DisplayText;
+import Lotto.common.exception.ExceptionMessage;
 
 public class OutputView {
 
@@ -22,6 +23,10 @@ public class OutputView {
 
     public void printWinningResult(String winningResult){
         System.out.println(winningResult);
+    }
+
+    public void printProfit(Double profit){
+        System.out.println(DisplayText.TOTAL_PROFIT.getInputMessage() + profit + DisplayText.ANNOUNCEMENT.getInputMessage());
     }
 
 }

@@ -29,8 +29,10 @@ public class LottoController {
         int numberOfLotto = enterLottoNumber();
         Lottos lottos = new Lottos(createLottos(numberOfLotto), numberOfLotto);
         printLottoList(lottos, numberOfLotto);
-        matchWinningResult(lottos);
+        Long matchCount = calculateMatchCount(lottos);
+        matchWinningResult(lottos, matchCount);
         printWinningResult();
+        calculateProfit(lottos, matchCount);
     }
 
     private List<Lotto> createLottos(int numberOfLotto){
@@ -70,8 +72,7 @@ public class LottoController {
         outputView.printWinningResult(winningResult);
     }
 
-    private void matchWinningResult(Lottos lottos){
-        long matchCount = calculateMatchCount(lottos);
+    private void matchWinningResult(Lottos lottos, Long matchCount){
         if(matchCount == WinningResult.FIRST_PRICE.getMatchCount())
             WinningResult.FIRST_PRICE.incrementPrizeCount();
         if(matchCount == WinningResult.SECOND_PRICE.getMatchCount())
@@ -80,6 +81,11 @@ public class LottoController {
             WinningResult.THIRD_PRICE.incrementPrizeCount();
         if(matchCount == WinningResult.FOURTH_PRICE.getMatchCount())
             WinningResult.FOURTH_PRICE.incrementPrizeCount();
+    }
+
+    private void calculateProfit(Lottos lottos, Long matchCount){
+        double profit = lottoService.calculateProfit(lottos, matchCount);
+        outputView.printProfit(profit);
     }
 
 }

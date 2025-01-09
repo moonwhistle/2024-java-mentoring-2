@@ -5,6 +5,7 @@ import com.racingcar.domain.RacingCarLogic;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestRacingCar {
@@ -109,5 +110,20 @@ public class TestRacingCar {
 
         //then
         assertEquals(expected, car.getPosition());
+    }
+
+    @Test
+    public void SplitTest(){
+
+        //given
+        String carName = "a,b,c,d";
+        String[] expected = {"a", "b", "c", "d"};
+
+        //when
+        RacingCarLogic racingCarLogic = new RacingCarLogic();
+        String[] result = racingCarLogic.splitCarName(carName);
+
+        //then
+        assertArrayEquals(expected, result);
     }
 }

@@ -5,6 +5,9 @@ import com.racingcar.domain.RacingCarLogic;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -125,5 +128,23 @@ public class TestRacingCar {
 
         //then
         assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void winnerStringTest(){
+
+        //given
+        List<String> winnerList = new ArrayList<>();
+        winnerList.add("a");
+        winnerList.add("b");
+
+        String expected = "a, b";
+
+        //when
+        RacingCarLogic racingCarLogic = new RacingCarLogic();
+        String result = racingCarLogic.buildListToString(winnerList);
+
+        //then
+        assertEquals(expected, result);
     }
 }

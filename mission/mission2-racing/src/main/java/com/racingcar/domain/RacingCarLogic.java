@@ -1,5 +1,7 @@
 package com.racingcar.domain;
 
+import com.racingcar.domain.vo.Cars;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -31,10 +33,6 @@ public class RacingCarLogic {
         return String.join(JOIN_STRING, winnerList);
     }
 
-    public String buildVisualizedCarMovement(int position) {
-        return MOVEMENT_CHAR.repeat(Math.max(0, position));
-    }
-
     public ArrayList<HashMap<String, String>> getVisualizedCarsMovementList(Cars cars) {
         ArrayList<HashMap<String, Integer>> carsMovementRecord = cars.getCarsMovementRecord();
 
@@ -43,7 +41,7 @@ public class RacingCarLogic {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public HashMap<String, String> getVisualizeMap(HashMap<String, Integer> carMovement) {
+    private HashMap<String, String> getVisualizeMap(HashMap<String, Integer> carMovement) {
         HashMap<String, String> visualizedMovementMap = new HashMap<>();
 
         for (String key : carMovement.keySet()) {
@@ -54,5 +52,9 @@ public class RacingCarLogic {
         }
 
         return visualizedMovementMap;
+    }
+
+    private String buildVisualizedCarMovement(int position) {
+        return MOVEMENT_CHAR.repeat(Math.max(0, position));
     }
 }

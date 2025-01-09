@@ -30,37 +30,37 @@ public class RacingcarContoller {
         showResult(raceResponseDTO);
     }
 
-    public void showResult(ResponseDTO raceResponseDTO) {
+    private void showResult(ResponseDTO raceResponseDTO) {
         showCarsMovement(raceResponseDTO.carsMovement());
         showWinners(raceResponseDTO.winners());
     }
 
-    public String getCarNamesFromView() {
+    private String getCarNamesFromView() {
         outputview.showCarNameInputPrompt();
 
         return inputView.getInput();
     }
 
-    public String getTryCountFromView() {
+    private String getTryCountFromView() {
         outputview.showTryCountInputPrompt();
 
         return inputView.getInput();
     }
 
-    public RequestDTO createRequestView() {
+    private RequestDTO createRequestView() {
         String carNames = getCarNamesFromView();
         String tryCount = getTryCountFromView();
 
         return new RequestDTO(carNames, tryCount);
     }
 
-    public void showCarsMovement(ArrayList<HashMap<String, String>> carsMovement) {
+    private void showCarsMovement(ArrayList<HashMap<String, String>> carsMovement) {
         for (HashMap<String, String> movement : carsMovement) {
             loopMovementMap(movement);
         }
     }
 
-    public void loopMovementMap(HashMap<String, String> movement) {
+    private void loopMovementMap(HashMap<String, String> movement) {
         for (String carName : movement.keySet()) {
             outputview.showCarMove(carName, movement.get(carName));
         }
@@ -68,7 +68,7 @@ public class RacingcarContoller {
         outputview.showSpace();
     }
 
-    public void showWinners(String winners) {
+    private void showWinners(String winners) {
         outputview.showWinner(winners);
     }
 }

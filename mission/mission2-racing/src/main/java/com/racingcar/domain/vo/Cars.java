@@ -1,4 +1,7 @@
-package com.racingcar.domain;
+package com.racingcar.domain.vo;
+
+import com.racingcar.domain.RandomNumberGenerator;
+import com.racingcar.domain.ZeroToNineGenerator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +23,29 @@ public class Cars {
         this.carsMovementRecord = new ArrayList<>();
     }
 
+    public void moveCars() {
+        for (final Car car : cars) {
+            int randomNumber = zeroToNineGenerator.getRandomNumber();
+            int moveState = getCarMoveState(randomNumber);
+            car.move(moveState);
+        }
+
+        recordCarMovement();
+    }
+
+    public ArrayList<HashMap<String, Integer>> getCarsMovementRecord() {
+        return this.carsMovementRecord;
+    }
+
+    public List<String> getWinner() {
+        int winnerPosition = getMaxPosition();
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == winnerPosition)
+                .map(Car::getName)
+                .toList();
+    }
+
     private List<Car> makeCars(ArrayList<String> carsArray) {
         List<Car> cars = new ArrayList<>();
 
@@ -31,17 +57,7 @@ public class Cars {
         return cars;
     }
 
-    public void moveCars() {
-        for (final Car car : cars) {
-            int randomNumber = zeroToNineGenerator.getRandomNumber();
-            int moveState = getCarMoveState(randomNumber);
-            car.move(moveState);
-        }
-
-        recordCarMovement();
-    }
-
-    public void recordCarMovement() {
+    private void recordCarMovement() {
         HashMap<String, Integer> map = new HashMap<>();
 
         for (final Car car : cars) {
@@ -51,25 +67,12 @@ public class Cars {
         this.carsMovementRecord.add(map);
     }
 
-    public ArrayList<HashMap<String, Integer>> getCarsMovementRecord() {
-        return this.carsMovementRecord;
-    }
-
     private int getCarMoveState(int randomNumber) {
         if (randomNumber >= MOVE_BOUND_NUMBER) {
             return MOVE_STATE;
         }
 
         return STOP_STATE;
-    }
-
-    public List<String> getWinner() {
-        int winnerPosition = getMaxPosition();
-
-        return cars.stream()
-                .filter(car -> car.getPosition() == winnerPosition)
-                .map(Car::getName)
-                .toList();
     }
 
     private int getMaxPosition() {

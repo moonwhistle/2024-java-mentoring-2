@@ -1,4 +1,4 @@
-package com.racingcar.domain;
+package com.racingcar.domain.vo;
 
 public class Car {
 

@@ -25,6 +25,11 @@ public class RaceService {
         int tryCount = getTryCount(inputViewRequestDTO.tryCount());
 
         Cars movedCars = getMovedCars(carNames, tryCount);
+
+        return buildResponseDTO(movedCars);
+    }
+
+    private ResponseDTO buildResponseDTO(Cars movedCars){
         ArrayList<HashMap<String, String>> visualizedCarsMovement
                 = racingCarLogic.getVisualizedCarsMovementList(movedCars);
         String winners = getWinners(movedCars);
@@ -42,13 +47,13 @@ public class RaceService {
         return integerParser.parseInteger(strTryCount);
     }
 
-    private Cars getMovedCars(ArrayList<String> carNames, int tryCount){
+    private Cars getMovedCars(ArrayList<String> carNames, int tryCount) {
         Cars cars = new Cars(carNames);
 
         return racingCarLogic.loopTryCount(tryCount, cars);
     }
 
-    private String getWinners(Cars cars){
+    private String getWinners(Cars cars) {
         List<String> winnerList = cars.getWinner();
 
         return racingCarLogic.buildListToString(winnerList);

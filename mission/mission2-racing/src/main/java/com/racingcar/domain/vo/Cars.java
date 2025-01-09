@@ -1,5 +1,6 @@
 package com.racingcar.domain.vo;
 
+import com.racingcar.domain.CarsLogic;
 import com.racingcar.domain.RandomNumberGenerator;
 import com.racingcar.domain.ZeroToNineGenerator;
 
@@ -17,11 +18,13 @@ public class Cars {
     private final List<Car> cars;
     private final RandomNumberGenerator zeroToNineGenerator;
     private final ArrayList<HashMap<String, String>> carsMovementRecord;
+    private final CarsLogic carsLogic;
 
     public Cars(final ArrayList<String> carsArray) {
         this.cars = makeCars(carsArray);
         this.zeroToNineGenerator = new ZeroToNineGenerator();
         this.carsMovementRecord = new ArrayList<>();
+        this.carsLogic = new CarsLogic();
     }
 
     public void moveCars() {
@@ -39,12 +42,9 @@ public class Cars {
     }
 
     public List<String> getWinner() {
-        int winnerPosition = getMaxPosition();
+        int winnerPosition = carsLogic.getMaxPosition(cars);
 
-        return cars.stream()
-                .filter(car -> car.getPosition() == winnerPosition)
-                .map(Car::getName)
-                .toList();
+        return carsLogic.getWinnerList(cars, winnerPosition);
     }
 
     private List<Car> makeCars(ArrayList<String> carsArray) {
@@ -84,16 +84,5 @@ public class Cars {
         }
 
         return STOP_STATE;
-    }
-
-    private int getMaxPosition() {
-        List<Integer> positions = cars.stream()
-                .map(Car::getPosition)
-                .toList();
-
-        return positions.stream()
-                .mapToInt(x -> x)
-                .max()
-                .orElseThrow(NoSuchElementException::new);
     }
 }

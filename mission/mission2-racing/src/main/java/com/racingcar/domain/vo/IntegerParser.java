@@ -1,4 +1,4 @@
-package com.racingcar.domain;
+package com.racingcar.domain.vo;
 
 import com.racingcar.domain.exception.MinusErrorException;
 import com.racingcar.domain.exception.NaNErrorException;

@@ -51,14 +51,12 @@ public class CarsLogic {
         return cars;
     }
 
-    public List<Car> loopCars(List<Car> cars) {
+    public void loopCars(List<Car> cars) {
         for (final Car car : cars) {
             int randomNumber = getRandomNumber();
             int moveState = getCarMoveState(randomNumber);
             car.move(moveState);
         }
-
-        return cars;
     }
 
     private int getRandomNumber() {

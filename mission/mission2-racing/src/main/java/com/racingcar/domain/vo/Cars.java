@@ -12,10 +12,11 @@ public class Cars {
     private final Integer MOVE_BOUND_NUMBER = 4;
     private final Integer MOVE_STATE = 1;
     private final Integer STOP_STATE = 0;
+    private final String MOVEMENT_CHAR = "-";
 
     private final List<Car> cars;
     private final RandomNumberGenerator zeroToNineGenerator;
-    private final ArrayList<HashMap<String, Integer>> carsMovementRecord;
+    private final ArrayList<HashMap<String, String>> carsMovementRecord;
 
     public Cars(final ArrayList<String> carsArray) {
         this.cars = makeCars(carsArray);
@@ -33,7 +34,7 @@ public class Cars {
         recordCarMovement();
     }
 
-    public ArrayList<HashMap<String, Integer>> getCarsMovementRecord() {
+    public ArrayList<HashMap<String, String>> getCarsMovementRecord() {
         return this.carsMovementRecord;
     }
 
@@ -58,13 +59,23 @@ public class Cars {
     }
 
     private void recordCarMovement() {
-        HashMap<String, Integer> map = new HashMap<>();
+        HashMap<String, String> map = new HashMap<>();
 
         for (final Car car : cars) {
-            map.put(car.getName(), car.getPosition());
+            map.put(car.getName(), getVisualizedMovement(car));
         }
 
         this.carsMovementRecord.add(map);
+    }
+
+    private String getVisualizedMovement(Car car){
+        int position = car.getPosition();
+
+        return buildVisualizedCarMovement(position);
+    }
+
+    private String buildVisualizedCarMovement(int position) {
+        return MOVEMENT_CHAR.repeat(Math.max(0, position));
     }
 
     private int getCarMoveState(int randomNumber) {

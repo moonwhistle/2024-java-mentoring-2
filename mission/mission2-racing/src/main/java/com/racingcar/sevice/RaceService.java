@@ -31,7 +31,7 @@ public class RaceService {
 
     private ResponseDTO buildResponseDTO(Cars movedCars){
         ArrayList<HashMap<String, String>> visualizedCarsMovement
-                = racingCarLogic.getVisualizedCarsMovementList(movedCars);
+                = racingCarLogic.getCarsMovementRecord(movedCars);
         String winners = getWinners(movedCars);
 
         return new ResponseDTO(winners, visualizedCarsMovement);

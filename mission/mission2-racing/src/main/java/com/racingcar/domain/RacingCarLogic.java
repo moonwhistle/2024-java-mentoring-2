@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 public class RacingCarLogic {
     private final String CAR_NAME_SPLIT_PATTERN = ",";
     private final String JOIN_STRING = ", ";
-    private final String MOVEMENT_CHAR = "-";
 
     public String[] splitCarName(String carName) {
         return carName.split(CAR_NAME_SPLIT_PATTERN);
@@ -33,28 +32,7 @@ public class RacingCarLogic {
         return String.join(JOIN_STRING, winnerList);
     }
 
-    public ArrayList<HashMap<String, String>> getVisualizedCarsMovementList(Cars cars) {
-        ArrayList<HashMap<String, Integer>> carsMovementRecord = cars.getCarsMovementRecord();
-
-        return carsMovementRecord.stream()
-                .map(this::getVisualizeMap)
-                .collect(Collectors.toCollection(ArrayList::new));
-    }
-
-    private HashMap<String, String> getVisualizeMap(HashMap<String, Integer> carMovement) {
-        HashMap<String, String> visualizedMovementMap = new HashMap<>();
-
-        for (String key : carMovement.keySet()) {
-            int position = carMovement.get(key);
-            String visualizedMovement = buildVisualizedCarMovement(position);
-
-            visualizedMovementMap.put(key, visualizedMovement);
-        }
-
-        return visualizedMovementMap;
-    }
-
-    private String buildVisualizedCarMovement(int position) {
-        return MOVEMENT_CHAR.repeat(Math.max(0, position));
+    public ArrayList<HashMap<String, String>> getCarsMovementRecord(Cars cars){
+        return cars.getCarsMovementRecord();
     }
 }

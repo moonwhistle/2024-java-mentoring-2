@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCarLogic {
     private final String CAR_NAME_SPLIT_PATTERN = ",";

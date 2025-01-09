@@ -8,7 +8,11 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class CarsLogic {
+    private final Integer MOVE_BOUND_NUMBER = 4;
+    private final Integer MOVE_STATE = 1;
+    private final Integer STOP_STATE = 0;
     private final String MOVEMENT_CHAR = "-";
+
 
     public List<String> getWinnerList(List<Car> cars, int winnerPosition) {
         return cars.stream()
@@ -26,7 +30,7 @@ public class CarsLogic {
                 .orElseThrow(NoSuchElementException::new);
     }
 
-    public HashMap<String, String> getCarsMovementRecordMap(List<Car> cars){
+    public HashMap<String, String> getCarsMovementRecordMap(List<Car> cars) {
         HashMap<String, String> recordMap = new HashMap<>();
 
         for (final Car car : cars) {
@@ -36,7 +40,7 @@ public class CarsLogic {
         return recordMap;
     }
 
-    public List<Car> getCarList(ArrayList<String> carsArray){
+    public List<Car> getCarList(ArrayList<String> carsArray) {
         List<Car> cars = new ArrayList<>();
 
         for (String name : carsArray) {
@@ -47,7 +51,31 @@ public class CarsLogic {
         return cars;
     }
 
-    private String getVisualizedMovement(Car car){
+    public List<Car> loopCars(List<Car> cars) {
+        for (final Car car : cars) {
+            int randomNumber = getRandomNumber();
+            int moveState = getCarMoveState(randomNumber);
+            car.move(moveState);
+        }
+
+        return cars;
+    }
+
+    private int getRandomNumber() {
+        RandomNumberGenerator zeroToNineGenerator = new ZeroToNineGenerator();
+
+        return zeroToNineGenerator.getRandomNumber();
+    }
+
+    private int getCarMoveState(int randomNumber) {
+        if (randomNumber >= MOVE_BOUND_NUMBER) {
+            return MOVE_STATE;
+        }
+
+        return STOP_STATE;
+    }
+
+    private String getVisualizedMovement(Car car) {
         int position = car.getPosition();
 
         return buildVisualizedCarMovement(position);

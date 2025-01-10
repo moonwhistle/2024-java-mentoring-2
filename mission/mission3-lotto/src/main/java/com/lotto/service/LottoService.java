@@ -5,9 +5,7 @@ import com.lotto.controller.dto.PurchaseLottoDTO;
 
 import com.lotto.domain.IntegerParser;
 import com.lotto.domain.LottoLogic;
-import com.lotto.domain.vo.Lotto;
-
-import java.util.List;
+import com.lotto.domain.vo.PurchasedLotto;
 
 public class LottoService {
     private final IntegerParser integerParser;
@@ -21,9 +19,9 @@ public class LottoService {
     public PurchaseLottoDTO buildLotto(PurchaseAmountDTO purchaseAmountDTO) {
         int availableAmount = calculateAvailableAmount(purchaseAmountDTO);
 
-        List<Lotto> purchasedLotto = lottoLogic.loopAvailableAmount(availableAmount);
+        PurchasedLotto purchasedLotto = lottoLogic.loopAvailableAmount(availableAmount);
 
-        return new PurchaseLottoDTO(purchasedLotto);
+        return new PurchaseLottoDTO(purchasedLotto.getStringPurchasedLotto(), purchasedLotto.getPurchasedLottoAmount());
     }
 
     private int calculateAvailableAmount(PurchaseAmountDTO purchaseAmountDTO) {

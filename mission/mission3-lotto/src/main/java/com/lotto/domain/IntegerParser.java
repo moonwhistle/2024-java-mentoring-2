@@ -21,7 +21,7 @@ public class IntegerParser {
     }
 
     private int isUnderMinPrice(int num) {
-        if (num < MIN_LOTTO_PRICE) {
+        if (num <= MIN_LOTTO_PRICE) {
             throw new UnderMinPriceErrorException(MINUS_ERROR_MESSAGE);
         }
 

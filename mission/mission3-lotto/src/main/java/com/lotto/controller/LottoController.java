@@ -8,9 +8,6 @@ import com.lotto.service.LottoService;
 import com.lotto.view.InputView;
 import com.lotto.view.OutputView;
 
-import java.util.List;
-import java.util.Set;
-
 public class LottoController {
     private final InputView inputView;
     private final OutputView outputview;
@@ -25,7 +22,8 @@ public class LottoController {
     public void manageLottoProcess() {
         PurchaseLottoDTO purchaseLottoDTO = lottoService.buildLotto(getPurchaseAmountDTO());
 
-        showPurchasedLotto(getPurchaseLotto(purchaseLottoDTO));
+        showPurchasedLottoAmount(purchaseLottoDTO.purchasedLottoAmount());
+        showPurchaseLotto(purchaseLottoDTO.purchasedLotto());
     }
 
     private PurchaseAmountDTO getPurchaseAmountDTO() {
@@ -40,15 +38,11 @@ public class LottoController {
         return inputView.getInput();
     }
 
-    private List<Set<Integer>> getPurchaseLotto(PurchaseLottoDTO purchaseLottoDTO) {
-        return purchaseLottoDTO.purchasedLotto();
+    private void showPurchasedLottoAmount(int purchasedLottoAmount) {
+        outputview.showPurchaseHistory(purchasedLottoAmount);
     }
 
-    private void showPurchasedLotto(List<Set<Integer>> purchasedLotto) {
-        outputview.showPurchaseHistory(purchasedLotto.size());
-
-        for(Set<Integer> lotto : purchasedLotto){
-            outputview.showLotto(lotto);
-        }
+    private void showPurchaseLotto(String purchasedLotto) {
+        outputview.showLotto(purchasedLotto);
     }
 }

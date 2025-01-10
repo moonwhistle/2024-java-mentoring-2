@@ -3,7 +3,7 @@ package com.lotto.domain;
 public class LottoConfig {
     private static final int LOTTO_PRICE = 1000;
     private static final int LOTTO_NUMBER_COUNT_LIMIT = 6;
-    private static final int MIN_LOTTO_NUMBER = 0;
+    private static final int MIN_LOTTO_NUMBER = 1;
     private static final int MAX_LOTTO_NUMBER = 45;
 
     public int getLottoPrice() {

@@ -12,10 +12,11 @@ public class Lotto {
         if (lottoNumbers.size() != 6) {
             throw new InvalidLottoNumberCountException(ErrorMessage.INVALID_LOTTO_NUMBER_COUNT_ERROR.getMessage());
         }
+
         this.lottoNumbers = lottoNumbers;
     }
 
-    public Set<Integer> getLotto() {
+    public Set<Integer> getLottoNumbers() {
         return this.lottoNumbers;
     }
 }

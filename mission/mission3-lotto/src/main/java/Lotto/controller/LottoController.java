@@ -17,8 +17,6 @@ public class LottoController {
     private final InputView inputView;
     private final OutputView outputView;
     private final RandomNumberGenerator randomNumberGenerator;
-    private Lottos lottos;
-    private Lotto lotto;
     private final Winning winning = new Winning();
 
     public LottoController(InputView inputView, OutputView outputView, RandomNumberGenerator randomNumberGenerator){

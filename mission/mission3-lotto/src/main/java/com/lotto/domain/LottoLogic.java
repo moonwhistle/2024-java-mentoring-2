@@ -3,7 +3,9 @@ package com.lotto.domain;
 import com.lotto.domain.vo.Lotto;
 import com.lotto.domain.vo.PurchasedLotto;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class LottoLogic {
@@ -20,14 +22,14 @@ public class LottoLogic {
     }
 
     public PurchasedLotto loopAvailableAmount(int availableAmount) {
-        PurchasedLotto purchaseLotto = new PurchasedLotto();
+        List<Lotto> purchaseLotto = new ArrayList<>();
 
         for (int i = 0; i < availableAmount; i++) {
             Lotto lotto = getLotto();
-            purchaseLotto.addLotto(lotto);
+            purchaseLotto.add(lotto);
         }
 
-        return purchaseLotto;
+        return new PurchasedLotto(purchaseLotto);
     }
 
     public Lotto getLotto() {

@@ -5,7 +5,11 @@ import com.lotto.domain.exception.NaNErrorException;
 import com.lotto.domain.exception.NotIntegerException;
 
 public class IntegerParser {
-    private final int MIN_LOTTO_PRICE = 1000;
+    private final LottoConfig lottoConfig;
+
+    public IntegerParser() {
+        this.lottoConfig = new LottoConfig();
+    }
 
     public int parseInteger(String str) {
         try {
@@ -17,7 +21,7 @@ public class IntegerParser {
     }
 
     private int isUnderMinPrice(int num) {
-        if (num < MIN_LOTTO_PRICE) {
+        if (num < lottoConfig.getLottoPrice()) {
             throw new UnderMinPriceErrorException(ErrorMessage.MIN_PRICE_ERROR.getMessage());
         }
 
@@ -27,7 +31,7 @@ public class IntegerParser {
     private int isInteger(String str) {
         double doubleStr = Double.parseDouble(str);
 
-        if(doubleStr != (int) doubleStr){
+        if (doubleStr != (int) doubleStr) {
             throw new NotIntegerException(ErrorMessage.NOT_INTEGER_ERROR.getMessage());
         }
 

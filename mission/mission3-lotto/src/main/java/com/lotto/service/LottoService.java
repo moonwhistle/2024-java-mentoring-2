@@ -21,7 +21,10 @@ public class LottoService {
 
         PurchasedLotto purchasedLotto = lottoLogic.loopAvailableAmount(availableAmount);
 
-        return new PurchaseLottoDTO(purchasedLotto.getStringPurchasedLotto(), purchasedLotto.getPurchasedLottoAmount());
+        String stringPurchasedLotto = lottoLogic.stringifyLottoList(purchasedLotto.getPurchasedLotto());
+        int lottoAmount = purchasedLotto.getPurchasedLottoAmount();
+
+        return new PurchaseLottoDTO(stringPurchasedLotto, lottoAmount);
     }
 
     private int calculateAvailableAmount(PurchaseAmountDTO purchaseAmountDTO) {

@@ -1,4 +1,7 @@
 package com.racingcar.controller.dto;
 
-public record ResponseDTO(String winners) {
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public record ResponseDTO(String winners, ArrayList<HashMap<String, String>> carsMovement) {
 }

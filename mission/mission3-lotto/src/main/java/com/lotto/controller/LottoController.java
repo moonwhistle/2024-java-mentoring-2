@@ -20,6 +20,7 @@ public class LottoController {
     }
 
     public void manageLottoProcess() {
+        showPurchaseAmount();
         PurchaseLottoDTO purchaseLottoDTO = lottoService.buildLotto(getPurchaseAmountDTO());
 
         showPurchasedLottoAmount(purchaseLottoDTO.purchasedLottoAmount());
@@ -32,9 +33,11 @@ public class LottoController {
         return new PurchaseAmountDTO(purchaseAmount);
     }
 
-    private String getPurchaseAmountFromView() {
+    private void showPurchaseAmount() {
         outputview.showPurchaseAmount();
+    }
 
+    private String getPurchaseAmountFromView() {
         return inputView.getInput();
     }
 

@@ -1,5 +1,7 @@
 package com.lotto.domain;
 
+import com.lotto.domain.vo.Lotto;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -11,7 +13,7 @@ public class LottoLogic {
 
     private final LottoNumberGenerator lottoNumberGenerator;
 
-    public LottoLogic(){
+    public LottoLogic() {
         this.lottoNumberGenerator = new LottoNumberGenerator();
     }
 
@@ -19,24 +21,25 @@ public class LottoLogic {
         return integer / LOTTO_PRICE;
     }
 
-    public List<Set<Integer>> loopAvailableAmount(int availableAmount){
-        List<Set<Integer>> purchaseLotto = new ArrayList<>();
+    public List<Lotto> loopAvailableAmount(int availableAmount) {
+        List<Lotto> purchaseLotto = new ArrayList<>();
 
-        for(int i = 0; i < availableAmount; i++){
-            purchaseLotto.add(drawLottoNumbers());
+        for (int i = 0; i < availableAmount; i++) {
+            Lotto lotto = getLotto();
+            purchaseLotto.add(lotto);
         }
 
         return purchaseLotto;
     }
 
-    public Set<Integer> drawLottoNumbers() {
+    public Lotto getLotto() {
         Set<Integer> lottoNumbersSet = new HashSet<>();
 
-        while(lottoNumbersSet.size() != LOTTO_NUM_LIMIT){
+        while (lottoNumbersSet.size() != LOTTO_NUM_LIMIT) {
             int lottoNumber = lottoNumberGenerator.getLottoNumber();
             lottoNumbersSet.add(lottoNumber);
         }
 
-        return lottoNumbersSet;
+        return new Lotto(lottoNumbersSet);
     }
 }

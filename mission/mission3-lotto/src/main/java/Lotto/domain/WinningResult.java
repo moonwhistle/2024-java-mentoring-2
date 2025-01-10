@@ -2,6 +2,9 @@ package Lotto.domain;
 
 import Lotto.common.exception.ExceptionMessage;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public enum WinningResult {
 
     FOURTH_PRICE(3, "fourthPirce", "3개 일치 (5000원)", 0 , 5000),

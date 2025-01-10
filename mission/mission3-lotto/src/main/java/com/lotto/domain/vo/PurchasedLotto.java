@@ -1,7 +1,5 @@
 package com.lotto.domain.vo;
 
-import com.lotto.domain.LottoLogic;
-
 import java.util.ArrayList;
 import java.util.List;
 

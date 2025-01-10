@@ -19,11 +19,11 @@ public class TestLotto {
         //when
         IntegerParser integerParser = new IntegerParser();
 
+        //then
         RuntimeException thrown = Assertions.assertThrows(RuntimeException.class,
                 () -> integerParser.parseInteger(strNumber)
         );
 
-        //then
         assertEquals(expectedErrorMessage, thrown.getMessage());
     }
 
@@ -37,11 +37,11 @@ public class TestLotto {
         //when
         IntegerParser integerParser = new IntegerParser();
 
+        //then
         RuntimeException thrown = Assertions.assertThrows(RuntimeException.class,
                 () -> integerParser.parseInteger(strNumber)
         );
 
-        //then
         assertEquals(expectedErrorMessage, thrown.getMessage());
     }
 
@@ -55,11 +55,11 @@ public class TestLotto {
         //when
         IntegerParser integerParser = new IntegerParser();
 
+        //then
         RuntimeException thrown = Assertions.assertThrows(RuntimeException.class,
                 () -> integerParser.parseInteger(strNumber)
         );
 
-        //then
         assertEquals(expectedErrorMessage, thrown.getMessage());
     }
 
@@ -91,11 +91,11 @@ public class TestLotto {
         //when
         IntegerParser integerParser = new IntegerParser();
 
+        //then
         RuntimeException thrown = Assertions.assertThrows(RuntimeException.class,
                 () -> integerParser.parseInteger(strNumber)
         );
 
-        //then
         assertEquals(expectedErrorMessage, thrown.getMessage());
     }
 

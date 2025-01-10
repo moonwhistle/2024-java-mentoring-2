@@ -10,8 +10,6 @@ import java.util.stream.Collectors;
 
 public class InputView {
 
-    private static final String splitBy = ",";
-    private static final int validNumberOfLotto = 6;
     private final Scanner scanner = new Scanner(System.in);
 
     public int purchaseLotto(){
@@ -19,18 +17,10 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public List<Integer> enterWinningNumber(){
+    public String enterWinningNumber(){
         System.out.println(DisplayText.ENTER_WINNING_NUMBER.getInputMessage());
         scanner.nextLine();
-        String winningNumber = scanner.nextLine();
-        List<Integer> winning = Arrays.stream(winningNumber.split(splitBy))
-                .map(String::trim)
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-        if(winning.size() != validNumberOfLotto)
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_WINNING_RESULT.getMessage());
-
-        return winning;
+        return scanner.nextLine();
     }
 
 }

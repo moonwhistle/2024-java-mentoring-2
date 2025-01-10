@@ -6,14 +6,14 @@ import java.util.List;
 public class PurchasedLotto {
     private static final String SPACE_LETTER = "\n";
 
-    private final List<Lotto> purchasedLotto = new ArrayList<>();
+    private final List<Lotto> purchasedLotto;
+
+    public PurchasedLotto(List<Lotto> purchasedLotto) {
+        this.purchasedLotto = purchasedLotto;
+    }
 
     public List<Lotto> getPurchasedLotto() {
         return this.purchasedLotto;
-    }
-
-    public void addLotto(Lotto lotto) {
-        this.purchasedLotto.add(lotto);
     }
 
     public int getPurchasedLottoAmount(){

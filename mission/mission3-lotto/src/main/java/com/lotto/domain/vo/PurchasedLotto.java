@@ -1,26 +1,15 @@
 package com.lotto.domain.vo;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class PurchasedLotto {
+public record PurchasedLotto(List<Lotto> purchasedLotto) {
     private static final String SPACE_LETTER = "\n";
 
-    private final List<Lotto> purchasedLotto;
-
-    public PurchasedLotto(List<Lotto> purchasedLotto) {
-        this.purchasedLotto = purchasedLotto;
-    }
-
-    public List<Lotto> getPurchasedLotto() {
-        return this.purchasedLotto;
-    }
-
-    public int getPurchasedLottoAmount(){
+    public int getPurchasedLottoAmount() {
         return this.purchasedLotto.size();
     }
 
-    public String getStringifyLotto(){
+    public String getStringifyLotto() {
         return stringifyLottoList(this.purchasedLotto);
     }
 

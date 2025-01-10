@@ -57,7 +57,7 @@ public class Lottos {
 
     private long compareLottoAndWinningNumber(Lotto lotto, List<LottoNumber> winningNumber) {
         return lotto.getLotto().stream()
-                .filter(lottoNumber -> winningNumber.stream().anyMatch(winning -> lottoNumber.checkSame(winning)))
+                .filter(lottoNumber -> winningNumber.stream().anyMatch(winning -> lottoNumber.checkSameWinningNumber(winning)))
                 .count();
     }
 

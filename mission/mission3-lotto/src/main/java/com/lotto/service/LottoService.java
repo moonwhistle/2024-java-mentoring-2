@@ -1,8 +1,8 @@
 package com.lotto.service;
 
 import com.lotto.controller.dto.PurchaseAmountDTO;
-
 import com.lotto.controller.dto.PurchaseLottoDTO;
+
 import com.lotto.domain.IntegerParser;
 import com.lotto.domain.LottoLogic;
 

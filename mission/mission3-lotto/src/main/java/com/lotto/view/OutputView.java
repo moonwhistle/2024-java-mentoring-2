@@ -1,7 +1,5 @@
 package com.lotto.view;
 
-import java.util.Set;
-
 public class OutputView {
     public void showPurchaseAmount(){
         System.out.println("구입금액을 입력해 주세요.");
@@ -11,7 +9,7 @@ public class OutputView {
         System.out.println("\n" +purchaseAmout + "개를 구매했습니다.");
     }
 
-    public void showLotto(Set<Integer> lotto){
+    public void showLotto(String lotto){
         System.out.println(lotto);
     }
 }

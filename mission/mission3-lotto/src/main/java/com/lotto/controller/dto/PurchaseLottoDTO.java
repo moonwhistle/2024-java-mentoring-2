@@ -1,7 +1,8 @@
 package com.lotto.controller.dto;
 
-import java.util.List;
-import java.util.Set;
+import com.lotto.domain.vo.Lotto;
 
-public record PurchaseLottoDTO(List<Set<Integer>> purchasedLotto) {
+import java.util.List;
+
+public record PurchaseLottoDTO(List<Lotto> purchasedLotto) {
 }

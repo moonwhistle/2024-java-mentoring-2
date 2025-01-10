@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Set;
 
 public class LottoLogic {
+    private static final String SPACE_LETTER = "\n";
+
     private final LottoNumberGenerator lottoNumberGenerator;
     private final LottoConfig lottoConfig;
 
@@ -53,6 +55,6 @@ public class LottoLogic {
     }
 
     private String buildLottoNumbersString(Lotto lotto) {
-        return lotto.getLottoNumbers().toString() + "\n";
+        return lotto.getLottoNumbers().toString() + SPACE_LETTER;
     }
 }

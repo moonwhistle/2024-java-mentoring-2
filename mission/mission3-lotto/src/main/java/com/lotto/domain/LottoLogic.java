@@ -1,8 +1,8 @@
 package com.lotto.domain;
 
 import com.lotto.domain.vo.Lotto;
+import com.lotto.domain.vo.PurchasedLotto;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,12 +21,12 @@ public class LottoLogic {
         return integer / LOTTO_PRICE;
     }
 
-    public List<Lotto> loopAvailableAmount(int availableAmount) {
-        List<Lotto> purchaseLotto = new ArrayList<>();
+    public PurchasedLotto loopAvailableAmount(int availableAmount) {
+        PurchasedLotto purchaseLotto = new PurchasedLotto();
 
         for (int i = 0; i < availableAmount; i++) {
             Lotto lotto = getLotto();
-            purchaseLotto.add(lotto);
+            purchaseLotto.addLotto(lotto);
         }
 
         return purchaseLotto;
@@ -41,5 +41,19 @@ public class LottoLogic {
         }
 
         return new Lotto(lottoNumbersSet);
+    }
+
+    public String stringifyLottoList(List<Lotto> purchasedLotto) {
+        StringBuilder lottoString = new StringBuilder();
+
+        for (Lotto lotto : purchasedLotto) {
+            lottoString.append(buildLottoNumbersString(lotto));
+        }
+
+        return String.valueOf(lottoString);
+    }
+
+    private String buildLottoNumbersString(Lotto lotto) {
+        return lotto.getLottoNumbers().toString() + "\n";
     }
 }

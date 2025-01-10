@@ -7,18 +7,23 @@ import com.lotto.domain.LottoLogic;
 
 public class LottoService {
     private final IntegerParser integerParser;
+    private final LottoLogic lottoLogic;
 
     public LottoService(){
         this.integerParser = new IntegerParser();
+        this.lottoLogic = new LottoLogic();
     }
 
-    public void buildLotto() {
+    public void buildLotto(PurchaseAmountDTO purchaseAmountDTO) {
+        int availableAmount = calculateAvailableAmount(purchaseAmountDTO);
 
     }
 
-    private int getPurchaseAmount(PurchaseAmountDTO purchaseAmountDTO){
+    private int calculateAvailableAmount(PurchaseAmountDTO purchaseAmountDTO) {
         String stringPurchaseAmount = purchaseAmountDTO.purchaseAmount();
 
-        return integerParser.parseInteger(stringPurchaseAmount);
+        int purchaseAmount = integerParser.parseInteger(stringPurchaseAmount);
+
+        return lottoLogic.getAvailableAmount(purchaseAmount);
     }
 }

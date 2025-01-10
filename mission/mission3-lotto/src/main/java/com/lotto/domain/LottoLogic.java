@@ -19,6 +19,16 @@ public class LottoLogic {
         return integer / LOTTO_PRICE;
     }
 
+    public List<Set<Integer>> loopAvailableAmount(int availableAmount){
+        List<Set<Integer>> purchaseLotto = new ArrayList<>();
+
+        for(int i = 0; i < availableAmount; i++){
+            purchaseLotto.add(drawLottoNumbers());
+        }
+
+        return purchaseLotto;
+    }
+
     public Set<Integer> drawLottoNumbers() {
         Set<Integer> lottoNumbersSet = new HashSet<>();
 

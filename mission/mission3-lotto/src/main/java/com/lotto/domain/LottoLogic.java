@@ -1,24 +1,19 @@
 package com.lotto.domain;
 
 import com.lotto.common.LottoConfig;
-import com.lotto.common.RandomNumberGenerator;
 
 import com.lotto.domain.vo.Lotto;
 import com.lotto.domain.vo.PurchasedLotto;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class LottoLogic {
     private final LottoConfig lottoConfig;
-    private final RandomNumberGenerator randomNumberGenerator;
     private final IntegerParser integerParser;
 
-    public LottoLogic(LottoConfig lottoConfig, RandomNumberGenerator randomNumberGenerator) {
+    public LottoLogic(LottoConfig lottoConfig) {
         this.lottoConfig = lottoConfig;
-        this.randomNumberGenerator = randomNumberGenerator;
         this.integerParser = new IntegerParser(lottoConfig);
     }
 
@@ -28,38 +23,17 @@ public class LottoLogic {
         return purchaseAmount / lottoConfig.getLottoPrice();
     }
 
-    public PurchasedLotto purchaseAvailableLottoTickets(List<Lotto> purchasedLotto) {
-        return new PurchasedLotto(purchasedLotto);
-    }
-
-    public List<Lotto> loopAvailableAmount(int availableAmount) {
+    public PurchasedLotto purchaseAvailableLottoTickets(int availableAmount, LottoTicketGenerator lottoTicketGenerator) {
         List<Lotto> purchasedLotto = new ArrayList<>();
 
         for (int i = 0; i < availableAmount; i++) {
-            purchasedLotto.add(getLottoTicket());
+            purchasedLotto.add(lottoTicketGenerator.getLottoTicket());
         }
 
-        return purchasedLotto;
+        return getPurchasedLotto(purchasedLotto);
     }
 
-    private Lotto getLottoTicket() {
-        Set<Integer> lottoNumbers = getLottoNumberSet();
-
-        return new Lotto(lottoNumbers);
-    }
-
-    private Set<Integer> getLottoNumberSet() {
-        Set<Integer> lottoNumbersSet = new HashSet<>();
-
-        return getRandomLottoNumber(lottoNumbersSet);
-    }
-
-    private Set<Integer> getRandomLottoNumber(Set<Integer> lottoNumbersSet) {
-        while (lottoNumbersSet.size() != lottoConfig.getLottoTicketNumberCountLimit()) {
-            int lottoNumber = randomNumberGenerator.getRandomNumber();
-            lottoNumbersSet.add(lottoNumber);
-        }
-
-        return lottoNumbersSet;
+    private PurchasedLotto getPurchasedLotto(List<Lotto> purchasedLotto) {
+        return new PurchasedLotto(purchasedLotto);
     }
 }

@@ -2,6 +2,7 @@ package com.lotto.domain;
 
 import com.lotto.common.LottoConfig;
 
+import com.lotto.domain.exception.InvalidLottoNumberCountException;
 import com.lotto.domain.vo.Lotto;
 import com.lotto.domain.vo.PurchasedLotto;
 
@@ -29,14 +30,21 @@ public class LottoLogic {
         List<Lotto> purchaseLotto = new ArrayList<>();
 
         for (int i = 0; i < availableAmount; i++) {
-            Lotto lotto = getLotto();
+            Set<Integer> lottoNumbers = getLottoNumberSet();
+            Lotto lotto = getLotto(lottoNumbers);
             purchaseLotto.add(lotto);
         }
 
         return new PurchasedLotto(purchaseLotto);
     }
 
-    public Lotto getLotto() {
+    private Lotto getLotto(Set<Integer> lottoNumbersSet) {
+        validateLottoNumber(lottoNumbersSet);
+
+        return new Lotto(lottoNumbersSet);
+    }
+
+    private Set<Integer> getLottoNumberSet() {
         Set<Integer> lottoNumbersSet = new HashSet<>();
 
         while (lottoNumbersSet.size() != lottoConfig.getLottoTicketNumberCountLimit()) {
@@ -44,6 +52,12 @@ public class LottoLogic {
             lottoNumbersSet.add(lottoNumber);
         }
 
-        return new Lotto(lottoNumbersSet, lottoConfig);
+        return lottoNumbersSet;
+    }
+
+    private void validateLottoNumber(Set<Integer> lottoNumbersSet) {
+        if (lottoNumbersSet.size() != lottoConfig.getLottoTicketNumberCountLimit()) {
+            throw new InvalidLottoNumberCountException(ErrorMessage.INVALID_LOTTO_NUMBER_COUNT_ERROR.getMessage());
+        }
     }
 }

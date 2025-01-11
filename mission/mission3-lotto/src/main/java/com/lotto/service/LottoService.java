@@ -18,7 +18,6 @@ public class LottoService {
 
     public PurchaseLottoDTO buildLotto(PurchaseAmountDTO purchaseAmountDTO) {
         int availableAmount = calculateAvailableAmount(purchaseAmountDTO);
-
         PurchasedLotto purchasedLotto = lottoLogic.loopAvailableAmount(availableAmount);
 
         return getPurchaseLottoDTO(purchasedLotto);
@@ -33,7 +32,6 @@ public class LottoService {
 
     private int calculateAvailableAmount(PurchaseAmountDTO purchaseAmountDTO) {
         String stringPurchaseAmount = purchaseAmountDTO.purchaseAmount();
-
         int purchaseAmount = integerParser.parseInteger(stringPurchaseAmount);
 
         return lottoLogic.getAvailableAmount(purchaseAmount);

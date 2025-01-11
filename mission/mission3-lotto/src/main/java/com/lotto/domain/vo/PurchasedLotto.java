@@ -24,6 +24,6 @@ public record PurchasedLotto(List<Lotto> purchasedLotto) {
     }
 
     private String buildLottoNumbersString(Lotto lotto) {
-        return lotto.getLottoNumbers().toString() + SPACE_LETTER;
+        return lotto.lottoNumbers().toString() + SPACE_LETTER;
     }
 }

@@ -114,7 +114,8 @@ public class TestLotto {
 
         //given
         LottoConfig lottoConfig = new DefaultLottoConfig();
-        int amount = 14500;
+
+        String amount = "14500";
         int expected = 14;
 
         //when

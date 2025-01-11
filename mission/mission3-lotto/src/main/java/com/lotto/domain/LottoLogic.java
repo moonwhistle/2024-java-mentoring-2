@@ -11,16 +11,20 @@ import java.util.List;
 import java.util.Set;
 
 public class LottoLogic {
-    private final LottoNumberGenerator lottoNumberGenerator;
     private final LottoConfig lottoConfig;
+    private final LottoNumberGenerator lottoNumberGenerator;
+    private final IntegerParser integerParser;
 
     public LottoLogic(LottoConfig lottoConfig) {
         this.lottoConfig = lottoConfig;
         this.lottoNumberGenerator = new LottoNumberGenerator(lottoConfig);
+        this.integerParser = new IntegerParser(lottoConfig);
     }
 
-    public int getAvailableAmount(int integer) {
-        return integer / lottoConfig.getLottoPrice();
+    public int getAvailableAmount(String stringPurchaseAmount) {
+        int purchaseAmount = integerParser.parseInteger(stringPurchaseAmount);
+
+        return purchaseAmount / lottoConfig.getLottoPrice();
     }
 
     public PurchasedLotto loopAvailableAmount(int availableAmount) {

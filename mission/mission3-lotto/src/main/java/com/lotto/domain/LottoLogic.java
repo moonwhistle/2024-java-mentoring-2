@@ -37,34 +37,37 @@ public class LottoLogic {
         List<Lotto> purchasedLotto = new ArrayList<>();
 
         for (int i = 0; i < availableAmount; i++) {
-            Set<Integer> lottoNumbers = getLottoNumberSet();
-            Lotto lotto = getLottoTicket(lottoNumbers);
-            purchasedLotto.add(lotto);
+            purchasedLotto.add(getLottoTicket());
         }
 
         return purchasedLotto;
     }
 
-    private Lotto getLottoTicket(Set<Integer> lottoNumbersSet) {
-        validateLottoNumber(lottoNumbersSet);
+    private Lotto getLottoTicket() {
+        Set<Integer> lottoNumbers = getLottoNumberSet();
+        validateLottoNumber(lottoNumbers);
 
-        return new Lotto(lottoNumbersSet);
-    }
-
-    private Set<Integer> getLottoNumberSet() {
-        Set<Integer> lottoNumbersSet = new HashSet<>();
-
-        while (lottoNumbersSet.size() != lottoConfig.getLottoTicketNumberCountLimit()) {
-            int lottoNumber = randomNumberGenerator.getRandomNumber();
-            lottoNumbersSet.add(lottoNumber);
-        }
-
-        return lottoNumbersSet;
+        return new Lotto(lottoNumbers);
     }
 
     private void validateLottoNumber(Set<Integer> lottoNumbersSet) {
         if (lottoNumbersSet.size() != lottoConfig.getLottoTicketNumberCountLimit()) {
             throw new InvalidLottoNumberCountException(ErrorMessage.INVALID_LOTTO_NUMBER_COUNT_ERROR.getMessage());
         }
+    }
+
+    private Set<Integer> getLottoNumberSet() {
+        Set<Integer> lottoNumbersSet = new HashSet<>();
+
+        return getRandomLottoNumber(lottoNumbersSet);
+    }
+
+    private Set<Integer> getRandomLottoNumber(Set<Integer> lottoNumbersSet) {
+        while (lottoNumbersSet.size() != lottoConfig.getLottoTicketNumberCountLimit()) {
+            int lottoNumber = randomNumberGenerator.getRandomNumber();
+            lottoNumbersSet.add(lottoNumber);
+        }
+
+        return lottoNumbersSet;
     }
 }

@@ -14,13 +14,13 @@ public class IntegerParser {
     public int parseInteger(String str) {
         try {
             int integerStr = isInteger(str);
-            return isUnderMinPrice(integerStr);
+            return isUnderMinimumLottoPrice(integerStr);
         } catch (NumberFormatException e) {
             throw new NaNErrorException(ErrorMessage.NAN_ERROR.getMessage());
         }
     }
 
-    private int isUnderMinPrice(int num) {
+    private int isUnderMinimumLottoPrice(int num) {
         if (num < lottoConfig.getLottoPrice()) {
             throw new UnderMinPriceErrorException(ErrorMessage.MIN_PRICE_ERROR.getMessage());
         }

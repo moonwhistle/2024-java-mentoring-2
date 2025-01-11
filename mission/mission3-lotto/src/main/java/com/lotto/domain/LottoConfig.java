@@ -10,7 +10,7 @@ public class LottoConfig {
         return LOTTO_PRICE;
     }
 
-    public int getLottoNumberCountLimit() {
+    public int getLottoTicketNumberCountLimit() {
         return LOTTO_NUMBER_COUNT_LIMIT;
     }
 

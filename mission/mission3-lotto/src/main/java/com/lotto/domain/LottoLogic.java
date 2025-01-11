@@ -35,7 +35,7 @@ public class LottoLogic {
     public Lotto getLotto() {
         Set<Integer> lottoNumbersSet = new HashSet<>();
 
-        while (lottoNumbersSet.size() != lottoConfig.getLottoNumberCountLimit()) {
+        while (lottoNumbersSet.size() != lottoConfig.getLottoTicketNumberCountLimit()) {
             int lottoNumber = lottoNumberGenerator.getLottoNumber();
             lottoNumbersSet.add(lottoNumber);
         }

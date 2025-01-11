@@ -16,6 +16,7 @@ public class WinningNumber {
         List<Integer> winning = Arrays.stream(winningNumber.split(splitBy))
                 .map(String::trim)
                 .map(Integer::parseInt)
+                .distinct()
                 .collect(Collectors.toList());
 
         if(winning.size() != validNumberOfLotto)

@@ -21,15 +21,16 @@ public class LottoController {
 
     public void manageLottoProcess() {
         showPurchaseAmount();
-        PurchaseLottoDTO purchaseLottoDTO = lottoService.buildLotto(getPurchaseAmountDTO());
+        String purchaseAmountFromUser = getPurchaseAmountFromView();
+
+        PurchaseAmountDTO purchaseAmountDTO = getPurchaseAmountDTO(purchaseAmountFromUser);
+        PurchaseLottoDTO purchaseLottoDTO = lottoService.buildLotto(purchaseAmountDTO);
 
         showPurchasedLottoAmount(purchaseLottoDTO.purchasedLottoAmount());
         showPurchaseLotto(purchaseLottoDTO.purchasedLotto());
     }
 
-    private PurchaseAmountDTO getPurchaseAmountDTO() {
-        String purchaseAmount = getPurchaseAmountFromView();
-
+    private PurchaseAmountDTO getPurchaseAmountDTO(String purchaseAmount) {
         return new PurchaseAmountDTO(purchaseAmount);
     }
 

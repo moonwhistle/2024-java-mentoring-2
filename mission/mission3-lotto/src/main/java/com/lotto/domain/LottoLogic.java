@@ -1,5 +1,7 @@
 package com.lotto.domain;
 
+import com.lotto.common.LottoConfig;
+
 import com.lotto.domain.vo.Lotto;
 import com.lotto.domain.vo.PurchasedLotto;
 
@@ -12,9 +14,9 @@ public class LottoLogic {
     private final LottoNumberGenerator lottoNumberGenerator;
     private final LottoConfig lottoConfig;
 
-    public LottoLogic() {
-        this.lottoNumberGenerator = new LottoNumberGenerator();
-        this.lottoConfig = new LottoConfig();
+    public LottoLogic(LottoConfig lottoConfig) {
+        this.lottoConfig = lottoConfig;
+        this.lottoNumberGenerator = new LottoNumberGenerator(lottoConfig);
     }
 
     public int getAvailableAmount(int integer) {
@@ -40,6 +42,6 @@ public class LottoLogic {
             lottoNumbersSet.add(lottoNumber);
         }
 
-        return new Lotto(lottoNumbersSet);
+        return new Lotto(lottoNumbersSet, lottoConfig);
     }
 }

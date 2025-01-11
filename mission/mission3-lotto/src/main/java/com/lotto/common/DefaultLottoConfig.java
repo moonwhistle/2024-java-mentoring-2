@@ -1,4 +1,4 @@
-package com.lotto.domain;
+package com.lotto.common;
 
 public class DefaultLottoConfig implements LottoConfig {
     private static final int LOTTO_PRICE = 1000;

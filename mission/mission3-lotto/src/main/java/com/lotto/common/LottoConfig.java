@@ -1,4 +1,4 @@
-package com.lotto.domain;
+package com.lotto.common;
 
 public interface LottoConfig {
     int getLottoPrice();

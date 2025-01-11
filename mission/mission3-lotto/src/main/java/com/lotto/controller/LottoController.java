@@ -34,12 +34,12 @@ public class LottoController {
         return new PurchaseAmountDTO(purchaseAmount);
     }
 
-    private void showPurchaseAmount() {
-        outputview.showPurchaseAmount();
-    }
-
     private String getPurchaseAmountFromView() {
         return inputView.getInput();
+    }
+
+    private void showPurchaseAmount() {
+        outputview.showPurchaseAmount();
     }
 
     private void showPurchasedLottoAmount(int purchasedLottoAmount) {

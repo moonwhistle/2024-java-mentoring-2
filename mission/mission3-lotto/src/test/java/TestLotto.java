@@ -1,8 +1,6 @@
 import com.lotto.common.DefaultLottoConfig;
-import com.lotto.common.DefaultLottoNumberGenerator;
 import com.lotto.common.LottoConfig;
 
-import com.lotto.common.RandomNumberGenerator;
 import com.lotto.domain.LottoLogic;
 import com.lotto.domain.IntegerParser;
 
@@ -116,13 +114,12 @@ public class TestLotto {
 
         //given
         LottoConfig lottoConfig = new DefaultLottoConfig();
-        RandomNumberGenerator randomNumberGenerator = new DefaultLottoNumberGenerator();
 
         String amount = "14500";
         int expected = 14;
 
         //when
-        LottoLogic lottoLogic = new LottoLogic(lottoConfig, randomNumberGenerator);
+        LottoLogic lottoLogic = new LottoLogic(lottoConfig);
         int result = lottoLogic.getAvailableAmount(amount);
 
         //then

@@ -2,6 +2,7 @@ package com.lotto.domain;
 
 import com.lotto.common.LottoConfig;
 
+import com.lotto.common.RandomNumberGenerator;
 import com.lotto.domain.exception.InvalidLottoNumberCountException;
 import com.lotto.domain.vo.Lotto;
 import com.lotto.domain.vo.PurchasedLotto;
@@ -13,10 +14,12 @@ import java.util.Set;
 
 public class LottoLogic {
     private final LottoConfig lottoConfig;
+    private final RandomNumberGenerator randomNumberGenerator;
     private final IntegerParser integerParser;
 
-    public LottoLogic(LottoConfig lottoConfig) {
+    public LottoLogic(LottoConfig lottoConfig, RandomNumberGenerator randomNumberGenerator) {
         this.lottoConfig = lottoConfig;
+        this.randomNumberGenerator = randomNumberGenerator;
         this.integerParser = new IntegerParser(lottoConfig);
     }
 
@@ -48,7 +51,7 @@ public class LottoLogic {
         Set<Integer> lottoNumbersSet = new HashSet<>();
 
         while (lottoNumbersSet.size() != lottoConfig.getLottoTicketNumberCountLimit()) {
-            int lottoNumber = lottoConfig.getLottoNumber();
+            int lottoNumber = randomNumberGenerator.getRandomNumber();
             lottoNumbersSet.add(lottoNumber);
         }
 

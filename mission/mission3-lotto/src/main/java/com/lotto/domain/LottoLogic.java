@@ -1,6 +1,7 @@
 package com.lotto.domain;
 
 import com.lotto.common.LottoConfig;
+import com.lotto.common.LottoNumberGenerator;
 
 import com.lotto.domain.vo.Lotto;
 import com.lotto.domain.vo.PurchasedLotto;
@@ -15,9 +16,9 @@ public class LottoLogic {
     private final LottoNumberGenerator lottoNumberGenerator;
     private final IntegerParser integerParser;
 
-    public LottoLogic(LottoConfig lottoConfig) {
+    public LottoLogic(LottoConfig lottoConfig, LottoNumberGenerator lottoNumberGenerator) {
         this.lottoConfig = lottoConfig;
-        this.lottoNumberGenerator = new LottoNumberGenerator(lottoConfig);
+        this.lottoNumberGenerator = lottoNumberGenerator;
         this.integerParser = new IntegerParser(lottoConfig);
     }
 

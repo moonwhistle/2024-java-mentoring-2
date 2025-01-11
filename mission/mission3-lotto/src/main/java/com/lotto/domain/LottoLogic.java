@@ -1,8 +1,8 @@
 package com.lotto.domain;
 
 import com.lotto.common.LottoConfig;
-
 import com.lotto.common.RandomNumberGenerator;
+
 import com.lotto.domain.exception.InvalidLottoNumberCountException;
 import com.lotto.domain.vo.Lotto;
 import com.lotto.domain.vo.PurchasedLotto;

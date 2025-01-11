@@ -3,8 +3,8 @@ package com.lotto;
 import com.lotto.common.DefaultLottoConfig;
 import com.lotto.common.DefaultLottoNumberGenerator;
 import com.lotto.common.LottoConfig;
-
 import com.lotto.common.RandomNumberGenerator;
+
 import com.lotto.controller.LottoController;
 
 import com.lotto.service.LottoService;

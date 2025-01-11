@@ -1,7 +1,8 @@
 package com.lotto.domain.vo;
 
-import com.lotto.domain.ErrorMessage;
 import com.lotto.common.LottoConfig;
+
+import com.lotto.domain.ErrorMessage;
 import com.lotto.domain.exception.InvalidLottoNumberCountException;
 
 import java.util.Set;

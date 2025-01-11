@@ -1,5 +1,7 @@
 package com.lotto.domain;
 
+import com.lotto.common.LottoConfig;
+
 import com.lotto.domain.exception.UnderMinPriceErrorException;
 import com.lotto.domain.exception.NaNErrorException;
 import com.lotto.domain.exception.NotIntegerException;
@@ -7,8 +9,8 @@ import com.lotto.domain.exception.NotIntegerException;
 public class IntegerParser {
     private final LottoConfig lottoConfig;
 
-    public IntegerParser() {
-        this.lottoConfig = new LottoConfig();
+    public IntegerParser(LottoConfig lottoConfig) {
+        this.lottoConfig = lottoConfig;
     }
 
     public int parseInteger(String str) {

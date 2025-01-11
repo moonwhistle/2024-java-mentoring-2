@@ -12,11 +12,11 @@ import com.lotto.view.OutputView;
 
 public class LottoApplication {
     public static void main(String[] args) {
-        LottoConfig lottoConfig = new DefaultLottoConfig();
+        LottoConfig defaultLottoConfig = new DefaultLottoConfig();
 
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
-        LottoService lottoService = new LottoService(lottoConfig);
+        LottoService lottoService = new LottoService(defaultLottoConfig);
 
         LottoController lottoController = new LottoController(inputView, outputView, lottoService);
         lottoController.manageLottoProcess();

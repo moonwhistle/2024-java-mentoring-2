@@ -45,15 +45,8 @@ public class LottoLogic {
 
     private Lotto getLottoTicket() {
         Set<Integer> lottoNumbers = getLottoNumberSet();
-        validateLottoNumber(lottoNumbers);
 
         return new Lotto(lottoNumbers);
-    }
-
-    private void validateLottoNumber(Set<Integer> lottoNumbersSet) {
-        if (lottoNumbersSet.size() != lottoConfig.getLottoTicketNumberCountLimit()) {
-            throw new InvalidLottoNumberCountException(ErrorMessage.INVALID_LOTTO_NUMBER_COUNT_ERROR.getMessage());
-        }
     }
 
     private Set<Integer> getLottoNumberSet() {

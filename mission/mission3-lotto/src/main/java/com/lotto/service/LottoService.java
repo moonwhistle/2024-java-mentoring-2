@@ -1,6 +1,5 @@
 package com.lotto.service;
 
-import com.lotto.common.LottoNumberGenerator;
 import com.lotto.common.LottoConfig;
 
 import com.lotto.controller.dto.PurchaseAmountDTO;
@@ -12,8 +11,8 @@ import com.lotto.domain.vo.PurchasedLotto;
 public class LottoService {
     private final LottoLogic lottoLogic;
 
-    public LottoService(LottoConfig lottoConfig, LottoNumberGenerator lottoNumberGenerator) {
-        this.lottoLogic = new LottoLogic(lottoConfig, lottoNumberGenerator);
+    public LottoService(LottoConfig lottoConfig) {
+        this.lottoLogic = new LottoLogic(lottoConfig);
     }
 
     public PurchaseLottoDTO buildLotto(PurchaseAmountDTO purchaseAmountDTO) {

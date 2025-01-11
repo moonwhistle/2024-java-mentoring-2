@@ -1,13 +1,16 @@
 package com.lotto.service;
 
 import com.lotto.common.LottoConfig;
-
 import com.lotto.common.RandomNumberGenerator;
+
 import com.lotto.controller.dto.PurchaseAmountDTO;
 import com.lotto.controller.dto.PurchaseLottoDTO;
 
 import com.lotto.domain.LottoLogic;
+import com.lotto.domain.vo.Lotto;
 import com.lotto.domain.vo.PurchasedLotto;
+
+import java.util.List;
 
 public class LottoService {
     private final LottoLogic lottoLogic;
@@ -18,9 +21,15 @@ public class LottoService {
 
     public PurchaseLottoDTO buildLotto(PurchaseAmountDTO purchaseAmountDTO) {
         int availableAmount = calculateAvailableAmount(purchaseAmountDTO);
-        PurchasedLotto purchasedLotto = lottoLogic.loopAvailableAmount(availableAmount);
+        PurchasedLotto purchasedLotto = getPurchasedLotto(availableAmount);
 
         return getPurchaseLottoDTO(purchasedLotto);
+    }
+
+    private PurchasedLotto getPurchasedLotto(int availableAmount) {
+        List<Lotto> purchasedLottoList = lottoLogic.loopAvailableAmount(availableAmount);
+
+        return lottoLogic.purchaseAvailableLottoTickets(purchasedLottoList);
     }
 
     private PurchaseLottoDTO getPurchaseLottoDTO(PurchasedLotto purchasedLotto) {

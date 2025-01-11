@@ -29,19 +29,23 @@ public class LottoLogic {
         return purchaseAmount / lottoConfig.getLottoPrice();
     }
 
-    public PurchasedLotto loopAvailableAmount(int availableAmount) {
-        List<Lotto> purchaseLotto = new ArrayList<>();
+    public PurchasedLotto purchaseAvailableLottoTickets(List<Lotto> purchasedLotto) {
+        return new PurchasedLotto(purchasedLotto);
+    }
+
+    public List<Lotto> loopAvailableAmount(int availableAmount) {
+        List<Lotto> purchasedLotto = new ArrayList<>();
 
         for (int i = 0; i < availableAmount; i++) {
             Set<Integer> lottoNumbers = getLottoNumberSet();
-            Lotto lotto = getLotto(lottoNumbers);
-            purchaseLotto.add(lotto);
+            Lotto lotto = getLottoTicket(lottoNumbers);
+            purchasedLotto.add(lotto);
         }
 
-        return new PurchasedLotto(purchaseLotto);
+        return purchasedLotto;
     }
 
-    private Lotto getLotto(Set<Integer> lottoNumbersSet) {
+    private Lotto getLottoTicket(Set<Integer> lottoNumbersSet) {
         validateLottoNumber(lottoNumbersSet);
 
         return new Lotto(lottoNumbersSet);

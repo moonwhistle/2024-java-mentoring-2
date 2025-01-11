@@ -60,7 +60,7 @@ public class LottoController {
     }
 
     private long calculateMatchCount(Lottos lottos, List<LottoNumber> winningNumber){
-        return lottos.calculateWinningResult(lottos, winningNumber);
+        return winning.calculateWinningResult(lottos, winningNumber);
     }
 
     private void printWinningResult(){

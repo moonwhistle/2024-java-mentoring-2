@@ -42,23 +42,10 @@ public class Lottos {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_LOTTO_NUMBER.getMessage());
     }
 
-    public long calculateWinningResult(Lottos lottos, List<LottoNumber> winningNumber){
-        return getLottos().stream()
-                .mapToLong(lotto -> compareLottoAndWinningNumber(lotto, winningNumber))
-                .max()
-                .orElse(0);
-    }
-
     public String printLottoList(Lottos lottos){
         return getLottos().stream()
                 .map(lotto -> lotto.toLottoDto().toString())
                 .collect(Collectors.joining("\n"));
-    }
-
-    private long compareLottoAndWinningNumber(Lotto lotto, List<LottoNumber> winningNumber) {
-        return lotto.getLotto().stream()
-                .filter(lottoNumber -> winningNumber.stream().anyMatch(winning -> lottoNumber.checkSameWinningNumber(winning)))
-                .count();
     }
 
     private List<Lotto> createLottos(){

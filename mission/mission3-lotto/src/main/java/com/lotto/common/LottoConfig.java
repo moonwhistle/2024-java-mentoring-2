@@ -5,4 +5,5 @@ public interface LottoConfig {
     int getLottoTicketNumberCountLimit();
     int getMinLottoNumber();
     int getMaxLottoNumber();
+    int getLottoNumber();
 }

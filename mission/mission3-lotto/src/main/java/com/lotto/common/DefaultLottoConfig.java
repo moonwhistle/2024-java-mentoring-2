@@ -21,4 +21,8 @@ public class DefaultLottoConfig implements LottoConfig {
     public int getMaxLottoNumber() {
         return MAX_LOTTO_NUMBER;
     }
+
+    public int getLottoNumber() {
+        return (int) (Math.random() * MAX_LOTTO_NUMBER) + MIN_LOTTO_NUMBER;
+    }
 }

@@ -3,6 +3,7 @@ package Lotto.domain;
 import Lotto.common.exception.ExceptionMessage;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Winning {
@@ -40,6 +41,19 @@ public class Winning {
             WinningResult.THIRD_PRICE.incrementPrizeCount();
         if(matchCount == WinningResult.FOURTH_PRICE.getMatchCount())
             WinningResult.FOURTH_PRICE.incrementPrizeCount();
+    }
+
+    public long calculateWinningResult(Lottos lottos, List<LottoNumber> winningNumber){
+        return lottos.getLottos().stream()
+                .mapToLong(lotto -> compareLottoAndWinningNumber(lotto, winningNumber))
+                .max()
+                .orElse(0);
+    }
+
+    private long compareLottoAndWinningNumber(Lotto lotto, List<LottoNumber> winningNumber) {
+        return lotto.getLotto().stream()
+                .filter(lottoNumber -> winningNumber.stream().anyMatch(winning -> lottoNumber.checkSameWinningNumber(winning)))
+                .count();
     }
 
 }

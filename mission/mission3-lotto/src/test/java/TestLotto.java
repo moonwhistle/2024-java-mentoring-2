@@ -1,3 +1,6 @@
+import com.lotto.common.DefaultLottoConfig;
+import com.lotto.common.LottoConfig;
+
 import com.lotto.domain.LottoLogic;
 import com.lotto.domain.IntegerParser;
 
@@ -12,12 +15,13 @@ public class TestLotto {
     public void notIntegerErrorTest() {
 
         //given
-        String strNumber = "1.5";
+        LottoConfig lottoConfig = new DefaultLottoConfig();
 
+        String strNumber = "1.5";
         String expectedErrorMessage = "입력된 값이 정수가 아닙니다.";
 
         //when
-        IntegerParser integerParser = new IntegerParser();
+        IntegerParser integerParser = new IntegerParser(lottoConfig);
 
         //then
         RuntimeException thrown = Assertions.assertThrows(RuntimeException.class,
@@ -31,11 +35,13 @@ public class TestLotto {
     public void minPriceTest() {
 
         //given
+        LottoConfig lottoConfig = new DefaultLottoConfig();
+
         String strNumber = "500";
         String expectedErrorMessage = "로또를 구매하기 위한 최소 금액은 1000원입니다.";
 
         //when
-        IntegerParser integerParser = new IntegerParser();
+        IntegerParser integerParser = new IntegerParser(lottoConfig);
 
         //then
         RuntimeException thrown = Assertions.assertThrows(RuntimeException.class,
@@ -49,11 +55,13 @@ public class TestLotto {
     public void minusTest() {
 
         //given
+        LottoConfig lottoConfig = new DefaultLottoConfig();
+
         String strNumber = "-10";
         String expectedErrorMessage = "로또를 구매하기 위한 최소 금액은 1000원입니다.";
 
         //when
-        IntegerParser integerParser = new IntegerParser();
+        IntegerParser integerParser = new IntegerParser(lottoConfig);
 
         //then
         RuntimeException thrown = Assertions.assertThrows(RuntimeException.class,
@@ -67,12 +75,13 @@ public class TestLotto {
     public void parseIntTest() {
 
         //given
-        String strNumber = "14500";
+        LottoConfig lottoConfig = new DefaultLottoConfig();
 
+        String strNumber = "14500";
         int expected = 14500;
 
         //when
-        IntegerParser integerParser = new IntegerParser();
+        IntegerParser integerParser = new IntegerParser(lottoConfig);
 
         int result = integerParser.parseInteger(strNumber);
 
@@ -84,12 +93,13 @@ public class TestLotto {
     public void parseStringNaNTest() {
 
         //given
-        String strNumber = "ㅋㅋㅋㅋㅋㅋㅋㅋ";
+        LottoConfig lottoConfig = new DefaultLottoConfig();
 
+        String strNumber = "ㅋㅋㅋㅋㅋㅋㅋㅋ";
         String expectedErrorMessage = "입력된 값이 숫자가 아닙니다.";
 
         //when
-        IntegerParser integerParser = new IntegerParser();
+        IntegerParser integerParser = new IntegerParser(lottoConfig);
 
         //then
         RuntimeException thrown = Assertions.assertThrows(RuntimeException.class,
@@ -103,12 +113,12 @@ public class TestLotto {
     public void availableAmountTest() {
 
         //given
+        LottoConfig lottoConfig = new DefaultLottoConfig();
         int amount = 14500;
-
         int expected = 14;
 
         //when
-        LottoLogic lottoLogic = new LottoLogic();
+        LottoLogic lottoLogic = new LottoLogic(lottoConfig);
         int result = lottoLogic.getAvailableAmount(amount);
 
         //then

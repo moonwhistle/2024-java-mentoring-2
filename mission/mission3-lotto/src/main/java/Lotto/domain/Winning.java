@@ -16,16 +16,6 @@ public class Winning {
         return resultString;
     }
 
-    private int matchPriceAndMatchCount(Long matchCount){
-        if(matchCount < WinningResult.FOURTH_PRICE.getMatchCount())
-            throw new IllegalArgumentException(ExceptionMessage.ZERO_MATCH_COUNT.getMessage());
-
-        return Arrays.stream(WinningResult.values())
-                .filter(result -> result.getMatchCount() == matchCount)
-                .map(WinningResult::getPrice)
-                .findFirst().orElse(0);
-    }
-
     public double calculateProfit(Lottos lottos, Long matchCount){
         int price = matchPriceAndMatchCount(matchCount);
 
@@ -54,6 +44,25 @@ public class Winning {
         return lotto.getLotto().stream()
                 .filter(lottoNumber -> winningNumber.stream().anyMatch(winning -> lottoNumber.checkSameWinningNumber(winning)))
                 .count();
+    }
+
+    private int matchPriceAndMatchCount(Long matchCount){
+        validateMatchCount(matchCount);
+
+        return Arrays.stream(WinningResult.values())
+                .filter(result -> isMatchCountEqual(result, matchCount))
+                .map(WinningResult::getPrice)
+                .findFirst()
+                .orElse(0);
+    }
+
+    private void validateMatchCount(Long matchCount){
+        if(matchCount < WinningResult.FOURTH_PRICE.getMatchCount())
+            throw new IllegalArgumentException(ExceptionMessage.ZERO_MATCH_COUNT.getMessage());
+    }
+
+    private boolean isMatchCountEqual(WinningResult winningResult, Long matchCount){
+        return winningResult.getMatchCount() == matchCount;
     }
 
 }

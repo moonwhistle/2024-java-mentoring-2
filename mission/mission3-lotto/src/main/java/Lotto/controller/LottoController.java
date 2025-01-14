@@ -50,7 +50,7 @@ public class LottoController {
 
     private void printLottoList(Lottos lottos){
         printLottoNumber(lottos.getNumberOfLottos());
-        String lottoList = lottos.printLottoList(lottos);
+        String lottoList = lottos.printLottoList();
         outputView.printLottoList(lottoList);
     }
 

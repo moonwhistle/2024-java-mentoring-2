@@ -33,16 +33,12 @@ public class Lottos {
         return inputPrice / Lotto.lottoPrice;
     }
 
-    public int calculateLottoNumber(int inputPrice){
-        return inputPrice / Lotto.lottoPrice;
-    }
-
     public void validLottoNumber(int inputPrice){
         if(inputPrice < Lotto.lottoPrice)
             throw new IllegalArgumentException(ExceptionMessage.INVALID_LOTTO_NUMBER.getMessage());
     }
 
-    public String printLottoList(Lottos lottos){
+    public String printLottoList(){
         return getLottos().stream()
                 .map(lotto -> lotto.toLottoDto().toString())
                 .collect(Collectors.joining("\n"));

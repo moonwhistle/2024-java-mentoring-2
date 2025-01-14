@@ -22,12 +22,17 @@ public class Lotto {
         duplicateNumber();
     }
 
+    public List<LottoNumber> getLotto(){
+        return lotto;
+    }
+
     public List<Integer> toLottoDto(){
         return new LottoDto(lotto).getLotto();
     }
 
     private void duplicateNumber(){
         long lottoNumber = lotto.stream()
+                .mapToLong(LottoNumber::getLottoNumber)
                 .distinct()
                 .count();
         if(lottoNumber != lottoElementNumber)

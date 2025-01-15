@@ -35,7 +35,11 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("곱하기 테스트")
     void multiplyTest() {
+        int expectedResult = calculator.multiply(firstNumber, secondNumber);
+        int actualResult = firstNumber * secondNumber;
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test

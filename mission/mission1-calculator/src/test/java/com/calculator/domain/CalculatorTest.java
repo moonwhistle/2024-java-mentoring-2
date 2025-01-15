@@ -27,7 +27,11 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("빼기 테스트")
     void subtractTest() {
+        int expectedResult = calculator.subtract(firstNumber, secondNumber);
+        int actualResult = firstNumber - secondNumber;
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test

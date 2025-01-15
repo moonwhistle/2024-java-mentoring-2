@@ -43,6 +43,10 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("나누기 테스트")
     void divideTest() {
+        int expectedResult = calculator.divide(firstNumber, secondNumber);
+        int actualResult = firstNumber / secondNumber;
+        assertEquals(expectedResult, actualResult);
     }
 }

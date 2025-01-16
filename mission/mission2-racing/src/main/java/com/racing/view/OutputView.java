@@ -2,6 +2,10 @@ package com.racing.view;
 
 public class OutputView {
 
+    public void showResultComment() {
+        System.out.println("실행 결과\n");
+    }
+
     public void showLapRecord(String carName, String carPosition) {
         System.out.println(carName + " : " + carPosition);
     }

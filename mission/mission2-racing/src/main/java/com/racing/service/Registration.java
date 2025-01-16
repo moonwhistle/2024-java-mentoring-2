@@ -1,4 +1,6 @@
-package com.racing.domain.car;
+package com.racing.service;
+
+import com.racing.domain.car.Car;
 
 import java.util.ArrayList;
 import java.util.List;

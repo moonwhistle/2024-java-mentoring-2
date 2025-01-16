@@ -1,29 +1,24 @@
-package com.racing.domain.car;
+package com.racing.service;
 
-import com.racing.domain.number.RandomNumberGenerator;
+import com.racing.domain.car.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Racing {
+public class Ranking {
 
     private static final String JOINING_SYMBOL = ",";
 
-    public void raceTheCars(List<Car> cars,RandomNumberGenerator randomNumberGenerator) {
-        for (Car car : cars) {
-            car.driveCar(randomNumberGenerator.generateRandomNumber());
-        }
-    }
-
-    public String findWinner(List<Car> cars, int maxPosition) {
+    public String findWinner(List<Car> cars) {
         List<String> winner = new ArrayList<>();
+        int maxPosition = findMaxPosition(cars);
         for (Car car : cars) {
             findRightCar(maxPosition, car, winner);
         }
         return String.join(JOINING_SYMBOL, winner);
     }
 
-    public int findMaxPosition(List<Car> cars) {
+    private int findMaxPosition(List<Car> cars) {
         return cars.stream()
                 .mapToInt(v -> v.getPosition().length())
                 .max()
@@ -35,5 +30,4 @@ public class Racing {
             winners.add(car.getCarName());
         }
     }
-
 }

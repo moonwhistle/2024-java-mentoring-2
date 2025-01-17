@@ -2,9 +2,10 @@ package com.racing.domain;
 
 public class CarPosition {
 
+    private static final int START_POSITION = 0;
     private int carPosition;
 
     public CarPosition() {
-        this.carPosition = 0;
+        this.carPosition = START_POSITION;
     }
 }

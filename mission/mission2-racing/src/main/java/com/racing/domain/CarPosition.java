@@ -8,4 +8,8 @@ public class CarPosition {
     public CarPosition() {
         this.carPosition = START_POSITION;
     }
+
+    public int getCarPosition() {
+        return carPosition;
+    }
 }

@@ -16,7 +16,7 @@ public class CarName {
     }
 
     private void validateIsNotEmpty(final String carName) {
-        if (carName == null || carName.length() == 0) {
+        if (carName == null || carName.isEmpty()) {
             throw new IllegalArgumentException("차의 이름은 빈값이 될 수 없습니다.");
         }
     }

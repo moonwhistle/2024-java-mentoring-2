@@ -1,5 +1,8 @@
 package com.racing.domain.number;
 
+import com.racing.domain.exception.NegativeNumberException;
+import com.racing.domain.exception.OutOfRangeException;
+
 import java.util.Random;
 
 public class ZeroToNineNumberGenerator implements RandomNumber {
@@ -19,13 +22,13 @@ public class ZeroToNineNumberGenerator implements RandomNumber {
 
     private void validateIsNotNegative(int number) {
         if (number < 0) {
-            throw new IllegalArgumentException("범위 밖의 음수가 생성되었습니다.");
+            throw new NegativeNumberException();
         }
     }
 
     private void validateIsInRange(int number) {
         if (number > 9) {
-            throw new IllegalArgumentException("범위 밖의 수가 생성되었습니다.");
+            throw new OutOfRangeException();
         }
     }
 }

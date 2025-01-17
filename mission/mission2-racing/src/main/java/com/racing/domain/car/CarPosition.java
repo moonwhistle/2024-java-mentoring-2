@@ -1,4 +1,6 @@
-package com.racing.domain;
+package com.racing.domain.car;
+
+import com.racing.domain.exception.NegativeNumberException;
 
 public class CarPosition {
 
@@ -16,7 +18,7 @@ public class CarPosition {
 
     private void validateIsPositivePosition(int carPosition) {
         if (carPosition < START_POSITION) {
-            throw new IllegalArgumentException("음수인 위치는 오류를 발생시킵니다.");
+            throw new NegativeNumberException();
         }
     }
 }

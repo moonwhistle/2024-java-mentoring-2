@@ -1,4 +1,7 @@
-package com.racing.domain;
+package com.racing.domain.car;
+
+import com.racing.domain.exception.EmptyNameValueException;
+import com.racing.domain.exception.ExceedNameLengthException;
 
 public class CarName {
 
@@ -17,13 +20,13 @@ public class CarName {
 
     private void validateIsNotEmpty(final String carName) {
         if (carName == null || carName.isEmpty()) {
-            throw new IllegalArgumentException("차의 이름은 빈값이 될 수 없습니다.");
+            throw new EmptyNameValueException();
         }
     }
 
     private void validateNameLength(final String carName) {
         if (carName.length() > CAR_NAME_LENGTH_MAX) {
-            throw new IllegalArgumentException("차 이름은 5자 이하이어야 합니다.");
+            throw new ExceedNameLengthException();
         }
     }
 }

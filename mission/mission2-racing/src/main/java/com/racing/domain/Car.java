@@ -2,14 +2,14 @@ package com.racing.domain;
 
 public class Car {
 
-    private int carPosition;
+    private CarPosition carPosition;
     private final CarName carName;
 
     public Car(final CarName carName) {
         this.carName = carName;
     }
 
-    public int getCarPosition() {
+    public CarPosition getCarPosition() {
         return carPosition;
     }
 

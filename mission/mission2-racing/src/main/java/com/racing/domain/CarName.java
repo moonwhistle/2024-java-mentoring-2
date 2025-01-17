@@ -7,4 +7,8 @@ public class CarName {
     public CarName(final String carName) {
         this.carName = carName;
     }
+
+    public String getCarName() {
+        return carName;
+    }
 }

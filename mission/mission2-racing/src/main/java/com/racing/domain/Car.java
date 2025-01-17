@@ -3,9 +3,9 @@ package com.racing.domain;
 public class Car {
 
     private int carPosition;
-    private final String carName;
+    private final CarName carName;
 
-    public Car(final String carName) {
+    public Car(final CarName carName) {
         this.carName = carName;
     }
 
@@ -13,7 +13,7 @@ public class Car {
         return carPosition;
     }
 
-    public String getCarName() {
+    public CarName getCarName() {
         return carName;
     }
 }

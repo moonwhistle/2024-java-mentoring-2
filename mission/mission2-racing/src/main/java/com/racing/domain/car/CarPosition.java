@@ -12,6 +12,10 @@ public class CarPosition {
         this.carPosition = START_POSITION;
     }
 
+    public void addPosition() {
+        carPosition++;
+    }
+
     public int getCarPosition() {
         return carPosition;
     }

@@ -4,4 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Registration {
+
+    private static final String SPLIT_SYMBOL = ",";
+
+    public String[] splitNamesOfCars(String names) {
+        return names.split(SPLIT_SYMBOL);
+    }
+
 }

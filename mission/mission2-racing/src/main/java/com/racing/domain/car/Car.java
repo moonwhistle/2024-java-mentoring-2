@@ -9,21 +9,24 @@ public class Car {
 
     public Car(final CarName carName) {
         this.carName = carName;
+        this.carPosition = new CarPosition();
     }
 
-    public void driveCar(int randomNumber) {
-        if(randomNumber >= THRESHOLD_TO_MOVE) {
+    public void moveForwardOrStop(int randomNumber) {
+        if(checkIsGreater(randomNumber)) {
             carPosition.addPosition();
         }
     }
 
-    public CarPosition getCarPosition() {
-        return carPosition;
+    public String getCarPosition() {
+        return carPosition.getPosition();
     }
 
-    public CarName getCarName() {
-        return carName;
+    public String getCarName() {
+        return carName.getName();
     }
 
-
+    private boolean checkIsGreater(int randomNumber) {
+        return randomNumber >= THRESHOLD_TO_MOVE;
+    }
 }

@@ -3,8 +3,6 @@ package com.racing;
 import com.racing.domain.car.Car;
 import com.racing.domain.car.CarName;
 import com.racing.domain.car.Ranking;
-import com.racing.domain.car.Registration;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -44,6 +42,24 @@ public class RacingTest {
         Car neoCar = new Car(neo);
         String expected = "-";
         String notExpected = "";
+
+        //when & then
+        String result = neoCar.getCarPosition();
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(expected, result),
+                () -> Assertions.assertNotEquals(notExpected, result)
+        );
+    }
+
+    @Test
+    void 전진테스트() {
+
+        //given
+        CarName neo = new CarName("neo");
+        Car neoCar = new Car(neo);
+        neoCar.moveForwardOrStop(5);
+        String expected = "--";
+        String notExpected = "-";
 
         //when & then
         String result = neoCar.getCarPosition();

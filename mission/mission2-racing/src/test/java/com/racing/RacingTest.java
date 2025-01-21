@@ -52,12 +52,13 @@ public class RacingTest {
     }
 
     @Test
-    void 전진테스트() {
+    void 전진및멈춤테스트() {
 
         //given
         CarName neo = new CarName("neo");
         Car neoCar = new Car(neo);
         neoCar.moveForwardOrStop(5);
+        neoCar.moveForwardOrStop(0);
         String expected = "--";
         String notExpected = "-";
 

@@ -25,8 +25,7 @@ public class RacingService {
     }
 
     public RacingResponse getRacingResponse(RacingRequest racingRequest) {
-        int maxPosition = ranking.findMaxPosition(racingRequest.namesOfCars());
-        String winner = ranking.findWinner(racingRequest.namesOfCars(), maxPosition);
+        String winner = ranking.findWinner(racingRequest.namesOfCars());
         return new RacingResponse(winner);
     }
 

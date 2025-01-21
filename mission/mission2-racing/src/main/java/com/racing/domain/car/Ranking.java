@@ -8,15 +8,16 @@ public class Ranking {
 
     private static final String JOINING_SYMBOL = ",";
 
-    public String findWinner(List<Car> cars, int maxPosition) {
+    public String findWinner(List<Car> cars) {
         List<String> winner = new ArrayList<>();
+        int maxPosition = findMaxPosition(cars);
         for (Car car : cars) {
             findRightCar(maxPosition, car, winner);
         }
         return joinWinner(winner);
     }
 
-    public int findMaxPosition(List<Car> cars) {
+    private int findMaxPosition(List<Car> cars) {
         List<String> positions = findAllPositions(cars);
         return positions.stream()
                 .mapToInt(v -> v.length())

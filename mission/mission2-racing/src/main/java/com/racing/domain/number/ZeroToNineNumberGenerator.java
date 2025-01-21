@@ -10,6 +10,7 @@ public class ZeroToNineNumberGenerator implements RandomNumber {
     private static final int NUM_ZERO = 0;
     private static final int MAXIMUM_OF_RANDOM_NUMBER = 9;
     private static final int RANGE_OF_RANDOM_NUMBER = 10;
+
     private final Random random;
 
     public ZeroToNineNumberGenerator() {

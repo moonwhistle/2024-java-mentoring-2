@@ -69,4 +69,26 @@ public class RacingTest {
                 () -> Assertions.assertNotEquals(notExpected, result)
         );
     }
+
+    @Test
+    void 이름반환테스트() {
+
+        //given
+        CarName neo = new CarName("neo");
+        CarName brie = new CarName("brie");
+        Car neoCar = new Car(neo);
+        Car brieCar = new Car(brie);
+        String expected = "neo";
+        String expected2 = "brie";
+
+        //when & then
+        String result = neoCar.getCarName();
+        String result2 = brieCar.getCarName();
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(expected, result),
+                () -> Assertions.assertEquals(expected2, result2),
+                () -> Assertions.assertNotEquals(expected, result2),
+                () -> Assertions.assertNotEquals(expected2, result)
+        );
+    }
 }

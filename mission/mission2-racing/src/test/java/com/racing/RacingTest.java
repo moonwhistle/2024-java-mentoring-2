@@ -35,4 +35,21 @@ public class RacingTest {
                 () -> Assertions.assertNotEquals(notExpected, result)
         );
     }
+
+    @Test
+    void 위치초기화테스트() {
+
+        //given
+        CarName neo = new CarName("neo");
+        Car neoCar = new Car(neo);
+        String expected = "-";
+        String notExpected = "";
+
+        //when & then
+        String result = neoCar.getCarPosition();
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(expected, result),
+                () -> Assertions.assertNotEquals(notExpected, result)
+        );
+    }
 }

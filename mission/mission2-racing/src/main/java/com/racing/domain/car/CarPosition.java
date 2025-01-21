@@ -1,28 +1,29 @@
 package com.racing.domain.car;
 
-import com.racing.domain.exception.NegativeNumberException;
+import com.racing.domain.exception.EmptyValueException;
 
 public class CarPosition {
 
-    private static final int START_POSITION = 0;
-    private int carPosition;
+    private static final String POSITION_POINT = "-";
+
+    private String carPosition;
 
     public CarPosition() {
-        validateIsPositivePosition(carPosition);
-        this.carPosition = START_POSITION;
+        carPosition = POSITION_POINT;
+        validatePositionExist(carPosition);
     }
 
     public void addPosition() {
-        carPosition++;
+        carPosition+=POSITION_POINT;
     }
 
-    public int getCarPosition() {
+    public String getPosition() {
         return carPosition;
     }
 
-    private void validateIsPositivePosition(int carPosition) {
-        if (carPosition < START_POSITION) {
-            throw new NegativeNumberException();
+    private void validatePositionExist(String carPosition) {
+        if (carPosition == null || carPosition.isEmpty()) {
+            throw new EmptyValueException();
         }
     }
 }

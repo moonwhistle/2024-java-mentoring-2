@@ -11,4 +11,11 @@ public class Registration {
         return names.split(SPLIT_SYMBOL);
     }
 
+    public List<Car> registerCars(String[] namesOfCars) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : namesOfCars) {
+            cars.add(new Car(new CarName(name)));
+        }
+        return cars;
+    }
 }

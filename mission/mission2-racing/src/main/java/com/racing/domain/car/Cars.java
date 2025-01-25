@@ -16,6 +16,15 @@ public class Cars {
         this.positionRecords = new ArrayList<>();
     }
 
+    public List<LinkedHashMap<String, String>> raceCars(int numbersOfLaps, ZeroToNineNumberGenerator randomNumberGenerator) {
+        recordPositionsOfCars();
+        for (int i = 0; i < numbersOfLaps; i++) {
+            forwardOrStopCars(randomNumberGenerator);
+            recordPositionsOfCars();
+        }
+        return positionRecords;
+    }
+
     public List<Car> getCars() {
         return cars;
     }

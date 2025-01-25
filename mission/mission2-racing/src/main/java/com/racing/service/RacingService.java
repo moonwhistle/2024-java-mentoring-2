@@ -31,8 +31,7 @@ public class RacingService {
 
     public RacingResponse getRacingResponse(RacingRequest racingRequest) {
         List<LinkedHashMap<String,String>> racingRecord = getProgressOfRacing(racingRequest.namesOfCars(), racingRequest.numbersOfLaps());
-        List<String> nameOfWinner = ranking.findWinner(racingRecord);
-        String winner = ranking.joinWinner(nameOfWinner);
+        String winner = ranking.findWinner(racingRecord);
         return new RacingResponse(winner, racingRecord);
     }
 

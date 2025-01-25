@@ -1,4 +1,7 @@
 package com.racing.dto;
 
-public record RacingResponse(String winner) {
+import java.util.LinkedHashMap;
+import java.util.List;
+
+public record RacingResponse(String winner, List<LinkedHashMap<String, String>> racingRecord) {
 }

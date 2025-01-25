@@ -11,7 +11,7 @@ public class Ranking {
     public String findWinner(List<LinkedHashMap<String, String>> racingRecord) {
         LinkedHashMap<String, String> lastLap = racingRecord.get(racingRecord.size() - 1);
         int maxPosition = findMaxPosition(lastLap);
-        List<String> nameOfWinner =  findNameOfWinner(lastLap, maxPosition);
+        List<String> nameOfWinner = findNameOfWinner(lastLap, maxPosition);
         return joinWinner(nameOfWinner);
     }
 

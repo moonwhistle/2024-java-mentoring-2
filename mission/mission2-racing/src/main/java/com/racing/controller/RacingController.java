@@ -1,7 +1,5 @@
 package com.racing.controller;
 
-import com.racing.domain.car.Car;
-import com.racing.domain.car.Cars;
 import com.racing.domain.number.ZeroToNineNumberGenerator;
 
 import com.racing.dto.RacingRequest;
@@ -12,6 +10,7 @@ import com.racing.service.RacingService;
 import com.racing.view.InputView;
 import com.racing.view.OutputView;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class RacingController {
@@ -31,13 +30,9 @@ public class RacingController {
     public void startRacing() {
         RacingRequest racingRequest = createRequest();
         outputView.showResultComment();
-        raceCars(racingRequest);
         RacingResponse racingResponse = racingService.getRacingResponse(racingRequest);
-        showRacingResult(racingResponse);
-    }
-
-    private void showRacingResult(RacingResponse racingResponse) {
-        outputView.showWinner(racingResponse.winner());
+        showRacingProgress(racingResponse.racingRecord());
+        showWinner(racingResponse.winner());
     }
 
     private RacingRequest createRequest() {
@@ -46,24 +41,20 @@ public class RacingController {
         return racingService.getRacingRequest(namesOfCars, numberOfLaps);
     }
 
-    private void raceCars(RacingRequest racingRequest) {
-        showPositionOfCarsForEachLap(racingRequest);
-        showPositionsOfForOneLap(racingRequest);
+    private void showWinner(String winner) {
+        outputView.showWinner(winner);
     }
 
-    private void showPositionOfCarsForEachLap(RacingRequest racingRequest) {
-        List<Car> namesOfCars = racingRequest.namesOfCars();
-        int numberOfLaps = racingRequest.numbersOfLaps();
-        Cars racingCars = new Cars(namesOfCars);
-        for (int i=0; i < numberOfLaps; i++) {
-            showPositionsOfForOneLap(racingRequest);
-            racingCars.forwardOrStopCars(randomNumberGenerator);
+    private void showRacingProgress(List<LinkedHashMap<String, String>> racingProgress) {
+        for (LinkedHashMap<String, String> lapProgress : racingProgress) {
+            showLapProgress(lapProgress);
+            outputView.makeNewLine();
         }
     }
 
-    private void showPositionsOfForOneLap(RacingRequest racingRequest) {
-        for (Car car : racingRequest.namesOfCars()) {
-            outputView.showLapRecord(car.getCarName(), car.getCarPosition());
+    private void showLapProgress(LinkedHashMap<String, String> lapProgress) {
+        for(String carName : lapProgress.keySet()) {
+            outputView.showLapRecord(carName, lapProgress.get(carName));
         }
     }
 }

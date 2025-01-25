@@ -1,22 +1,27 @@
 package com.racing.service;
 
 import com.racing.domain.car.Car;
-import com.racing.domain.car.Ranking;
-import com.racing.domain.car.Registration;
+import com.racing.domain.car.Cars;
+import com.racing.domain.number.ZeroToNineNumberGenerator;
+import com.racing.domain.system.Ranking;
+import com.racing.domain.system.Registration;
 
 import com.racing.dto.RacingRequest;
 import com.racing.dto.RacingResponse;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class RacingService {
 
+    private final ZeroToNineNumberGenerator randomNumberGenerator;
     private final Registration registration;
     private final Ranking ranking;
 
     public RacingService() {
         this.registration = new Registration();
         this.ranking = new Ranking();
+        this.randomNumberGenerator = new ZeroToNineNumberGenerator();
     }
 
     public RacingRequest getRacingRequest(String carNames, int numbersOfLaps) {
@@ -25,12 +30,19 @@ public class RacingService {
     }
 
     public RacingResponse getRacingResponse(RacingRequest racingRequest) {
-        String winner = ranking.findWinner(racingRequest.namesOfCars());
-        return new RacingResponse(winner);
+        List<LinkedHashMap<String,String>> racingRecord = getProgressOfRacing(racingRequest.namesOfCars(), racingRequest.numbersOfLaps(), randomNumberGenerator);
+        List<String> nameOfWinner = ranking.findWinner(racingRecord);
+        String winner = ranking.joinWinner(nameOfWinner);
+        return new RacingResponse(winner, racingRecord);
     }
 
     private List<Car> getNamesOfCars(String carNames) {
         String[] names = registration.splitNamesOfCars(carNames);
         return registration.registerCars(names);
+    }
+
+    private List<LinkedHashMap<String, String>> getProgressOfRacing(List<Car> cars, int numbersOfLaps, ZeroToNineNumberGenerator randomNumberGenerator) {
+        Cars racingCars = new Cars(cars);
+        return racingCars.raceCars(numbersOfLaps, randomNumberGenerator);
     }
 }

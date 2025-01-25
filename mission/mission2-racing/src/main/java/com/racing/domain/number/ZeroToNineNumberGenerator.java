@@ -5,7 +5,7 @@ import com.racing.domain.exception.OutOfRangeException;
 
 import java.util.Random;
 
-public class ZeroToNineNumberGenerator implements RandomNumber {
+public class ZeroToNineNumberGenerator implements RandomNumberGenerator {
 
     private static final int NUM_ZERO = 0;
     private static final int MAXIMUM_OF_RANDOM_NUMBER = 9;

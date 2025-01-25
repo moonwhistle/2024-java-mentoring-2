@@ -10,8 +10,8 @@ public class Registration {
 
     private static final String SPLIT_SYMBOL = ",";
 
-    public String[] splitNamesOfCars(String names) {
-        return names.split(SPLIT_SYMBOL);
+    public String[] findOutNamesOfCars(String names) {
+        return splitNamesOfCars(names);
     }
 
     public List<Car> registerCars(String[] namesOfCars) {
@@ -20,5 +20,9 @@ public class Registration {
             cars.add(new Car(new CarName(name)));
         }
         return cars;
+    }
+
+    private String[] splitNamesOfCars(String names) {
+        return names.split(SPLIT_SYMBOL);
     }
 }

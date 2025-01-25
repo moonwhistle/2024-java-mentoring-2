@@ -36,7 +36,7 @@ public class RacingService {
     }
 
     private List<Car> getNamesOfCars(String carNames) {
-        String[] names = registration.splitNamesOfCars(carNames);
+        String[] names = registration.findOutNamesOfCars(carNames);
         return registration.registerCars(names);
     }
 

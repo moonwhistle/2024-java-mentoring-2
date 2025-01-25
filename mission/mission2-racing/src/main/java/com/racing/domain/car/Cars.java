@@ -25,6 +25,10 @@ public class Cars {
         return positionRecords;
     }
 
+    public List<LinkedHashMap<String, String>> getPositionRecords() {
+        return positionRecords;
+    }
+
     public List<Car> getCars() {
         return cars;
     }

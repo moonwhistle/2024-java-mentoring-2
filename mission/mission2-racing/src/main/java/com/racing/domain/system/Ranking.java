@@ -18,6 +18,10 @@ public class Ranking {
                 .toList();
     }
 
+    public String joinWinner(List<String> winner) {
+        return String.join(JOINING_SYMBOL, winner);
+    }
+
     private int findMaxPosition(LinkedHashMap<String, String> positionRecord) {
         return positionRecord.values()
                 .stream()

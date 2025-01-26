@@ -16,13 +16,11 @@ import java.util.List;
 public class RacingController {
 
     private final RacingService racingService;
-    private final ZeroToNineNumberGenerator randomNumberGenerator;
     private final InputView inputView;
     private final OutputView outputView;
 
     public RacingController(RacingService racingService, ZeroToNineNumberGenerator randomNumberGenerator,InputView inputView, OutputView outputView) {
         this.racingService = racingService;
-        this.randomNumberGenerator = randomNumberGenerator;
         this.inputView = inputView;
         this.outputView = outputView;
     }
@@ -31,7 +29,7 @@ public class RacingController {
         RacingRequest racingRequest = createRequest();
         outputView.showResultComment();
         RacingResponse racingResponse = racingService.getRacingResponse(racingRequest);
-        showRacingProgress(racingResponse.racingRecord());
+        showFullProgress(racingResponse.racingProgress());
         showWinner(racingResponse.winner());
     }
 
@@ -45,16 +43,7 @@ public class RacingController {
         outputView.showWinner(winner);
     }
 
-    private void showRacingProgress(List<LinkedHashMap<String, String>> racingProgress) {
-        for (LinkedHashMap<String, String> lapProgress : racingProgress) {
-            showLapProgress(lapProgress);
-            outputView.makeNewLine();
-        }
-    }
-
-    private void showLapProgress(LinkedHashMap<String, String> lapProgress) {
-        for(String carName : lapProgress.keySet()) {
-            outputView.showLapRecord(carName, lapProgress.get(carName));
-        }
+    private void showFullProgress(List<LinkedHashMap<String, String>> raceProgress) {
+        outputView.showRaceProgress(raceProgress);
     }
 }

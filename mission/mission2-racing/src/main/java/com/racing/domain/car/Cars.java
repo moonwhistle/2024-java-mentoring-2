@@ -16,35 +16,26 @@ public class Cars {
         this.positionRecords = new ArrayList<>();
     }
 
-    public List<LinkedHashMap<String, String>> raceCars(int numbersOfLaps, ZeroToNineNumberGenerator randomNumberGenerator) {
-        recordPositionsOfCars();
-        for (int i = 0; i < numbersOfLaps; i++) {
-            forwardOrStopCars(randomNumberGenerator);
-            recordPositionsOfCars();
-        }
-        return positionRecords;
+    public List<Car> getCars() {
+        return cars;
     }
 
     public List<LinkedHashMap<String, String>> getPositionRecords() {
         return positionRecords;
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    private void forwardOrStopCars(ZeroToNineNumberGenerator randomNumberGenerator) {
+    public void forwardOrStopCars(ZeroToNineNumberGenerator randomNumberGenerator) {
         for(Car car : cars) {
             car.moveForwardOrStop(randomNumberGenerator.generateRandomNumber());
         }
     }
 
-    private void recordPositionsOfCars() {
-        LinkedHashMap<String, String> positions = recordPosition(cars);
+    public void recordPositionsOfLap() {
+        LinkedHashMap<String, String> positions = recordPositionsOfCars(cars);
         positionRecords.add(positions);
     }
 
-    private LinkedHashMap<String, String> recordPosition(List<Car> cars) {
+    private LinkedHashMap<String, String> recordPositionsOfCars(List<Car> cars) {
         LinkedHashMap<String, String> positions = new LinkedHashMap<>();
         for(Car car : cars) {
             positions.put(car.getCarName(), car.getCarPosition());

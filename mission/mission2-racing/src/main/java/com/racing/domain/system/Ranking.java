@@ -8,18 +8,16 @@ public class Ranking {
 
     private static final String JOINING_SYMBOL = ",";
 
-    public String findWinner(List<LinkedHashMap<String, String>> racingRecord) {
-        LinkedHashMap<String, String> lastLap = racingRecord.get(racingRecord.size() - 1);
-        int maxPosition = findMaxPosition(lastLap);
-        List<String> nameOfWinner = findNameOfWinner(lastLap, maxPosition);
-        return joinWinner(nameOfWinner);
-    }
-
-    private String joinWinner(List<String> winner) {
+    public String joinWinner(List<String> winner) {
         return String.join(JOINING_SYMBOL, winner);
     }
 
-    private List<String> findNameOfWinner(LinkedHashMap<String, String> lastLap, int maxPosition) {
+    public LinkedHashMap<String, String> getLastLap(List<LinkedHashMap<String, String>> racingRecord) {
+        return racingRecord.get(racingRecord.size() - 1);
+    }
+
+    public List<String> findNameOfWinner(LinkedHashMap<String, String> lastLap) {
+        int maxPosition = findMaxPosition(lastLap);
         return lastLap.entrySet()
                 .stream()
                 .filter(v->v.getValue().length() == maxPosition)

@@ -1,7 +1,5 @@
 package com.racing.controller;
 
-import com.racing.domain.number.ZeroToNineNumberGenerator;
-
 import com.racing.dto.RacingRequest;
 import com.racing.dto.RacingResponse;
 
@@ -19,7 +17,7 @@ public class RacingController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public RacingController(RacingService racingService, ZeroToNineNumberGenerator randomNumberGenerator,InputView inputView, OutputView outputView) {
+    public RacingController(RacingService racingService, InputView inputView, OutputView outputView) {
         this.racingService = racingService;
         this.inputView = inputView;
         this.outputView = outputView;

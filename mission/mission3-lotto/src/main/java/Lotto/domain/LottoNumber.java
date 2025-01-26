@@ -1,7 +1,6 @@
 package Lotto.domain;
 
 import Lotto.common.exception.ExceptionMessage;
-import Lotto.dto.LottoDto;
 
 public class LottoNumber {
 
@@ -19,6 +18,13 @@ public class LottoNumber {
     public void numberOutOfRange(){
         if(lottoNumber > 45 || lottoNumber < 1)
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_OUT_OF_RANGE.getMessage());
+    }
+
+    public boolean checkSameWinningNumber(LottoNumber winningNumber){
+        if(this.lottoNumber == winningNumber.getLottoNumber())
+            return true;
+
+        return false;
     }
 
 }

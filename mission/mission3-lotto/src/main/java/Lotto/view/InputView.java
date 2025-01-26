@@ -13,4 +13,10 @@ public class InputView {
         return scanner.nextInt();
     }
 
+    public String enterWinningNumber(){
+        System.out.println(DisplayText.ENTER_WINNING_NUMBER.getInputMessage());
+        scanner.nextLine();
+        return scanner.nextLine();
+    }
+
 }

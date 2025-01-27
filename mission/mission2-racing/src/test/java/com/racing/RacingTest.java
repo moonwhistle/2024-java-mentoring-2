@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+
 public class RacingTest {
 
     @Test
@@ -19,12 +20,11 @@ public class RacingTest {
         LinkedHashMap<String, String> progressOfLaps = new LinkedHashMap<>();
         progressOfLaps.put("neo","--");
         progressOfLaps.put("brie","-");
-        List<LinkedHashMap<String, String>> progressOfRace = List.of(progressOfLaps);
-        String expected = "neo";
-        String notExpected = "brie";
+        List<String> expected = List.of("neo");
+        List<String> notExpected = List.of("brie");
 
         //when & then
-        String result = ranking.findWinner(progressOfRace);
+        List<String> result = ranking.findNameOfWinner(progressOfLaps);
         Assertions.assertAll(
                 () -> Assertions.assertEquals(expected, result),
                 () -> Assertions.assertNotEquals(notExpected, result)

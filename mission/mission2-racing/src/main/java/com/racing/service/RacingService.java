@@ -42,10 +42,11 @@ public class RacingService {
 
     private List<LinkedHashMap<String, String>> getProgressOfRacing(List<Car> cars, int numbersOfLaps) {
         Cars racingCars = new Cars(cars);
-        racingCars.recordPositionsOfLap();
+        LinkedHashMap<String,String> racingRecord = racingCars.recordPositionsOfCars();
+        racingCars.recordPositionsOfLap(racingRecord);
         for (int i = 0; i < numbersOfLaps; i++) {
             racingCars.forwardOrStopCars(randomNumberGenerator);
-            racingCars.recordPositionsOfLap();
+            racingCars.recordPositionsOfLap(racingRecord);
         }
         return racingCars.getPositionRecords();
     }

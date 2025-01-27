@@ -30,12 +30,11 @@ public class Cars {
         }
     }
 
-    public void recordPositionsOfLap() {
-        LinkedHashMap<String, String> positions = recordPositionsOfCars(cars);
+    public void recordPositionsOfLap(LinkedHashMap<String, String> positions) {
         positionRecords.add(positions);
     }
 
-    private LinkedHashMap<String, String> recordPositionsOfCars(List<Car> cars) {
+    public LinkedHashMap<String, String> recordPositionsOfCars() {
         LinkedHashMap<String, String> positions = new LinkedHashMap<>();
         for(Car car : cars) {
             positions.put(car.getCarName(), car.getCarPosition());

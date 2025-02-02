@@ -16,8 +16,7 @@ public class Ranking {
         return racingRecord.get(racingRecord.size() - 1);
     }
 
-    public List<String> findNameOfWinner(LinkedHashMap<String, String> lastLap) {
-        int maxPosition = findMaxPosition(lastLap);
+    public List<String> findNameOfWinner(LinkedHashMap<String, String> lastLap, int maxPosition) {
         return lastLap.entrySet()
                 .stream()
                 .filter(v->v.getValue().length() == maxPosition)
@@ -25,7 +24,7 @@ public class Ranking {
                 .toList();
     }
 
-    private int findMaxPosition(LinkedHashMap<String, String> positionRecord) {
+    public int findMaxPosition(LinkedHashMap<String, String> positionRecord) {
         return positionRecord.values()
                 .stream()
                 .mapToInt(v->v.length())

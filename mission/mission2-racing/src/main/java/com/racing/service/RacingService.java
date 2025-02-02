@@ -42,18 +42,15 @@ public class RacingService {
 
     private List<LinkedHashMap<String, String>> getProgressOfRacing(List<Car> cars, int numbersOfLaps) {
         Cars racingCars = new Cars(cars);
-        LinkedHashMap<String,String> racingRecord = racingCars.recordPositionsOfCars();
-        racingCars.recordPositionsOfLap(racingRecord);
-        for (int i = 0; i < numbersOfLaps; i++) {
-            racingCars.forwardOrStopCars(randomNumberGenerator);
-            racingCars.recordPositionsOfLap(racingRecord);
-        }
+        racingCars.saveStartPosition();
+        racingCars.recordProgressOfRace(numbersOfLaps, randomNumberGenerator);
         return racingCars.getPositionRecords();
     }
 
     private String getWinner(List<LinkedHashMap<String, String>> racingRecord) {
         LinkedHashMap<String,String> lastLap = ranking.getLastLap(racingRecord);
-        List<String> nameOfWinner = ranking.findNameOfWinner(lastLap);
+        int maxPosition = ranking.findMaxPosition(lastLap);
+        List<String> nameOfWinner = ranking.findNameOfWinner(lastLap, maxPosition);
         return ranking.joinWinner(nameOfWinner);
     }
 }

@@ -24,17 +24,28 @@ public class Cars {
         return positionRecords;
     }
 
-    public void forwardOrStopCars(ZeroToNineNumberGenerator randomNumberGenerator) {
+    public void saveStartPosition() {
+        recordPositionsOfLap(recordPositionsOfCars());
+    }
+
+    public void recordProgressOfRace(int numbersOfLaps, ZeroToNineNumberGenerator randomNumberGenerator) {
+        for(int i = 0; i < numbersOfLaps; i++) {
+            forwardOrStopCars(randomNumberGenerator);
+            recordPositionsOfLap(recordPositionsOfCars());
+        }
+    }
+
+    private void forwardOrStopCars(ZeroToNineNumberGenerator randomNumberGenerator) {
         for(Car car : cars) {
             car.moveForwardOrStop(randomNumberGenerator.generateRandomNumber());
         }
     }
 
-    public void recordPositionsOfLap(LinkedHashMap<String, String> positions) {
+    private void recordPositionsOfLap(LinkedHashMap<String, String> positions) {
         positionRecords.add(positions);
     }
 
-    public LinkedHashMap<String, String> recordPositionsOfCars() {
+    private LinkedHashMap<String, String> recordPositionsOfCars() {
         LinkedHashMap<String, String> positions = new LinkedHashMap<>();
         for(Car car : cars) {
             positions.put(car.getCarName(), car.getCarPosition());

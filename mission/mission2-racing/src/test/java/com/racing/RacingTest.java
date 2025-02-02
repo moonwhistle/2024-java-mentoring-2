@@ -20,11 +20,12 @@ public class RacingTest {
         LinkedHashMap<String, String> progressOfLaps = new LinkedHashMap<>();
         progressOfLaps.put("neo","--");
         progressOfLaps.put("brie","-");
+        int maxPosition = 2;
         List<String> expected = List.of("neo");
         List<String> notExpected = List.of("brie");
 
         //when & then
-        List<String> result = ranking.findNameOfWinner(progressOfLaps);
+        List<String> result = ranking.findNameOfWinner(progressOfLaps, maxPosition);
         Assertions.assertAll(
                 () -> Assertions.assertEquals(expected, result),
                 () -> Assertions.assertNotEquals(notExpected, result)

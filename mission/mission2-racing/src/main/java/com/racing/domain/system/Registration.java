@@ -1,7 +1,6 @@
 package com.racing.domain.system;
 
 import com.racing.domain.car.Car;
-import com.racing.domain.car.CarName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ public class Registration {
     public List<Car> registerCars(String[] namesOfCars) {
         List<Car> cars = new ArrayList<>();
         for (String name : namesOfCars) {
-            cars.add(new Car(new CarName(name)));
+            cars.add(new Car(name));
         }
         return cars;
     }

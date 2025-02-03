@@ -8,9 +8,9 @@ public class Car {
     private String carPosition;
     private final CarName carName;
 
-    public Car(final CarName carName) {
+    public Car(final String name) {
         carPosition = POSITION_POINT;
-        this.carName = carName;
+        this.carName = new CarName(name);
     }
 
     public void moveForwardOrStop(int randomNumber) {

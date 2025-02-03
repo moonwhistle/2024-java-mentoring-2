@@ -10,10 +10,12 @@ public class Cars {
 
     private final List<Car> cars;
     private final List<LinkedHashMap<String, String>> positionRecords;
+    private final ZeroToNineNumberGenerator randomNumberGenerator;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
         this.positionRecords = new ArrayList<>();
+        this.randomNumberGenerator = new ZeroToNineNumberGenerator();
     }
 
     public List<Car> getCars() {
@@ -28,7 +30,7 @@ public class Cars {
         recordPositionsOfLap(recordPositionsOfCars());
     }
 
-    public void recordProgressOfRace(int numbersOfLaps, ZeroToNineNumberGenerator randomNumberGenerator) {
+    public void recordProgressOfRace(int numbersOfLaps) {
         for(int i = 0; i < numbersOfLaps; i++) {
             forwardOrStopCars(randomNumberGenerator);
             recordPositionsOfLap(recordPositionsOfCars());

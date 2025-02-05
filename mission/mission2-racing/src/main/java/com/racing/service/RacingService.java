@@ -2,9 +2,9 @@ package com.racing.service;
 
 import com.racing.domain.car.Car;
 import com.racing.domain.car.Cars;
-import com.racing.domain.system.Ranking;
-import com.racing.domain.system.Registration;
-import com.racing.dto.RacingRequest;
+import com.racing.domain.car.Ranking;
+import com.racing.domain.car.Registration;
+
 import com.racing.dto.RacingResponse;
 
 import java.util.LinkedHashMap;
@@ -20,27 +20,22 @@ public class RacingService {
         this.ranking = new Ranking();
     }
 
-    public RacingRequest getRacingRequest(String carNames, int numbersOfLaps) {
-        List<Car> cars = getNamesOfCars(carNames);
-        return new RacingRequest(cars, numbersOfLaps);
-    }
-
-    public RacingResponse getRacingResponse(RacingRequest racingRequest) {
-        List<LinkedHashMap<String,String>> racingRecord = getProgressOfRacing(racingRequest.namesOfCars(), racingRequest.numbersOfLaps());
-        String winner = getWinner(racingRecord);
-        return new RacingResponse(winner, racingRecord);
-    }
-
-    private List<Car> getNamesOfCars(String carNames) {
+    public List<Car> getNamesOfCars(String carNames) {
         String[] names = registration.findOutNamesOfCars(carNames);
         return registration.registerCars(names);
     }
 
+    public RacingResponse getRacingResponse(List<Car> cars, int numbersOfLaps) {
+        List<LinkedHashMap<String,String>> racingRecord = getProgressOfRacing(cars, numbersOfLaps);
+        String winner = getWinner(racingRecord);
+        return new RacingResponse(winner, racingRecord);
+    }
+
     private List<LinkedHashMap<String, String>> getProgressOfRacing(List<Car> cars, int numbersOfLaps) {
         Cars racingCars = new Cars(cars);
-        racingCars.saveStartPosition();
-        racingCars.recordProgressOfRace(numbersOfLaps);
-        return racingCars.getPositionRecords();
+        List<LinkedHashMap<String, String>> racingRecord = racingCars.saveStartPosition();
+        racingCars.recordProgressOfRace(numbersOfLaps, racingRecord);
+        return racingRecord;
     }
 
     private String getWinner(List<LinkedHashMap<String, String>> racingRecord) {

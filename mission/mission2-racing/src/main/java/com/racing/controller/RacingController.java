@@ -1,12 +1,15 @@
 package com.racing.controller;
 
-import com.racing.dto.RacingRequest;
+import com.racing.domain.car.Car;
+
 import com.racing.dto.RacingResponse;
 
 import com.racing.service.RacingService;
 
 import com.racing.view.InputView;
 import com.racing.view.OutputView;
+
+import java.util.List;
 
 public class RacingController {
 
@@ -21,16 +24,12 @@ public class RacingController {
     }
 
     public void startRacing() {
-        RacingRequest racingRequest = createRequest();
-        outputView.showResultComment();
-        RacingResponse racingResponse = racingService.getRacingResponse(racingRequest);
-        outputView.showRaceProgress(racingResponse.racingProgress());
-        outputView.showWinner(racingResponse.winner());
-    }
-
-    private RacingRequest createRequest() {
         String namesOfCars = inputView.receiveCars();
         int numberOfLaps = inputView.receiveNumbersOfLap();
-        return racingService.getRacingRequest(namesOfCars, numberOfLaps);
+        List<Car> cars = racingService.getNamesOfCars(namesOfCars);
+        outputView.showResultComment();
+        RacingResponse racingResponse = racingService.getRacingResponse(cars, numberOfLaps);
+        outputView.showRaceProgress(racingResponse.racingProgress());
+        outputView.showWinner(racingResponse.winner());
     }
 }

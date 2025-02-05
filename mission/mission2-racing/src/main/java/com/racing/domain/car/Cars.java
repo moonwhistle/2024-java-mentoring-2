@@ -9,31 +9,26 @@ import java.util.List;
 public class Cars {
 
     private final List<Car> cars;
-    private final List<LinkedHashMap<String, String>> positionRecords;
-    private final ZeroToNineNumberGenerator randomNumberGenerator;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
-        this.positionRecords = new ArrayList<>();
-        this.randomNumberGenerator = new ZeroToNineNumberGenerator();
     }
 
     public List<Car> getCars() {
         return cars;
     }
 
-    public List<LinkedHashMap<String, String>> getPositionRecords() {
+    public List<LinkedHashMap<String, String>> saveStartPosition() {
+        List<LinkedHashMap<String, String>> positionRecords = new ArrayList<>();
+        recordPositionsOfLap(positionRecords, recordPositionsOfCars());
         return positionRecords;
     }
 
-    public void saveStartPosition() {
-        recordPositionsOfLap(recordPositionsOfCars());
-    }
-
-    public void recordProgressOfRace(int numbersOfLaps) {
+    public void recordProgressOfRace(int numbersOfLaps, List<LinkedHashMap<String, String>> positionRecords) {
+        ZeroToNineNumberGenerator randomNumberGenerator = new ZeroToNineNumberGenerator();
         for(int i = 0; i < numbersOfLaps; i++) {
             forwardOrStopCars(randomNumberGenerator);
-            recordPositionsOfLap(recordPositionsOfCars());
+            recordPositionsOfLap(positionRecords,recordPositionsOfCars());
         }
     }
 
@@ -43,8 +38,8 @@ public class Cars {
         }
     }
 
-    private void recordPositionsOfLap(LinkedHashMap<String, String> positions) {
-        positionRecords.add(positions);
+    private void recordPositionsOfLap(List<LinkedHashMap<String, String>> positionRecords, LinkedHashMap<String, String> positionRecord) {
+        positionRecords.add(positionRecord);
     }
 
     private LinkedHashMap<String, String> recordPositionsOfCars() {

@@ -1,4 +1,4 @@
-package com.racing.domain.system;
+package com.racing.domain.car;
 
 import java.util.LinkedHashMap;
 import java.util.List;

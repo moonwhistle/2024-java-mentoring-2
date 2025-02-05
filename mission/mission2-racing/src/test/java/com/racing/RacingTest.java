@@ -1,8 +1,7 @@
 package com.racing;
 
 import com.racing.domain.car.Car;
-import com.racing.domain.car.CarName;
-import com.racing.domain.system.Ranking;
+import com.racing.domain.car.Ranking;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -36,13 +35,12 @@ public class RacingTest {
     void 위치초기화테스트() {
 
         //given
-        CarName neo = new CarName("neo");
-        Car neoCar = new Car(neo);
+        Car neo = new Car("neo");
         String expected = "-";
         String notExpected = "";
 
         //when & then
-        String result = neoCar.getCarPosition();
+        String result = neo.getCarPosition();
         Assertions.assertAll(
                 () -> Assertions.assertEquals(expected, result),
                 () -> Assertions.assertNotEquals(notExpected, result)
@@ -53,15 +51,14 @@ public class RacingTest {
     void 전진및멈춤테스트() {
 
         //given
-        CarName neo = new CarName("neo");
-        Car neoCar = new Car(neo);
-        neoCar.moveForwardOrStop(5);
-        neoCar.moveForwardOrStop(0);
+        Car neo = new Car("neo");
+        neo.moveForwardOrStop(5);
+        neo.moveForwardOrStop(0);
         String expected = "--";
         String notExpected = "-";
 
         //when & then
-        String result = neoCar.getCarPosition();
+        String result = neo.getCarPosition();
         Assertions.assertAll(
                 () -> Assertions.assertEquals(expected, result),
                 () -> Assertions.assertNotEquals(notExpected, result)
@@ -72,16 +69,14 @@ public class RacingTest {
     void 이름반환테스트() {
 
         //given
-        CarName neo = new CarName("neo");
-        CarName brie = new CarName("brie");
-        Car neoCar = new Car(neo);
-        Car brieCar = new Car(brie);
+        Car neo = new Car("neo");
+        Car brie = new Car("brie");
         String expected = "neo";
         String expected2 = "brie";
 
         //when & then
-        String result = neoCar.getCarName();
-        String result2 = brieCar.getCarName();
+        String result = neo.getCarName();
+        String result2 = brie.getCarName();
         Assertions.assertAll(
                 () -> Assertions.assertEquals(expected, result),
                 () -> Assertions.assertEquals(expected2, result2),

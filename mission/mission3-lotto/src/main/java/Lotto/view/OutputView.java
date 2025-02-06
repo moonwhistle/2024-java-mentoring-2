@@ -25,6 +25,7 @@ public class OutputView {
     }
 
     public void printProfit(Double profit){
+        System.out.println();
         System.out.println(DisplayText.TOTAL_PROFIT.getInputMessage() + profit + DisplayText.ANNOUNCEMENT.getInputMessage());
     }
 

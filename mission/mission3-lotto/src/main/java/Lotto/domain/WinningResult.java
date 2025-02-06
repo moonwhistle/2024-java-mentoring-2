@@ -5,6 +5,7 @@ public enum WinningResult {
     FOURTH_PRICE(3, "fourthPirce", "3개 일치 (5000원)", 0 , 5000),
     THIRD_PRICE(4, "thirdPrice", "4개 일치 (50000원)", 0, 50000),
     SECOND_PRICE(5, "secondPrice", "5개 일치 (1500000원)", 0, 1500000),
+    SECOND_BONUS_PRICE(5, "secondBonusPrice", "5개 일치, 보너스 볼 일치(30000000원)", 0, 30000000),
     FIRST_PRICE(6, "firstPrice", "6개 일치 (2000000000원)", 0, 2000000000);
 
     private int matchCount;

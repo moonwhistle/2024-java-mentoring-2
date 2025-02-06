@@ -85,4 +85,8 @@ public class LottoController {
         outputView.printProfit(profit);
     }
 
+    private void enterBonusNumber(){
+        String bonusNumber = inputView.enterBonusNumber();
+    }
+
 }

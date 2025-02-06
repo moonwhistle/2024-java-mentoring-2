@@ -7,16 +7,19 @@ public class Registration {
 
     private static final String SPLIT_SYMBOL = ",";
 
-    public List<Car> registerCars(String namesOfCars) {
+    public String[] findOutNamesOfCars(String names) {
+        return splitNamesOfCars(names);
+    }
+
+    public List<Car> registerCars(String[] namesOfCars) {
         List<Car> cars = new ArrayList<>();
-        String[] separatedNamesOfCars = separateNamesOfCars(namesOfCars);
-        for (String name : separatedNamesOfCars) {
+        for (String name : namesOfCars) {
             cars.add(new Car(name));
         }
         return cars;
     }
 
-    private String[] separateNamesOfCars(String namesOfCars) {
-        return namesOfCars.split(SPLIT_SYMBOL);
+    private String[] splitNamesOfCars(String names) {
+        return names.split(SPLIT_SYMBOL);
     }
 }

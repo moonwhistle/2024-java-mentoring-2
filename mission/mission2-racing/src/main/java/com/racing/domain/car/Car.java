@@ -2,32 +2,32 @@ package com.racing.domain.car;
 
 public class Car {
 
-    private static final int INITIAL_POSITION_OF_CAR = 0;
-    private static final int THRESHOLD_OF_CAR_MOVEMENT = 4;
+    private static final String POSITION_POINT = "-";
+    private static final int THRESHOLD_TO_MOVE = 4;
 
-    private int position;
+    private String carPosition;
     private final CarName carName;
 
-    public Car(final String carName) {
-        position = INITIAL_POSITION_OF_CAR;
-        this.carName = new CarName(carName);
+    public Car(final String name) {
+        carPosition = POSITION_POINT;
+        this.carName = new CarName(name);
     }
 
-    public void driveCar(int randomNumber) {
-        if (randomNumber >= THRESHOLD_OF_CAR_MOVEMENT) {
+    public void moveForwardOrStop(int randomNumber) {
+        if(randomNumber >= THRESHOLD_TO_MOVE) {
             forwardCar();
         }
     }
 
-    public int getPosition() {
-        return position;
+    public String getCarPosition() {
+        return carPosition;
     }
 
     public String getCarName() {
-        return carName.getCarName();
+        return carName.getName();
     }
 
     private void forwardCar() {
-        position++;
+        carPosition+=POSITION_POINT;
     }
 }

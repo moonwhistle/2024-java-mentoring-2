@@ -20,8 +20,8 @@ public class InputView {
     }
 
     public String enterBonusNumber(){
+        System.out.println();
         System.out.println(DisplayText.ENTER_BONUS_NUMBER.getInputMessage());
-        scanner.nextLine();
         return scanner.nextLine();
     }
 

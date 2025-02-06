@@ -11,6 +11,14 @@ public class BonusNumber {
         this.bonusNumber = toLottoNumber(bonusNumber);
     }
 
+    public boolean canBonusNumber(Long matchCount){
+        return matchCount == WinningResult.SECOND_PRICE.getMatchCount();
+    }
+
+    public LottoNumber getBonusNumber(){
+        return bonusNumber;
+    }
+
     private LottoNumber toLottoNumber(int bonusNumber){
         return new LottoNumber(bonusNumber);
     }
@@ -22,10 +30,6 @@ public class BonusNumber {
         catch(IllegalArgumentException e){
             throw new IllegalArgumentException(ExceptionMessage.CANNOT_PARSE_TO_INT.getMessage());
         }
-    }
-
-    private boolean canBonusNumber(Long matchCount){
-        return matchCount == WinningResult.SECOND_PRICE.getMatchCount();
     }
 
 }

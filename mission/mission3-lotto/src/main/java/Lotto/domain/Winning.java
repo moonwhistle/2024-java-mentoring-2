@@ -25,15 +25,55 @@ public class Winning {
     }
 
     public void matchWinningResult(Long matchCount){
+        if(allMatch(matchCount)) return;
+        if(getBonusBall()) return;
         for (WinningResult result : WinningResult.values()) {
             result.matchAndIncrement(matchCount);
         }
     }
 
-    public long calculateWinningResult(List<LottoNumber> winningNumber, List<LottoNumber> lottoNumbers){
-        return lottoNumbers.stream()
+    public long calculateWinningResult(List<LottoNumber> winningNumber, List<LottoNumber> lottoNumbers, BonusNumber bonusNumber){
+        long count = lottoNumbers.stream()
                 .filter(lottoNumber -> compareWinningNumber(winningNumber, lottoNumber))
                 .count();
+        if(matchBonusNumber(bonusNumber, lottoNumbers, count)){
+            WinningResult.SECOND_BONUS_PRICE.incrementBonus();
+        }
+        return count;
+    }
+
+    public Long calculatePrice(List<LottoNumber> winningNumber, Lottos lottos, BonusNumber bonusNumber){
+        long max = 0;
+
+        for(int i = 0; i < lottos.getNumberOfLottos(); i++){
+            max = Math.max(max, calculateWinningResult(winningNumber, lottos.getLottos().get(i).getLotto(), bonusNumber));
+        }
+
+        return max;
+    }
+
+    private boolean allMatch(long matchCount){
+        if(matchCount == WinningResult.FIRST_PRICE.getMatchCount()) {
+            WinningResult.FIRST_PRICE.incrementPrizeCount();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean getBonusBall(){
+        if(WinningResult.SECOND_BONUS_PRICE.getBonus() != 0) {
+            WinningResult.SECOND_BONUS_PRICE.incrementPrizeCount();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean matchBonusNumber(BonusNumber bonusNumber, List<LottoNumber> lottoNumbers, long matchCount){
+        if(bonusNumber.canBonusNumber(matchCount)) {
+            return lottoNumbers.stream()
+                    .anyMatch(winning -> winning.checkSameWinningNumber(bonusNumber.getBonusNumber()));
+        }
+        return false;
     }
 
     private boolean compareWinningNumber(List<LottoNumber> winningNumber, LottoNumber lottoNumber) {

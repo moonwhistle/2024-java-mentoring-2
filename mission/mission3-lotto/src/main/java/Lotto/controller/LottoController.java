@@ -26,7 +26,8 @@ public class LottoController {
         Lottos lottos = createLottos();
         printLottoList(lottos);
         List<LottoNumber> winningNumber = getWinningNumber();
-        Long matchCount = calculatePrice(winningNumber, lottos);
+        BonusNumber bonusNumber = createBonusNumber();
+        Long matchCount = calculatePrice(winningNumber, lottos, bonusNumber);
         matchWinningResult(matchCount);
         printWinningResult();
         calculateProfit(lottos.getNumberOfLottos(), matchCount);
@@ -56,18 +57,8 @@ public class LottoController {
         return winningNumber.getWinningNumber();
     }
 
-    private Long calculateMatchCount(List<LottoNumber> winningNumber, List<LottoNumber> lottoNumbers){
-        return winning.calculateWinningResult(winningNumber, lottoNumbers);
-    }
-
-    private Long calculatePrice(List<LottoNumber> winningNumber, Lottos lottos){
-        long max = 0;
-
-        for(int i = 0; i < lottos.getNumberOfLottos(); i++){
-            max = Math.max(max, calculateMatchCount(winningNumber, lottos.getLottos().get(i).getLotto()));
-        }
-
-        return max;
+    private Long calculatePrice(List<LottoNumber> winningNumber, Lottos lottos, BonusNumber bonusNumber){
+        return winning.calculatePrice(winningNumber, lottos, bonusNumber);
     }
 
     private void printWinningResult(){
@@ -85,8 +76,16 @@ public class LottoController {
         outputView.printProfit(profit);
     }
 
-    private void enterBonusNumber(){
-        String bonusNumber = inputView.enterBonusNumber();
+    private String enterBonusNumber(){
+        return inputView.enterBonusNumber();
+    }
+
+    private BonusNumber createBonusNumber(){
+        return new BonusNumber(enterBonusNumber());
+    }
+
+    private boolean canGetBonusNumber(BonusNumber bonusNumber, Long matchCount){
+        return bonusNumber.canBonusNumber(matchCount);
     }
 
 }

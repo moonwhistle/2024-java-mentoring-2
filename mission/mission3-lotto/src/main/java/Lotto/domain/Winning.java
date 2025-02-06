@@ -10,7 +10,11 @@ import java.util.stream.Collectors;
 
 public class Winning {
 
-    public String getWinningResult(){
+    private static final int noBonus = 0;
+    private static final int match = 1;
+
+    public String getWinningResult(long matchCount){
+        validateMatchCount(matchCount);
         String resultString = Arrays.stream(WinningResult.values())
                 .map(result -> result.getPrizeMessage() + DisplayText.PRIZE_MESSAGE_SEPARATOR.getInputMessage() + result.getPrizeCount())
                 .collect(Collectors.joining(DisplayText.NEW_LINE.getInputMessage()));
@@ -19,7 +23,7 @@ public class Winning {
     }
 
     public double calculateProfit(int numberOfLotto, Long matchCount){
-        int price = calculatePrice(calculateMatchCount(matchCount)).get();
+        int price = calculatePrice(findPrize()).get();
 
         return (double) price / (numberOfLotto * Lotto.lottoPrice);
     }
@@ -61,7 +65,7 @@ public class Winning {
     }
 
     private boolean getBonusBall(){
-        if(WinningResult.SECOND_BONUS_PRICE.getBonus() != 0) {
+        if(WinningResult.SECOND_BONUS_PRICE.getBonus() != noBonus) {
             WinningResult.SECOND_BONUS_PRICE.incrementPrizeCount();
             return true;
         }
@@ -81,11 +85,10 @@ public class Winning {
                 .anyMatch(winning -> winning.checkSameWinningNumber(lottoNumber));
     }
 
-    private Optional<WinningResult> calculateMatchCount(Long matchCount){
-        validateMatchCount(matchCount);
+    private Optional<WinningResult> findPrize(){
 
         return Arrays.stream(WinningResult.values())
-                .filter(result -> isMatchCountEqual(result, matchCount))
+                .filter(this::getPrize)
                 .findFirst();
     }
 
@@ -99,8 +102,8 @@ public class Winning {
             throw new IllegalArgumentException(ExceptionMessage.ZERO_MATCH_COUNT.getMessage());
     }
 
-    private boolean isMatchCountEqual(WinningResult winningResult, Long matchCount){
-        return winningResult.getMatchCount() == matchCount;
+    private boolean getPrize(WinningResult winningResult){
+        return winningResult.getPrizeCount() == match;
     }
 
 }

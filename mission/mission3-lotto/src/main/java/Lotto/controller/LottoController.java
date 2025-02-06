@@ -29,7 +29,7 @@ public class LottoController {
         BonusNumber bonusNumber = createBonusNumber();
         Long matchCount = calculatePrice(winningNumber, lottos, bonusNumber);
         matchWinningResult(matchCount);
-        printWinningResult();
+        printWinningResult(matchCount);
         calculateProfit(lottos.getNumberOfLottos(), matchCount);
     }
 
@@ -61,9 +61,9 @@ public class LottoController {
         return winning.calculatePrice(winningNumber, lottos, bonusNumber);
     }
 
-    private void printWinningResult(){
+    private void printWinningResult(long matchCount){
         outputView.printWinningBar();
-        String winningResult = winning.getWinningResult();
+        String winningResult = winning.getWinningResult(matchCount);
         outputView.printWinningResult(winningResult);
     }
 
@@ -82,10 +82,6 @@ public class LottoController {
 
     private BonusNumber createBonusNumber(){
         return new BonusNumber(enterBonusNumber());
-    }
-
-    private boolean canGetBonusNumber(BonusNumber bonusNumber, Long matchCount){
-        return bonusNumber.canBonusNumber(matchCount);
     }
 
 }

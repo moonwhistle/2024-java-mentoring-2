@@ -22,18 +22,25 @@ public class Winning {
         return resultString;
     }
 
-    public double calculateProfit(int numberOfLotto, Long matchCount){
+    public double calculateProfit(int numberOfLotto){
         int price = calculatePrice(findPrize()).get();
 
         return (double) price / (numberOfLotto * Lotto.lottoPrice);
     }
 
-    public void matchWinningResult(Long matchCount){
-        if(allMatch(matchCount)) return;
-        if(getBonusBall()) return;
+    public void processWinningResult(Long matchCount){
         for (WinningResult result : WinningResult.values()) {
             result.matchAndIncrement(matchCount);
         }
+    }
+
+    public void matchWinningResult(Long matchCount){
+        if(checkIncrement(matchCount)) return;
+        processWinningResult(matchCount);
+    }
+
+    public boolean checkIncrement(Long matchCount){
+        return allMatch(matchCount) || getBonusBall();
     }
 
     public long calculateWinningResult(List<LottoNumber> winningNumber, List<LottoNumber> lottoNumbers, BonusNumber bonusNumber){

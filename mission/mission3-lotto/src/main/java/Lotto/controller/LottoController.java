@@ -30,7 +30,7 @@ public class LottoController {
         Long matchCount = calculatePrice(winningNumber, lottos, bonusNumber);
         matchWinningResult(matchCount);
         printWinningResult(matchCount);
-        calculateProfit(lottos.getNumberOfLottos(), matchCount);
+        calculateProfit(lottos.getNumberOfLottos());
     }
 
     private int enterLottoNumber(){
@@ -71,8 +71,8 @@ public class LottoController {
         winning.matchWinningResult(matchCount);
     }
 
-    private void calculateProfit(int numberOfLotto, Long matchCount){
-        double profit = winning.calculateProfit(numberOfLotto, matchCount);
+    private void calculateProfit(int numberOfLotto){
+        double profit = winning.calculateProfit(numberOfLotto);
         outputView.printProfit(profit);
     }
 

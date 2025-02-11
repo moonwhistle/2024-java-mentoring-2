@@ -9,11 +9,7 @@ public class InputView {
         this.scanner = scanner;
     }
 
-    public int firstNumber() {
-        return scanner.nextInt();
-    }
-
-    public int secondNumber() {
-        return scanner.nextInt();
+    public String inputEquation() {
+        return scanner.next();
     }
 }

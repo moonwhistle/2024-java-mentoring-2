@@ -11,6 +11,10 @@ public class BonusNumber {
         this.bonusNumber = toLottoNumber(bonusNumber);
     }
 
+    public static BonusNumber bonusNumberOf(String number){
+        return new BonusNumber(number);
+    }
+
     public boolean canBonusNumber(Long matchCount){
         return matchCount == WinningResult.SECOND_PRICE.getMatchCount();
     }

@@ -14,11 +14,39 @@ public class Lottos {
     private final int inputPrice;
     private final RandomNumberGenerator randomNumberGenerator;
 
+    public static class Builder{
+        int inputPrice;
+        RandomNumberGenerator randomNumberGenerator;
+        List<Lotto> lottos;
+
+        Builder inputPrice(int inputPrice){
+            this.inputPrice = inputPrice;
+            return this;
+        }
+
+        Builder randomNumberGenerator(RandomNumberGenerator randomNumberGenerator){
+            this.randomNumberGenerator = randomNumberGenerator;
+            return this;
+        }
+
+        Builder lottos(List<Lotto> lottos){
+            this.lottos = lottos;
+            return this;
+        }
+
+    }
+
     public Lottos(int inputPrice, RandomNumberGenerator randomNumberGenerator){
         this.randomNumberGenerator = randomNumberGenerator;
         validLottoNumber(inputPrice);
         this.inputPrice = inputPrice;
         this.lottos = createLottos();
+    }
+
+    private Lottos(Builder builder){
+        this.inputPrice = builder.inputPrice;
+        this.randomNumberGenerator = builder.randomNumberGenerator;
+        this.lottos = builder.lottos;
     }
 
     public List<Lotto> getLottos(){

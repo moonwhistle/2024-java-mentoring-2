@@ -5,6 +5,7 @@ import Lotto.dto.LottoDto;
 import randomNumber.RandomNumberGenerator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,11 +17,36 @@ public class Lotto {
     private final RandomNumberGenerator randomNumberGenerator;
     private final List<LottoNumber> lotto;
 
+    public static class Builder{
+        private RandomNumberGenerator randomNumberGenerator;
+        private List<LottoNumber> lotto;
+
+        public Builder randomNumberGenerator(RandomNumberGenerator randomNumberGenerator){
+            this.randomNumberGenerator = randomNumberGenerator;
+            return this;
+        }
+
+        public Builder lotto(List<LottoNumber> lotto){
+            this.lotto = lotto;
+            return this;
+        }
+
+        public Lotto build(){
+            return new Lotto(this);
+        }
+
+    }
+
     public Lotto(RandomNumberGenerator randomNumberGenerator) {
         this.randomNumberGenerator = randomNumberGenerator;
 
         lotto = randomNumberGenerator.generateNumberList();
         duplicateNumber();
+    }
+
+    private Lotto(Builder builder){
+        this.lotto = builder.lotto;
+        this.randomNumberGenerator = builder.randomNumberGenerator;
     }
 
     public List<LottoNumber> getLotto(){
@@ -29,6 +55,12 @@ public class Lotto {
 
     public List<Integer> toLottoDto(){
         return new LottoDto(lotto).getLotto();
+    }
+
+    public List<LottoNumber> createUserLottoNumber(String userLotto){
+        return createUserLottoList(userLotto).stream()
+                .map(LottoNumber::new)
+                .collect(Collectors.toList());
     }
 
     private void duplicateNumber(){
@@ -47,6 +79,12 @@ public class Lotto {
         return toInteger().stream()
                 .distinct()
                 .count();
+    }
+
+    private List<Integer> createUserLottoList(String userLotto){
+        return Arrays.stream(userLotto.split(" "))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
 }

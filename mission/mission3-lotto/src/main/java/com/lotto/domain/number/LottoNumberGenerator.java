@@ -1,5 +1,7 @@
 package com.lotto.domain.number;
 
+import com.lotto.exception.OutOfRangeException;
+
 import java.util.Random;
 
 public class LottoNumberGenerator {
@@ -16,5 +18,11 @@ public class LottoNumberGenerator {
 
     private int generateRandomNumber() {
         return random.nextInt(LAST_LOTTERY_NUMBER) + FIRST_LOTTERY_NUMBER;
+    }
+
+    private void validateIsValidNumber(int number) {
+        if (number < FIRST_LOTTERY_NUMBER || number > LAST_LOTTERY_NUMBER) {
+            throw new OutOfRangeException();
+        }
     }
 }

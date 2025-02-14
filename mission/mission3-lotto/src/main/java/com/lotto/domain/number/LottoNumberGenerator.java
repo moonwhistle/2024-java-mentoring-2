@@ -2,10 +2,11 @@ package com.lotto.domain.number;
 
 import com.lotto.exception.OutOfRangeException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class LottoNumberGenerator {
+public class LottoNumberGenerator implements RandomNumberGenerator {
 
     private static final int FIRST_LOTTERY_NUMBER = 1;
     private static final int LAST_LOTTERY_NUMBER = 45;
@@ -15,6 +16,17 @@ public class LottoNumberGenerator {
 
     public LottoNumberGenerator() {
         this.random = new Random();
+    }
+
+    @Override
+    public List<Integer> generateRandomNumbers() {
+        List<Integer> lotteryNumbers = new ArrayList<>();
+        while(lotteryNumbers.size() < NUMBER_OF_LOTTO_NUMBERS) {
+            int lotteryNumber = generateRandomNumber();
+            validateIsValidNumber(lotteryNumber);
+            pickWithOutDuplication(lotteryNumbers, lotteryNumber);
+        }
+        return lotteryNumbers;
     }
 
     private int generateRandomNumber() {

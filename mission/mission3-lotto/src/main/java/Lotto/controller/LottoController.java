@@ -7,6 +7,7 @@ import Lotto.view.OutputView;
 import randomNumber.RandomNumberGenerator;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class LottoController {
 
@@ -39,7 +40,11 @@ public class LottoController {
 
     private Lottos createLottos(){
         int inputPrice = enterLottoNumber();
-        return new Lottos(inputPrice, randomNumberGenerator);
+        return new Lottos.Builder()
+                .inputPrice(inputPrice)
+                .randomNumberGenerator(randomNumberGenerator)
+                .addAutoLotto()
+                .build();
     }
 
     private void printLottoNumber(int lottoNumber){
@@ -83,5 +88,6 @@ public class LottoController {
     private BonusNumber createBonusNumber(){
         return new BonusNumber(enterBonusNumber());
     }
+
 
 }

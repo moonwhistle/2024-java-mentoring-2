@@ -5,13 +5,9 @@ import Lotto.common.exception.ExceptionMessage;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Winning {
-
-    private static final int noBonus = 0;
-    private static final int match = 1;
 
     public String getWinningResult(long matchCount){
         validateMatchCount(matchCount);
@@ -22,12 +18,6 @@ public class Winning {
         return resultString;
     }
 
-    public double calculateProfit(int numberOfLotto){
-        int price = calculatePrice(findPrize()).get();
-
-        return (double) price / (numberOfLotto * Lotto.lottoPrice);
-    }
-
     public void processWinningResult(Long matchCount){
         for (WinningResult result : WinningResult.values()) {
             result.matchAndIncrement(matchCount);
@@ -35,19 +25,15 @@ public class Winning {
     }
 
     public void matchWinningResult(Long matchCount){
-        if(checkIncrement(matchCount)) return;
+        if(BonusWinning.checkIncrement(matchCount)) return;
         processWinningResult(matchCount);
-    }
-
-    public boolean checkIncrement(Long matchCount){
-        return allMatch(matchCount) || getBonusBall();
     }
 
     public long calculateWinningResult(List<LottoNumber> winningNumber, List<LottoNumber> lottoNumbers, BonusNumber bonusNumber){
         long count = lottoNumbers.stream()
                 .filter(lottoNumber -> compareWinningNumber(winningNumber, lottoNumber))
                 .count();
-        if(matchBonusNumber(bonusNumber, lottoNumbers, count)){
+        if(BonusWinning.matchBonusNumber(bonusNumber, lottoNumbers, count)){
             WinningResult.SECOND_BONUS_PRICE.incrementBonus();
         }
         return count;
@@ -63,54 +49,14 @@ public class Winning {
         return max;
     }
 
-    private boolean allMatch(long matchCount){
-        if(matchCount == WinningResult.FIRST_PRICE.getMatchCount()) {
-            WinningResult.FIRST_PRICE.incrementPrizeCount();
-            return true;
-        }
-        return false;
-    }
-
-    private boolean getBonusBall(){
-        if(WinningResult.SECOND_BONUS_PRICE.getBonus() != noBonus) {
-            WinningResult.SECOND_BONUS_PRICE.incrementPrizeCount();
-            return true;
-        }
-        return false;
-    }
-
-    private boolean matchBonusNumber(BonusNumber bonusNumber, List<LottoNumber> lottoNumbers, long matchCount){
-        if(bonusNumber.canBonusNumber(matchCount)) {
-            return lottoNumbers.stream()
-                    .anyMatch(winning -> winning.checkSameWinningNumber(bonusNumber.getBonusNumber()));
-        }
-        return false;
-    }
-
     private boolean compareWinningNumber(List<LottoNumber> winningNumber, LottoNumber lottoNumber) {
         return winningNumber.stream()
                 .anyMatch(winning -> winning.checkSameWinningNumber(lottoNumber));
     }
 
-    private Optional<WinningResult> findPrize(){
-
-        return Arrays.stream(WinningResult.values())
-                .filter(this::getPrize)
-                .findFirst();
-    }
-
-    private Optional<Integer> calculatePrice(Optional<WinningResult> winningResult) {
-        return winningResult.map(WinningResult::getPrice);
-    }
-
-
     private void validateMatchCount(Long matchCount){
         if(matchCount < WinningResult.FOURTH_PRICE.getMatchCount())
             throw new IllegalArgumentException(ExceptionMessage.ZERO_MATCH_COUNT.getMessage());
-    }
-
-    private boolean getPrize(WinningResult winningResult){
-        return winningResult.getPrizeCount() == match;
     }
 
 }

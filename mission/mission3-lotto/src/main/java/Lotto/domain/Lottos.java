@@ -19,14 +19,14 @@ public class Lottos {
     public static class Builder{
         int inputPrice;
         RandomNumberGenerator randomNumberGenerator;
-        List<Lotto> lottos;
+        List<Lotto> lottos = new ArrayList<>();
 
-        Builder inputPrice(int inputPrice){
+        public Builder inputPrice(int inputPrice){
             this.inputPrice = inputPrice;
             return this;
         }
 
-        Builder randomNumberGenerator(RandomNumberGenerator randomNumberGenerator){
+        public Builder randomNumberGenerator(RandomNumberGenerator randomNumberGenerator){
             this.randomNumberGenerator = randomNumberGenerator;
             return this;
         }
@@ -85,6 +85,12 @@ public class Lottos {
 
     public int getNumberOfLottos(){
         return inputPrice / Lotto.lottoPrice;
+    }
+
+    public String printLottoList(){
+        return lottos.stream()
+                .map(Lotto::toString)
+                .collect(Collectors.joining("\n"));
     }
 
 }

@@ -20,7 +20,7 @@ public class Lotto {
 
     public static class Builder{
         private RandomNumberGenerator randomNumberGenerator;
-        private List<LottoNumber> lotto;
+        private List<LottoNumber> lotto = new ArrayList<>();
 
         public Builder randomNumberGenerator(RandomNumberGenerator randomNumberGenerator){
             this.randomNumberGenerator = randomNumberGenerator;
@@ -50,6 +50,13 @@ public class Lotto {
 
     public List<Integer> toLottoDto(){
         return new LottoDto(lotto).getLotto();
+    }
+
+    @Override
+    public String toString(){
+        return lotto.stream()
+                .map(lottoNumber -> String.valueOf(lottoNumber.getLottoNumber()))
+                .collect(Collectors.joining(", ", "[", "]"));
     }
 
 }

@@ -1,0 +1,16 @@
+package com.lotto;
+
+import com.lotto.controller.LottoController;
+
+import com.lotto.domain.TicketCounter;
+
+import com.lotto.view.InputView;
+import com.lotto.view.OutputView;
+
+public class LottoApplication {
+
+    public static void main(String[] args) {
+        LottoController lottoController = new LottoController(new InputView(), new OutputView(), new TicketCounter());
+        lottoController.run();
+    }
+}

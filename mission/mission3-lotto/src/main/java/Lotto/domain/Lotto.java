@@ -2,6 +2,7 @@ package Lotto.domain;
 
 import Lotto.common.exception.ExceptionMessage;
 import Lotto.dto.LottoDto;
+import Lotto.util.LottoValidator;
 import randomNumber.RandomNumberGenerator;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class Lotto {
         }
 
         public Builder lotto(List<LottoNumber> lotto){
-            this.lotto = lotto;
+            this.lotto = new ArrayList<>(lotto);
             return this;
         }
 
@@ -37,54 +38,18 @@ public class Lotto {
 
     }
 
-    public Lotto(RandomNumberGenerator randomNumberGenerator) {
-        this.randomNumberGenerator = randomNumberGenerator;
-
-        lotto = randomNumberGenerator.generateNumberList();
-        duplicateNumber();
-    }
-
     private Lotto(Builder builder){
         this.lotto = builder.lotto;
         this.randomNumberGenerator = builder.randomNumberGenerator;
+        LottoValidator.validateLottoNumber(lotto);
     }
 
     public List<LottoNumber> getLotto(){
-        return lotto;
+        return new ArrayList<>(lotto);
     }
 
     public List<Integer> toLottoDto(){
         return new LottoDto(lotto).getLotto();
-    }
-
-    public List<LottoNumber> createUserLottoNumber(String userLotto){
-        return createUserLottoList(userLotto).stream()
-                .map(LottoNumber::new)
-                .collect(Collectors.toList());
-    }
-
-    private void duplicateNumber(){
-        long lottoNumber = numberOfNotDuplicatedNumber();
-        if(lottoNumber != lottoElementNumber)
-            throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_NUMBER.getMessage());
-    }
-
-    private List<Integer> toInteger(){
-        return lotto.stream()
-                .map(LottoNumber::getLottoNumber)
-                .collect(Collectors.toList());
-    }
-
-    private long numberOfNotDuplicatedNumber(){
-        return toInteger().stream()
-                .distinct()
-                .count();
-    }
-
-    private List<Integer> createUserLottoList(String userLotto){
-        return Arrays.stream(userLotto.split(" "))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
     }
 
 }

@@ -1,9 +1,11 @@
 package Lotto.domain;
 
 import Lotto.common.exception.ExceptionMessage;
+import Lotto.util.LottoValidator;
 import randomNumber.RandomNumberGenerator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -29,22 +31,46 @@ public class Lottos {
             return this;
         }
 
-        Builder lottos(List<Lotto> lottos){
-            this.lottos = lottos;
+        public Builder addManualLotto(String userLotto) {
+            List<LottoNumber> lottoNumbers = createManualLotto(userLotto);
+
+            this.lottos.add(new Lotto.Builder().lotto(lottoNumbers).build());
             return this;
+        }
+
+        public Builder addAutoLotto() {
+            int autoLottoCount = (inputPrice / Lotto.lottoPrice) - lottos.size();
+
+            for (int i = 0; i < autoLottoCount; i++) {
+                this.lottos.add(new Lotto.Builder()
+                        .randomNumberGenerator(randomNumberGenerator)
+                        .lotto(createAutoLotto())
+                        .build());
+            }
+            return this;
+        }
+
+        private List<LottoNumber> createManualLotto(String userLotto){
+            return Arrays.stream(userLotto.split(","))
+                    .map(String::trim)
+                    .map(Integer::parseInt)
+                    .map(LottoNumber::new)
+                    .collect(Collectors.toList());
+        }
+
+        private List<LottoNumber> createAutoLotto(){
+            return randomNumberGenerator.generateNumberList();
+        }
+
+        public Lottos build(){
+            return new Lottos(this);
         }
 
     }
 
-    public Lottos(int inputPrice, RandomNumberGenerator randomNumberGenerator){
-        this.randomNumberGenerator = randomNumberGenerator;
-        validLottoNumber(inputPrice);
-        this.inputPrice = inputPrice;
-        this.lottos = createLottos();
-    }
-
     private Lottos(Builder builder){
         this.inputPrice = builder.inputPrice;
+        LottoValidator.validateLottos(inputPrice);
         this.randomNumberGenerator = builder.randomNumberGenerator;
         this.lottos = builder.lottos;
     }
@@ -59,23 +85,6 @@ public class Lottos {
 
     public int getNumberOfLottos(){
         return inputPrice / Lotto.lottoPrice;
-    }
-
-    public String printLottoList(){
-        return getLottos().stream()
-                .map(lotto -> lotto.toLottoDto().toString())
-                .collect(Collectors.joining("\n"));
-    }
-
-    private List<Lotto> createLottos(){
-        return IntStream.range(0, getNumberOfLottos())
-                .mapToObj(i -> new Lotto(randomNumberGenerator))
-                .collect(Collectors.toList());
-    }
-
-    private void validLottoNumber(int inputPrice){
-        if(inputPrice < Lotto.lottoPrice)
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_LOTTO_NUMBER.getMessage());
     }
 
 }

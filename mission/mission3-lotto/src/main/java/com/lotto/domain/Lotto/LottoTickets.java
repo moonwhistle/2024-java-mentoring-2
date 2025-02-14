@@ -16,6 +16,14 @@ public class LottoTickets {
         return lottoTickets;
     }
 
+    public void createLottoTickets(int numberOfTickets) {
+        LottoNumberGenerator lottoNumberGenerator = new LottoNumberGenerator();
+        for (int i = 0; i < numberOfTickets; i++) {
+            List<Integer> lottoTicket = createLottoTicket(lottoNumberGenerator);
+            saveLottoTicket(lottoTicket);
+        }
+    }
+
     private List<Integer> createLottoTicket(LottoNumberGenerator lottoNumberGenerator) {
         return lottoNumberGenerator.generateRandomNumbers();
     }

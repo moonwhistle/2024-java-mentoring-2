@@ -15,7 +15,7 @@ public class BonusNumber {
         return new BonusNumber(number);
     }
 
-    public boolean canBonusNumber(Long matchCount){
+    public boolean isBonusApplication(Long matchCount){
         return matchCount == WinningResult.SECOND_PRICE.getMatchCount();
     }
 

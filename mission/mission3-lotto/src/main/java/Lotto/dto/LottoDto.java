@@ -1,5 +1,6 @@
 package Lotto.dto;
 
+import Lotto.domain.Lotto;
 import Lotto.domain.LottoNumber;
 
 import java.util.ArrayList;
@@ -12,6 +13,10 @@ public record LottoDto(List<LottoNumber> lottoNumber) {
         return new ArrayList<>(lottoNumber().stream()
                 .map(lottoNumber -> lottoNumber.getLottoNumber())
                 .collect(Collectors.toList()));
+    }
+
+    public LottoDto toLottoDto(Lotto lotto){
+        return new LottoDto(lotto.getLotto());
     }
 
 }

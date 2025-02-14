@@ -48,10 +48,6 @@ public class Lotto {
         return new ArrayList<>(lotto);
     }
 
-    public List<Integer> toLottoDto(){
-        return new LottoDto(lotto).getLotto();
-    }
-
     @Override
     public String toString(){
         return lotto.stream()

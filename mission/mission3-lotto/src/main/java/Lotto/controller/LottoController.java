@@ -16,11 +16,14 @@ public class LottoController {
     private final RandomNumberGenerator randomNumberGenerator;
     private final Winning winning;
 
-    public LottoController(InputView inputView, OutputView outputView, RandomNumberGenerator randomNumberGenerator, Winning winning){
+    private final Profit profit;
+
+    public LottoController(InputView inputView, OutputView outputView, RandomNumberGenerator randomNumberGenerator, Winning winning, Profit profit){
         this.inputView = inputView;
         this.outputView = outputView;
         this.randomNumberGenerator = randomNumberGenerator;
         this.winning = winning;
+        this.profit = profit;
     }
 
     public void startLotto(){
@@ -77,8 +80,8 @@ public class LottoController {
     }
 
     private void calculateProfit(int numberOfLotto){
-        double profit = winning.calculateProfit(numberOfLotto);
-        outputView.printProfit(profit);
+        double profitResult = profit.calculateProfit(numberOfLotto);
+        outputView.printProfit(profitResult);
     }
 
     private String enterBonusNumber(){

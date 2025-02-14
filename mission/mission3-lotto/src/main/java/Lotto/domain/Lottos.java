@@ -23,6 +23,7 @@ public class Lottos {
 
         public Builder inputPrice(int inputPrice){
             this.inputPrice = inputPrice;
+            LottoValidator.validateLottos(inputPrice);
             return this;
         }
 
@@ -70,7 +71,6 @@ public class Lottos {
 
     private Lottos(Builder builder){
         this.inputPrice = builder.inputPrice;
-        LottoValidator.validateLottos(inputPrice);
         this.randomNumberGenerator = builder.randomNumberGenerator;
         this.lottos = builder.lottos;
     }

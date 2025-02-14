@@ -29,6 +29,7 @@ public class Lotto {
 
         public Builder lotto(List<LottoNumber> lotto){
             this.lotto = new ArrayList<>(lotto);
+            LottoValidator.validateLottoNumber(lotto);
             return this;
         }
 
@@ -41,7 +42,6 @@ public class Lotto {
     private Lotto(Builder builder){
         this.lotto = builder.lotto;
         this.randomNumberGenerator = builder.randomNumberGenerator;
-        LottoValidator.validateLottoNumber(lotto);
     }
 
     public List<LottoNumber> getLotto(){

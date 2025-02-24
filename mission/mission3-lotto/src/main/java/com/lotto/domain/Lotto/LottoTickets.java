@@ -6,25 +6,23 @@ import java.util.List;
 
 public class LottoTickets {
 
-    private final List<LottoTicket> lottoTickets;
+    private List<LottoTicket> lottoTickets;
+    private final LottoNumberGenerator lottoNumberGenerator;
 
-    public LottoTickets(List<LottoTicket> lottoTickets) {
+    public LottoTickets(final List<LottoTicket> lottoTickets, final LottoNumberGenerator lottoNumberGenerator) {
         this.lottoTickets = lottoTickets;
+        this.lottoNumberGenerator = lottoNumberGenerator;
     }
 
-    public List<LottoTicket> getLottoTickets() {
+    public List<LottoTicket> createLottoTickets(int numberOfTickets) {
+        for (int i = 0; i < numberOfTickets; i++) {
+            List<Integer> lottoTicket = createLottoTicket();
+            saveLottoTicket(lottoTicket);
+        }
         return lottoTickets;
     }
 
-    public void createLottoTickets(int numberOfTickets) {
-        LottoNumberGenerator lottoNumberGenerator = new LottoNumberGenerator();
-        for (int i = 0; i < numberOfTickets; i++) {
-            List<Integer> lottoTicket = createLottoTicket(lottoNumberGenerator);
-            saveLottoTicket(lottoTicket);
-        }
-    }
-
-    private List<Integer> createLottoTicket(LottoNumberGenerator lottoNumberGenerator) {
+    private List<Integer> createLottoTicket() {
         return lottoNumberGenerator.generateRandomNumbers();
     }
 

@@ -24,7 +24,7 @@ public class LottoNumberGenerator implements RandomNumberGenerator {
         while(lotteryNumbers.size() < NUMBER_OF_LOTTO_NUMBERS) {
             int lotteryNumber = generateRandomNumber();
             validateIsValidNumber(lotteryNumber);
-            pickWithOutDuplication(lotteryNumbers, lotteryNumber);
+            checkDuplicate(lotteryNumbers, lotteryNumber);
         }
         return lotteryNumbers;
     }
@@ -39,7 +39,7 @@ public class LottoNumberGenerator implements RandomNumberGenerator {
         }
     }
 
-    private void pickWithOutDuplication(List<Integer> lotteryNumbers, int number) {
+    private void checkDuplicate(List<Integer> lotteryNumbers, int number) {
         if(!lotteryNumbers.contains(number)) {
             lotteryNumbers.add(number);
         }

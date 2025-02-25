@@ -17,6 +17,11 @@ public class LottoTicket {
         return lotteryNumbers;
     }
 
+    @Override
+    public String toString() {
+        return lotteryNumbers.toString();
+    }
+
     private void validateTicketLength(List<Integer> lotteryNumbers) {
         if (lotteryNumbers.size() < 6) {
             throw new TicketLengthException();

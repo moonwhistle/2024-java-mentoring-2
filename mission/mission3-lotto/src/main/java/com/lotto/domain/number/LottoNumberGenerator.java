@@ -23,14 +23,15 @@ public class LottoNumberGenerator implements RandomNumberGenerator {
         List<Integer> lotteryNumbers = new ArrayList<>();
         while(lotteryNumbers.size() < NUMBER_OF_LOTTO_NUMBERS) {
             int lotteryNumber = generateRandomNumber();
-            validateIsValidNumber(lotteryNumber);
             checkDuplicate(lotteryNumbers, lotteryNumber);
         }
         return lotteryNumbers;
     }
 
     private int generateRandomNumber() {
-        return random.nextInt(LAST_LOTTERY_NUMBER) + FIRST_LOTTERY_NUMBER;
+        int lotteryNumber = random.nextInt(LAST_LOTTERY_NUMBER) + FIRST_LOTTERY_NUMBER;
+        validateIsValidNumber(lotteryNumber);
+        return lotteryNumber;
     }
 
     private void validateIsValidNumber(int number) {

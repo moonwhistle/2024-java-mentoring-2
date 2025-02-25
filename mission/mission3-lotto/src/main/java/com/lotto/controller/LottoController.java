@@ -1,8 +1,8 @@
 package com.lotto.controller;
 
 import com.lotto.domain.Lotto.LottoTicket;
+import com.lotto.domain.Lotto.LottoTicketCountingUtil;
 import com.lotto.domain.Lotto.LottoTickets;
-import com.lotto.domain.TicketCounter;
 import com.lotto.domain.number.LottoNumberGenerator;
 
 import com.lotto.view.InputView;
@@ -23,10 +23,10 @@ public class LottoController {
 
     public void run() {
         int money = inputView.receivePriceToBuy();
-        int numberOfTickets = TicketCounter.calculateCount(money);
+        int numberOfTickets = LottoTicketCountingUtil.calculateTicketCount(money);
         outputView.showNumberOfTickets(numberOfTickets);
         LottoTickets lottoTickets = new LottoTickets(new ArrayList<>(), new LottoNumberGenerator());
-        List<LottoTicket> lottoNumbers = lottoTickets.createLottoTickets(numberOfTickets);
+        List<LottoTicket> lottoNumbers = lottoTickets.saveLottoTickets(numberOfTickets);
         outputView.showLottoTickets(lottoNumbers);
     }
 }

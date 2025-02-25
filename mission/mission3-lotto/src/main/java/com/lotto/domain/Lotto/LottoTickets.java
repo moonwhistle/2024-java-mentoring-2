@@ -14,16 +14,12 @@ public class LottoTickets {
         this.lottoNumberGenerator = lottoNumberGenerator;
     }
 
-    public List<LottoTicket> createLottoTickets(int numberOfTickets) {
+    public List<LottoTicket> saveLottoTickets(int numberOfTickets) {
         for (int i = 0; i < numberOfTickets; i++) {
-            List<Integer> lottoTicket = createLottoTicket();
+            List<Integer> lottoTicket = lottoNumberGenerator.generateRandomNumbers();
             saveLottoTicket(lottoTicket);
         }
         return lottoTickets;
-    }
-
-    private List<Integer> createLottoTicket() {
-        return lottoNumberGenerator.generateRandomNumbers();
     }
 
     private void saveLottoTicket(List<Integer> lottoNumbers) {

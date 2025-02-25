@@ -12,7 +12,7 @@ public class OutputView {
 
     public void showLottoTickets(List<LottoTicket> lottoTickets) {
         for(LottoTicket lottoTicket : lottoTickets) {
-            System.out.println(lottoTicket.getLotteryNumbers());
+            System.out.println(lottoTicket);
         }
     }
 }

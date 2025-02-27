@@ -18,12 +18,6 @@ public class Winning {
         return resultString;
     }
 
-    public void processWinningResult(Long matchCount){
-        for (WinningResult result : WinningResult.values()) {
-            result.matchAndIncrement(matchCount);
-        }
-    }
-
     public void matchWinningResult(Long matchCount){
         if(BonusWinning.checkIncrement(matchCount)) return;
         processWinningResult(matchCount);
@@ -52,6 +46,12 @@ public class Winning {
     private boolean compareWinningNumber(List<LottoNumber> winningNumber, LottoNumber lottoNumber) {
         return winningNumber.stream()
                 .anyMatch(winning -> winning.checkSameWinningNumber(lottoNumber));
+    }
+
+    private void processWinningResult(Long matchCount){
+        for (WinningResult result : WinningResult.values()) {
+            result.matchAndIncrement(matchCount);
+        }
     }
 
     private void validateMatchCount(Long matchCount){

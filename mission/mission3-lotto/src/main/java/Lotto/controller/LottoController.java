@@ -13,17 +13,16 @@ public class LottoController {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private final RandomNumberGenerator randomNumberGenerator;
     private final Winning winning;
-
+    private final LottoGenerator lottoGenerator;
     private final Profit profit;
 
-    public LottoController(InputView inputView, OutputView outputView, RandomNumberGenerator randomNumberGenerator, Winning winning, Profit profit){
+    public LottoController(InputView inputView, OutputView outputView, RandomNumberGenerator randomNumberGenerator, Winning winning, Profit profit, LottoGenerator lottoGenerator){
         this.inputView = inputView;
         this.outputView = outputView;
-        this.randomNumberGenerator = randomNumberGenerator;
         this.winning = winning;
         this.profit = profit;
+        this.lottoGenerator = lottoGenerator;
     }
 
     public void startLotto(){
@@ -45,7 +44,7 @@ public class LottoController {
         int inputPrice = enterLottoNumber();
         return new Lottos.Builder()
                 .inputPrice(inputPrice)
-                .randomNumberGenerator(randomNumberGenerator)
+                .lottoGenerator(lottoGenerator)
                 .addAutoLotto()
                 .build();
     }

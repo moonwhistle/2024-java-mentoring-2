@@ -13,11 +13,11 @@ public class Lottos {
 
     private final List<Lotto> lottos;
     private final int inputPrice;
-    private final RandomNumberGenerator randomNumberGenerator;
+    private final LottoGenerator lottoGenerator;
 
     public static class Builder{
         private int inputPrice;
-        private RandomNumberGenerator randomNumberGenerator;
+        private LottoGenerator lottoGenerator;
         private List<Lotto> lottos = new ArrayList<>();
 
         public Builder inputPrice(int inputPrice){
@@ -25,15 +25,14 @@ public class Lottos {
             return this;
         }
 
-        public Builder randomNumberGenerator(RandomNumberGenerator randomNumberGenerator){
-            this.randomNumberGenerator = randomNumberGenerator;
+        public Builder lottoGenerator(LottoGenerator lottoGenerator){
+            this.lottoGenerator = lottoGenerator;
             return this;
         }
 
         public Builder addManualLotto(String userLotto) {
-            List<LottoNumber> lottoNumbers = createManualLotto(userLotto);
-
-            this.lottos.add(new Lotto.Builder().lotto(lottoNumbers).build());
+            List<LottoNumber> manualLotto = lottoGenerator.addManualLotto(userLotto);
+            this.lottos.add(new Lotto.Builder().lotto(manualLotto).build());
             return this;
         }
 
@@ -42,23 +41,10 @@ public class Lottos {
 
             for (int i = 0; i < autoLottoCount; i++) {
                 this.lottos.add(new Lotto.Builder()
-                        .randomNumberGenerator(randomNumberGenerator)
-                        .lotto(createAutoLotto())
+                        .lotto(lottoGenerator.addAutoLotto())
                         .build());
             }
             return this;
-        }
-
-        private List<LottoNumber> createManualLotto(String userLotto){
-            return Arrays.stream(userLotto.split(","))
-                    .map(String::trim)
-                    .map(Integer::parseInt)
-                    .map(LottoNumber::new)
-                    .collect(Collectors.toList());
-        }
-
-        private List<LottoNumber> createAutoLotto(){
-            return randomNumberGenerator.generateNumberList();
         }
 
         public Lottos build(){
@@ -70,7 +56,7 @@ public class Lottos {
     private Lottos(Builder builder){
         this.inputPrice = builder.inputPrice;
         LottoValidator.validateLottos(inputPrice);
-        this.randomNumberGenerator = builder.randomNumberGenerator;
+        this.lottoGenerator = builder.lottoGenerator;
         this.lottos = new ArrayList<>(builder.lottos);
     }
 

@@ -15,17 +15,10 @@ public class Lotto {
 
     public static final int lottoPrice = 1000;
     public static final int lottoElementNumber = 6;
-    private final RandomNumberGenerator randomNumberGenerator;
     private final List<LottoNumber> lotto;
 
     public static class Builder{
-        private RandomNumberGenerator randomNumberGenerator;
         private List<LottoNumber> lotto = new ArrayList<>();
-
-        public Builder randomNumberGenerator(RandomNumberGenerator randomNumberGenerator){
-            this.randomNumberGenerator = randomNumberGenerator;
-            return this;
-        }
 
         public Builder lotto(List<LottoNumber> lotto){
             this.lotto = new ArrayList<>(lotto);
@@ -41,7 +34,6 @@ public class Lotto {
 
     private Lotto(Builder builder){
         this.lotto = builder.lotto;
-        this.randomNumberGenerator = builder.randomNumberGenerator;
     }
 
     public List<LottoNumber> getLotto(){

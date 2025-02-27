@@ -45,7 +45,7 @@ public class Lotto {
     }
 
     public List<LottoNumber> getLotto(){
-        return new ArrayList<>(lotto);
+        return Collections.unmodifiableList(lotto);
     }
 
     @Override

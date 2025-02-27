@@ -1,14 +1,13 @@
 package Lotto.domain;
 
-import Lotto.common.exception.ExceptionMessage;
 import Lotto.util.LottoValidator;
 import randomNumber.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Lottos {
 
@@ -17,13 +16,12 @@ public class Lottos {
     private final RandomNumberGenerator randomNumberGenerator;
 
     public static class Builder{
-        int inputPrice;
-        RandomNumberGenerator randomNumberGenerator;
-        List<Lotto> lottos = new ArrayList<>();
+        private int inputPrice;
+        private RandomNumberGenerator randomNumberGenerator;
+        private List<Lotto> lottos = new ArrayList<>();
 
         public Builder inputPrice(int inputPrice){
             this.inputPrice = inputPrice;
-            LottoValidator.validateLottos(inputPrice);
             return this;
         }
 
@@ -71,12 +69,13 @@ public class Lottos {
 
     private Lottos(Builder builder){
         this.inputPrice = builder.inputPrice;
+        LottoValidator.validateLottos(inputPrice);
         this.randomNumberGenerator = builder.randomNumberGenerator;
-        this.lottos = builder.lottos;
+        this.lottos = new ArrayList<>(builder.lottos);
     }
 
     public List<Lotto> getLottos(){
-        return new ArrayList<>(lottos);
+        return Collections.unmodifiableList(lottos);
     }
 
     public int getInputPrice(){

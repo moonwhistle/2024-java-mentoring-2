@@ -19,4 +19,10 @@ public class InputView {
         return scanner.nextLine();
     }
 
+    public String enterBonusNumber(){
+        System.out.println();
+        System.out.println(DisplayText.ENTER_BONUS_NUMBER.getInputMessage());
+        return scanner.nextLine();
+    }
+
 }

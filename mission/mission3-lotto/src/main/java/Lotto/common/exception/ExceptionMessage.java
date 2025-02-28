@@ -8,7 +8,8 @@ public enum ExceptionMessage {
     ZERO_MATCH_COUNT("zeroMatchCount", "당첨 결과가 없습니다."),
     INVALID_WINNING_RESULT("invalidWinningResult", "당첨 숫자는 6개이어야 합니다.(중복 숫자가 있는지 확인하세요)"),
     INVALID_LOTTO_FORMAT("invalidLottoFormat", "로또는 숫자 형태이어야 합니다."),
-    EMPTY_OR_NULL_WINNING_NUMBER("emptyOrNullWinningNumber", "당첨 로또 번호가 비어있습니다 (,를 기준으로 6개 숫자를 입력해야 합니다.");
+    EMPTY_OR_NULL_WINNING_NUMBER("emptyOrNullWinningNumber", "당첨 로또 번호가 비어있습니다 (,를 기준으로 6개 숫자를 입력해야 합니다."),
+    CANNOT_PARSE_TO_INT("cannotParseToInt", "입력 형태는 1-45 사시의 숫자여야 합니다.");
 
     private final String errorName;
     private final String message;

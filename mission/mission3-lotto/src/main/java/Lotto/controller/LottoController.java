@@ -7,29 +7,33 @@ import Lotto.view.OutputView;
 import randomNumber.RandomNumberGenerator;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class LottoController {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private final RandomNumberGenerator randomNumberGenerator;
     private final Winning winning;
+    private final LottoGenerator lottoGenerator;
+    private final Profit profit;
 
-    public LottoController(InputView inputView, OutputView outputView, RandomNumberGenerator randomNumberGenerator, Winning winning){
+    public LottoController(InputView inputView, OutputView outputView, RandomNumberGenerator randomNumberGenerator, Winning winning, Profit profit, LottoGenerator lottoGenerator){
         this.inputView = inputView;
         this.outputView = outputView;
-        this.randomNumberGenerator = randomNumberGenerator;
         this.winning = winning;
+        this.profit = profit;
+        this.lottoGenerator = lottoGenerator;
     }
 
     public void startLotto(){
         Lottos lottos = createLottos();
         printLottoList(lottos);
         List<LottoNumber> winningNumber = getWinningNumber();
-        Long matchCount = calculatePrice(winningNumber, lottos);
+        BonusNumber bonusNumber = createBonusNumber();
+        Long matchCount = calculatePrice(winningNumber, lottos, bonusNumber);
         matchWinningResult(matchCount);
-        printWinningResult();
-        calculateProfit(lottos.getNumberOfLottos(), matchCount);
+        printWinningResult(matchCount);
+        calculateProfit(lottos.getNumberOfLottos());
     }
 
     private int enterLottoNumber(){
@@ -38,7 +42,11 @@ public class LottoController {
 
     private Lottos createLottos(){
         int inputPrice = enterLottoNumber();
-        return new Lottos(inputPrice, randomNumberGenerator);
+        return new Lottos.Builder()
+                .inputPrice(inputPrice)
+                .lottoGenerator(lottoGenerator)
+                .addAutoLotto()
+                .build();
     }
 
     private void printLottoNumber(int lottoNumber){
@@ -56,23 +64,13 @@ public class LottoController {
         return winningNumber.getWinningNumber();
     }
 
-    private Long calculateMatchCount(List<LottoNumber> winningNumber, List<LottoNumber> lottoNumbers){
-        return winning.calculateWinningResult(winningNumber, lottoNumbers);
+    private Long calculatePrice(List<LottoNumber> winningNumber, Lottos lottos, BonusNumber bonusNumber){
+        return winning.calculatePrice(winningNumber, lottos, bonusNumber);
     }
 
-    private Long calculatePrice(List<LottoNumber> winningNumber, Lottos lottos){
-        long max = 0;
-
-        for(int i = 0; i < lottos.getNumberOfLottos(); i++){
-            max = Math.max(max, calculateMatchCount(winningNumber, lottos.getLottos().get(i).getLotto()));
-        }
-
-        return max;
-    }
-
-    private void printWinningResult(){
+    private void printWinningResult(long matchCount){
         outputView.printWinningBar();
-        String winningResult = winning.getWinningResult();
+        String winningResult = winning.getWinningResult(matchCount);
         outputView.printWinningResult(winningResult);
     }
 
@@ -80,9 +78,18 @@ public class LottoController {
         winning.matchWinningResult(matchCount);
     }
 
-    private void calculateProfit(int numberOfLotto, Long matchCount){
-        double profit = winning.calculateProfit(numberOfLotto, matchCount);
-        outputView.printProfit(profit);
+    private void calculateProfit(int numberOfLotto){
+        double profitResult = profit.calculateProfit(numberOfLotto);
+        outputView.printProfit(profitResult);
     }
+
+    private String enterBonusNumber(){
+        return inputView.enterBonusNumber();
+    }
+
+    private BonusNumber createBonusNumber(){
+        return new BonusNumber(enterBonusNumber());
+    }
+
 
 }

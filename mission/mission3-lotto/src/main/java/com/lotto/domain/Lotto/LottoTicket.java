@@ -6,6 +6,8 @@ import java.util.List;
 
 public class LottoTicket {
 
+    private static final int NUMBER_OF_LOTTO_NUMBERS = 6;
+
     private final List<Integer> lotteryNumbers;
 
     public LottoTicket(final List<Integer> lotteryNumbers) {
@@ -23,7 +25,7 @@ public class LottoTicket {
     }
 
     private void validateTicketLength(List<Integer> lotteryNumbers) {
-        if (lotteryNumbers.size() < 6) {
+        if (lotteryNumbers.size() < NUMBER_OF_LOTTO_NUMBERS) {
             throw new TicketLengthException();
         }
     }

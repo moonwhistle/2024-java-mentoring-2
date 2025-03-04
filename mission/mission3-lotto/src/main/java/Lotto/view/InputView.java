@@ -29,11 +29,13 @@ public class InputView {
     }
 
     public int enterManualLottoNumber(){
+        System.out.println();
         System.out.println(DisplayText.ENTER_MANUAL_LOTTO_NUMBER.getInputMessage());
         return scanner.nextInt();
     }
 
     public List<String> enterManualLotto(int manualLottoNumber){
+        System.out.println();
         System.out.println(DisplayText.ENTER_MANUAL_LOTTO.getInputMessage());
 
         return IntStream.range(0, manualLottoNumber)

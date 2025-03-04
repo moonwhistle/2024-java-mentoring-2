@@ -30,7 +30,7 @@ public class LottoController {
         int inputPrice = enterLottoNumber();
         int manualLottoNumber = enterManualLottoNumber();
         Lottos lottos = createManualLotto(manualLottoNumber, inputPrice);
-        printLottoList(lottos);
+        printLottoList(lottos, manualLottoNumber);
         List<LottoNumber> winningNumber = getWinningNumber();
         BonusNumber bonusNumber = createBonusNumber();
         Long matchCount = calculatePrice(winningNumber, lottos, bonusNumber);
@@ -43,12 +43,9 @@ public class LottoController {
         return inputView.purchaseLotto();
     }
 
-    private void printLottoNumber(int lottoNumber){
-        outputView.printLottoNumber(lottoNumber);
-    }
-
-    private void printLottoList(Lottos lottos){
-        printLottoNumber(lottos.getNumberOfLottos());
+    private void printLottoList(Lottos lottos, int manualLottoNumber){
+        printManualLottoNumber(manualLottoNumber);
+        printAutoLottoNumber(lottos.getNumberOfLottos() - manualLottoNumber);
         String lottoList = lottos.printLottoList();
         outputView.printLottoList(lottoList);
     }
@@ -100,6 +97,14 @@ public class LottoController {
                 addManualLotto(enterManualLotto(manualLottoNumber))
                 .addAutoLotto()
                 .build();
+    }
+
+    private void printAutoLottoNumber(int lottoNumber){
+        outputView.printAutoLottoNumber(lottoNumber);
+    }
+
+    private void printManualLottoNumber(int lottoNumber){
+        outputView.printManualLottoNumber(lottoNumber);
     }
 
 }

@@ -13,7 +13,10 @@ public enum DisplayText {
     NEW_LINE("newLine", "\n"),
     ENTER_BONUS_NUMBER("enterBonusNumber", "보너스 볼을 입력해 주세요."),
     ENTER_MANUAL_LOTTO_NUMBER("enterManualLottoNumber", "수동으로 구매할 로또 수를 입력해 주세요."),
-    ENTER_MANUAL_LOTTO("enterManualLotto", "수동으로 구매할 번호를 입력해 주세요.");
+    ENTER_MANUAL_LOTTO("enterManualLotto", "수동으로 구매할 번호를 입력해 주세요."),
+    MANUAL_LOTTO("manualLotto", "수동으로 "),
+    ANNOUNCE_NUMBER("announceNumber", "장, "),
+    AUTO_LOTTO("autoLotto", "자동으로 ");
 
     private String inputName;
     private String inputMessage;

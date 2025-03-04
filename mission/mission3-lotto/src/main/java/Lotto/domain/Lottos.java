@@ -30,8 +30,8 @@ public class Lottos {
             return this;
         }
 
-        public Builder addManualLotto(String userLotto, int manualLottoNumber) {
-            for(int i = 0; i < manualLottoNumber; i++) {
+        public Builder addManualLotto(List<String> userLottos) {
+            for (String userLotto : userLottos) {
                 List<LottoNumber> manualLotto = lottoGenerator.addManualLotto(userLotto);
                 this.lottos.add(new Lotto.Builder().lotto(manualLotto).build());
             }

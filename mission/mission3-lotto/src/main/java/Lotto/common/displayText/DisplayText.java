@@ -11,7 +11,9 @@ public enum DisplayText {
     ANNOUNCEMENT("announcement", "입니다."),
     PRIZE_MESSAGE_SEPARATOR("prizeMessageSeparator", "-"),
     NEW_LINE("newLine", "\n"),
-    ENTER_BONUS_NUMBER("enterBonusNumber", "보너스 볼을 입력해 주세요.");
+    ENTER_BONUS_NUMBER("enterBonusNumber", "보너스 볼을 입력해 주세요."),
+    ENTER_MANUAL_LOTTO_NUMBER("enterManualLottoNumber", "수동으로 구매할 로또 수를 입력해 주세요."),
+    ENTER_MANUAL_LOTTO("enterManualLotto", "수동으로 구매할 번호를 입력해 주세요.");
 
     private String inputName;
     private String inputMessage;

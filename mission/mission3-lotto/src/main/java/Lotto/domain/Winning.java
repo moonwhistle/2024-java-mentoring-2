@@ -27,9 +27,7 @@ public class Winning {
         long count = lottoNumbers.stream()
                 .filter(lottoNumber -> compareWinningNumber(winningNumber, lottoNumber))
                 .count();
-        if(BonusWinning.matchBonusNumber(bonusNumber, lottoNumbers, count)){
-            WinningResult.SECOND_BONUS_PRICE.incrementBonus();
-        }
+        isBonus(bonusNumber, lottoNumbers, count);
         return count;
     }
 
@@ -41,6 +39,12 @@ public class Winning {
         }
 
         return max;
+    }
+
+    private void isBonus(BonusNumber bonusNumber, List<LottoNumber> lottoNumbers, Long count){
+        if(BonusWinning.matchBonusNumber(bonusNumber, lottoNumbers, count)){
+            WinningResult.SECOND_BONUS_PRICE.incrementBonus();
+        }
     }
 
     private boolean compareWinningNumber(List<LottoNumber> winningNumber, LottoNumber lottoNumber) {

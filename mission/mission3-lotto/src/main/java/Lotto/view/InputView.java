@@ -25,4 +25,13 @@ public class InputView {
         return scanner.nextLine();
     }
 
+    public int enterManualLottoNumber(){
+        System.out.println(DisplayText.ENTER_MANUAL_LOTTO_NUMBER.getInputMessage());
+        return scanner.nextInt();
+    }
+
+    public String enterManualLotto(){
+        return scanner.next();
+    }
+
 }

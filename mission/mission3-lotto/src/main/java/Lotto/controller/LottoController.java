@@ -1,5 +1,6 @@
 package Lotto.controller;
 
+import Lotto.common.displayText.DisplayText;
 import Lotto.domain.*;
 
 import Lotto.view.InputView;
@@ -26,7 +27,8 @@ public class LottoController {
     }
 
     public void startLotto(){
-        Lottos lottos = createLottos();
+        int manualLottoNumber = enterManualLottoNumber();
+        Lottos lottos = createManualLotto(manualLottoNumber);
         printLottoList(lottos);
         List<LottoNumber> winningNumber = getWinningNumber();
         BonusNumber bonusNumber = createBonusNumber();
@@ -91,5 +93,17 @@ public class LottoController {
         return new BonusNumber(enterBonusNumber());
     }
 
+    private int enterManualLottoNumber(){
+        return inputView.enterManualLottoNumber();
+    }
+
+    private String enterManualLotto(){
+        return inputView.enterManualLotto();
+    }
+
+    private Lottos createManualLotto(int manualLottoNumber){
+        System.out.println(DisplayText.ENTER_MANUAL_LOTTO.getInputMessage());
+        return new Lottos.Builder().lottoGenerator(lottoGenerator).addManualLotto(enterManualLotto(), manualLottoNumber).build();
+    }
 
 }

@@ -1,5 +1,6 @@
 package Lotto.controller;
 
+import Lotto.common.displayText.DisplayText;
 import Lotto.domain.*;
 
 import Lotto.view.InputView;
@@ -26,8 +27,10 @@ public class LottoController {
     }
 
     public void startLotto(){
-        Lottos lottos = createLottos();
-        printLottoList(lottos);
+        int inputPrice = enterLottoNumber();
+        int manualLottoNumber = enterManualLottoNumber();
+        Lottos lottos = createManualLotto(manualLottoNumber, inputPrice);
+        printLottoList(lottos, manualLottoNumber);
         List<LottoNumber> winningNumber = getWinningNumber();
         BonusNumber bonusNumber = createBonusNumber();
         Long matchCount = calculatePrice(winningNumber, lottos, bonusNumber);
@@ -40,21 +43,9 @@ public class LottoController {
         return inputView.purchaseLotto();
     }
 
-    private Lottos createLottos(){
-        int inputPrice = enterLottoNumber();
-        return new Lottos.Builder()
-                .inputPrice(inputPrice)
-                .lottoGenerator(lottoGenerator)
-                .addAutoLotto()
-                .build();
-    }
-
-    private void printLottoNumber(int lottoNumber){
-        outputView.printLottoNumber(lottoNumber);
-    }
-
-    private void printLottoList(Lottos lottos){
-        printLottoNumber(lottos.getNumberOfLottos());
+    private void printLottoList(Lottos lottos, int manualLottoNumber){
+        printManualLottoNumber(manualLottoNumber);
+        printAutoLottoNumber(lottos.getNumberOfLottos() - manualLottoNumber);
         String lottoList = lottos.printLottoList();
         outputView.printLottoList(lottoList);
     }
@@ -91,5 +82,25 @@ public class LottoController {
         return new BonusNumber(enterBonusNumber());
     }
 
+    private int enterManualLottoNumber(){
+        return inputView.enterManualLottoNumber();
+    }
+
+    private List<String> enterManualLotto(int manualLottoNumber){
+        outputView.printEnterUserLotto();
+        return lottoGenerator.enterUserLotto(manualLottoNumber);
+    }
+
+    private Lottos createManualLotto(int manualLottoNumber, int inputPrice){
+        return lottoGenerator.createManualLottos(enterManualLotto(manualLottoNumber), inputPrice);
+    }
+
+    private void printAutoLottoNumber(int lottoNumber){
+        outputView.printAutoLottoNumber(lottoNumber);
+    }
+
+    private void printManualLottoNumber(int lottoNumber){
+        outputView.printManualLottoNumber(lottoNumber);
+    }
 
 }

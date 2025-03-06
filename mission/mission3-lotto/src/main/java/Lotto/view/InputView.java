@@ -2,11 +2,14 @@ package Lotto.view;
 
 import Lotto.common.displayText.DisplayText;
 
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class InputView {
 
-    private final Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public int purchaseLotto(){
         System.out.println(DisplayText.ENTER_PURCHASE_AMOUNT.getInputMessage());
@@ -23,6 +26,16 @@ public class InputView {
         System.out.println();
         System.out.println(DisplayText.ENTER_BONUS_NUMBER.getInputMessage());
         return scanner.nextLine();
+    }
+
+    public int enterManualLottoNumber(){
+        System.out.println();
+        System.out.println(DisplayText.ENTER_MANUAL_LOTTO_NUMBER.getInputMessage());
+        return scanner.nextInt();
+    }
+
+    public static String enterManualLotto(){
+        return scanner.next();
     }
 
 }

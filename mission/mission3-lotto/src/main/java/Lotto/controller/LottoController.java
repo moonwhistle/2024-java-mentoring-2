@@ -87,16 +87,12 @@ public class LottoController {
     }
 
     private List<String> enterManualLotto(int manualLottoNumber){
-        return inputView.enterManualLotto(manualLottoNumber);
+        outputView.printEnterUserLotto();
+        return lottoGenerator.enterUserLotto(manualLottoNumber);
     }
 
     private Lottos createManualLotto(int manualLottoNumber, int inputPrice){
-        return new Lottos.Builder().
-                inputPrice(inputPrice).
-                lottoGenerator(lottoGenerator).
-                addManualLotto(enterManualLotto(manualLottoNumber))
-                .addAutoLotto()
-                .build();
+        return lottoGenerator.createManualLottos(enterManualLotto(manualLottoNumber), inputPrice);
     }
 
     private void printAutoLottoNumber(int lottoNumber){

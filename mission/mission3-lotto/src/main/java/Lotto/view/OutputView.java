@@ -33,4 +33,9 @@ public class OutputView {
         System.out.println(DisplayText.AUTO_LOTTO.getInputMessage() + lottoNumber + DisplayText.PURCHASE_NUMBER.getInputMessage());
     }
 
+    public void printEnterUserLotto(){
+        System.out.println();
+        System.out.println(DisplayText.ENTER_MANUAL_LOTTO.getInputMessage());
+    }
+
 }

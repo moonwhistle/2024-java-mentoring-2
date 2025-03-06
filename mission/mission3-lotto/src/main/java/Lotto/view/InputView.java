@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 
 public class InputView {
 
-    private final Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public int purchaseLotto(){
         System.out.println(DisplayText.ENTER_PURCHASE_AMOUNT.getInputMessage());
@@ -34,15 +34,8 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public List<String> enterManualLotto(int manualLottoNumber){
-        System.out.println();
-        System.out.println(DisplayText.ENTER_MANUAL_LOTTO.getInputMessage());
-
-        return IntStream.range(0, manualLottoNumber)
-                .mapToObj(i -> {
-                    return scanner.next();
-                })
-                .collect(Collectors.toList());
+    public static String enterManualLotto(){
+        return scanner.next();
     }
 
 }

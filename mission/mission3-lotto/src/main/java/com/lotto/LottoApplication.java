@@ -1,15 +1,12 @@
 package com.lotto;
 
+import com.lotto.service.LottoTicketService;
+import com.lotto.service.WinningStatisticsService;
+
 import com.lotto.view.InputView;
 import com.lotto.view.OutputView;
 
 import com.lotto.controller.LottoController;
-
-import com.lotto.domain.LottoNumberGenerator;
-import com.lotto.domain.LottoTicketsGenerator;
-import com.lotto.domain.RandomNumberGenerator;
-
-import com.lotto.service.LottoService;
 
 public class LottoApplication {
 
@@ -17,12 +14,10 @@ public class LottoApplication {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
 
-        RandomNumberGenerator randomNumberGenerator = new LottoNumberGenerator();
-        LottoTicketsGenerator lottoTicketsGenerator = new LottoTicketsGenerator(randomNumberGenerator);
+        LottoTicketService lottoTicketService = new LottoTicketService();
+        WinningStatisticsService winningStatisticsService = new WinningStatisticsService();
 
-        LottoService lottoService = new LottoService(lottoTicketsGenerator);
-
-        LottoController lottoController = new LottoController(inputView, outputView, lottoService);
+        LottoController lottoController = new LottoController(inputView, outputView, lottoTicketService, winningStatisticsService);
 
         lottoController.runLottoApp();
     }

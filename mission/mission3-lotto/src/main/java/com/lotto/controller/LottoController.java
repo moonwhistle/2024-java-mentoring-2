@@ -1,7 +1,11 @@
 package com.lotto.controller;
 
 import com.lotto.service.DTO.LottoResponseDTO;
-import com.lotto.service.LottoService;
+import com.lotto.service.DTO.WinningStatisticsRequestDTO;
+import com.lotto.service.DTO.WinningStatisticsResponseDTO;
+
+import com.lotto.service.LottoTicketService;
+import com.lotto.service.WinningStatisticsService;
 
 import com.lotto.view.InputView;
 import com.lotto.view.OutputView;
@@ -10,29 +14,49 @@ public class LottoController {
 
     final private InputView inputView;
     final private OutputView outputView;
-    final private LottoService lottoService;
+    final private LottoTicketService lottoTicketService;
+    final private WinningStatisticsService winningStatisticsService;
 
-    public LottoController(InputView inputView, OutputView outputView, LottoService lottoService){
+    public LottoController(InputView inputView, OutputView outputView, LottoTicketService lottoTicketService, WinningStatisticsService winningStatisticsService){
         this.inputView = inputView;
         this.outputView = outputView;
-        this.lottoService = lottoService;
+        this.lottoTicketService = lottoTicketService;
+        this.winningStatisticsService = winningStatisticsService;
     }
 
     public void runLottoApp(){
         outputView.showPurchaseAmount();
 
         int purchaseAmount = inputView.getPurchaseAmount();
-        LottoResponseDTO lottoDTO = lottoService.getLottoResponseDTO(purchaseAmount);
+        LottoResponseDTO lottoResDTO = lottoTicketService.getLottoResponseDTO(purchaseAmount);
 
-        showTickets(lottoDTO);
+        showTickets(lottoResDTO);
+
+        outputView.showWinnerNumbersPrompt();
+        String winnerNumbers = inputView.getWinnerString();
+
+        WinningStatisticsRequestDTO winningReqDTO = createWinnerRequestDTO(lottoResDTO, winnerNumbers, purchaseAmount);
+        WinningStatisticsResponseDTO winningResDTO = winningStatisticsService.getResponseDTO(winningReqDTO);
+
+        showLottoResult(winningResDTO);
     }
 
-    private void showTickets(LottoResponseDTO lottoDTO ) {
+    private void showTickets(LottoResponseDTO lottoDTO) {
         outputView.showPurchaseHistory(lottoDTO.purchaseAmount());
 
-        for(String ticket : lottoDTO.lottoTickets()){
+        for(String ticket : lottoDTO.convertedLottoTickets()){
             outputView.showLotto(ticket);
         }
+    }
+
+    private WinningStatisticsRequestDTO createWinnerRequestDTO(LottoResponseDTO lottoResponseDTO, String winnerNumbers, int purchaseAmount) {
+        return new WinningStatisticsRequestDTO(lottoResponseDTO.lottoTickets(), winnerNumbers, purchaseAmount);
+    }
+
+    private void showLottoResult(WinningStatisticsResponseDTO winningResDTO) {
+        outputView.showStatisticsPrompt();
+        outputView.showWinStatistics(winningResDTO.matchCountInfo().info());
+        outputView.showROI(winningResDTO.ROI());
     }
 
 }

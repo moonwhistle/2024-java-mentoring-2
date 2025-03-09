@@ -1,6 +1,6 @@
 package com.lotto.view;
 
-import com.lotto.common.PrizeMoneyConfig;
+import com.lotto.common.LottoResultConfig;
 
 import java.util.Map;
 
@@ -28,10 +28,10 @@ public class OutputView {
     }
 
     public void showWinStatistics(Map<Integer, Integer> statisticsMap) {
-        System.out.println("3개 일치 (" + PrizeMoneyConfig.FIFTH_PLACE_PRIZE_MONEY.getPrizeMoney() + ")원- " + statisticsMap.getOrDefault(3, 0) + "개");
-        System.out.println("4개 일치 (" + PrizeMoneyConfig.FOURTH_PLACE_PRIZE_MONEY.getPrizeMoney() + ")원- " + statisticsMap.getOrDefault(4, 0) + "개");
-        System.out.println("5개 일치 (" + PrizeMoneyConfig.THIRD_PLACE_PRIZE_MONEY.getPrizeMoney() + ")원- " + statisticsMap.getOrDefault(5, 0) + "개");
-        System.out.println("6개 일치 (" + PrizeMoneyConfig.FIRST_PLACE_PRIZE_MONEY.getPrizeMoney() + ")원- " + statisticsMap.getOrDefault(6, 0) + "개");
+        System.out.println(LottoResultConfig.FIFTH_PLACE.getMessage() + "- " + statisticsMap.getOrDefault(LottoResultConfig.FIFTH_PLACE.getMatchCount(), 0) + "개");
+        System.out.println(LottoResultConfig.FOURTH_PLACE.getMessage() + "- " + statisticsMap.getOrDefault(LottoResultConfig.FOURTH_PLACE.getMatchCount(), 0) + "개");
+        System.out.println(LottoResultConfig.THIRD_PLACE.getMessage() + "- " + statisticsMap.getOrDefault(LottoResultConfig.THIRD_PLACE.getMatchCount(), 0) + "개");
+        System.out.println(LottoResultConfig.FIRST_PLACE.getMessage() + "- " + statisticsMap.getOrDefault(LottoResultConfig.FIRST_PLACE.getMatchCount(), 0) + "개");
     }
 
     public void showROI(String ROI) {

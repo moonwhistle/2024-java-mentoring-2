@@ -1,6 +1,6 @@
 package com.lotto;
 
-import com.lotto.service.BuildLottoTicketService;
+import com.lotto.service.LottoTicketService;
 import com.lotto.service.WinningStatisticsService;
 
 import com.lotto.view.InputView;
@@ -14,10 +14,10 @@ public class LottoApplication {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
 
-        BuildLottoTicketService buildLottoTicketService = new BuildLottoTicketService();
+        LottoTicketService lottoTicketService = new LottoTicketService();
         WinningStatisticsService winningStatisticsService = new WinningStatisticsService();
 
-        LottoController lottoController = new LottoController(inputView, outputView, buildLottoTicketService, winningStatisticsService);
+        LottoController lottoController = new LottoController(inputView, outputView, lottoTicketService, winningStatisticsService);
 
         lottoController.runLottoApp();
     }

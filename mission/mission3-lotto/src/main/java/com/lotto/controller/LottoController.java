@@ -3,7 +3,7 @@ package com.lotto.controller;
 import com.lotto.service.DTO.LottoResponseDTO;
 import com.lotto.service.DTO.WinningStatisticsRequestDTO;
 
-import com.lotto.service.BuildLottoTicketService;
+import com.lotto.service.LottoTicketService;
 import com.lotto.service.DTO.WinningStatisticsResponseDTO;
 import com.lotto.service.WinningStatisticsService;
 
@@ -14,13 +14,13 @@ public class LottoController {
 
     final private InputView inputView;
     final private OutputView outputView;
-    final private BuildLottoTicketService buildLottoTicketService;
+    final private LottoTicketService lottoTicketService;
     final private WinningStatisticsService winningStatisticsService;
 
-    public LottoController(InputView inputView, OutputView outputView, BuildLottoTicketService buildLottoTicketService, WinningStatisticsService winningStatisticsService){
+    public LottoController(InputView inputView, OutputView outputView, LottoTicketService lottoTicketService, WinningStatisticsService winningStatisticsService){
         this.inputView = inputView;
         this.outputView = outputView;
-        this.buildLottoTicketService = buildLottoTicketService;
+        this.lottoTicketService = lottoTicketService;
         this.winningStatisticsService = winningStatisticsService;
     }
 
@@ -28,7 +28,7 @@ public class LottoController {
         outputView.showPurchaseAmount();
 
         int purchaseAmount = inputView.getPurchaseAmount();
-        LottoResponseDTO lottoResDTO = buildLottoTicketService.getLottoResponseDTO(purchaseAmount);
+        LottoResponseDTO lottoResDTO = lottoTicketService.getLottoResponseDTO(purchaseAmount);
 
         showTickets(lottoResDTO);
 

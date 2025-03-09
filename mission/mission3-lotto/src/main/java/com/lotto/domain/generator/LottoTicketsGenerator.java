@@ -26,6 +26,7 @@ public class LottoTicketsGenerator {
     }
 
     private static Ticket getLottoTicket() {
+
         return Ticket.builder()
                 .withRandomNumbers()
                 .build();

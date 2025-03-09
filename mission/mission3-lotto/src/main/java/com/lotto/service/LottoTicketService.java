@@ -9,7 +9,7 @@ import com.lotto.domain.model.Ticket;
 
 import java.util.List;
 
-public class BuildLottoTicketService {
+public class LottoTicketService {
 
     public LottoResponseDTO getLottoResponseDTO(int purchaseAmount){
         Money purchaseMoney = new Money(purchaseAmount);
@@ -24,6 +24,7 @@ public class BuildLottoTicketService {
     }
 
     private List<String> convertTicketsToStringList(LottoTickets lottoTickets) {
+
         return lottoTickets.tickets()
                 .stream()
                 .map(Ticket::toString)

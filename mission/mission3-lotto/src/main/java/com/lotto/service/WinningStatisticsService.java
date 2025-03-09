@@ -17,7 +17,7 @@ public class WinningStatisticsService {
         LottoResults lottoResults = getLottoResults(requestDTO);
         String ROI = getFormattedROI(lottoResults.getTotalPrize(), requestDTO.purchaseAmount());
 
-        return new WinningStatisticsResponseDTO(lottoResults.getMatchCountMap(), ROI);
+        return new WinningStatisticsResponseDTO(lottoResults.getMatchCountInfo(), ROI);
     }
 
     private LottoResults getLottoResults(WinningStatisticsRequestDTO requestDTO) {

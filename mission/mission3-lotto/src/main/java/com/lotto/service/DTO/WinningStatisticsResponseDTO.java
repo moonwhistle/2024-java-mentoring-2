@@ -1,6 +1,6 @@
 package com.lotto.service.DTO;
 
-import java.util.Map;
+import com.lotto.domain.vo.MatchCountInfo;
 
-public record WinningStatisticsResponseDTO(Map<Integer, Integer> matchCountMap, String ROI) {
+public record WinningStatisticsResponseDTO(MatchCountInfo matchCountInfo, String ROI) {
 }

@@ -2,9 +2,9 @@ package com.lotto.controller;
 
 import com.lotto.service.DTO.LottoResponseDTO;
 import com.lotto.service.DTO.WinningStatisticsRequestDTO;
+import com.lotto.service.DTO.WinningStatisticsResponseDTO;
 
 import com.lotto.service.LottoTicketService;
-import com.lotto.service.DTO.WinningStatisticsResponseDTO;
 import com.lotto.service.WinningStatisticsService;
 
 import com.lotto.view.InputView;
@@ -55,7 +55,7 @@ public class LottoController {
 
     private void showLottoResult(WinningStatisticsResponseDTO winningResDTO) {
         outputView.showStatisticsPrompt();
-        outputView.showWinStatistics(winningResDTO.matchCountMap());
+        outputView.showWinStatistics(winningResDTO.matchCountInfo().info());
         outputView.showROI(winningResDTO.ROI());
     }
 

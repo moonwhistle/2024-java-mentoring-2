@@ -2,7 +2,6 @@ package com.lotto.view;
 
 import com.lotto.common.PrizeMoneyConfig;
 
-import java.util.List;
 import java.util.Map;
 
 public class OutputView {

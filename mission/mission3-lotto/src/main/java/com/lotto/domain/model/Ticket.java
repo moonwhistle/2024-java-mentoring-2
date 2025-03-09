@@ -94,6 +94,12 @@ public class Ticket {
 
     }
 
+    public boolean isBonusMatch(int bonusNumber) {
+
+        return lottoNumbers.stream()
+                .anyMatch(v -> v.lottoNumber() == bonusNumber);
+    }
+
     public enum TicketType {
         AUTO, CUSTOM, WINNER
     }

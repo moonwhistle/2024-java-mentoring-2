@@ -11,7 +11,7 @@ public class LottoResultGenerator implements LottoResult {
 
     private LottoResultGenerator(Ticket winnerTicket, Ticket nowTicket) {
         this.matchCount = getTicketMatchCount(winnerTicket, nowTicket);
-        this.hasBonus = isBonusMatch(nowTicket, winnerTicket.getBonus());
+        this.hasBonus = nowTicket.isBonusMatch(winnerTicket.getBonus());
     }
 
     public static LottoResultGenerator getResult(Ticket winnerTicket, Ticket nowTicket) {
@@ -47,11 +47,6 @@ public class LottoResultGenerator implements LottoResult {
         }
 
         return 0;
-    }
-
-    private boolean isBonusMatch(Ticket nowTicket, int bonusNumber) {
-        return nowTicket.getLottoNumbers().stream()
-                .anyMatch(v -> v.lottoNumber() == bonusNumber);
     }
 
 }

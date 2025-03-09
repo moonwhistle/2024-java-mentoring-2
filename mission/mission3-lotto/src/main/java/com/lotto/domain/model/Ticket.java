@@ -12,7 +12,7 @@ public class Ticket {
     private final int bonus;
     private final TicketType type;
 
-    private Ticket(Builder builder) {
+    private Ticket(TicketBuilder builder) {
         this.lottoNumbers = builder.lottoNumbers;
         this.bonus = builder.bonus;
         this.type = builder.type;
@@ -46,30 +46,30 @@ public class Ticket {
                 .toString();
     }
 
-    public static Builder builder() {
-        return new Builder();
+    public static TicketBuilder builder() {
+        return new TicketBuilder();
     }
 
-    public static class Builder {
+    public static class TicketBuilder {
         private List<LottoNumber> lottoNumbers;
         private int bonus = 0;
         private TicketType type;
 
-        public Builder withRandomNumbers() {
+        public TicketBuilder withRandomNumbers() {
             this.lottoNumbers = AutoLottoNumbersGenerator.create().getNumbers();
             this.type = TicketType.AUTO;
 
             return this;
         }
 
-        public Builder withNumbers(List<LottoNumber> numbers) {
+        public TicketBuilder withNumbers(List<LottoNumber> numbers) {
             this.lottoNumbers = numbers;
             this.type = TicketType.CUSTOM;
 
             return this;
         }
 
-        public Builder withBonusNumber(int bonus) {
+        public TicketBuilder withBonusNumber(int bonus) {
             if (type != TicketType.CUSTOM) {
                 throw new UnsupportedOperationException(ErrorMessage.NOT_ALLOWED_TICKET_TYPE.getMessage());
             }

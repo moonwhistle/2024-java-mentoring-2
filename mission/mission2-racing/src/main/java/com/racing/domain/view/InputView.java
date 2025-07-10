@@ -1,7 +1,5 @@
 package com.racing.domain.view;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -12,9 +10,8 @@ public class InputView {
         this.scanner = scanner;
     }
 
-    public String inputCarName() {
-        System.out.print("Input Car Name: ");
-        return scanner.nextLine();
+    public String inputCarName(){
+        System.out.println("CarName: ");
+        return scanner.next();
     }
-
 }
